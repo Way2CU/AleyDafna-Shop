@@ -7,11 +7,15 @@
 	<module name="page_info" order="3" preload="yes"/>
 	<module name="language_menu" order="4" preload="yes"/>
 	<module name="captcha" order="0" preload="no"/>
-	
-	<user 
-		fullname="Administrator" 
+	<module name="contact_form" order="1" preload="no"/>
+	<module name="country_list" order="2" preload="no"/>
+	<module name="gallery" order="3" preload="no"/>
+	<module name="shop" order="4" preload="no"/>
+
+	<user
+		fullname="Administrator"
 		username="admin"
-		password="" 
-		level="10" 
+		password=""
+		level="10"
 	/>
 </document>
