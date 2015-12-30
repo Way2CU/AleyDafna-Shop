@@ -2,5 +2,13 @@
 <!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
 <document>
 	<div class="cart">
+		<svg>
+			<use
+				href="#basket"
+				xlink:href="site/images/site-sprite.svg#basket"
+				/>
+		</svg>
+		
+		<p><cms:text constant="title_cart"/></p>
 	</div>
 </document>
