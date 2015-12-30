@@ -9,7 +9,7 @@
 		</head>
 
 		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
-			<h1>It works!</h1>
+			<cms:template file="parts/header.xml">
 		</body>
 	</html>
 </document>
