@@ -18,7 +18,7 @@ define('DEBUG', 1);
 
 // site language configuration
 $available_languages = array('en', 'he', 'ru');
-$default_language = 'en';
+$default_language = 'he';
 
 // default session options
 $session_type = Session::TYPE_BROWSER;
