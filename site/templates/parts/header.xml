@@ -2,36 +2,39 @@
 	<header>
 		<cms:svg file="site-sprite.svg"/>
 
-		<div id="top_header">
 			<a href="url_Make('', 'home')" class="logo" cms:eval="href">
 				<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>
 			</a>
-		</div>
+			<p><cms:text constant="title_header_sale"/></p>
 
-		<p><cms:text constant="title_header_sale"/></p>
+			
+			<div class="language">
+				<nav id="lang">
+					<p><cms:text constant="title_nav_lang"/></p>
+					<cms:module
+						name="language_menu"
+						action="print"
+						/>
+				</nav>	
 
-		<div class="language">
-			<cms:module
-				name="language_menu"
-				action="print"
-				/>
-			<a
-				href="'tel:'.urlencode(Language::getText('phone'))"
-				cms:eval="href"
-				class="phone"
-				>
-				<cms:text constant="phone"/>
-			</a>
+				<a
+					href="'tel:'.urlencode(Language::getText('phone'))"
+					cms:eval="href"
+					class="phone"
+					>
+					<cms:text constant="phone"/>
+				</a>
 
-			<a
-				href="'tel:'.urlencode(Language::getText('phone2'))"
-				cms:eval="href"
-				class="phone"
-				>
-				<cms:text constant="phone2"/>
-			</a>
-		</div>
+				<a
+					href="'tel:'.urlencode(Language::getText('phone2'))"
+					cms:eval="href"
+					class="phone"
+					>
+					<cms:text constant="phone2"/>
+				</a>
+			</div>
 
-		<cms:template file="stock/cart.xml"/>
+			<cms:template file="stock/cart.xml"/>
+
 	</header>
 </document>
