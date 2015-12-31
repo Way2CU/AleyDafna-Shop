@@ -17,6 +17,8 @@
 						/>
 				</nav>	
 
+				<p><cms:text constant="label_phone"/></p>
+
 				<a
 					href="'tel:'.urlencode(Language::getText('phone'))"
 					cms:eval="href"
