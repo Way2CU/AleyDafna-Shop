@@ -8,8 +8,8 @@
 			<p><cms:text constant="title_header_sale"/></p>
 
 			
-			<div class="language">
-				<nav id="lang">
+			<div class="languages">
+				<nav id="language">
 					<p><cms:text constant="title_nav_lang"/></p>
 					<cms:module
 						name="language_menu"
