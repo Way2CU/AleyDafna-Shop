@@ -45,20 +45,22 @@ header a.logo img {
 header > p {
 	display: inline-block;
 	vertical-align: middle;
+	margin: 0px;
 	padding-right: 30px;
 	padding-left: 30px;
 	font-size: 1.3em;
+	font-weight: 700;
 	line-height: 100%;
 }
 
 div.cart,
-div.language {
+div.languages {
 	display: inline-block;
 	vertical-align: middle;
 	padding-right: 30px;
 	padding-left: 30px;
 	position: relative;
-	line-height: 100%;
+	
 }
 
 div.cart {
@@ -67,6 +69,7 @@ div.cart {
 	padding-right: 40px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	line-height: 100%;
 	border: 1px solid darken(@color_ac_grey,40%);
 	position: relative;
 }
@@ -85,19 +88,17 @@ div.cart:before {
 	height: 45px;
 }
 
-nav#lang {
+nav#language {
 	display: block;
-	padding-top: 10px;
-	padding-bottom: 10px;
 }
 
-nav#lang p {
+nav#language p {
 	display: inline-block;
 	margin: 0px;
 }
 
-div.language a.phone,
-nav#lang a {
+div.languages a.phone,
+nav#language a {
 	color: @color_ac_text;
 	text-decoration: none;
 	border-left: 1px solid @color_ac_text;
@@ -106,13 +107,13 @@ nav#lang a {
 	transition: all 0.3s;
 }
 
-div.language a.phone:first-of-type,
-nav#lang a:last-of-type {
+div.languages a.phone:first-of-type,
+nav#language a:last-of-type {
 	border-left: none;
 }
 
-div.language a.phone:hover,
-nav#lang a:hover {
+div.languages a.phone:hover,
+nav#language a:hover {
 	color: lighten(@color_ac_orange,10%);
 }
 
