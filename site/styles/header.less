@@ -34,7 +34,6 @@ header a.logo:hover {
 	-webkit-filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.6));
 }
 
-
 header a.logo img {
 	display: block;
 	padding-bottom: 5px;
@@ -80,7 +79,7 @@ div.cart:before {
 	position: absolute;
 	top: 50%;
 	margin-top: -22.5px;
-	right: calc(~'(100% + 10px)');
+	left: calc(~'(100% + 10px)');
 	background-image: url(../images/payment-icons.svg);
 	background-repeat: no-repeat;
 	background-position: -446px 0px;
@@ -89,8 +88,13 @@ div.cart:before {
 	height: 45px;
 }
 
+body.rtl div.cart:before {
+	right: calc(~'(100% + 10px)');
+}
+
 nav#language {
 	display: block;
+	padding-bottom: 5px;
 }
 
 div.languages p,
@@ -104,14 +108,28 @@ div.languages a.phone,
 nav#language a {
 	color: @color_ac_text;
 	text-decoration: none;
-	border-left: 1px solid @color_ac_text;
 	padding-right: 10px;
 	padding-left: 10px;
 	transition: all 0.3s;
 }
 
-div.languages a.phone:first-of-type,
-nav#language a:last-of-type {
+body.ltr div.languages a.phone,
+body.ltr nav#language a {
+	border-right: 1px solid @color_ac_text;
+}
+
+body.ltr div.languages a.phone:last-of-type,
+body.ltr nav#language a:last-of-type {
+	border-right: none;
+}
+
+body.rtl div.languages a.phone,
+body.rtl nav#language a {
+	border-left: 1px solid @color_ac_text;
+}
+
+body.rtl div.languages a.phone:first-of-type,
+body.rtl nav#language a:last-of-type {
 	border-left: none;
 }
 
@@ -140,4 +158,142 @@ div.cart p {
 	padding-right: 5px;
 	padding-left: 5px;
 	font-weight: 700;
+}
+
+/*Main site menu*/
+
+nav#main {
+	display: block;
+	padding-top: 20px;
+}
+
+nav#main ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+nav#main > ul > li {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 100%;
+	position: relative;
+}
+
+nav#main > ul > li > a {
+	display: block;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-decoration: none;
+	border-left: 1px solid @color_ac_medium_green;
+	color: @color_ac_text;
+	font-weight: 700;
+	position: relative;
+	transition: all 0.3s;
+}
+
+nav#main > ul > li:first-of-type > a {
+	border-left: none;
+}
+
+body.rtl nav#main > ul > li:first-of-type > a {
+	border-right: none;
+	border-left: 1px solid @color_ac_medium_green;
+}
+
+body.rtl nav#main > ul > li:last-of-type > a {
+	border-left: none;
+}
+
+nav#main > ul > li.sub-menu > a {
+	padding-right: 35px;
+}
+
+nav#main > ul > li > a:hover {
+	background-color: @color_ac_orange;
+}
+
+nav#main > ul > li.sub-menu> a:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -5px;
+	right: 15px;
+
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 10px solid @color_ac_text;
+	transition: all 0.3s;
+	transition-delay: 0.3s;
+}
+
+body.rtl nav#main > ul > li.sub-menu> a:before {
+	left: 15px;
+}
+
+nav#main > ul > li:hover > a {
+	background-color: @color_ac_orange;
+	color: @color_ac_text;
+}
+
+nav#main > ul > li.sub-menu:hover > a:before {
+	transform: rotate(180deg);
+}
+
+nav#main ul li > ul.drop {
+	position: absolute;
+	top: 100%;
+	left: 0px;
+	max-height: 0px;
+
+	visibility: hidden;
+	opacity: 0;
+	
+	border: 1px solid @color_ac_dark_green;
+	background-color: @color_ac_text;
+	transition: all 0.6s;
+	transition-delay: 0.3s;
+
+	text-align: left;
+}
+
+body.rtl nav#main ul li > ul.drop {
+	left: auto;
+	right: 0px;
+	text-align: right;
+}
+
+nav#main ul li:hover ul.drop {
+	visibility: visible;
+	opacity: 1;
+	max-height: 500px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+nav#main ul ul.drop li {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	width: 250px;
+}
+
+nav#main  ul  ul.drop  li  a {
+	display: block;
+	text-decoration: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 100%;
+	color: @color_ac_dark_green;
+	transition: all 0.3s;
+}
+
+nav#main  ul  ul.drop  li:hover a {
+	background-color: @color_ac_orange;
+	color: @color_ac_text ;
 }
