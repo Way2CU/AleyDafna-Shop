@@ -1,0 +1,24 @@
+<document>
+	<li class="$params['has_children'] ? 'sub-menu' : false" cms:optional="class">
+
+		<cms:if condition="$params['has_children']">
+			<a href="javascript:void(0)">
+				<cms:var param="title" multilanguage="yes"/>	
+			</a>
+		</cms:if>
+		
+		<cms:if condition="!$params['has_children']">
+			<a href="url_Make('category','shop',array($params['text_id']))" cms:eval="href">
+				<cms:var param="title" multilanguage="yes"/>	
+			</a>
+		</cms:if>
+
+		<ul class="drop">
+			<cms:children
+				parent_id="$params['id']"
+				template="parts/sub_menu_categories.xml"
+				cms:eval="parent_id"
+				/>		
+		</ul>	
+	</li>
+</document>
