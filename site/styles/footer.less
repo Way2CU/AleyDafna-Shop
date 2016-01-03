@@ -1,0 +1,82 @@
+/**
+ * Footer Style Sheet
+ * Aley dafna shop
+ *
+ * Copyright (c) 2015. by Way2CU, http://way2cu.com
+ * Authors:Tal Reznic
+ */
+
+footer {
+	display: block;
+	text-align: center;
+	border-top: 2px solid @color_ac_dark_green;
+}
+
+nav#footer_nav,
+section#features {
+	background-color: fade(@color_ac_light_green,10%);
+	padding:20px calc(~'(100vw - 1200px)' / 2);
+}
+
+nav#footer_nav {
+	background: linear-gradient(to bottom, @color_ac_dark_green 0%,@color_ac_medium_green 100%);
+}
+
+
+nav#footer_nav ul ,
+section#features ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+nav#footer_nav ul li,
+section#features ul li {
+	display: inline-block;
+	vertical-align: top;
+	width: 20%;
+	transition: all 0.3s;
+}
+
+nav#footer_nav ul li {
+	width: 14%;
+	text-align: left;
+}
+
+body.rtl nav#footer_nav ul li {
+	text-align: right;
+}
+
+nav#footer_nav >ul > li > a {
+	color: @color_ac_text;
+	text-decoration: none;
+	font-weight: 700;
+
+}
+
+section#features ul li:hover svg {
+	fill: @color_ac_orange;
+}
+
+section#features ul li:hover p {
+	color: @color_ac_orange;
+}
+
+section#features ul li svg {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70px;
+	height: 70px;
+	fill: @color_ac_dark_green;
+	transition: all 0.3s;
+}
+
+section#features ul li p {
+	margin-bottom: 0px;
+	transition: all 0.3s;
+} 
+
+/*Footer menu navigation*/
+
+
