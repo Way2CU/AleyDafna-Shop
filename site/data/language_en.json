@@ -1,3 +1,15 @@
 {
-    "site_title": "Site title"
+	"site_title": "Aley dafna",
+	"phone2": "1700-700-202",
+	"phone": "03-6738020",
+	"title_header_sale": "5% discount for booking online",
+	"title_cart": "Shopping cart:",
+	"title_nav_lang": "Languages:",
+	"label_phone": "Phone:",
+	"label_item": "Products",
+	"label_price": "$",
+	"menu_about": "About",
+	"menu_contact": "Contact",
+	"menu_faq": "Faq",
+	"menu_agreement": "Purchase articles on site"
 }
