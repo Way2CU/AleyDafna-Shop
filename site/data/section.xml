@@ -4,4 +4,23 @@
 	<section name="home">
 		<language name="all" file="home.xml" />
 	</section>
+	<section name="shop">
+		<language name="all">
+			<action name="category" file="category.xml"/>
+			<action name="checkout" file="checkout.xml"/>
+		</language>
+	</section>
+	<section name="about">
+		<language name="all">
+			<action name="about" file="about.xml"/>
+			<action name="warranty-agreement" file="warranty.xml"/>
+			<action name="faq" file="faq.xml"/>
+		</language>
+	</section>
+	<section name="contact-us">
+		<language name="all">
+			<action name="_default" file="contact.xml"/>
+		</language>
+	</section>
+
 </document>
