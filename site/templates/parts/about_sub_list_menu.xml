@@ -1,0 +1,23 @@
+<document>
+	<li>
+		<a
+			class="$section == 'warranty-agreement' ? 'active' : false"
+			href="url_Make('warranty-agreement', 'about')"
+			cms:eval="href"
+			cms:optional="class"
+			>
+			<cms:text constant="menu_agreement"/>
+		</a>
+	</li>
+
+	<li>
+		<a
+			class="$section == 'faq' ? 'active' : false"
+			href="url_Make('faq', 'about')"
+			cms:eval="href"
+			cms:optional="class"
+			>
+			<cms:text constant="menu_faq"/>
+		</a>
+	</li>
+</document>
