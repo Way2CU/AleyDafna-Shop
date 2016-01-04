@@ -12,6 +12,8 @@ footer {
 	border-top: 2px solid @color_ac_dark_green;
 }
 
+section#payments,
+section#information,
 nav#footer_nav,
 section#features {
 	background-color: fade(@color_ac_light_green,10%);
@@ -22,6 +24,26 @@ nav#footer_nav {
 	background: linear-gradient(to bottom, @color_ac_dark_green 0%,@color_ac_medium_green 100%);
 }
 
+section#information {
+	background-color: @color_ac_medium_green;
+}
+
+section#payments {
+	background-color: @color_ac_text;
+	position: relative;
+}
+
+section#payments:after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -600px;
+	width: 1200px;
+	height: 1px;
+	background-color: @color_text;
+}
+
 
 nav#footer_nav ul ,
 section#features ul {
@@ -30,28 +52,56 @@ section#features ul {
 	list-style-type: none;
 }
 
-nav#footer_nav ul li,
-section#features ul li {
+nav#footer_nav > ul > li,
+section#features > ul > li {
 	display: inline-block;
 	vertical-align: top;
 	width: 20%;
 	transition: all 0.3s;
 }
 
-nav#footer_nav ul li {
-	width: 14%;
+nav#footer_nav > ul > li {
 	text-align: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-left: 2px solid @color_ac_medium_green;
+	min-height: 250px;
+	width: calc(~'(14% - 20px)');
 }
 
-body.rtl nav#footer_nav ul li {
+section#information div:first-of-type,
+nav#footer_nav > ul > li:first-of-type {
+	border-left: none;
+}
+
+body.rtl section#information div:first-of-type {
+	border-left: 2px solid lighten(@color_ac_medium_green,5%);
+}
+
+body.rtl section#information div:last-of-type {
+	border-left: none;
+} 
+
+body.rtl nav#footer_nav > ul >  li {
 	text-align: right;
+	border-left: none;
+	border-right: 1px solid @color_ac_medium_green;
+}
+
+body.rtl nav#footer_nav > ul >  li:first-of-type {
+	border-right: none;
+}
+
+nav#footer_nav  ul  ul li a:hover,
+nav#footer_nav >ul > li:hover > a {
+	color: @color_ac_orange;
 }
 
 nav#footer_nav >ul > li > a {
 	color: @color_ac_text;
 	text-decoration: none;
 	font-weight: 700;
-
+	transition: all 0.3s;
 }
 
 section#features ul li:hover svg {
@@ -77,6 +127,181 @@ section#features ul li p {
 	transition: all 0.3s;
 } 
 
-/*Footer menu navigation*/
+nav#footer_nav  ul  ul li {
+	display: block;	
+} 
 
+nav#footer_nav  ul  ul li a {
+	display: block;
+	color: @color_ac_text;
+	text-decoration: none;
+	transition: all 0.3s;
+}
 
+section#information address,
+section#information div {
+	display: inline-block;
+	vertical-align: top;
+	font-style: normal;
+	line-height: 100%;
+	border-left: 2px solid lighten(@color_ac_medium_green,5%);
+	width: calc(~'(25% - 2px)');
+}
+
+section#information address svg,
+section#information div svg {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 5px;
+	width: 40px;
+	height: 40px;
+	fill: @color_ac_text;
+}
+
+body.rtl section#information address svg,
+body.rtl section#information div svg {
+	padding-left: 5px;
+}
+
+section#information address p,
+section#information div p {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+	margin: 0px;
+	width: 200px;
+}
+
+body.rtl section#information address p,
+body.rtl section#information div p {
+	text-align: right;
+}
+
+section#information address,
+section#information div p,
+section#information div a {
+	color: @color_ac_text;
+	text-decoration: none;
+}
+
+section#information div a {
+	padding-right: 3px;
+	padding-left: 3px;
+	transition: all 0.3s;
+}
+
+section#information div a:hover {
+	color: @color_ac_orange;
+}
+
+section#payments a,
+section#payments form,
+section#payments  p,
+section#payments  img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+section#payments  p {
+	text-align: center;
+	font-weight: 700;
+	margin: 0px;
+	width: 180px;
+}
+
+section#payments strong {
+	color: @color_ac_orange;
+}
+
+section#payments  img  {
+	width: 35%;
+}
+
+section#payments a {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+	background-color: @color_text;
+	font-weight: 700;
+	text-decoration: none;
+	color: @color_ac_text;
+	transition: all 0.3s;
+}
+
+section#payments a:hover {
+	background-color: lighten(@color_text,5%);
+}
+
+section#payments a svg {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	padding-right: 12px;
+	width: 25px;
+	height: 25px;
+	fill: @color_ac_text;
+	border-right: 2px solid  lighten(@color_text,10%);
+}
+
+body.rtl section#payments a svg {
+	margin-right: auto;
+	padding-right: 0px;
+	margin-left: 10px;
+	padding-left: 12px;
+	border-right: none;
+	border-left: 2px solid  lighten(@color_text,10%);
+}
+
+section#payments form label {
+	display: inline-block;
+}
+
+section#payments form label  input {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 1px solid @color_ac_medium_green;
+	width: 200px;
+	transition: all 0.3s;
+}
+
+section#payments form label  input:focus {
+	border: 1px solid @color_ac_orange;
+}
+
+section#payments form div.controls {
+	display: inline-block;
+}
+
+section#payments form div.controls button {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border: 1px solid @color_ac_medium_green;
+	background-color: @color_ac_medium_green;
+	color: @color_ac_text;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+section#payments form div.controls button:hover {
+	background-color: @color_ac_orange;
+}
+
+ footer > div.copyright {
+ 	text-align: center;
+ }
+
+ footer div.copyright {
+ 	display: inline-block;
+	color: @color_text;
+ }
+
+ footer div.copyright a {
+ 	color: @color_text;
+ }

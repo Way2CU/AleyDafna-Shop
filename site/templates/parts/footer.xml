@@ -76,5 +76,99 @@
 				</li>								
 			</ul>
 		</nav>
+
+		<section id="information">
+			<div>
+				<svg>
+					<use
+						href="#globe"
+						xlink:href="site/images/site-sprite.svg#globe"
+						/>
+				</svg>
+				<cms:module
+					name="language_menu"
+					action="print"
+					/>
+			</div>
+
+			<address>
+				<svg>
+					<use
+						href="#location"
+						xlink:href="site/images/site-sprite.svg#location"
+						/>
+				</svg>
+				<p><cms:text constant="address"/></p>
+			</address>
+
+			<div>
+				<svg>
+					<use
+						href="#clock"
+						xlink:href="site/images/site-sprite.svg#clock"
+						/>
+				</svg>
+				<p><cms:text constant="working_hours"/></p>
+			</div>
+
+			<div>
+				<svg>
+					<use
+						href="#phone"
+						xlink:href="site/images/site-sprite.svg#phone"
+						/>
+				</svg>
+
+				<a
+					href="'tel:'.urlencode(Language::getText('phone'))"
+					cms:eval="href"
+					class="phone"
+					>
+					<cms:text constant="phone"/>
+				</a>
+
+				<a
+					href="'tel:'.urlencode(Language::getText('phone2'))"
+					cms:eval="href"
+					class="phone"
+					>
+					<cms:text constant="phone2"/>
+				</a>
+			</div>
+
+		</section>
+
+		<section id="payments">
+			<a href="#" class="share">
+				<svg>
+					<use
+						href="#facebook"
+						xlink:href="site/images/site-sprite.svg#facebook"
+						/>
+				</svg>
+				<cms:text constant="title_facebook"/>
+			</a>
+
+			<img 
+				src="_BASEURL.'/site/images/payment-icons.svg'"  
+				alt="payments-icons"
+				cms:eval="src"
+				/>
+
+			<p><cms:text constant="title_footer_sale"/></p>
+
+			<cms:module
+				name="contact_form"
+				action="show"
+				text_id="contact_mail"
+				/>
+
+		</section>
+
+		<cms:template file="stock/copyright.xml">
+			<param name="holder" value="copyright_holder"/>
+			<param name="text" value="copyright_text"/>
+			<param name="light" value=""/>
+		</cms:template>
 	</footer>
 </document>

@@ -2,14 +2,21 @@
 	"site_title": "Aley dafna",
 	"phone2": "1700-700-202",
 	"phone": "03-6738020",
+	"send": "Register",
+	"address": "Ramat gan, 81 arlozorov street",
+	"working_hours": "Sun-thu 8:00 - 20:00 Friday 8:00 - commencement of the Sabbath",
+	"title_footer_sale": "Register and receive a <strong>10% discount </strong> on the first online booking",
 	"title_header_sale": "5% discount for booking online",
 	"title_cart": "Shopping cart:",
 	"title_nav_lang": "Languages:",
+	"title_facebook": "Share the love",
 	"label_phone": "Phone:",
 	"label_item": "Products",
 	"label_price": "$",
 	"menu_about": "About",
 	"menu_contact": "Contact",
 	"menu_faq": "Faq",
-	"menu_agreement": "Purchase articles on site"
+	"menu_agreement": "Purchase articles on site",
+	"copyright_holder": "Copyright &copy; 2015. by <a href=\"http://way2cu.com\" target=\"_blank\">Way2CU</a>.",
+	"copyright_text": "All rights reserved."
 }

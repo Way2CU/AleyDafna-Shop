@@ -2,15 +2,22 @@
     "site_title": "Aley dafna",
     "phone2": "1700-700-202",
     "phone": "03-6738020",
+    "send": "הרשם",
+    "address": "ארלוזרוב 81 רמת גן",
+    "working_hours": "20:00 - 08:00 ה-א שישי 08:00 עד כניסת השבת",
     "title_header_sale": "5% הנחה למזמינים דרך האתר",
+    "title_footer_sale": "הירשמו וקבלו <strong>10% הנחה </strong> על הקניה הראשונה באתר",
     "title_cart": "סל קניות:",
     "title_nav_lang": "שפות:",
+    "title_facebook": "שתפו את האהבה",
     "label_phone": "טלפון:",
     "label_item": "פריטים",
     "label_price": "ש\"ח",
     "menu_about": "אודותינו",
     "menu_contact": "צרו קשר",
     "menu_faq": "שאלות ותשובות",
-    "menu_agreement": "תקנון רכישה באתר"
+    "menu_agreement": "תקנון רכישה באתר",
+    "copyright_holder": "Copyright &copy; 2015. by <a href=\"http://way2cu.com\" target=\"_blank\">Way2CU</a>.",
+    "copyright_text": "All rights reserved."
 
 }
