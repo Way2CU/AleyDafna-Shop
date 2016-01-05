@@ -68,24 +68,28 @@
 
 			</section>
 
-			<section id="updates">
-				<span>
-					<svg>
-						<use
-							href="#speaker"
-							xlink:href="site/images/site-sprite.svg#speaker"
+			<section id="news">
+				<div class="news_container">
+					<span>
+						<svg>
+							<use
+								href="#speaker"
+								xlink:href="site/images/site-sprite.svg#speaker"
+								/>
+						</svg>
+						<cms:text constant="title_button_updates"/>
+					</span>
+
+					<ul id="news_list">
+						<cms:module
+							name="articles"
+							action="show_list"
+							group="news"
+							template="parts/news_article.xml"
 							/>
-					</svg>
-					<cms:text constant="title_button_updates"/>
-				</span>
-				<ul>
-					<cms:module
-						name="articles"
-						action="show_list"
-						group="updates"
-						template="parts/updated_article.xml"
-						/>
-				</ul>	
+					</ul>
+				</div>	
+
 			</section>
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
