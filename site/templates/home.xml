@@ -82,7 +82,7 @@
 
 					<ul id="news_list">
 						<cms:module
-							name="articles"
+							name="news"
 							action="show_list"
 							group="news"
 							template="parts/news_article.xml"
