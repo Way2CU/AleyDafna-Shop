@@ -6,18 +6,18 @@
  * Authors:Tal Reznic
  */
 
-section#updates,
+section#news,
 section#slider {
 	display: block;
 	padding: @vertical_spacing calc(~'(100% - 1200px)' / 2);
 }
 
-section#updates {
+section#news {
 	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
 	text-align: left;
 }
 
-body.rtl section#updates {
+body.rtl section#news {
 	text-align: right;
 }
 
@@ -83,7 +83,7 @@ section#slider div.header_slider figure {
 section#slider div.header_slider figure figcaption {
 	position: absolute;
 	top: 25px;
-	left: calc(~'(50% - 380px)' );
+	left: calc(~'(50% - 380px)');
 	font-size: 3em;
 	color: @color_ac_orange;
 	width: 450px;
@@ -193,25 +193,31 @@ section#slider div.banner_container div.banner a:hover {
 	background-color: @color_ac_orange;
 }
 
-/*section updates*/
+/*section news*/
 
-section#updates ul,
-section#updates span {
+section#news div.news_container {
+	display: block;
+	border: 1px solid @color_ac_grey;
+}
+
+section#news ul,
+section#news span {
 	display: inline-block;
 	vertical-align: middle;
 }
 
-section#updates span {
+section#news span {
 	text-align: center;
 	padding-top: 7px;
 	padding-bottom: 7px;
+	padding-left: 30px;
+	padding-right: 30px;
 	background-color: @color_ac_orange;
 	color: @color_ac_text;
 	font-weight: 700;
-	width: 280px;
 }
 
-section#updates span svg {
+section#news span svg {
 	display: inline-block;
 	vertical-align: middle;
 	padding-right: 5px;
@@ -220,28 +226,31 @@ section#updates span svg {
 	fill: @color_ac_text;
 }
 
-body.rtl section#updates span svg {
+body.rtl section#news span svg {
 	padding-right: 0px;
 	padding-left: 5px;
 }
 
-section#updates ul {
+section#news ul {
 	margin: 0px;
 	padding: 0px;
-	width: 900px;
-	height: 50px;
-	border: 1px solid @color_ac_grey;
+	width: calc(~'(100% - 245px)');
+	height: 55px;
 	list-style-type: none;
 	position: relative;
+	overflow: hidden;
+	transform: translateZ(0);
 }
 
-section#updates ul li {
+body.rtl section#news ul {
+	width: calc(~'(100% - 226px)');
+}
+
+section#news ul li {
 	position: absolute;
 	top: 0;
-	left: 0px;
+	left: 50px;
+	right: 50px;
+	opacity: 0;
 }
 
-body.rtl section#updates ul li {
-	left: auto;
-	right: 0px;
-}
