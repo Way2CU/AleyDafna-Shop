@@ -13,7 +13,6 @@
 			<cms:template file="parts/header.xml"/>
 
 			<section id="slider">
-
 				<div class="header_slider">
 					<a href="javascript:void(0)" class="previous"></a>
 					<cms:module
