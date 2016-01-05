@@ -1,0 +1,6 @@
+<document>
+	<figure>
+		<img src="$params['image']" alt="$params['title'][$language]" cms:eval="src,alt"/>
+		<figcaption><cms:var param="title" multilanguage="yes"/></figcaption>
+	</figure>
+</document>
