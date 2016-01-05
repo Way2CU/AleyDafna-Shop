@@ -15,25 +15,29 @@
 			<section id="slider">
 				<div class="banner_container">
 					<div class="banner">
-						<p><cms:text constant="title_top_banner"/></p>
+						<div>
+							<p><cms:text constant="title_top_banner"/></p>
 
-						<a
-							href="url_Make('', 'home')"
-							cms:eval="href"
-							>
-							<cms:text constant="title_button_sign"/>
-						</a>
+							<a
+								href="url_Make('', 'home')"
+								cms:eval="href"
+								>
+								<cms:text constant="title_button_sign"/>
+							</a>
+						</div>
 					</div>
 
 					<div class="banner">
-						<p><cms:text constant="title_bottom_banner"/></p>
+						<div>
+							<p><cms:text constant="title_bottom_banner"/></p>
 
-						<a
-							href="url_Make('', 'home')"
-							cms:eval="href"
-							>
-							<cms:text constant="title_button_special_deals"/>
-						</a>
+							<a
+								href="url_Make('', 'home')"
+								cms:eval="href"
+								>
+								<cms:text constant="title_button_special_deals"/>
+							</a>
+						</div>
 					</div>
 				</div>
 
@@ -63,6 +67,26 @@
 				</div>
 
 
+			</section>
+
+			<section id="updates">
+				<span>
+					<svg>
+						<use
+							href="#speaker"
+							xlink:href="site/images/site-sprite.svg#speaker"
+							/>
+					</svg>
+					<cms:text constant="title_button_updates"/>
+				</span>
+				<ul>
+					<cms:module
+						name="articles"
+						action="show_list"
+						group="updates"
+						template="parts/updated_article.xml"
+						/>
+				</ul>	
 			</section>
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
