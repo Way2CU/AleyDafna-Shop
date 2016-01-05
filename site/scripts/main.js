@@ -51,6 +51,10 @@ Site.is_mobile = function() {
 Site.on_load = function() {
 	if (Site.is_mobile())
 		Site.mobile_menu = new Caracal.MobileMenu();
+
+	// Function displaying animation news
+
+	Site.news = new NewsSystem("news_list", 1, 5000, 1000);
 };
 
 
