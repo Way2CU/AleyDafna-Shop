@@ -220,15 +220,25 @@ section#news span {
 section#news span svg {
 	display: inline-block;
 	vertical-align: middle;
-	padding-right: 5px;
+	padding-left: 5px;
 	width: 50px;
 	height: 50px;
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 	fill: @color_ac_text;
 }
 
 body.rtl section#news span svg {
 	padding-right: 0px;
-	padding-left: 5px;
+	padding-right: 5px;
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+	-o-transform: rotateY(0deg);
+	transform: rotateY(0deg);
 }
 
 section#news ul {
@@ -243,7 +253,7 @@ section#news ul {
 }
 
 body.rtl section#news ul {
-	width: calc(~'(100% - 226px)');
+	width: calc(~'(100% - 234px)');
 }
 
 section#news ul li {
