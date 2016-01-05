@@ -6,11 +6,19 @@
  * Authors:Tal Reznic
  */
 
+section#updates,
 section#slider {
 	display: block;
-	text-align: center;
-	padding-top: @vertical_spacing;
-	padding-bottom: @vertical_spacing;
+	padding: @vertical_spacing calc(~'(100% - 1200px)' / 2);
+}
+
+section#updates {
+	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
+	text-align: left;
+}
+
+body.rtl section#updates {
+	text-align: right;
 }
 
 section#slider div.banner_container,
@@ -23,11 +31,12 @@ section#slider div.header_slider {
 section#slider div.header_slider {
 	width: 900px;
 	height: 300px;
-	margin-left: 10px;
+	margin-left: 12px;	
 }
 
 body.rtl section#slider div.header_slider {
-	margin-right: 10px;
+	margin-left: auto;
+	margin-right: 12px;
 }
 
 section#slider  div.header_slider a {
@@ -36,7 +45,6 @@ section#slider  div.header_slider a {
 	left: 0px;
 	height: 99%;
 	z-index: 1;
-
 	background-color: fade(@color_text,30%);
 }
 
@@ -60,10 +68,10 @@ section#slider a svg {
 }
 
 section#slider a.previous svg {
-	-webkit-transform: rotate(45deg); 
-	  -moz-transform: rotate(45deg); 
-	  -o-transform: rotate(45deg); 
-	  -ms-transform: rotate(45deg); 
+	-webkit-transform: rotate(180deg); 
+	  -moz-transform: rotate(180deg); 
+	  -o-transform: rotate(180deg); 
+	  -ms-transform: rotate(180deg); 
 }
 
 section#slider div.header_slider figure {
@@ -95,66 +103,76 @@ section#slider div.banner_container {
 
 section#slider div.banner_container div.banner {
 	display: block;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 20px;
-	padding-right: 20px;
+	text-align: center;
 	position: relative;
 	z-index: 0;	
 }
 
+section#slider div.banner_container div.banner:before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	width: 0px;
+	height: 100%;
+}
+
+section#slider div.banner_container div.banner div {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+section#slider div.banner_container div.banner:first-of-type div {
+	background-color: @color_ac_text;
+	padding: 15px;
+	width: 80%;
+	box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.4);
+	border-radius: 20px;
+}
+
+
+section#slider div.banner_container div.banner:last-of-type div {
+	padding-right: 50px;
+}
+
 section#slider div.banner_container div.banner:first-of-type {
-	padding-top: 20px;
-	padding-bottom: 20px;
+	margin-bottom: 12px;
 	background-image: url(../images/texture.png); 
 	background-repeat: repeat;
 	background-position: center center;
 	background-size: 150px 150px;
-}
-
-section#slider div.banner_container div.banner:first-of-type:before {
-	content: "";
-	position: absolute;
-	top: calc(~'(50% - 45%)' );
-	left: calc(~'(50% - 45%)' );
-	width: 90%;
-	height: 90%;
-	background-color: @color_ac_text;
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
-	z-index: -1;
+	overflow: hidden;
+	height: 190px;
 }
 
 section#slider div.banner_container div.banner:last-of-type {
-	position: absolute;
-	bottom: 3px;
-	left: 0px;
-	padding-right: calc(~'(100% - 225px)' );
 	background-image: url(../images/business-banner.jpg);
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: 100% auto;
 	background-color: #D5E9DF;
-}
-
-body.rtl section#slider div.banner_container div.banner:last-of-type {
-	padding-right: calc(~'(100% - 190px)' );
+	height: 95px;
+	overflow: hidden;
 }
 
 section#slider div.banner_container div.banner strong {
 	display: block;
-	margin-bottom: 0.5em;
 	font-size: 1.2em;
 	color: @color_ac_medium_green;
 }
 
 section#slider div.banner_container div.banner p {
-	margin-top: 0px;
-	line-height: 1.2em;
+	margin: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 2px;
 	color: @color_ac_medium_green;
 }
 
 section#slider div.banner_container div.banner:last-of-type strong,
 section#slider div.banner_container div.banner:last-of-type p {
+	font-size: 1em;
+	line-height: 1.2em;
 	color: @color_text;
 }
 
@@ -164,8 +182,8 @@ section#slider div.banner_container div.banner a {
 	color: @color_ac_text;
 	font-weight: 700;
 	text-decoration: none;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 	padding-left: 15px;
 	padding-right: 15px;
 	transition: all 0.3s;
@@ -173,4 +191,57 @@ section#slider div.banner_container div.banner a {
 
 section#slider div.banner_container div.banner a:hover {
 	background-color: @color_ac_orange;
+}
+
+/*section updates*/
+
+section#updates ul,
+section#updates span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+section#updates span {
+	text-align: center;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	background-color: @color_ac_orange;
+	color: @color_ac_text;
+	font-weight: 700;
+	width: 280px;
+}
+
+section#updates span svg {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 5px;
+	width: 50px;
+	height: 50px;
+	fill: @color_ac_text;
+}
+
+body.rtl section#updates span svg {
+	padding-right: 0px;
+	padding-left: 5px;
+}
+
+section#updates ul {
+	margin: 0px;
+	padding: 0px;
+	width: 900px;
+	height: 50px;
+	border: 1px solid @color_ac_grey;
+	list-style-type: none;
+	position: relative;
+}
+
+section#updates ul li {
+	position: absolute;
+	top: 0;
+	left: 0px;
+}
+
+body.rtl section#updates ul li {
+	left: auto;
+	right: 0px;
 }
