@@ -6,14 +6,19 @@
  * Authors:Tal Reznic
  */
 
+section#special_categories,
 section#news,
 section#slider {
 	display: block;
-	padding: @vertical_spacing calc(~'(100% - 1200px)' / 2);
+	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
+}
+
+section#special_categories {
+	text-align: center;
 }
 
 section#news {
-	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
+	padding: 0px calc(~'(100% - 1200px)' / 2);
 	text-align: left;
 }
 
@@ -267,5 +272,44 @@ section#news ul li {
 section#news ul li a {
 	font-weight: 700;
 	color: @color_ac_medium_green;
+}
+
+/*special_categories*/
+
+section#special_categories a {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	text-decoration: none;
+	color: @color_text;
+	margin-left: 4px;
+	margin-right: 4px;
+	width: 192px;
+	position: relative;
+}
+
+section#special_categories a:hover h4 {
+	color: @color_ac_medium_green;
+}
+
+section#special_categories a:hover img {
+	opacity: 0.7;
+}
+
+
+section#special_categories a img {
+	display: block;
+	width: 100%;
+	height: auto;
+	opacity: 1;
+	transition: all 0.3s;
+	
+}
+
+
+section#special_categories a h4 {
+	margin-top: 10px;
+	font-weight: 400;
+	transition: all 0.3s;
 }
 
