@@ -6,6 +6,7 @@
  * Authors:Tal Reznic
  */
 
+section#home_category,
 section#special_categories,
 section#news,
 section#slider {
@@ -13,6 +14,7 @@ section#slider {
 	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
 }
 
+section#home_category,
 section#special_categories {
 	text-align: center;
 }
@@ -303,9 +305,7 @@ section#special_categories a img {
 	height: auto;
 	opacity: 1;
 	transition: all 0.3s;
-	
 }
-
 
 section#special_categories a h4 {
 	margin-top: 10px;
@@ -313,3 +313,49 @@ section#special_categories a h4 {
 	transition: all 0.3s;
 }
 
+/*product template*/
+
+a.item {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	text-decoration: none;
+	color: @color_ac_medium_green;
+	border: 1px solid @color_ac_light_green;
+	margin-left: 9px;
+	margin-right: 9px;
+	width: 280px;
+	position: relative;
+	overflow: hidden;
+}
+
+a.item:hover p {
+	opacity: 0;
+}
+
+a.item:hover:before {
+	bottom: 0%;
+}
+
+a.item:before {
+	content: attr(data-description);
+	padding: 15px;
+	position: absolute;
+	bottom: -100%;
+	left: 0px;
+	width: calc(~'(100% - 30px)');
+	background-color: fade(@color_ac_text,40%);
+	transition: all 0.5s;
+}
+
+a.item img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a.item p {
+	margin: 0px;
+	margin-bottom: 5px;
+	transition: all 0.3s;
+}
