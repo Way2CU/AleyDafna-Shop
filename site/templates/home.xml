@@ -178,11 +178,11 @@
 				
 			</section>
 
-			<section id="home_category">
+			<section id="promoted_category">
 				<cms:module
 					name="shop"
 					action="show_item_list"
-					category="home_page"
+					category="promoted"
 					template="parts/category_items_template.xml"
 					/>
 
