@@ -1,9 +1,9 @@
 <document>
 	<a 
-		href="#" 
+		href="url_Make('product', 'shop', array('category', $params['category_id']), array('id',$params['id']))"
 		class="item" 
 		data-description="$params['description'][$language]" 
-		cms:eval="data-description"
+		cms:eval="href,data-description"
 		>
 
 		<img src="$params['image']" alt="$params['title'][$language]"  cms:eval="src,alt"/>
