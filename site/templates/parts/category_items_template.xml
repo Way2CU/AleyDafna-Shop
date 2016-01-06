@@ -2,12 +2,12 @@
 	<a 
 		href="url_Make('product', 'shop', array('category', $params['category_id']), array('id',$params['id']))"
 		class="item" 
-		data-description="$params['description'][$language]" 
-		cms:eval="href,data-description"
+		cms:eval="href"
 		>
 
 		<img src="$params['image']" alt="$params['title'][$language]"  cms:eval="src,alt"/>
 		<p><cms:var param="name" multilanguage="yes"/></p>
 		<p><cms:var param="price"/></p>
+		<p class="description"><cms:var param="description" multilanguage="yes"/></p>
 	</a>
 </document>
