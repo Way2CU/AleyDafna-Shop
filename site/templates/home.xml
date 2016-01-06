@@ -91,6 +91,93 @@
 				</div>	
 
 			</section>
+
+			<section id="special_categories">
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="best_seller"
+					template="parts/special_category_template.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="thank_you"
+					template="parts/special_category_template.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="treat"
+					template="parts/special_category_template.xml"
+					/>
+					
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="love"
+					template="parts/special_category_template.xml"
+					/>
+					
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="celebration"
+					template="parts/special_category_template.xml"
+					/>
+					
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="baby"
+					template="parts/special_category_template.xml"
+					/>	
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="combination"
+					template="parts/special_category_template.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="condolences"
+					template="parts/special_category_template.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="ballons"
+					template="parts/special_category_template.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="chocolate"
+					template="parts/special_category_template.xml"
+					/>		
+					
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="special_events"
+					template="parts/special_category_template.xml"
+					/>
+					
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="prosperity"
+					template="parts/special_category_template.xml"
+					/>
+					
+				
+			</section>
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
 		</body>
