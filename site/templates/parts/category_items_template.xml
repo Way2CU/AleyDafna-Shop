@@ -1,0 +1,13 @@
+<document>
+	<a 
+		href="#" 
+		class="item" 
+		data-description="$params['description'][$language]" 
+		cms:eval="data-description"
+		>
+
+		<img src="$params['image']" alt="$params['title'][$language]"  cms:eval="src,alt"/>
+		<p><cms:var param="name" multilanguage="yes"/></p>
+		<p><cms:var param="price"/></p>
+	</a>
+</document>
