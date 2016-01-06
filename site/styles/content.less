@@ -325,23 +325,22 @@ a.item {
 	overflow: hidden;
 }
 
-a.item:hover p {
-	opacity: 0;
-}
-
-a.item:hover:before {
-	bottom: 0%;
-}
-
-a.item:before {
-	content: attr(data-description);
-	padding: 15px;
+a.item p.description {
 	position: absolute;
+	padding: 15px;
 	bottom: -100%;
 	left: 0px;
 	width: calc(~'(100% - 30px)');
 	background-color: fade(@color_ac_text,40%);
 	transition: all 0.5s;
+}
+
+a.item:hover p:not(.description) {
+	opacity: 0;
+}
+
+a.item:hover p.description {
+	bottom: 0%;
 }
 
 a.item img {
