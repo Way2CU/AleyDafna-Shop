@@ -174,9 +174,18 @@
 					action="show_category"
 					text_id="prosperity"
 					template="parts/special_category_template.xml"
-					/>
-					
+					/>				
 				
+			</section>
+
+			<section id="home_category">
+				<cms:module
+					name="shop"
+					action="show_item_list"
+					category="home_page"
+					template="parts/category_items_template.xml"
+					/>
+
 			</section>
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
