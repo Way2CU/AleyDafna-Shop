@@ -8,7 +8,7 @@
 		</cms:if>
 		
 		<cms:if condition="!$params['has_children']">
-			<a href="url_Make('category','shop',array($params['text_id']))" cms:eval="href">
+			<a href="url_Make('category','shop',array($params['id']))" cms:eval="href">
 				<cms:var param="title" multilanguage="yes"/>	
 			</a>
 		</cms:if>
