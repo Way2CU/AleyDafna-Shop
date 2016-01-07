@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../units/schema/language.dtd">
+<document>
+	<cms:var name="_DOCTYPE"/>
+	<html lang="$language" cms:eval="lang">
+		<head>
+			<title>
+				<cms:text constant="site_title"/>
+				<cms:raw text=" - "/>
+				<cms:module
+					name="shop"
+					action="show_category"
+					id="fix_id($_REQUEST['id'])"
+					template="parts/category_name.xml"
+					cms:eval="id"
+					/>
+			</title>
+			<cms:module name="head_tag" action="print_tag"/>
+		</head>
+
+		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
+			<!-- Header -->
+			<cms:template file="parts/header.xml"/>
+
+			<section id="category">
+				<h2>
+					<cms:module
+						name="shop"
+						action="show_category"
+						id="fix_id($_REQUEST['id'])"
+						template="parts/category_name.xml"
+						cms:eval="id"
+						/>
+				</h2>	
+
+				<cms:module
+					name="shop"
+					action="show_item_list"
+					category="fix_id($_REQUEST['id'])"
+					template="parts/category_items_template.xml"
+					cms:eval="category"
+					/>
+
+			</section>
+
+			<!-- Footer -->
+			<cms:template file="parts/footer.xml"/>	
+		</body>
+	</html>
+</document>
