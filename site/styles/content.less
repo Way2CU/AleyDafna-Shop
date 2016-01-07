@@ -74,11 +74,11 @@ section#slider a svg {
 	transition: all 0.3s;
 }
 
-section#slider a.previous svg {
+section#slider a.previous svg use {
+	-webkit-transform-origin: inherit;
 	-webkit-transform: rotate(180deg); 
-	  -moz-transform: rotate(180deg); 
-	  -o-transform: rotate(180deg); 
-	  -ms-transform: rotate(180deg); 
+	transform-origin: inherit;
+	transform: rotate(180deg); 
 }
 
 section#slider div.header_slider figure {
@@ -227,24 +227,28 @@ section#news span {
 section#news span svg {
 	display: inline-block;
 	vertical-align: middle;
-	padding-left: 5px;
+	padding-right: 5px;
 	width: 50px;
 	height: 50px;
-	-webkit-transform: rotateY(180deg);
-	-moz-transform: rotateY(180deg);
-	-ms-transform: rotateY(180deg);
-	-o-transform: rotateY(180deg);
-	transform: rotateY(180deg);
 	fill: @color_ac_text;
+}
+
+section#news span svg use {
+	-webkit-transform-origin: center;
+	transform-origin: center;
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 body.rtl section#news span svg {
 	padding-right: 0px;
-	padding-right: 5px;
+	padding-left: 5px;
+}
+
+body.rtl section#news span svg use {
+	-webkit-transform-origin: center;
+	transform-origin: center;
 	-webkit-transform: rotateY(0deg);
-	-moz-transform: rotateY(0deg);
-	-ms-transform: rotateY(0deg);
-	-o-transform: rotateY(0deg);
 	transform: rotateY(0deg);
 }
 
