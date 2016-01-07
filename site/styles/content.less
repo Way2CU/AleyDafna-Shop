@@ -6,6 +6,7 @@
  * Authors:Tal Reznic
  */
 
+section#category,
 section#promoted_category,
 section#special_categories,
 section#news,
@@ -14,6 +15,7 @@ section#slider {
 	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
 }
 
+section#category,
 section#promoted_category,
 section#special_categories {
 	text-align: center;
@@ -108,14 +110,14 @@ section#slider div.banner_container {
 	text-align: center;
 }
 
-section#slider div.banner_container div.banner {
+div.banner {
 	display: block;
 	text-align: center;
 	position: relative;
 	z-index: 0;	
 }
 
-section#slider div.banner_container div.banner:before {
+div.banner:before {
 	content: '';
 	display: inline-block;
 	vertical-align: middle;
@@ -123,13 +125,13 @@ section#slider div.banner_container div.banner:before {
 	height: 100%;
 }
 
-section#slider div.banner_container div.banner div {
+div.banner div {
 	display: inline-block;
 	vertical-align: middle;
 	position: relative;
 }
 
-section#slider div.banner_container div.banner:first-of-type div {
+div.banner:first-of-type div {
 	background-color: @color_ac_text;
 	padding: 15px;
 	width: 80%;
@@ -138,11 +140,11 @@ section#slider div.banner_container div.banner:first-of-type div {
 }
 
 
-section#slider div.banner_container div.banner:last-of-type div {
+div.banner:last-of-type div {
 	padding-right: 50px;
 }
 
-section#slider div.banner_container div.banner:first-of-type {
+div.banner:first-of-type {
 	margin-bottom: 15px;
 	background-image: url(../images/texture.png); 
 	background-repeat: repeat;
@@ -152,7 +154,7 @@ section#slider div.banner_container div.banner:first-of-type {
 	height: 190px;
 }
 
-section#slider div.banner_container div.banner:last-of-type {
+div.banner:last-of-type {
 	background-image: url(../images/business-banner.jpg);
 	background-repeat: no-repeat;
 	background-position: center top;
@@ -162,13 +164,13 @@ section#slider div.banner_container div.banner:last-of-type {
 	overflow: hidden;
 }
 
-section#slider div.banner_container div.banner strong {
+div.banner strong {
 	display: block;
 	font-size: 1.2em;
 	color: @color_ac_medium_green;
 }
 
-section#slider div.banner_container div.banner p {
+div.banner p {
 	margin: 0px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -176,14 +178,14 @@ section#slider div.banner_container div.banner p {
 	color: @color_ac_medium_green;
 }
 
-section#slider div.banner_container div.banner:last-of-type strong,
-section#slider div.banner_container div.banner:last-of-type p {
+div.banner:last-of-type strong,
+div.banner:last-of-type p {
 	font-size: 1em;
 	line-height: 1.2em;
 	color: @color_text;
 }
 
-section#slider div.banner_container div.banner a {
+div.banner a {
 	display: inline-block;
 	background-color: @color_ac_medium_green;
 	color: @color_ac_text;
@@ -196,7 +198,7 @@ section#slider div.banner_container div.banner a {
 	transition: all 0.3s;
 }
 
-section#slider div.banner_container div.banner a:hover {
+div.banner a:hover {
 	background-color: @color_ac_orange;
 }
 
@@ -357,4 +359,75 @@ a.item p {
 	margin: 0px;
 	margin-bottom: 5px;
 	transition: all 0.3s;
+}
+
+/*category page*/
+
+section#category h2 {
+	text-align: center;
+}
+
+section#category div.banner {
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+	margin-top: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 590px;
+	min-height: 200px;
+}
+
+section#category div.banner div {
+	background-color: transparent;
+	box-shadow: none;
+	text-align: center;
+	width: 50%;
+	padding: 0px;
+}
+
+section#category div.banner div p,
+section#category div.banner div strong {
+	padding-bottom: 5px;
+	font-size: 1.3em;
+	line-height: 100%;
+	color: @color_ac_text;
+}
+
+section#category div.banner div a {
+	font-size: 1.3em;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	background-color: @color_ac_text;
+	color: @color_text;
+	box-shadow: 0px 3px 8px rgba(8, 8, 8, 0.3);
+	transition: all 0.3s;
+}
+
+section#category div.banner.loyalty a {
+	color: @color_ac_medium_green;
+}
+
+section#category div.banner.loyalty a:hover {
+	color: @color_ac_text;
+	background-color: @color_text;
+}
+
+section#category div.banner.business a:hover {
+	color: @color_ac_text;
+	background-color: @color_ac_medium_green;
+}
+
+section#category div.banner.business {
+	background-image: url(../images/business-banner-large.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 590px 200px;
+}
+
+section#category div.banner.loyalty {
+	background-image: url(../images/loyality_program_banner.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 590px 200px;
 }
