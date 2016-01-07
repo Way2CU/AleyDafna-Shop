@@ -1,0 +1,20 @@
+<document>
+	<h5>
+		<cms:module
+			name="shop"
+			action="show_category"
+			id="$params['id']"
+			template="parts/category_name.xml"
+			cms:eval="id"
+			/>
+	</h5>	
+
+	<cms:module
+		name="shop"
+		action="show_item_list"
+		category="$params['id']"
+		template="parts/category_items_template.xml"
+		cms:eval="category"
+		/>
+		
+</document>
