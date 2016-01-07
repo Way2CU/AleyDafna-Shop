@@ -1,5 +1,5 @@
 <document>
-	<a href="url_Make('category','shop',array($params['id']))" cms:eval="href">
+	<a href="url_Make('category','shop',array('id',$params['id']))" cms:eval="href">
 		<img src="$params['image']" alt="$params['title'][$language]"  cms:eval="src,alt"/>
 		<cms:var param="title" multilanguage="yes"/>
 	</a>
