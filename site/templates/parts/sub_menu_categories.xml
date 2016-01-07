@@ -1,6 +1,6 @@
 <document>
 	<li>
-		<a href="url_Make('category','shop',array($params['id']))" cms:eval="href">
+		<a href="url_Make('category','shop',array('id',$params['id']))" cms:eval="href">
 			<cms:var param="title" multilanguage="yes"/>	
 		</a>
 	</li>
