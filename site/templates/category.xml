@@ -41,6 +41,16 @@
 					cms:eval="category"
 					/>
 
+				<cms:module
+					name="shop"
+					action="show_category_list"
+					parent_id="fix_id($_REQUEST['id'])"
+					template="parts/category_list_template.xml"
+					cms:eval="parent_id"
+					/>
+
+				<br/>	
+
 				<div class="banner business">
 					<div>
 						<p><cms:text constant="title_top_banner"/></p>
