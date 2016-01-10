@@ -15,6 +15,14 @@
 					cms:eval="id"
 					/>
 			</title>
+			<!-- Page description -->
+			<cms:module
+				name="shop"
+				action="show_category"
+				id="fix_id($_REQUEST['id'])"
+				template="parts/page_description.xml"
+				cms:eval="id"
+				/>
 			<cms:module name="head_tag" action="print_tag"/>
 		</head>
 
