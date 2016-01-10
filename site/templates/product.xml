@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../units/schema/language.dtd">
+<document>
+	<cms:var name="_DOCTYPE"/>
+	<html lang="$language" cms:eval="lang">
+		<head>
+			<title>
+				<cms:text constant="site_title"/>
+				<cms:raw text=" - "/>
+				<cms:module
+					name="shop"
+					action="show_item"
+					id="fix_id($_REQUEST['id'])"
+					template="parts/category_name.xml"
+					cms:eval="id"
+					/>
+			</title>
+			<!-- Page description -->
+			<cms:module
+				name="shop"
+				action="show_item"
+				id="fix_id($_REQUEST['id'])"
+				template="parts/page_description.xml"
+				cms:eval="id"
+				/>
+			<cms:module name="head_tag" action="print_tag"/>
+		</head>
+
+		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
+			<!-- Header -->
+			<cms:template file="parts/header.xml"/>
+
+			<section id="product">	
+				<div class="product_wrapper">
+					<cms:module
+						name="shop"
+						action="show_item"
+						id="fix_id($_REQUEST['id'])"
+						template="parts/product_details_template.xml"
+						cms:eval="id"
+						/>
+				</div>	
+
+				
+				<div class="banner business">
+					<div>
+						<p><cms:text constant="title_top_banner"/></p>
+
+						<a
+							href="url_Make('', 'home')"
+							cms:eval="href"
+							>
+							<cms:text constant="title_button_sign"/>
+						</a>
+					</div>
+				</div>
+
+				<div class="banner loyalty">
+					<div>
+						<p><cms:text constant="title_bottom_banner"/></p>
+
+						<a
+							href="url_Make('', 'home')"
+							cms:eval="href"
+							>
+							<cms:text constant="title_button_special_deals"/>
+						</a>
+					</div>
+				</div>
+			</section>		
+
+			<!-- Footer -->
+			<cms:template file="parts/footer.xml"/>	
+		</body>
+	</html>
+</document>
