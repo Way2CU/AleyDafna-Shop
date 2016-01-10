@@ -1,0 +1,17 @@
+<document>
+		<label  for="$params['value'][$language]" cms:eval="for">
+			<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
+
+			<p class="price"><cms:var param="price"/></p>
+
+			 <cms:var param="value" multilanguage="yes"/>
+
+			<input 
+				type="radio" 
+				name="size" 
+				id="$params['value'][$language]"
+				value="$params['value'][$language]"
+				cms:eval="value,id"
+				/> 
+		</label>
+</document>
