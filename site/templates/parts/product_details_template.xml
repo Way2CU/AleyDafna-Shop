@@ -1,0 +1,22 @@
+<document>
+	<div class="product_information">
+		<h2><cms:var param="name" multilanguage="yes"/></h2>
+
+		<cms:markdown param="description" multilanguage="yes"/>
+
+		<!-- Product sizes -->
+			<cms:value_list
+				definition="$params['size_definition']"
+				template="parts/sizes.xml"
+				cms:eval="definition"
+				/>
+	</div>
+
+	<figure>
+		<img 
+			src="$params['image']" 
+			alt="$params['title'][$language]"
+			cms:eval="src,alt"
+			/>
+	</figure>
+</document>
