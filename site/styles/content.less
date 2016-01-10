@@ -6,6 +6,7 @@
  * Authors:Tal Reznic
  */
 
+section#product,
 section#category,
 section#promoted_category,
 section#special_categories,
@@ -371,6 +372,7 @@ section#category h2 {
 	margin: 0px;
 }
 
+section#product div.banner,
 section#category div.banner {
 	display: inline-block;
 	vertical-align: top;
@@ -381,6 +383,7 @@ section#category div.banner {
 	min-height: 200px;
 }
 
+section#product div.banner div,
 section#category div.banner div {
 	background-color: transparent;
 	box-shadow: none;
@@ -389,6 +392,8 @@ section#category div.banner div {
 	padding: 0px;
 }
 
+section#product div.banner div p,
+section#product div.banner div strong,
 section#category div.banner div p,
 section#category div.banner div strong {
 	padding-bottom: 10px;
@@ -397,6 +402,7 @@ section#category div.banner div strong {
 	color: @color_ac_text;
 }
 
+section#product div.banner div a,
 section#category div.banner div a {
 	font-size: 1.3em;
 	padding-top: 6px;
@@ -407,20 +413,24 @@ section#category div.banner div a {
 	transition: all 0.3s;
 }
 
+section#product div.banner.loyalty a,
 section#category div.banner.loyalty a {
 	color: @color_ac_medium_green;
 }
 
+section#product div.banner.loyalty a:hover,
 section#category div.banner.loyalty a:hover {
 	color: @color_ac_text;
 	background-color: @color_text;
 }
 
+section#product div.banner.business a:hover,
 section#category div.banner.business a:hover {
 	color: @color_ac_text;
 	background-color: @color_ac_medium_green;
 }
 
+section#product div.banner.business,
 section#category div.banner.business {
 	background-image: url(../images/business-banner-large.jpg);
 	background-repeat: no-repeat;
@@ -428,9 +438,59 @@ section#category div.banner.business {
 	background-size: 590px 200px;
 }
 
+section#product div.banner.loyalty,
 section#category div.banner.loyalty {
 	background-image: url(../images/loyality_program_banner.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 590px 200px;
+}
+
+/*Product page*/
+
+section#product div.product_wrapper {
+	border: 1px solid @color_ac_grey;
+}
+
+section#product div.product_information,
+section#product figure {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0px;
+	width: 50%;
+}
+
+section#product div.product_information {
+	padding-left: 20px;
+	width: calc(~'(50% - 20px)');
+}
+
+body.rtl section#product div.product_information {
+	padding-right: 20px;
+	padding-left: 0px;
+}
+
+section#product div.product_information h2 {
+	color: @color_ac_medium_green;
+}
+
+section#product div.product_information label {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	width: 180px;
+	border: 1px solid @color_ac_grey;	
+}
+
+section#product div.product_information label input {
+	display: block;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	width: 20px;
+	height: 20px;	
+}
+
+section#product figure {
+	text-align: center;
 }
