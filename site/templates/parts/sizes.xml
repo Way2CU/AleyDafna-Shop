@@ -13,5 +13,6 @@
 				value="$params['value'][$language]"
 				cms:eval="value,id"
 				/> 
+			<span></span>	
 		</label>
 </document>
