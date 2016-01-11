@@ -1,0 +1,28 @@
+<document>
+	<div class="item" data-id="$params['uid']" cms:eval="data-id">
+		<img 
+			src="$params['image']"
+			alt="$params['title'][$language]"
+			cms:eval="src,alt"
+			/>
+
+		<label for="$params['name'][$language]" cms:eval="for">
+			<input 
+				type="checkbox"
+				id="$params['name'][$language]"
+				name="related"
+				value="$params['name'][$language]"
+				cms:eval="value,id"
+				/>
+			<span></span>		
+		</label>		
+
+		<p class="price">
+			<cms:text constant="currency"/><cms:raw text=" "/><cms:var param="price"/>
+		</p>
+
+		<p class="name">
+			<cms:var param="name" multilanguage="yes"/>
+		</p>
+	</div>		
+</document>
