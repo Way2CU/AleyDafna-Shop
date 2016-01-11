@@ -1,8 +1,8 @@
 <document>
 		<label  for="$params['value'][$language]" cms:eval="for">
-			<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
-
-			<p class="price"><cms:var param="price"/></p>
+			<figure>
+				<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
+			</figure>
 
 			 <cms:var param="value" multilanguage="yes"/>
 
