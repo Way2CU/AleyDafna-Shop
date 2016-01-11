@@ -11,7 +11,7 @@
 					name="shop"
 					action="show_item"
 					id="fix_id($_REQUEST['id'])"
-					template="parts/category_name.xml"
+					template="parts/product_name.xml"
 					cms:eval="id"
 					/>
 			</title>
@@ -41,7 +41,18 @@
 						/>
 				</div>	
 
-				
+				<div id="related_items">
+					<h3><cms:text constant="title_related_items"/></h3>
+					<cms:module
+						name="shop"
+						action="show_item_list"
+						category="$_REQUEST['category']"
+						related="fix_id($_REQUEST['id'])"
+						template="parts/related_items.xml"
+						cms:eval="related,category"
+						/>
+				</div>
+
 				<div class="banner business">
 					<div>
 						<p><cms:text constant="title_top_banner"/></p>
