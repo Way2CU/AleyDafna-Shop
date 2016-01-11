@@ -241,7 +241,7 @@ div.product_information a {
 }
 
 div.product_information a.add:hover {
-	background-color: @color_ac_medium_green;
+	background-color: lighten(@color_ac_orange,10%);
 }
 
 div.product_information a.purchase {
@@ -250,8 +250,12 @@ div.product_information a.purchase {
 }
 
 div.product_information a.purchase:hover {
-	background-color: @color_text;
+	background-color: lighten(@color_ac_orange,10%);
 	color: @color_ac_text;
+}
+
+div.product_information a.purchase:hover svg {
+	fill: @color_ac_text;
 }
 
 div.product_information a svg,
@@ -262,6 +266,7 @@ section#news span svg {
 	width: 50px;
 	height: 50px;
 	fill: @color_ac_text;
+	transition: all 0.3s;
 }
 
 div.product_information a svg {
@@ -270,6 +275,10 @@ div.product_information a svg {
 }
 
 div.product_information a.purchase svg {
+	fill: @color_ac_orange;
+}
+
+div.product_information a.purchase svg path {
 	fill: @color_ac_text;
 }
 
@@ -504,7 +513,6 @@ section#product  figure {
 section#product div.product_information {
 	padding-left: 50px;
 	width: calc(~'(50% - 50px)');
-	text-align: center;
 }
 
 body.rtl section#product div.product_information {
@@ -516,23 +524,14 @@ section#product div.product_information h2 {
 	color: @color_ac_medium_green;
 }
 
-section#product div.product_information h2,
-section#product div.product_information p {
-	text-align: left;
-}
-
-body.rtl section#product div.product_information h2,
-body.rtl section#product div.product_information p {
-	text-align: right;
-}
-
 section#product div.product_information label {
 	display: inline-block;
 	vertical-align: bottom;
-	padding-bottom: 25px;
+	padding-bottom: 35px;
 	text-align: center;
 	border-bottom: 1px solid @color_ac_grey;
-	width: 180px;	
+	width: 180px;
+	position: relative;	
 }
 
 section#product div.product_information label  figure {
@@ -544,6 +543,15 @@ section#product div.product_information label  figure {
 	width: 150px;
 	height: 150px;
 	position: relative;
+	transition: all 0.3s;
+}
+
+section#product div.product_information label figure:hover {
+	border: 1px solid @color_ac_orange;
+}
+
+section#product div.product_information label:hover span {
+	box-shadow: 0px 0px 0px 2px @color_ac_orange;
 }
 
 section#product div.product_information label figure:before {
@@ -575,13 +583,26 @@ section#product div.product_information label:last-of-type  figure img{
 	height: 120px;
 }
 
-section#product div.product_information label input {
-	display: block;
-	text-align: center;
-	margin-right: auto;
-	margin-left: auto;
-	width: 20px;
-	height: 20px;	
+section#product div.product_information label span {
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -9px;
+	width: 16px;
+	height: 16px;
+	border: 2px solid @color_ac_text;
+	box-shadow: 0px 0px 0px 2px darken(@color_ac_grey,40%);
+	border-radius: 50%;
+	transition: all 0.3s;
+}
+
+section#product div.product_information label input[type="radio"] {
+	display: none;
+}
+
+section#product div.product_information label input[type="radio"]:checked ~ span {
+	background-color: @color_ac_orange;
+	box-shadow: 0px 0px 0px 2px @color_ac_orange;
 }
 
 section#product  figure {
@@ -605,10 +626,20 @@ div#related_items div.item {
 	border: none;
 }
 
+div#related_items div.item:hover img {
+	border: 2px solid @color_ac_orange;
+}
+
+div#related_items div.item:hover span {
+	border: 2px solid @color_ac_orange;
+}
+
+
 div#related_items div.item img {
 	margin-bottom: 10px;
 	padding: 5px;
 	border: 2px solid @color_ac_grey;
+	transition: all 0.3s;
 }
 
 div#related_items div.item label {
@@ -618,13 +649,20 @@ div#related_items div.item label {
 	width: 20px;
 	height: 20px;
 
-	border: 2px solid @color_ac_orange;
 	background-color: @color_ac_text;
+	transition: all 0.3s;
 }
 
 div#related_items div.item label span {
-	content: "";
 	display: inline-block;
+	padding: 2px;
+	border: 2px solid darken(@color_ac_grey,20%);
+	transition: all 0.3s;
+}
+
+div#related_items div.item label span:before {
+	content: "";
+	display: block;
 	background-image: url(../images/checkmark.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -633,14 +671,18 @@ div#related_items div.item label span {
 	height: 15px;
 	opacity: 0;
 	transition: all 0.3s;
-
 }
 
 div#related_items div.item label input[type="checkbox"] {
 	display: none;
 }
 
-div#related_items div.item label input[type="checkbox"]:checked + span {
+div#related_items div.item label input[type="checkbox"]:checked ~ span {
+	opacity: 1;
+	border: 2px solid @color_ac_orange;
+}
+
+div#related_items div.item label input[type="checkbox"]:checked ~ span:before {
 	opacity: 1;
 }
 
@@ -652,4 +694,3 @@ div#related_items div.item p.price {
 div#related_items div.item p.name {
 	color: @color_text;
 }
-
