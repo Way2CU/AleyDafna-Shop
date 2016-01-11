@@ -1,15 +1,36 @@
 <document>
-	<div class="product_information">
+	<div class="product_information" data-id="$params['uid']" cms:eval="data-id">
 		<h2><cms:var param="name" multilanguage="yes"/></h2>
 
 		<cms:markdown param="description" multilanguage="yes"/>
 
 		<!-- Product sizes -->
-			<cms:value_list
-				definition="$params['size_definition']"
-				template="parts/sizes.xml"
-				cms:eval="definition"
-				/>
+		<p><strong><cms:text constant="title_sizes"/></strong></p>
+		<cms:value_list
+			definition="$params['size_definition']"
+			template="parts/sizes.xml"
+			cms:eval="definition"
+			/>
+		<a href="javascript:void(0)" class="add">
+			<cms:text constant="title_button_add"/>
+			<svg>
+				<use
+					href="#cart-plus"
+					xlink:href="site/images/site-sprite.svg#cart-plus"
+					/>
+			</svg>
+		</a>
+
+		<a href="javascript:void(0)" class="purchase">
+			<cms:text constant="title_button_order"/>
+			<svg>
+				<use
+					href="#cart-check"
+					xlink:href="site/images/site-sprite.svg#cart-check"
+					/>
+			</svg>
+		</a>	
+
 	</div>
 
 	<figure>
@@ -19,4 +40,5 @@
 			cms:eval="src,alt"
 			/>
 	</figure>
+
 </document>
