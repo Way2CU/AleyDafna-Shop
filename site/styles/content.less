@@ -16,7 +16,6 @@ section#slider {
 	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
 }
 
-section#category,
 section#promoted_category,
 section#special_categories {
 	text-align: center;
@@ -363,6 +362,7 @@ section#special_categories a img {
 }
 
 /*product template*/
+
 div.item,
 a.item {
 	display: inline-block;
@@ -418,6 +418,11 @@ a.item p {
 section#category h2 {
 	text-align: center;
 	margin: 0px;
+}
+
+section#category section.group {
+	display: block;
+	text-align: center;
 }
 
 section#product div.banner,
@@ -546,8 +551,13 @@ section#product div.product_information label  figure {
 	transition: all 0.3s;
 }
 
+div#related_items div.item:hover img,
 section#product div.product_information label figure:hover {
 	border: 1px solid @color_ac_orange;
+}
+
+div#related_items div.item:hover img {
+	border: 2px solid @color_ac_orange;
 }
 
 section#product div.product_information label:hover span {
@@ -583,6 +593,7 @@ section#product div.product_information label:last-of-type  figure img{
 	height: 120px;
 }
 
+div#related_items div.item label span,
 section#product div.product_information label span {
 	position: absolute;
 	bottom: 5px;
@@ -594,6 +605,17 @@ section#product div.product_information label span {
 	box-shadow: 0px 0px 0px 2px darken(@color_ac_grey,40%);
 	border-radius: 50%;
 	transition: all 0.3s;
+}
+
+div#related_items div.item label span {
+	border-radius: 0px;
+	box-shadow: none;
+	width: 20px;
+	height: 20px;
+	left: auto;
+	right: 20px;
+	bottom: 20px;
+	border: 2px solid darken(@color_ac_grey,40%);
 }
 
 section#product div.product_information label input[type="radio"] {
@@ -624,39 +646,23 @@ div#related_items {
 
 div#related_items div.item {
 	border: none;
-}
-
-div#related_items div.item:hover img {
-	border: 2px solid @color_ac_orange;
+	position: relative;
 }
 
 div#related_items div.item:hover span {
 	border: 2px solid @color_ac_orange;
 }
 
-
-div#related_items div.item img {
-	margin-bottom: 10px;
-	padding: 5px;
-	border: 2px solid @color_ac_grey;
-	transition: all 0.3s;
-}
-
 div#related_items div.item label {
-	position: absolute;
-	bottom: 20px;
-	right: 20px;
-	width: 20px;
-	height: 20px;
-
+	display: inline-block;
 	background-color: @color_ac_text;
 	transition: all 0.3s;
 }
 
-div#related_items div.item label span {
-	display: inline-block;
-	padding: 2px;
-	border: 2px solid darken(@color_ac_grey,20%);
+div#related_items div.item label img {
+	margin-bottom: 10px;
+	padding: 5px;
+	border: 2px solid @color_ac_grey;
 	transition: all 0.3s;
 }
 
@@ -667,8 +673,8 @@ div#related_items div.item label span:before {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 15px 15px;
-	width: 15px;
-	height: 15px;
+	width: 20px;
+	height: 20px;
 	opacity: 0;
 	transition: all 0.3s;
 }
