@@ -49,7 +49,7 @@ Site.is_mobile = function() {
  *  Object for filtering shop items
  *  @param object property
  */ 
-function QuickFilter (items) {
+function QuickFilter(items) {
 	var self = this;
 
 	self.items = items;
