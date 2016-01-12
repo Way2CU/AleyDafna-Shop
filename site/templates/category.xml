@@ -48,7 +48,7 @@
 					template="parts/category_items_template.xml"
 					cms:eval="category"
 					/>
-
+				
 				<cms:module
 					name="shop"
 					action="show_category_list"
@@ -56,6 +56,7 @@
 					template="parts/category_list_template.xml"
 					cms:eval="parent_id"
 					/>
+	
 
 				<br/>	
 
