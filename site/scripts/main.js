@@ -55,18 +55,12 @@ function QuickFilter (items) {
 	self.items = items;
 	self.container = $('section#filter');
 
-	 self._init = function() {
+	self._init = function() {
 	 	// console.log(self.items);
 	 	self.items.each(function(index){
 	 		var item = self.items.eq(index);
-	 		console.log(item);
 	 		item.appendTo(self.container);
-	 		$('body').append(self.container);
-	 		// self.container.detach(item);
-
-	 		// console.log(self.container);
 	 	});
-
 	 }
 
 	 // finalize object
