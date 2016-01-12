@@ -1,12 +1,12 @@
 <document>
 	<div class="item" data-id="$params['uid']" cms:eval="data-id">
-		<img 
-			src="$params['image']"
-			alt="$params['title'][$language]"
-			cms:eval="src,alt"
-			/>
-
 		<label for="$params['name'][$language]" cms:eval="for">
+			<img 
+				src="$params['image']"
+				alt="$params['title'][$language]"
+				cms:eval="src,alt"
+				/>
+				
 			<input 
 				type="checkbox"
 				id="$params['name'][$language]"
