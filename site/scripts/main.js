@@ -57,7 +57,7 @@ function QuickFilter (items) {
 
 	self._init = function() {
 	 	// console.log(self.items);
-	 	self.items.each(function(index){
+	 	self.items.each(function(index) {
 	 		var item = self.items.eq(index);
 	 		item.appendTo(self.container);
 	 	});
