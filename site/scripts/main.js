@@ -45,6 +45,28 @@ Site.is_mobile = function() {
 	return result;
 };
 
+/* 
+ *  Object for filtering shop items
+ *  @param object property
+ */ 
+function QuickFilter(items) {
+	var self = this;
+
+	self.items = items;
+	self.container = $('section#filter');
+
+	self._init = function() {
+	 	// console.log(self.items);
+	 	self.items.each(function(index) {
+	 		var item = self.items.eq(index);
+	 		item.appendTo(self.container);
+	 	});
+	 }
+
+	 // finalize object
+	 self._init();
+}
+
 /**
  * Function called when document and images have been completely loaded.
  */
@@ -53,8 +75,9 @@ Site.on_load = function() {
 		Site.mobile_menu = new Caracal.MobileMenu();
 
 	// Function displaying animation news
-
 	Site.news = new NewsSystem("news_list", 1, 5000, 1000);
+
+	Site.filter = new QuickFilter($('section.group a'));
 };
 
 

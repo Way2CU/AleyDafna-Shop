@@ -54,7 +54,7 @@ header > p {
 	line-height: 100%;
 }
 
-div.cart,
+div#popup,
 div.languages {
 	display: inline-block;
 	vertical-align: middle;
@@ -64,7 +64,7 @@ div.languages {
 	
 }
 
-div.cart {
+div#popup {
 	margin-right: 30px;
 	padding-left: 10px;
 	padding-right: 40px;
@@ -75,7 +75,7 @@ div.cart {
 	position: relative;
 }
 
-div.cart:before {
+div#popup:before {
 	content: "";
 	position: absolute;
 	top: 50%;
@@ -89,7 +89,7 @@ div.cart:before {
 	height: 45px;
 }
 
-body.rtl div.cart:before {
+body.rtl div#popup:before {
 	right: calc(~'(100% + 10px)');
 }
 
@@ -139,9 +139,9 @@ nav#language a:hover {
 	color: lighten(@color_ac_orange,10%);
 }
 
-/*cart*/
+/*/#popup*/
 
-div.cart svg {
+div#popup svg {
 	position: absolute;
 	top: 50%;
 	margin-top: -12.5px;
@@ -151,8 +151,8 @@ div.cart svg {
 	fill: @color_ac_text;
 }
 
-div.cart span,
-div.cart p {
+div#popup span,
+div#popup p {
 	display: inline-block;
 	vertical-align: middle;
 	margin: 0px;

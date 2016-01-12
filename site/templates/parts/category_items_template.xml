@@ -2,7 +2,8 @@
 	<a 
 		href="url_Make('product', 'shop', array('category', fix_id($_REQUEST['id'])), array('id',$params['id']))"
 		class="item" 
-		cms:eval="href"
+		data-uid="$params['uid']"
+		cms:eval="href,data-uid"
 		>
 
 		<img src="$params['image']" alt="$params['title'][$language]"  cms:eval="src,alt"/>

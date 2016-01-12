@@ -36,7 +36,27 @@
 				</a>
 			</div>
 
-			<cms:template file="stock/cart.xml"/>
+			<div id="popup">
+				<svg>
+					<use
+						href="#basket"
+						xlink:href="site/images/site-sprite.svg#basket"
+						/>
+				</svg>
+				
+				<p><cms:text constant="title_cart"/></p>
+				<br/>
+
+				<span class="items">0 </span>
+
+				<span><cms:text constant="label_item"/></span>
+
+				<span class="price">0.00</span>
+				
+				<span><cms:text constant="label_price"/></span>
+
+				<cms:template file="stock/cart.xml"/>
+			</div>
 
 			<!-- Main site navigation -->
 			<nav id="main">

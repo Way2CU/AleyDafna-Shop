@@ -30,7 +30,7 @@
 			<!-- Header -->
 			<cms:template file="parts/header.xml"/>
 
-			<section id="category">
+			<section id="category">	
 				<h2>
 					<cms:module
 						name="shop"
@@ -40,7 +40,7 @@
 						cms:eval="id"
 						/>
 				</h2>	
-
+				
 				<cms:module
 					name="shop"
 					action="show_item_list"
