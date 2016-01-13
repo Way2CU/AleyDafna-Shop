@@ -65,8 +65,7 @@ function QuickFilter(container,categories,item) {
 		self.categories.each(function(index) {
 			var category = self.categories.eq(index);
 			self.createCheckbox(category);
-		});
-		
+		});	
 	 }
 
 	 self.createCheckbox = function(category) {
@@ -82,8 +81,6 @@ function QuickFilter(container,categories,item) {
 	 	// added checkboxes to container
 	 	self.container.prepend(label);
 	 }
-
-
 	 // finalize object
 	 self._init();
 }
