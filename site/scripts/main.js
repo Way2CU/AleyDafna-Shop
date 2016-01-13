@@ -51,7 +51,7 @@ Site.is_mobile = function() {
  *  @param object property - categories
  *  @param object item - category item
  */ 
-function QuickFilter(container,categories,item) {
+function QuickFilter(container, categories, item) {
 	var self = this;
 
 	self.container = container;
