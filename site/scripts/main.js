@@ -66,20 +66,6 @@ function QuickFilter(container,categories,item) {
 			var category = self.categories.eq(index);
 			self.createCheckbox(category);
 		});
-
-		//  collect all category items
-		self.categories.find(self.item).each(function() {
-			var item = $(this);
-			var uid = item.attr('data-uid');
-			
-			if($.inArray(uid, self.uid  > -1)) {
-				console.log('Yes');
-				self.uid.push(uid);
-			}
-			
-		});
-
-		console.log(self.uid);
 		
 	 }
 
