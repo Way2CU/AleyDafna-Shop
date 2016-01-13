@@ -1,6 +1,6 @@
 <document>
 	<section class="group">
-<!-- 		<h5>
+		<h5>
 			<cms:module
 				name="shop"
 				action="show_category"
@@ -8,7 +8,7 @@
 				template="parts/category_name.xml"
 				cms:eval="id"
 				/>
-		</h5>	 -->
+		</h5>	
 
 		<cms:module
 			name="shop"
