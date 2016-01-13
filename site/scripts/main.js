@@ -47,21 +47,48 @@ Site.is_mobile = function() {
 
 /* 
  *  Object for filtering shop items
- *  @param object property
+ *   @param object property - container
+ *  @param object property - categories
  */ 
-function QuickFilter(items) {
+function QuickFilter(container,categories,item) {
 	var self = this;
 
-	self.items = items;
-	self.container = $('section#filter');
+	self.container = container;
+	self.item  = item;
+	self.items = [];
+	self.categories = categories;
+	self.label = $('<label>');
 
 	self._init = function() {
-	 	// console.log(self.items);
-	 	self.items.each(function(index) {
-	 		var item = self.items.eq(index);
-	 		item.appendTo(self.container);
-	 	});
+		 //  create checkbox element for each category
+		self.categories.each(function(index) {
+			var category = self.categories.eq(index);
+			self.createCheckbox(category);
+		})
+
+		//  collect all category items
+		self.categories.find(self.item).each(function() {
+			var item = this;
+			self.items.push(item);
+		});
+
 	 }
+
+	
+	 self.createCheckbox = function(category) {
+	 	var category_name = category.find('h5').text();
+
+	 	var input = $('<input type="checkbox">');
+	 	var span = $('<span>');
+	 	span.text(category_name);
+
+	 	self.label.append(input);
+	 	self.label.append(span);
+
+	 	// added checkboxes to container
+	 	self.container.prepend(self.label);
+	 }
+
 
 	 // finalize object
 	 self._init();
@@ -77,7 +104,7 @@ Site.on_load = function() {
 	// Function displaying animation news
 	Site.news = new NewsSystem("news_list", 1, 5000, 1000);
 
-	Site.filter = new QuickFilter($('section.group a'));
+	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 };
 
 
