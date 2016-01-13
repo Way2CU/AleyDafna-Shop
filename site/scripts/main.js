@@ -47,8 +47,9 @@ Site.is_mobile = function() {
 
 /* 
  *  Object for filtering shop items
- *   @param object property - container
+ *  @param object property - container
  *  @param object property - categories
+ *  @param object item - category item
  */ 
 function QuickFilter(container,categories,item) {
 	var self = this;
@@ -56,6 +57,7 @@ function QuickFilter(container,categories,item) {
 	self.container = container;
 	self.item  = item;
 	self.items = [];
+	self.uid = [];
 	self.categories = categories;
 
 	self._init = function() {
@@ -63,14 +65,22 @@ function QuickFilter(container,categories,item) {
 		self.categories.each(function(index) {
 			var category = self.categories.eq(index);
 			self.createCheckbox(category);
-		})
+		});
 
 		//  collect all category items
 		self.categories.find(self.item).each(function() {
-			var item = this;
-			self.items.push(item);
+			var item = $(this);
+			var uid = item.attr('data-uid');
+			
+			if($.inArray(uid, self.uid  > -1)) {
+				console.log('Yes');
+				self.uid.push(uid);
+			}
+			
 		});
 
+		console.log(self.uid);
+		
 	 }
 
 	 self.createCheckbox = function(category) {
