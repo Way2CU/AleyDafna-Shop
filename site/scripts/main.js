@@ -57,7 +57,6 @@ function QuickFilter(container,categories,item) {
 	self.item  = item;
 	self.items = [];
 	self.categories = categories;
-	self.label = $('<label>');
 
 	self._init = function() {
 		 //  create checkbox element for each category
@@ -74,19 +73,18 @@ function QuickFilter(container,categories,item) {
 
 	 }
 
-	
 	 self.createCheckbox = function(category) {
 	 	var category_name = category.find('h5').text();
-
+	 	var label = $('<label>');
 	 	var input = $('<input type="checkbox">');
 	 	var span = $('<span>');
 	 	span.text(category_name);
 
-	 	self.label.append(input);
-	 	self.label.append(span);
+	 	label.append(input);
+	 	label.append(span);
 
 	 	// added checkboxes to container
-	 	self.container.prepend(self.label);
+	 	self.container.prepend(label);
 	 }
 
 
