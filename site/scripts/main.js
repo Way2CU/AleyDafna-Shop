@@ -55,12 +55,15 @@ function QuickFilter(container, categories, item) {
 	var self = this;
 
 	self.container = container;
+	self.checkbox_container = $('<div id="checkboxes">');
 	self.categories = categories;
 	self.items_list = {};
 
 	self._init = function() {
-
-		self.container.append(self._create_checkbox(language_handler.getText(null, 'default_checkbox_title')));
+		//  create checkboxes container
+		self.container.prepend(self.checkbox_container);
+		self.checkbox_container
+			.append(self._create_checkbox(language_handler.getText(null, 'default_checkbox_title')));
 
 		//  create checkbox element for each category
 		self.categories.each(function(index) {
@@ -81,8 +84,8 @@ function QuickFilter(container, categories, item) {
 	 	label.append(input);
 	 	label.append(span);
 
-	 	// added checkboxes to container
-	 	self.container.prepend(label);
+	 	// Add checkboxes to checkboxes container
+	 	self.checkbox_container.append(label);
 	 }
 
 	 // finalize object
