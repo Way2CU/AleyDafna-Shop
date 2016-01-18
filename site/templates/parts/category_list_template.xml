@@ -1,5 +1,5 @@
 <document>
-	<section class="group">
+	<section class="group" id="$params['id']" cms:eval="id">
 		<h5>
 			<cms:module
 				name="shop"
