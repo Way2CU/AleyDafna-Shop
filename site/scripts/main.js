@@ -60,6 +60,8 @@ function QuickFilter(container, categories, item) {
 
 	self._init = function() {
 
+		self.container.append(self._create_checkbox(language_handler.getText(null, 'default_checkbox_title')));
+
 		//  create checkbox element for each category
 		self.categories.each(function(index) {
 			var category_name = self.categories.eq(index).find('h5').text();
@@ -68,6 +70,7 @@ function QuickFilter(container, categories, item) {
 		
 	 }
 
+	 //  create checkbox element
 	 self._create_checkbox = function(name) {
 	 	var category_name = name;
 	 	var label = $('<label>');
