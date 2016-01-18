@@ -47,9 +47,9 @@ Site.is_mobile = function() {
 
 /* 
  *  Object for filtering shop items
- *  @param object property - container
- *  @param object property - categories
- *  @param object item - category item
+ *  @param object property 
+ *  @param object property 
+ *  @param object item
  */ 
 function QuickFilter(container, categories, item) {
 	var self = this;
@@ -63,24 +63,26 @@ function QuickFilter(container, categories, item) {
 	 * Complete object initialization.
 	 */
 	self._init = function() {
-		
-		//  initialize checkboxes container
+
+		//  Initialize checkboxes container
 		self.checkbox_container = $('<div id="checkboxes">');
 		self.container.prepend(self.checkbox_container);
 
-		//  initialize default checkbox element
+		//  Initialize default checkbox element
 		self.checkbox_container
 			.append(self._create_checkbox(language_handler.getText(null, 'default_checkbox_title')));
 
-		//  initialize checkbox element for each category
+		//  Initialize checkbox element for each category
 		self.categories.each(function(index) {
 			var category_name = self.categories.eq(index).find('h5').text();
 			self._create_checkbox(category_name);
-		});
-		
+		});	
 	 }
 
-	 //  create checkbox element
+	 /**
+	  * Create checkbox element
+	  * @param string 
+	  */
 	 self._create_checkbox = function(name) {
 	 	var category_name = name;
 	 	var label = $('<label>');
