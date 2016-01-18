@@ -47,8 +47,8 @@ Site.is_mobile = function() {
 
 /* 
  *  Object for filtering shop items
- *  @param object property 
- *  @param object property 
+ *  @param object container 
+ *  @param object categories 
  *  @param object item
  */ 
 function QuickFilter(container, categories, item) {
