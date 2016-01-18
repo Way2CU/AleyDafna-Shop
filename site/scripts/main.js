@@ -56,7 +56,6 @@ function QuickFilter(container, categories, item) {
 
 	self.container = container;
 	self.categories = categories;
-	self.items  = self.categories.find(item);
 	self.items_list = {};
 
 	self._init = function() {
