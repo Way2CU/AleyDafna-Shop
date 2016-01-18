@@ -60,7 +60,7 @@ function QuickFilter(container, categories, item) {
 	self.items_list = {};
 
 	/**
-	 * complete object initialization.
+	 * Complete object initialization.
 	 */
 	self._init = function() {
 
@@ -79,7 +79,7 @@ function QuickFilter(container, categories, item) {
 	 }
 
 	 /**
-	  * create checkbox element
+	  * Create checkbox element
 	  * @param string name
 	  */
 	 self._create_checkbox = function(name) {
@@ -92,7 +92,7 @@ function QuickFilter(container, categories, item) {
 	 	label.append(input);
 	 	label.append(span);
 
-	 	// Add checkboxes to checkboxes container
+	 	// add checkboxes to checkboxes container
 	 	self.checkbox_container.append(label);
 	 }
 
