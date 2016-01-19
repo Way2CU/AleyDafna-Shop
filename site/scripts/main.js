@@ -57,34 +57,52 @@ function QuickFilter(container, categories, item) {
 	self.container = container;
 	self.checkbox_container = null;
 	self.categories = categories;
+	self.item = item;
 	self.items_list = {};
 
 	/**
 	 * Complete object initialization.
 	 */
 	self._init = function() {
+		//  create container for unique list items
+		self.unique_list_container = $('<div id="unique">');
+		self.container.prepend(self.unique_list_container);
+
+		//  create unique items list
+		var items = self.categories.find(self.item);
+		items.each(function(index,value) {
+			var uid = $(this).data('uid');
+			if (!(uid in self.items_list)) {
+				self.items_list[uid] = $(this);
+				self.unique_list_container.append(self.items_list[uid]);
+			}
+		});
 
 		//  create checkboxes container
 		self.checkbox_container = $('<div id="checkboxes">');
 		self.container.prepend(self.checkbox_container);
 
-		//  create default checkbox element
-		self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
-
 		//  create checkbox element for all categories
 		self.categories.each(function(index) {
 			var category_name = self.categories.eq(index).find('h5').text();
-			self._create_checkbox(category_name);
-		});	
+			var category_id = self.categories.eq(index).attr('id');
+			self._create_checkbox(category_name,category_id);
+		});
+
+		//  create default checkbox element
+		self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
 	 }
 
 	 /**
 	  * Create checkbox element
 	  * @param string name
 	  */
-	 self._create_checkbox = function(name) {
+	 self._create_checkbox = function(name, id) {
 	 	var category_name = name;
+	 	var id = id;
 	 	var label = $('<label>');
+	 	label.attr('data-id',id);
+
 	 	var input = $('<input type="checkbox">');
 	 	var span = $('<span>');
 	 	span.text(category_name);
@@ -92,8 +110,16 @@ function QuickFilter(container, categories, item) {
 	 	label.append(input);
 	 	label.append(span);
 
-	 	// add checkboxes to checkboxes container
 	 	self.checkbox_container.append(label);
+	 }
+
+	 self._add_category_items = function() {
+	 	var id = $(this).attr('id');
+	 	for(uid in self.items_list) {
+	 		if(self.items_list[uid].parent().attr('id') == id) {
+	 			self.checkbox_container.detach(self.items_list[uid]);
+	 		}	
+	 	}
 	 }
 
 	 // finalize object
