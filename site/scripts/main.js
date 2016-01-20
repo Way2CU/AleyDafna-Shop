@@ -68,9 +68,10 @@ function QuickFilter(container, categories, item) {
 		self.unique_list_container = $('<div id="unique">');
 		self.container.prepend(self.unique_list_container);
 
+		
 		//  create unique items list
 		var items = self.categories.find(self.item);
-		items.each(function(index,value) {
+		items.each(function(index,value) {	
 			var uid = $(this).data('uid');
 			if (!(uid in self.items_list)) {
 				self.items_list[uid] = $(this);
@@ -111,15 +112,6 @@ function QuickFilter(container, categories, item) {
 	 	label.append(span);
 
 	 	self.checkbox_container.append(label);
-	 }
-
-	 self._add_category_items = function() {
-	 	var id = $(this).attr('id');
-	 	for(uid in self.items_list) {
-	 		if(self.items_list[uid].parent().attr('id') == id) {
-	 			self.checkbox_container.detach(self.items_list[uid]);
-	 		}	
-	 	}
 	 }
 
 	 // finalize object
