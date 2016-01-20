@@ -68,15 +68,30 @@ function QuickFilter(container, categories, item) {
 		self.unique_list_container = $('<div id="unique">');
 		self.container.prepend(self.unique_list_container);
 		
-		//  create unique items list
+		 //create unique items list
+		  //create unique items list
 		var items = self.categories.find(self.item);
 		items.each(function(index,value) {
-			var item = $(this)	
+			var item = $(this);
 			var uid = item.data('uid');
+			var category_id = item.parent().attr('id');
+
 			if (!(uid in self.items_list)) {
+				// add item to unique list
 				self.items_list[uid] = item;
 				self.unique_list_container.append(item);
+
+				// create categories list
+				var categories = new Array();
+				item.data('categories', categories);
+
+			} else {
+				// get categories list from existing item
+				var categories = self.items_list[uid].data('categories');
 			}
+
+			// appent category to the list
+			categories.push(category_id);
 		});
 
 		//  create checkboxes container
@@ -85,9 +100,11 @@ function QuickFilter(container, categories, item) {
 
 		//  create checkbox element for all categories
 		self.categories.each(function(index) {
+			var category = $(this);
 			var category_name = self.categories.eq(index).find('h5').text();
 			var category_id = self.categories.eq(index).attr('id');
 			self._create_checkbox(category_name,category_id);
+			category.remove();
 		});
 
 		//  create default checkbox element
@@ -101,17 +118,28 @@ function QuickFilter(container, categories, item) {
 	 self._create_checkbox = function(name, id) {
 	 	var category_name = name;
 	 	var id = id;
+	 	// create label object
 	 	var label = $('<label>');
-	 	label.attr('data-id',id);
-
 	 	var input = $('<input type="checkbox">');
+	 	input.attr('data-id',id);
 	 	var span = $('<span>');
 	 	span.text(category_name);
-
 	 	label.append(input);
 	 	label.append(span);
 
-	 	self.checkbox_container.append(label);
+	 	//handler for input element
+	 	input.on('change', self._filter_items());
+
+	 	self.checkbox_container.prepend(label);
+	 }
+
+	 /**
+	  * Show filtered items
+	  * @param string id
+	  */
+	 self._filter_items = function() {
+	 	var item = $(this);
+	 	console.log(item);
 	 }
 
 	 // finalize object
