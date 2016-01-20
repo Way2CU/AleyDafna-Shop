@@ -67,15 +67,15 @@ function QuickFilter(container, categories, item) {
 		//  create container for unique list items
 		self.unique_list_container = $('<div id="unique">');
 		self.container.prepend(self.unique_list_container);
-
 		
 		//  create unique items list
 		var items = self.categories.find(self.item);
-		items.each(function(index,value) {	
-			var uid = $(this).data('uid');
+		items.each(function(index,value) {
+			var item = $(this)	
+			var uid = item.data('uid');
 			if (!(uid in self.items_list)) {
-				self.items_list[uid] = $(this);
-				self.unique_list_container.append(self.items_list[uid]);
+				self.items_list[uid] = item;
+				self.unique_list_container.append(item);
 			}
 		});
 
