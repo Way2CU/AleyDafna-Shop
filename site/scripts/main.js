@@ -68,7 +68,6 @@ function QuickFilter(container, categories, item) {
 		self.unique_list_container = $('<div id="unique">');
 		self.container.prepend(self.unique_list_container);
 		
-		 //create unique items list
 		  //create unique items list
 		var items = self.categories.find(self.item);
 		items.each(function(index,value) {
@@ -94,6 +93,8 @@ function QuickFilter(container, categories, item) {
 			categories.push(category_id);
 		});
 
+
+
 		//  create checkboxes container
 		self.checkbox_container = $('<div id="checkboxes">');
 		self.container.prepend(self.checkbox_container);
@@ -108,39 +109,67 @@ function QuickFilter(container, categories, item) {
 		});
 
 		//  create default checkbox element
-		self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
+		// if(self.categories.length > 0)
+		//  	self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
 	 }
 
-	 /**
-	  * Create checkbox element
-	  * @param string name
-	  */
-	 self._create_checkbox = function(name, id) {
-	 	var category_name = name;
-	 	var id = id;
-	 	// create label object
-	 	var label = $('<label>');
-	 	var input = $('<input type="checkbox">');
-	 	input.attr('data-id',id);
-	 	var span = $('<span>');
-	 	span.text(category_name);
-	 	label.append(input);
-	 	label.append(span);
+		/**
+		* Create checkbox element
+		* @param string name
+		* @param number id
+		*/
+		self._create_checkbox = function(category_name, id) {
+		// create label object
+			var label = $('<label>');
+			var input = $('<input type="checkbox">');
+			input
+			    .attr('data-id',id)
+			    .attr("checked","checked");
 
-	 	//handler for input element
-	 	input.on('change', self._filter_items());
+			var span = $('<span>');
+			span.text(category_name);
+			label.append(input);
+			label.append(span);
 
-	 	self.checkbox_container.prepend(label);
-	 }
+			//handler for input element
+			input.on('change', self._handle_category_toggle);
 
-	 /**
-	  * Show filtered items
-	  * @param string id
-	  */
-	 self._filter_items = function() {
-	 	var item = $(this);
-	 	console.log(item);
-	 }
+			self.checkbox_container.prepend(label);
+		}
+
+		/**
+		* Show filtered items
+		* 
+		*/
+		self._handle_category_toggle = function() {
+			var category = $(this);
+			var id = category.data('id');
+
+			// prepare list of checked categories
+			var categories = new Array();
+			self.checkbox_container.find(':checked').each(function() {
+				categories.push($(this).data('id')); 
+			});
+
+			// show and hide items accordingly
+			for (var uid in self.items_list) {
+				var item = self.items_list[uid];
+				var item_categories = item.data('categories');
+				var score = 0;
+
+			// check item membership
+			for (var item_category in item_categories) {
+				if (item_category in categories)
+				    score++; 
+			}
+
+			// apply item visibility
+			if (score >= categories.length)
+				item.show('slow'); else 
+				item.hide('slow');
+			}
+
+		}
 
 	 // finalize object
 	 self._init();
