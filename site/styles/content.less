@@ -17,6 +17,7 @@ section#slider {
 	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
 }
 
+section#faq,
 section#about {
 	padding: 0px calc(~'(100% - 1200px)' / 2);
 	background-image: url(../images/greyzz-texture.png);
@@ -25,6 +26,7 @@ section#about {
 	background-position: center top;
 }
 
+section#faq article,
 section#about article {
 	display: block;
 	margin-left: auto;
@@ -33,6 +35,9 @@ section#about article {
 	background-color: @color_ac_text;
 }
 
+section#faq article h2,
+section#faq article strong,
+section#faq article p,
 section#about article strong,
 section#about article span,
 section#about article h2,
@@ -42,6 +47,26 @@ section#about article p {
 	margin-right: auto;
 	text-align: center;
 	width: 960px
+}
+
+section#faq article strong,
+section#faq article p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: left;
+}
+
+section#faq article p:last-of-type {
+	padding-bottom: 0.5em;
+}
+
+section#faq article strong {
+	padding-top: 10px;
+}
+
+body.rtl section#faq article strong,
+body.rtl section#faq article p {
+	text-align: right;
 }
 
 section#about article span {
@@ -56,6 +81,7 @@ section#about article img {
 	width: 15%;
 }
 
+section#faq article h2,
 section#about article h2 {
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -64,8 +90,6 @@ section#about article h2 {
 	color: @color_ac_medium_green;
 	border-bottom: 1px solid @color_ac_medium_green;
 }
-
-section#about article
 
 section#category,
 section#promoted_category,
