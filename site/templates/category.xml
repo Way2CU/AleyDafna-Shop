@@ -57,9 +57,9 @@
 					cms:eval="parent_id"
 					/>
 	
+			</section>
 
-				<br/>	
-
+			<section id="banner">
 				<div class="banner business">
 					<div>
 						<p><cms:text constant="title_top_banner"/></p>
@@ -87,7 +87,6 @@
 				</div>	
 
 			</section>
-
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
 		</body>
