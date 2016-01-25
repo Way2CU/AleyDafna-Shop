@@ -64,9 +64,13 @@ function QuickFilter(container, categories, item) {
 	 * Complete object initialization.
 	 */
 	self._init = function() {
+		//  create checkboxes container
+		self.checkbox_container = $('<div id="checkboxes">');
+		self.container.append(self.checkbox_container);
+
 		//  create container for unique list items
 		self.unique_list_container = $('<div id="unique">');
-		self.container.prepend(self.unique_list_container);
+		self.container.append(self.unique_list_container);
 		
 		  //create unique items list
 		var items = self.categories.find(self.item);
@@ -94,11 +98,6 @@ function QuickFilter(container, categories, item) {
 		});
 
 
-
-		//  create checkboxes container
-		self.checkbox_container = $('<div id="checkboxes">');
-		self.container.prepend(self.checkbox_container);
-
 		//  create checkbox element for all categories
 		self.categories.each(function(index) {
 			var category = $(this);
@@ -123,8 +122,8 @@ function QuickFilter(container, categories, item) {
 			var label = $('<label>');
 			var input = $('<input type="checkbox">');
 			input
-			    .attr('data-id',id)
-			    .attr("checked","checked");
+			    .attr('data-id',id);
+			    
 
 			var span = $('<span>');
 			span.text(category_name);
@@ -142,13 +141,10 @@ function QuickFilter(container, categories, item) {
 		* 
 		*/
 		self._handle_category_toggle = function() {
-			var category = $(this);
-			var id = category.data('id');
-
 			// prepare list of checked categories
 			var categories = new Array();
 			self.checkbox_container.find(':checked').each(function() {
-				categories.push($(this).data('id')); 
+				categories.push($(this).data('id').toString()); 
 			});
 
 			// show and hide items accordingly
@@ -157,16 +153,18 @@ function QuickFilter(container, categories, item) {
 				var item_categories = item.data('categories');
 				var score = 0;
 
-			// check item membership
-			for (var item_category in item_categories) {
-				if (item_category in categories)
-				    score++; 
-			}
+				// check item membership
+				for (var index in item_categories) {
+					var item_category = item_categories[index];
+					if (categories.indexOf(item_category) != -1) {
+				    		score++; 
+				    	}	
+				}
 
-			// apply item visibility
-			if (score >= categories.length)
-				item.show('slow'); else 
-				item.hide('slow');
+				// apply item visibility
+				if (score >= categories.length )
+					item.show('slow'); else 
+					item.hide('slow');
 			}
 
 		}
