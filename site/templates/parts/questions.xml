@@ -1,0 +1,4 @@
+<document>
+	<strong><cms:var param="question" multilanguage="yes"/></strong>
+	<p><cms:var param="answer" multilanguage="yes"/></p>
+</document>
