@@ -13,7 +13,7 @@
 	</section>
 	<section name="about">
 		<language name="all">
-			<action name="about" file="about.xml"/>
+			<action name="_default" file="about.xml"/>
 			<action name="warranty-agreement" file="warranty.xml"/>
 			<action name="faq" file="faq.xml"/>
 		</language>
