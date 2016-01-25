@@ -6,6 +6,7 @@
  * Authors:Tal Reznic
  */
 
+section#about,
 section#product,
 section#category,
 section#promoted_category,
@@ -15,6 +16,56 @@ section#slider {
 	display: block;
 	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
 }
+
+section#about {
+	padding: 0px calc(~'(100% - 1200px)' / 2);
+	background-image: url(../images/greyzz-texture.png);
+	background-repeat: repeat;
+	background-size: 149px  139px;
+	background-position: center top;
+}
+
+section#about article {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1200px;
+	background-color: @color_ac_text;
+}
+
+section#about article strong,
+section#about article span,
+section#about article h2,
+section#about article p {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 960px
+}
+
+section#about article span {
+	color: @color_ac_medium_green;
+	padding-bottom: 0.5em;
+}
+
+section#about article img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 15%;
+}
+
+section#about article h2 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	color: @color_ac_medium_green;
+	border-bottom: 1px solid @color_ac_medium_green;
+}
+
+section#about article
 
 section#category,
 section#promoted_category,
