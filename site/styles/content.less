@@ -459,6 +459,31 @@ a.item {
 	overflow: hidden;
 }
 
+div#unique {
+	display: block;
+	text-align: left;
+	transition: all 0.6s;
+}
+
+body.rtl div#unique {
+	text-align: right;
+}
+
+div#unique a.item {
+	visibility: visible;
+	transform: scale(1);
+	transition: transform 0.6s, width 0.6s, visibility 0.6s;
+	transition-delay: 0s, 0s, 0s;
+}
+
+div#unique a.item.hidden {
+	margin: 0px;
+	visibility: hidden;
+	width: 0px;
+	transform: scale(0);
+	
+}
+
 a.item p.description {
 	position: absolute;
 	padding: 15px;
@@ -496,7 +521,6 @@ a.item p {
 
 section#category h2 {
 	text-align: center;
-	margin: 0px;
 }
 
 section#category section.group {
@@ -608,6 +632,15 @@ section#product div.product_information h2 {
 	color: @color_ac_medium_green;
 }
 
+div#checkboxes {
+	text-align: left;
+}
+
+body.rtl div#checkboxes {
+	text-align: right;
+}
+
+div#checkboxes label,
 section#product div.product_information label {
 	display: inline-block;
 	vertical-align: bottom;
@@ -616,6 +649,37 @@ section#product div.product_information label {
 	border-bottom: 1px solid @color_ac_grey;
 	width: 180px;
 	position: relative;	
+}
+
+div#checkboxes label {
+	border-bottom: none;
+	text-align: center;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: auto;
+	background-color: @color_ac_medium_green;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+div#checkboxes label:hover {
+	background-color: lighten(@color_ac_medium_green, 5%);
+}
+
+div#checkboxes label input {
+	display: none;
+}
+
+div#checkboxes label  span {
+	display: block;
+	position: relative;
+	color: @color_ac_text;
 }
 
 section#product div.product_information label  figure {
