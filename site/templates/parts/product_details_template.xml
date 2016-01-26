@@ -35,10 +35,9 @@
 
 	<figure>
 		<img 
-			src="$params['image']" 
-			alt="$params['title'][$language]"
-			cms:eval="src,alt"
-			/>
+			src="gallery::getGroupThumbnailById($params['gallery'], null, 350,Thumbnail::CONSTRAIN_BOTH)" 
+			alt="$params['title'][$language]"  
+			cms:eval="src,alt"/>
 	</figure>
 
 </document>
