@@ -6,11 +6,13 @@
 
 		<!-- Product sizes -->
 		<p><strong><cms:text constant="title_sizes"/></strong></p>
+
 		<cms:value_list
 			definition="$params['size_definition']"
 			template="parts/sizes.xml"
 			cms:eval="definition"
 			/>
+			
 		<a href="javascript:void(0)" class="add">
 			<cms:text constant="title_button_add"/>
 			<svg>
