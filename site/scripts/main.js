@@ -108,8 +108,8 @@ function QuickFilter(container, categories, item) {
 		});
 
 		//  create default checkbox element
-		// if(self.categories.length > 0)
-		//  	self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
+		if(self.categories.length > 0)
+		 	self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
 	 }
 
 		/**
@@ -118,12 +118,11 @@ function QuickFilter(container, categories, item) {
 		* @param number id
 		*/
 		self._create_checkbox = function(category_name, id) {
-		// create label object
+			// create label object
 			var label = $('<label>');
-			var input = $('<input type="checkbox">');
+			var input = $('<input type="radio" name="sort">');
 			input
 			    .attr('data-id',id);
-			    
 
 			var span = $('<span>');
 			span.text(category_name);
@@ -141,32 +140,47 @@ function QuickFilter(container, categories, item) {
 		* 
 		*/
 		self._handle_category_toggle = function() {
-			// prepare list of checked categories
-			var categories = new Array();
-			self.checkbox_container.find(':checked').each(function() {
-				categories.push($(this).data('id').toString()); 
-			});
+			var items = new Array();
+			var category = $(this).data('id');
+
+			// show all items
+			if (category == undefined) {
+				for (var uid in self.items_list) {
+					self.items_list[uid].removeClass('hidden');
+					items.push(item);
+				}
+				
+				self._handle_container_height(items.length,self.items_list[uid].outerHeight());
+				return;
+			}
 
 			// show and hide items accordingly
 			for (var uid in self.items_list) {
 				var item = self.items_list[uid];
 				var item_categories = item.data('categories');
-				var score = 0;
 
 				// check item membership
-				for (var index in item_categories) {
-					var item_category = item_categories[index];
-					if (categories.indexOf(item_category) != -1) {
-				    		score++; 
-				    	}	
+				if (item_categories.indexOf(category.toString()) >= 0) {
+					item.removeClass('hidden'); 
+					items.push(item);	
+				} else {
+					item.addClass('hidden');
 				}
-
-				// apply item visibility
-				if (score >= categories.length )
-					item.show('slow'); else 
-					item.hide('slow');
+	
 			}
 
+			self._handle_container_height(items.length,item.outerHeight());
+		}
+
+		/**
+		* Show unique list container min-height
+		* @param int items_counter
+		* @param int item_height
+		*/
+		self._handle_container_height = function(items_counter, item_height) {
+			var num = Math.ceil(items_counter / 4);
+			var container_height = num * 256 + 40;
+			self.unique_list_container.css('height',container_height );
 		}
 
 	 // finalize object
@@ -183,6 +197,7 @@ Site.on_load = function() {
 	// Function displaying animation news
 	Site.news = new NewsSystem("news_list", 1, 5000, 1000);
 
+	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 };
 
