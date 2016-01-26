@@ -149,7 +149,7 @@ function QuickFilter(container, categories, item) {
 					self.items_list[uid].removeClass('hidden');
 					items.push(item);
 				}
-				
+
 				self._handle_container_height(items.length,self.items_list[uid].outerHeight());
 				return;
 			}
@@ -169,7 +169,7 @@ function QuickFilter(container, categories, item) {
 	
 			}
 
-			self._handle_container_height(items.length,item.outerHeight());
+			self._handle_container_height(items.length, item.outerHeight());
 		}
 
 		/**
@@ -180,7 +180,7 @@ function QuickFilter(container, categories, item) {
 		self._handle_container_height = function(items_counter, item_height) {
 			var num = Math.ceil(items_counter / 4);
 			var container_height = num * 256 + 40;
-			self.unique_list_container.css('height',container_height );
+			self.unique_list_container.css('height', container_height );
 		}
 
 	 // finalize object
