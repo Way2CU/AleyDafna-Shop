@@ -112,8 +112,8 @@
 
 					<li>
 						<a
-							class="$section == 'contact_us' ? 'active' : false"
-							href="url_Make('', 'contact')"
+							class="$section == 'contact-us' ? 'active' : false"
+							href="url_Make('', 'contact-us')"
 							cms:eval="href"
 							cms:optional="class"
 							>
