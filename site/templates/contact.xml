@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../units/schema/language.dtd">
+<document>
+	<cms:var name="_DOCTYPE"/>
+	<html lang="$language" cms:eval="lang">
+		<head>
+			<title>
+				<cms:text constant="site_title"/>
+				<cms:raw text=" - "/>
+				<cms:text constant="menu_contact"/>
+			</title>
+			<!-- Page description -->
+
+			<cms:module name="head_tag" action="print_tag"/>
+		</head>
+
+		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
+			<!-- Header -->
+			<cms:template file="parts/header.xml"/>
+
+			<section id="contact">				
+				<h2><cms:text constant="menu_contact"/></h2>
+
+				<div id="information_details">
+					<address>
+						<svg>
+							<use
+								href="#location"
+								xlink:href="site/images/site-sprite.svg#location"
+								/>
+						</svg>
+						<p><cms:text constant="address"/></p>
+					</address>
+
+					<div>
+						<svg>
+							<use
+								href="#clock"
+								xlink:href="site/images/site-sprite.svg#clock"
+								/>
+						</svg>
+						<p><cms:text constant="working_hours"/></p>
+					</div>
+
+					<div>
+						<svg>
+							<use
+								href="#phone"
+								xlink:href="site/images/site-sprite.svg#phone"
+								/>
+						</svg>
+
+						<a
+							href="'tel:'.urlencode(Language::getText('phone'))"
+							cms:eval="href"
+							class="phone"
+							>
+							<cms:text constant="phone"/>
+						</a>
+
+						<a
+							href="'tel:'.urlencode(Language::getText('phone2'))"
+							cms:eval="href"
+							class="phone"
+							>
+							<cms:text constant="phone2"/>
+						</a>
+					</div>
+
+					<a href="#" class="facebook">
+						<svg>
+							<use
+								href="#facebook"
+								xlink:href="site/images/site-sprite.svg#facebook"
+								/>
+						</svg>
+						<cms:text constant="title_facebook"/>
+					</a>
+				</div>
+			</section>	
+
+			<!-- Footer -->
+			<cms:template file="parts/footer.xml"/>	
+		</body>
+	</html>
+</document>
