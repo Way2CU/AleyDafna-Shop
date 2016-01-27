@@ -76,6 +76,31 @@
 						</svg>
 						<cms:text constant="title_facebook"/>
 					</a>
+					<article>
+						<cms:module
+							name="articles"
+							action="show"
+							text_id="delivery_areas"
+							template="parts/article_delivery_areas.xml"
+							/>
+					</article>	
+				</div>
+
+				<figure>
+					<img 
+						src="_BASEURL.'/site/images/map.png'" 
+						alt="map"
+						cms:eval="src"
+						/>
+				</figure>
+
+				<div id="form_wrap">
+					<p><cms:text constant="title_form"/></p>
+					<cms:module
+						name="contact_form"
+						action="show"
+						text_id="contact"
+						/>
 				</div>
 			</section>	
 
