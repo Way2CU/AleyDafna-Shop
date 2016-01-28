@@ -74,7 +74,7 @@
 								xlink:href="site/images/site-sprite.svg#facebook"
 								/>
 						</svg>
-						<cms:text constant="title_facebook"/>
+						<cms:text constant="title_aley_facebook"/>
 					</a>
 					<article>
 						<cms:module
