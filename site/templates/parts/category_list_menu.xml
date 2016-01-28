@@ -4,13 +4,14 @@
 		<a href="url_Make('category','shop',array('id',$params['id']))" cms:eval="href">
 			<cms:var param="title" multilanguage="yes"/>	
 		</a>
-
-		<ul class="drop">
-			<cms:children
-				parent_id="$params['id']"
-				template="parts/sub_menu_categories.xml"
-				cms:eval="parent_id"
-				/>		
-		</ul>	
+		<cms:if condition="$params['has_children'] ">
+			<ul class="drop">
+				<cms:children
+					parent_id="$params['id']"
+					template="parts/sub_menu_categories.xml"
+					cms:eval="parent_id"
+					/>		
+			</ul>	
+		</cms:if>
 	</li>
 </document>
