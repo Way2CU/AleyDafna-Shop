@@ -187,6 +187,112 @@ function QuickFilter(container, categories, item) {
 	 self._init();
 }
 
+Site.ItemView = function(item) {
+	var self = this;
+
+	self.item = item;
+	self.cart = item.cart;
+	self.currency = null;
+	self.exchange_rate = 1;
+
+	self.container = null;
+	self.label_name = null;
+	self.label_size = null;
+	self.label_count = null;
+	self.label_total = null;
+	self.option_remove = null;
+
+	/**
+	 * Complete object initialization.
+	 */
+	self._init = function() {
+		// get list containers
+		var item_list = self.cart.get_list_container();
+		self.currency = self.cart.default_currency;
+
+		// create container
+		self.container = $('<li>').appendTo(item_list);
+		self.container.addClass('item');
+
+		// create labels
+		self.image = $('<img>').appendTo(self.container);
+
+		self.label_name = $('<span>').appendTo(self.container);	
+		self.label_name.addClass('name');
+
+		self.label_size = $('<span>').appendTo(self.container);
+		self.label_size.addClass('size');
+
+		self.label_count = $('<span>').appendTo(self.container);
+		self.label_count.addClass('count');
+
+		self.label_total = $('<span>').appendTo(self.container);
+		self.label_total
+				.addClass('total')
+				.attr('data-currency', self.currency);
+		
+		self.option_remove = $('<a>').appendTo(self.container);
+		self.option_remove
+				.attr('href', 'javascript: void(0);')
+				.on('click', self._handle_remove);
+
+	};
+
+	/**
+	 * Handle clicking on remove item.
+	 *
+	 * @param object event
+	 */
+	self._handle_remove = function(event) {
+		event.preventDefault();
+		self.item.remove();
+	};
+
+	/**
+	 * Handler externally called when item count has changed.
+	 */
+	self.handle_change = function() {
+		self.image
+			.attr('src', self.item.image)
+			.attr('alt', self.item.name[language_handler.current_language]);
+
+		self.label_name
+			.text(self.item.name[language_handler.current_language]);
+
+		self.label_count
+			.text( self.item.count + " " + language_handler.getText(null, 'unit'));
+
+		self.label_total
+			.text((self.item.count * self.item.price * self.exchange_rate + " " + language_handler.getText(null, 'price1')))
+			.attr('data-currency', self.currency);
+	};
+
+	/**
+	 * Handle shopping cart currency change.
+	 *
+	 * @param string currency
+	 * @param float rate
+	 */
+	self.handle_currency_change = function(currency, rate) {
+		// store values
+		self.currency = currency;
+		self.exchange_rate = rate;
+
+		// update labels
+		self.handle_change();
+	};
+
+	/**
+	 * Handler externally called before item removal.
+	 */
+	self.handle_remove = function() {
+		self.container.remove();
+	};
+
+	// finalize object
+	self._init();
+}
+
 /**
  * Function called when document and images have been completely loaded.
  */
@@ -194,11 +300,54 @@ Site.on_load = function() {
 	if (Site.is_mobile())
 		Site.mobile_menu = new Caracal.MobileMenu();
 
+	// configuring caracal shop cart object
+
+	Site.cart = new Caracal.Shop.Cart();
+	Site.cart
+			.ui.add_item_list($('div#popup div.cart ul'))
+			.ui.add_total_cost_label($('div#popup span.price'))
+			.ui.add_total_cost_label($('div.cart p.total'))
+			.ui.add_total_count_label($('div#popup span.items'))
+			.ui.add_total_count_label($('div.cart p.total_quantity'))
+			.add_item_view(Site.ItemView);
+
 	// Function displaying animation news
 	Site.news = new NewsSystem("news_list", 1, 5000, 1000);
 
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
+
+
+
+	/*Function inserting item to cart*/
+	function insertToCart() {
+		var uid = $('div.product_information').data('id');
+		var list = Site.cart.get_item_list_by_uid(uid);
+
+		var item_list = Site.cart.get_item_list_by_uid(uid);
+		var found_item = null;
+
+		for (var i=0, count=item_list.length; i<count; i++) {
+			var item = item_list[i];
+
+			if (item.uid) {
+				found_item = item;
+				break;
+			}
+		}
+
+			if (found_item == null) {
+				// add new item
+				Site.cart.add_item_by_uid(uid);
+
+			} else {
+				// increase count
+				found_item.alter_count(1);
+			}
+	}
+
+	var button_add = $('a.add');
+	button_add.on('click',insertToCart);
 };
 
 
