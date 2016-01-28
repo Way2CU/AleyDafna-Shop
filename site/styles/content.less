@@ -6,6 +6,7 @@
  * Authors:Tal Reznic
  */
 
+section#contact,
 section#warranty,
 section#about,
 section#product,
@@ -17,8 +18,10 @@ section#news,
 section#slider {
 	display: block;
 	padding: @vertical_spacing_small calc(~'(100% - 1200px)' / 2);
+	position: relative;
 }
 
+section#contact,
 section#warranty,
 section#faq,
 section#about {
@@ -27,6 +30,23 @@ section#about {
 	background-repeat: repeat;
 	background-size: 149px  139px;
 	background-position: center top;
+}
+
+section#contact {
+	padding: @vertical_spacing_small calc(~'(100% - 960px)' / 2);
+	z-index: 0;
+}
+
+section#contact:before {
+	content: "";
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -600px;
+	width: 1200px;
+	height: 100%;
+	background-color: white;
+	z-index: -1;
 }
 
 section#warranty article,
@@ -44,7 +64,7 @@ section#about article {
 section#warranty article {
 	padding-left: 20px;
 	padding-right: 20px;
-	width: calc(~'(1200px - 20px)');
+	width: calc(~'(1200px - 40px)');
 }
 
 section#warranty article h2,
@@ -234,7 +254,6 @@ div.banner:first-of-type div {
 	box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.4);
 	border-radius: 20px;
 }
-
 
 div.banner:last-of-type div {
 	padding-right: 50px;
@@ -858,4 +877,239 @@ div#related_items div.item p.price {
 
 div#related_items div.item p.name {
 	color: @color_text;
+}
+
+//  contact page
+
+section#contact h2 {
+	padding-bottom: 10px;
+	text-align: center;
+	color: @color_ac_medium_green;
+	border-bottom: 1px solid @color_ac_medium_green;
+}
+
+section#contact figure {
+	display: inline-block;
+	vertical-align: top;
+	margin: auto;
+	border: 1px solid @color_ac_medium_green;
+	margin-left: 10%;
+	width: calc(~'(50% - 2px)');
+}
+
+body.rtl section#contact figure {
+	margin-right: 10%;
+	margin-left: 0%;
+}
+
+section#contact figure img {
+	width: 100%;
+}
+
+div#information_details {
+	display: inline-block;
+	vertical-align: top;
+	width: 40%;
+}
+
+div#information_details  a.facebook,
+div#information_details address,
+div#information_details div {
+	display: block;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+div#information_details address p,
+div#information_details div p {
+	display: inline-block;
+	vertical-align: middle;
+	font-style: normal;
+}
+
+div#information_details div a {
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+	margin-right: 10px;
+	color: @color_text;
+	transition: all 0.3s;
+}
+
+div#information_details div a:hover {
+	color: @color_ac_orange;
+}
+
+body.rtl div#information_details div a {
+	margin-right: 0px;
+	margin-left: 10px;
+}
+
+div#information_details a.facebook {
+	text-decoration: none;
+	font-weight: 700;
+	color: @color_text;
+	transition: all 0.3s;
+}
+
+div#information_details a.facebook:hover {
+	color: @color_ac_medium_green;
+}
+
+div#information_details div p span {
+	display: block;
+}
+
+div#information_details a.facebook svg,
+div#information_details address svg,
+div#information_details div svg {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 10px;
+	width: 40px;
+	height: 40px;
+	fill: @color_ac_medium_green;	
+}
+
+div#information_details a.facebook svg {
+	fill: #34495e;
+}
+
+body.rtl div#information_details a.facebook svg,
+body.rtl div#information_details address svg,
+body.rtl div#information_details div svg {
+	padding-left: 10px;
+	padding-right: 0px;
+}
+
+div#information_details article {
+	border-top: 1px solid @color_ac_medium_green;
+}
+
+div#information_details article h4 {
+	margin-bottom: 0px;
+}
+
+div#form_wrap {
+	display: block;
+	border-top: 1px solid @color_ac_medium_green;
+}
+
+div#form_wrap p {
+	font-size: 1.75em;
+	font-weight: 700;
+	text-align: center;
+	color: @color_ac_medium_green;
+}
+
+div#form_wrap form {
+	display: block;
+}
+
+div#form_wrap form label {
+	display: inline-block;
+	vertical-align: top;
+	width: 33.3%;
+	position: relative;
+}
+
+div#form_wrap form label:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+	left: 0px;
+	background-image: url(../images/icon-sprite.svg);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	background-size: 420px 30px;
+	width: 30px;
+	height: 30px;
+}
+
+div#form_wrap form label:first-of-type:before {
+	background-position: 0px 0px;
+}
+
+div#form_wrap form label:nth-of-type(2):before {
+	background-position: -30px 0px;
+}
+
+div#form_wrap form label:nth-of-type(3):before {
+	background-position: -60px 0px;
+}
+
+div#form_wrap form label:nth-of-type(4):before {
+	background-position: -360px 0px;
+}
+
+body.rtl div#form_wrap form label:before {
+	right: 0px;
+}
+
+div#form_wrap form label:last-of-type {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+div#form_wrap form label span {
+	display: inline-block;
+	vertical-align: bottom;
+	padding-left: 35px;
+}
+
+body.rtl div#form_wrap form label span {
+	padding-left: 0px;
+	padding-right: 35px;
+}
+
+div#form_wrap form label textarea,
+div#form_wrap form label input {
+	display: inline-block;
+	vertical-align: bottom;
+	padding-left: 5px;
+	border: none;
+	border-bottom: 1px solid darken(@color_ac_grey,10%);
+	width: calc(~'(220px - 5px)');
+	transition: all 0.3s;
+}
+div#form_wrap form label textarea:hover,
+div#form_wrap form label input:hover {
+	border-bottom: 1px solid @color_ac_orange;
+}
+
+div#form_wrap form label textarea {
+	height: 30px;
+	width: calc(~'(850px - 5px)');
+}
+
+body.rtl div#form_wrap form label textarea,
+body.rtl div#form_wrap form label input {
+	padding-left: 0px;
+	padding-right: 5px;
+}
+
+div#form_wrap form div.controls {
+	display: block;
+	text-align: center;
+}
+
+div#form_wrap form div.controls button {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-decoration: none;
+	border: none;
+	color: @color_ac_text;
+	background-color: @color_ac_medium_green;
+	font-weight: 700;
+	position: relative;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+div#form_wrap form div.controls button:hover {
+	background-color: @color_ac_orange;
 }
