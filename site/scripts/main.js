@@ -301,7 +301,6 @@ Site.on_load = function() {
 		Site.mobile_menu = new Caracal.MobileMenu();
 
 	// configuring caracal shop cart object
-
 	Site.cart = new Caracal.Shop.Cart();
 	Site.cart
 			.ui.add_item_list($('div#popup div.cart ul'))
