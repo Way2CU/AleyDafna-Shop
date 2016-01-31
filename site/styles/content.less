@@ -1368,6 +1368,16 @@ div#checkout_container div.page input {
 	transition: all 0.3s;
 }
 
+body.rtl div#input_details label input,
+body.rtl div#payment_method input, 
+body.rtl div#billing_information input,
+body.rtl div#input_details div.existing_account.visible input, 
+body.rtl div#input_details div.new_account.visible input, 
+body.rtl div#input_details div.guest_checkout.visible input,
+body.rtl div#checkout_container div.page input {
+	text-align: right;
+}
+
 div#input_details div.existing_account label.captcha input {
 	display: inline-block;
 	vertical-align: middle;
@@ -1416,6 +1426,10 @@ div#input_details label span {
 	padding-left: 10px;
 	padding-right: 10px;
 	text-align: left;
+}
+
+body.rtl div#input_details label span {
+	text-align: right;
 }
 
 div#input_details label small {
