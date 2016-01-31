@@ -1009,15 +1009,16 @@ div#form_wrap form {
 div#form_wrap form label {
 	display: inline-block;
 	vertical-align: top;
-	width: 33.3%;
+	margin-left: 1%;
+	margin-right: 1%;
+	width: 30%;
 	position: relative;
 }
 
 div#form_wrap form label:before {
 	content: "";
 	position: absolute;
-	top: 50%;
-	margin-top: -15px;
+	top: -7px;
 	left: 0px;
 	background-image: url(../images/icon-sprite.svg);
 	background-repeat: no-repeat;
@@ -1054,7 +1055,7 @@ div#form_wrap form label:last-of-type {
 }
 
 div#form_wrap form label span {
-	display: inline-block;
+	display: block;
 	vertical-align: bottom;
 	padding-left: 35px;
 }
@@ -1068,20 +1069,22 @@ div#form_wrap form label textarea,
 div#form_wrap form label input {
 	display: inline-block;
 	vertical-align: bottom;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	padding-left: 5px;
-	border: none;
-	border-bottom: 1px solid darken(@color_ac_grey,10%);
-	width: calc(~'(220px - 5px)');
+	border: 1px solid @color_ac_medium_green;
+	width: calc(~'(100% - 5px)');
 	transition: all 0.3s;
 }
+
 div#form_wrap form label textarea:hover,
 div#form_wrap form label input:hover {
-	border-bottom: 1px solid @color_ac_orange;
+	border: 1px solid @color_ac_orange;
 }
 
 div#form_wrap form label textarea {
 	height: 30px;
-	width: calc(~'(850px - 5px)');
+	width: calc(~'(94% - 5px)');
 }
 
 body.rtl div#form_wrap form label textarea,
