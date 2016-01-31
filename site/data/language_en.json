@@ -59,6 +59,7 @@
 	"login_dialog_title": "Login",
 	"recovery_dialog_message": "Please enter your email address to which password recovery link will be sent.",
 	"recovery_dialog_title": "Password recovery",
+	"sign_up": "Sign up",
 	"signup_dialog_message": "Please enter your details below. This information will be used for charging and shipping purposes so make sure data is correct!",
 	"signup_dialog_title": "Sign up"
 }

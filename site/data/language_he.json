@@ -59,6 +59,7 @@
     "login_dialog_title": "כניסת משתמש",
     "recovery_dialog_message": "אנא הזן את כתובת הדוא\"ל שאליו יישלחו קישור שחזור סיסמה.",
     "recovery_dialog_title": "שחזור סיסמה",
+    "sign_up": "הרשם",
     "signup_dialog_message": "אנא הזן את השדות שלהלן. מידע זה ישמש עבור טעינה, למטרות משלוח כדי לוודא שהנתונים תואמים",
     "signup_dialog_title": "הרשם"
 }
