@@ -1124,20 +1124,20 @@ Site.on_load = function() {
 	// configuring caracal shop cart object
 	Site.cart = new Caracal.Shop.Cart();
 	Site.cart
-			.ui.add_item_list($('div#popup div.cart ul'))
-			.ui.add_total_cost_label($('div#popup span.price'))
-			.ui.add_total_cost_label($('div.cart p.total'))
-			.ui.add_total_count_label($('div#popup span.items'))
-			.ui.add_total_count_label($('div.cart p.total_quantity'))
-			.add_item_view(Site.ItemView);
+		.set_checkout_url('/shop/checkout')
+		.ui.connect_checkout_button($('a.checkout'))
+		.ui.add_item_list($('div#popup div.cart ul'))
+		.ui.add_total_cost_label($('div#popup span.price'))
+		.ui.add_total_cost_label($('div.cart p.total'))
+		.ui.add_total_count_label($('div#popup span.items'))
+		.ui.add_total_count_label($('div.cart p.total_quantity'))
+		.add_item_view(Site.ItemView);
 
 	// Function displaying animation news
 	Site.news = new NewsSystem("news_list", 1, 5000, 1000);
 
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
-
-
 
 	/*Function inserting item to cart*/
 	function insertToCart() {
