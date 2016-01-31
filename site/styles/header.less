@@ -331,7 +331,8 @@ body.rtl div.cart {
 div.cart > div.total {
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background-color: @color_ac_medium_green;
+	background-color: @color_ac_text;
+	position: relative;
 }
 
 div.cart ul {
@@ -368,9 +369,35 @@ div.cart ul li.item span {
 
 div.cart div.total p,
 div.cart div.total strong {
-	color: @color_ac_text;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: @color_text;
 }
 
-div.cart div.total p {
-	font-weight: 400;
+div.cart div.total a.checkout {
+	position: absolute;
+	top: 50%;
+	margin-top: -23px;
+	right: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-decoration: none;
+	background-color: @color_ac_medium_green;
+	color: @color_ac_text;
+	font-weight: 700;
+	transition: all 0.3s;
+}
+
+body.rtl div.cart div.total a.checkout {
+	left: 10px;
+	right: auto;
+}
+
+div.cart div.total a.checkout:hover {
+	background-color: @color_ac_orange;
 }
