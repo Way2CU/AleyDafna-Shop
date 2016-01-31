@@ -23,7 +23,7 @@
 			</svg>
 		</a>
 
-		<a href="javascript:void(0)" class="purchase">
+		<a href="javascript:void(0)" class="checkout">
 			<cms:text constant="title_button_order"/>
 			<svg>
 				<use
