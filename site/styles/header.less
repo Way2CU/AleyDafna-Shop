@@ -188,11 +188,16 @@ nav#main > ul > li > a {
 	padding-left: 20px;
 	padding-right: 20px;
 	text-decoration: none;
-	border-left: 1px solid @color_ac_medium_green;
+	border-left: 1px solid fade(@color_ac_text,50%);
 	color: @color_ac_text;
 	font-weight: 700;
 	position: relative;
 	transition: all 0.3s;
+}
+
+nav#main > ul > li > a.login,
+nav#main > ul > li > a.sign-up {
+	background-color: fade(@color_ac_text,10%);
 }
 
 nav#main > ul > li:first-of-type > a {
@@ -365,6 +370,15 @@ div.cart ul li.item span {
 	text-align: center;
 	width: 100px;
 	color: @color_text;
+}
+
+div.cart ul li.item a.remove {
+	background-image: url(../images/remove.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 25px 25px;
+	width: 100px;
+	height: 25px;
 }
 
 div.cart div.total p,
