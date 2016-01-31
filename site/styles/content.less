@@ -1154,11 +1154,10 @@ div.dialog div.content form label {
 	cursor: pointer;
 }
 
-section#vip form label.checkbox  span:before,
 div.dialog.login div.content form label span:before {
 	content: ' ';
 	position: absolute;
-	left: 100px;
+	right: 100%;
 	top: 50%;
 	margin-top: -13.5px;
 	width: 25px;
@@ -1168,24 +1167,11 @@ div.dialog.login div.content form label span:before {
 	border: 1px solid @color_ac_medium_green;
 }
 
-section#vip form label.checkbox  span:before {
-	left: 0;
-	background-color: transparent;
-	border: 1px solid transparent;
-	border-image: linear-gradient(100deg, rgba(121, 55, 0, 1) 0%, rgba(129, 62, 0, 1) 4.02%, rgba(151, 81, 0, 1) 10.25%, rgba(186, 112, 0, 1) 17.91%, rgba(235, 155, 0, 1) 26.62%, rgba(243, 162, 0, 1) 27.88%, rgba(255, 247, 142, 1) 50.3%, rgba(243, 162, 0, 1) 75.76%, rgba(121,55, 0, 1) 100%);
-	border-image-slice: 1;
-}
 
-div.dialog.login.sign-up div.content form label span:before  {
-	left: 40px;
-}
-
-
-section#vip form label.checkbox  span:after,
 div.dialog.login div.content form label span:after {
 	content: ' ';
 	position: absolute;
-	left: 102px;
+	right: 100.5%;
 	top: 50%;
 	margin-top: -12.5px;
 	width: 23px;
@@ -1204,25 +1190,10 @@ div.dialog.login div.content form label span:after {
 	opacity: 1;	
 }
 
-section#vip form label.checkbox  span:after {
-	left: 3px;
-	width: 20px;
-	height: 20px;
-	margin-top: -10px;
-
-	background: url(../images/check_mark_white.svg);
-}
-
-div.dialog.login.sign-up div.content form label span:after {
-	left: 42px;
-}
-
-
 div.dialog.login div.content form input[type=checkbox] {
 	display: none;
 }
 
-section#vip form label.checkbox  input[type=checkbox]:checked ~ span:after,
 div.dialog.login div.content form input[type=checkbox]:checked ~ span:after{
 	transform: scale(1);
 
@@ -1340,7 +1311,6 @@ div.pages {
 	border-color: @color_ac_grey;
 }
 
-
 div#input_details {
 	border-radius:  0px 0px 0px 0px;
 	border: 0px solid white;
@@ -1420,15 +1390,16 @@ div#input_details div.guest_checkout.visible input:hover {
 	border: 1px solid @color_ac_orange;
 }
 
-div#input_details label span {
+div.dialog div.content form label span{
 	display: inline-block;
-	width: 100px;
+	vertical-align: top;
 	padding-left: 10px;
 	padding-right: 10px;
+	position: relative;
 	text-align: left;
 }
 
-body.rtl div#input_details label span {
+body.rtl div.dialog div.content form label span {
 	text-align: right;
 }
 
@@ -1463,6 +1434,6 @@ div.checkout_controls button:hover {
 
 div#input_details div.existing_account.visible,
 div#input_details div.new_account.visible,
- div#input_details div.guest_checkout.visible {
+div#input_details div.guest_checkout.visible {
  	max-height: 400px;
  }
