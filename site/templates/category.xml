@@ -63,6 +63,19 @@
 			<section id="banner">
 				<div class="banner business">
 					<div>
+						<p><cms:text constant="title_bottom_banner"/></p>
+
+						<a
+							href="url_Make('', 'home')"
+							cms:eval="href"
+							>
+							<cms:text constant="title_button_special_deals"/>
+						</a>
+					</div>
+				</div>
+
+				<div class="banner loyalty">
+					<div>
 						<p><cms:text constant="title_top_banner"/></p>
 
 						<a
@@ -73,19 +86,6 @@
 						</a>
 					</div>
 				</div>
-
-				<div class="banner loyalty">
-					<div>
-						<p><cms:text constant="title_bottom_banner"/></p>
-
-						<a
-							href="url_Make('', 'home')"
-							cms:eval="href"
-							>
-							<cms:text constant="title_button_special_deals"/>
-						</a>
-					</div>
-				</div>	
 
 			</section>
 			<!-- Footer -->
