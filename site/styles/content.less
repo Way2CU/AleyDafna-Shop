@@ -1112,3 +1112,209 @@ div#form_wrap form div.controls button {
 div#form_wrap form div.controls button:hover {
 	background-color: @color_ac_orange;
 }
+
+/**
+ * Dialogs
+ */
+div.dialog {
+	display: block;
+	position: fixed;
+	max-height:  0px;
+	top: 0px;
+	left: 50%;
+	background-color: white;
+	z-index: 100001;
+	color: @color_text;
+	overflow: hidden;
+	transition: all 0.6s;
+}
+
+div.dialog.visible {
+	top: 0px;
+	max-height: 650px;
+}
+
+div.dialog div.title {
+	background-color: @color_ac_medium_green;
+}
+
+div.dialog div.content p {
+	margin-top: 0;
+}
+
+div.dialog div.content div.inner_content {
+	padding: 20px;
+}
+
+div.dialog div.content form label {
+	display: block;
+	text-align: center;
+	margin-bottom: 10px;
+	position: relative;
+	cursor: pointer;
+}
+
+section#vip form label.checkbox  span:before,
+div.dialog.login div.content form label span:before {
+	content: ' ';
+	position: absolute;
+	left: 100px;
+	top: 50%;
+	margin-top: -13.5px;
+	width: 25px;
+	height: 25px;
+	display: block;
+	background: white;
+	border: 1px solid @color_ac_medium_green;
+}
+
+section#vip form label.checkbox  span:before {
+	left: 0;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-image: linear-gradient(100deg, rgba(121, 55, 0, 1) 0%, rgba(129, 62, 0, 1) 4.02%, rgba(151, 81, 0, 1) 10.25%, rgba(186, 112, 0, 1) 17.91%, rgba(235, 155, 0, 1) 26.62%, rgba(243, 162, 0, 1) 27.88%, rgba(255, 247, 142, 1) 50.3%, rgba(243, 162, 0, 1) 75.76%, rgba(121,55, 0, 1) 100%);
+	border-image-slice: 1;
+}
+
+div.dialog.login.sign-up div.content form label span:before  {
+	left: 40px;
+}
+
+
+section#vip form label.checkbox  span:after,
+div.dialog.login div.content form label span:after {
+	content: ' ';
+	position: absolute;
+	left: 102px;
+	top: 50%;
+	margin-top: -12.5px;
+	width: 23px;
+	height: 23px;
+	display: block;
+	z-index: 1;
+	background: url(../images/check_mark_white.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	-ms-transition: all .2s ease;
+	-webkit-transition: all .2s ease;
+	transition: all .3s ease;
+	-ms-transform: scale(0);
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	opacity: 1;	
+}
+
+section#vip form label.checkbox  span:after {
+	left: 3px;
+	width: 20px;
+	height: 20px;
+	margin-top: -10px;
+
+	background: url(../images/check_mark_white.svg);
+}
+
+div.dialog.login.sign-up div.content form label span:after {
+	left: 42px;
+}
+
+
+div.dialog.login div.content form input[type=checkbox] {
+	display: none;
+}
+
+section#vip form label.checkbox  input[type=checkbox]:checked ~ span:after,
+div.dialog.login div.content form input[type=checkbox]:checked ~ span:after{
+	transform: scale(1);
+
+}
+
+div.dialog div.content form input:not([type=checkbox]) {
+	width: 350px;
+	text-align: left;
+	padding: 10px;
+
+	border: 1px solid @color_ac_medium_green;
+	background-color: @color_ac_grey;
+
+	color: @color_text;
+	transition: all 0.3s;
+}
+
+body.rtl div.dialog div.content form input:not([type=checkbox]) {
+	text-align: right;
+}
+
+div.dialog div.content form input:not([type=checkbox]):focus,
+div.dialog div.content form input:not([type=checkbox]):hover {
+	border: 1px solid @color_ac_orange;
+}
+
+div.dialog div.content hr {
+	display: block;
+	height: 1px;
+
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+	border: 0;
+	background-color: @color_ac_grey;
+}
+
+div.dialog div.content div.inner_content form a {
+	padding: 20px;
+	color: black;
+	transition: all 0.3s;
+}
+
+div.dialog div.content div.inner_content form a:hover {
+	color: @color_ac_orange;
+}
+
+div.dialog div.content div.inner_content div > label {
+	display: block;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+div.dialog div.content div.inner_content div > div.captcha label {
+	display: inline-block;
+	vertical-align: top;
+}
+
+div.dialog div.content div.inner_content div > div.captcha label input {
+	display: inline-block;
+	vertical-align: middle;
+	width: calc(50% - 2px);
+}
+
+div.dialog div.content div.inner_content div div.captcha label img {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 2px;
+}
+
+div.dialog div.content div.inner_content div > label > input {
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	text-align: left;
+	padding: 10px;
+
+	border: 1px solid @color_ac_medium_green;
+	background-color: @color_ac_grey;
+
+	color: @color_text;
+}
+
+div.dialog div.command_bar a {
+	background-color: @color_ac_medium_green;
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
+}
+
+div.dialog div.command_bar a:hover {
+	background-color: @color_ac_orange;
+}
+
