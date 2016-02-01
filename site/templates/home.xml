@@ -13,7 +13,7 @@
 		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
 			<!-- Header -->
 			<cms:template file="parts/header.xml"/>
-			
+
 			<section id="slider">
 				<div class="banner_container">
 					<div class="banner">
@@ -21,7 +21,7 @@
 							<p><cms:text constant="title_top_banner"/></p>
 
 							<a
-								href="url_Make('', 'home')"
+								href="url_Make('customer-clients', 'contact-us')"
 								cms:eval="href"
 								>
 								<cms:text constant="title_button_sign"/>
@@ -34,7 +34,7 @@
 							<p><cms:text constant="title_bottom_banner"/></p>
 
 							<a
-								href="url_Make('', 'home')"
+								href="url_Make('business-clients', 'contact-us')"
 								cms:eval="href"
 								>
 								<cms:text constant="title_button_special_deals"/>
