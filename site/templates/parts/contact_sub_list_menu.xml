@@ -1,0 +1,23 @@
+<document>
+	<li>
+		<a
+			class="$section == 'customer-clients' ? 'active' : false"
+			href="url_Make('customer-clients', 'contact-us')"
+			cms:eval="href"
+			cms:optional="class"
+			>
+			<cms:text constant="menu_customer"/>
+		</a>
+	</li>
+
+	<li>
+		<a
+			class="$section == 'business-clients' ? 'active' : false"
+			href="url_Make('business-clients', 'contact-us')"
+			cms:eval="href"
+			cms:optional="class"
+			>
+			<cms:text constant="menu_business"/>
+		</a>
+	</li>
+</document>

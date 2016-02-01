@@ -21,6 +21,8 @@
 	<section name="contact-us">
 		<language name="all">
 			<action name="_default" file="contact.xml"/>
+			<action name="customer-clients" file="customer.xml"/>
+			<action name="business-clients" file="business.xml"/>
 		</language>
 	</section>
 

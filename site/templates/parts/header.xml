@@ -110,7 +110,7 @@
 						</ul>
 					</li>
 
-					<li>
+					<li class="sub-menu">
 						<a
 							class="$section == 'contact-us' ? 'active' : false"
 							href="url_Make('', 'contact-us')"
@@ -118,7 +118,10 @@
 							cms:optional="class"
 							>
 							<cms:text constant="menu_contact"/>
-						</a>					
+						</a>	
+						<ul class="drop">					
+							<cms:template file="parts/contact_sub_list_menu.xml"/>
+						</ul>
 					</li>
 
 					<cms:guest>
