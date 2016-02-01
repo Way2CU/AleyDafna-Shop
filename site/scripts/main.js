@@ -187,113 +187,6 @@ function QuickFilter(container, categories, item) {
 	 self._init();
 }
 
-Site.ItemView = function(item) {
-	var self = this;
-
-	self.item = item;
-	self.cart = item.cart;
-	self.currency = null;
-	self.exchange_rate = 1;
-
-	self.container = null;
-	self.label_name = null;
-	self.label_size = null;
-	self.label_count = null;
-	self.label_total = null;
-	self.option_remove = null;
-
-	/**
-	 * Complete object initialization.
-	 */
-	self._init = function() {
-		// get list containers
-		var item_list = self.cart.get_list_container();
-		self.currency = self.cart.default_currency;
-
-		// create container
-		self.container = $('<li>').appendTo(item_list);
-		self.container.addClass('item');
-
-		// create labels
-		self.image = $('<img>').appendTo(self.container);
-
-		self.label_name = $('<span>').appendTo(self.container);	
-		self.label_name.addClass('name');
-
-		self.label_size = $('<span>').appendTo(self.container);
-		self.label_size.addClass('size');
-
-		self.label_count = $('<span>').appendTo(self.container);
-		self.label_count.addClass('count');
-
-		self.label_total = $('<span>').appendTo(self.container);
-		self.label_total
-				.addClass('total')
-				.attr('data-currency', self.currency);
-		
-		self.option_remove = $('<a>').appendTo(self.container);
-		self.option_remove
-				.attr('href', 'javascript: void(0);')
-				.attr('class','remove')
-				.on('click', self._handle_remove);
-
-	};
-
-	/**
-	 * Handle clicking on remove item.
-	 *
-	 * @param object event
-	 */
-	self._handle_remove = function(event) {
-		event.preventDefault();
-		self.item.remove();
-	};
-
-	/**
-	 * Handler externally called when item count has changed.
-	 */
-	self.handle_change = function() {
-		self.image
-			.attr('src', self.item.image)
-			.attr('alt', self.item.name[language_handler.current_language]);
-
-		self.label_name
-			.text(self.item.name[language_handler.current_language]);
-
-		self.label_count
-			.text( self.item.count + " " + language_handler.getText(null, 'unit'));
-
-		self.label_total
-			.text((self.item.count * self.item.price * self.exchange_rate + " " + language_handler.getText(null, 'price1')))
-			.attr('data-currency', self.currency);
-	};
-
-	/**
-	 * Handle shopping cart currency change.
-	 *
-	 * @param string currency
-	 * @param float rate
-	 */
-	self.handle_currency_change = function(currency, rate) {
-		// store values
-		self.currency = currency;
-		self.exchange_rate = rate;
-
-		// update labels
-		self.handle_change();
-	};
-
-	/**
-	 * Handler externally called before item removal.
-	 */
-	self.handle_remove = function() {
-		self.container.remove();
-	};
-
-	// finalize object
-	self._init();
-}
-
 /**
  * Dialog system for logging in and out and as well as registering
  * new accounts on the system.
@@ -1105,6 +998,113 @@ Site.DialogSystem = function() {
 				.setTitle(language_handler.getText(null, 'recovery_dialog_title'));
 		self.message.content.html(description);
 		self.message.dialog.show();
+	};
+
+	// finalize object
+	self._init();
+}
+
+Site.ItemView = function(item) {
+	var self = this;
+
+	self.item = item;
+	self.cart = item.cart;
+	self.currency = null;
+	self.exchange_rate = 1;
+
+	self.container = null;
+	self.label_name = null;
+	self.label_size = null;
+	self.label_count = null;
+	self.label_total = null;
+	self.option_remove = null;
+
+	/**
+	 * Complete object initialization.
+	 */
+	self._init = function() {
+		// get list containers
+		var item_list = self.cart.get_list_container();
+		self.currency = self.cart.default_currency;
+
+		// create container
+		self.container = $('<li>').appendTo(item_list);
+		self.container.addClass('item');
+
+		// create labels
+		self.image = $('<img>').appendTo(self.container);
+
+		self.label_name = $('<span>').appendTo(self.container);	
+		self.label_name.addClass('name');
+
+		self.label_size = $('<span>').appendTo(self.container);
+		self.label_size.addClass('size');
+
+		self.label_count = $('<span>').appendTo(self.container);
+		self.label_count.addClass('count');
+
+		self.label_total = $('<span>').appendTo(self.container);
+		self.label_total
+				.addClass('total')
+				.attr('data-currency', self.currency);
+		
+		self.option_remove = $('<a>').appendTo(self.container);
+		self.option_remove
+				.attr('href', 'javascript: void(0);')
+				.attr('class','remove')
+				.on('click', self._handle_remove);
+
+	};
+
+	/**
+	 * Handle clicking on remove item.
+	 *
+	 * @param object event
+	 */
+	self._handle_remove = function(event) {
+		event.preventDefault();
+		self.item.remove();
+	};
+
+	/**
+	 * Handler externally called when item count has changed.
+	 */
+	self.handle_change = function() {
+		self.image
+			.attr('src', self.item.image)
+			.attr('alt', self.item.name[language_handler.current_language]);
+
+		self.label_name
+			.text(self.item.name[language_handler.current_language]);
+
+		self.label_count
+			.text( self.item.count + " " + language_handler.getText(null, 'unit'));
+
+		self.label_total
+			.text((self.item.count * self.item.price * self.exchange_rate + " " + language_handler.getText(null, 'price1')))
+			.attr('data-currency', self.currency);
+	};
+
+	/**
+	 * Handle shopping cart currency change.
+	 *
+	 * @param string currency
+	 * @param float rate
+	 */
+	self.handle_currency_change = function(currency, rate) {
+		// store values
+		self.currency = currency;
+		self.exchange_rate = rate;
+
+		// update labels
+		self.handle_change();
+	};
+
+	/**
+	 * Handler externally called before item removal.
+	 */
+	self.handle_remove = function() {
+		self.container.remove();
 	};
 
 	// finalize object
