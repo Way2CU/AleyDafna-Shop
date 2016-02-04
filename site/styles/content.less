@@ -5,7 +5,6 @@
  * Copyright (c) 2015. by Way2CU, http://way2cu.com
  * Authors:Tal Reznic
  */
-
 section#contact,
 section#warranty,
 section#about,
@@ -21,6 +20,8 @@ section#slider {
 	position: relative;
 }
 
+section#business,
+section#customer,
 section#contact,
 section#warranty,
 section#faq,
@@ -30,6 +31,7 @@ section#about {
 	background-repeat: repeat;
 	background-size: 149px  139px;
 	background-position: center top;
+	position: relative;
 }
 
 section#contact {
@@ -37,6 +39,17 @@ section#contact {
 	z-index: 0;
 }
 
+section#business,
+section#customer {
+	z-index: 0;
+	text-align: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+section#business:before,
+section#customer:before,
 section#contact:before {
 	content: "";
 	position: absolute;
@@ -47,6 +60,32 @@ section#contact:before {
 	height: 100%;
 	background-color: white;
 	z-index: -1;
+}
+
+section#business:before,
+section#customer:before {
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: auto 100%;
+}
+
+section#business:before {
+	background-image: url(../images/business_clients.jpg);
+}
+
+section#customer:before {
+	background-image: url(../images/customer_clients.jpg);
+}
+
+section#business h2,
+section#customer h2 {
+	margin: 0px;
+	padding-bottom: 15px;
+	text-align: center;
+	padding-right: calc(~'(1200px - 600px)');
+	color: @color_ac_medium_green;
+	font-size: 3em;
+	font-weight: 400;
 }
 
 section#warranty article,
@@ -986,11 +1025,25 @@ div#information_details article h4 {
 	margin-bottom: 0px;
 }
 
+div#form_customers,
+div#form_business,
 div#form_wrap {
 	display: block;
 	border-top: 1px solid @color_ac_medium_green;
 }
 
+div#form_customers,
+div#form_business {
+	border: 1px solid @color_ac_grey;
+	text-align: center;
+	text-align: center;
+	width: 580px;
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+div#form_customers p,
+div#form_business p,
 div#form_wrap p {
 	font-size: 1.75em;
 	font-weight: 700;
@@ -998,10 +1051,24 @@ div#form_wrap p {
 	color: @color_ac_medium_green;
 }
 
+div#form_customers p,
+div#form_business p {
+	margin: 0px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	font-weight: 400;
+	color: @color_ac_text;
+	background-color: @color_ac_medium_green
+}
+
+div#form_customers form,
+div#form_business form,
 div#form_wrap form {
 	display: block;
 }
 
+div#form_customers form label,
+div#form_business form label,
 div#form_wrap form label {
 	display: inline-block;
 	vertical-align: top;
@@ -1011,6 +1078,18 @@ div#form_wrap form label {
 	position: relative;
 }
 
+div#form_customers form label,
+div#form_business form label {
+	display: block;
+	margin-top: 15px;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+div#form_customers form label:before,
+div#form_business form label:before,
 div#form_wrap form label:before {
 	content: "";
 	position: absolute;
@@ -1024,14 +1103,20 @@ div#form_wrap form label:before {
 	height: 32px;
 }
 
+div#form_business form label:first-of-type:before,
+div#form_customers form label:first-of-type:before,
 div#form_wrap form label:first-of-type:before {
 	background-position: -2px 0px;
 }
 
+div#form_business form label:nth-of-type(2):before,
+div#form_customers form label:nth-of-type(2):before,
 div#form_wrap form label:nth-of-type(2):before {
 	background-position: -32px 0px;
 }
 
+div#form_business form label:nth-of-type(3):before,
+div#form_customers form label:nth-of-type(3):before,
 div#form_wrap form label:nth-of-type(3):before {
 	background-position: -62px 0px;
 }
@@ -1040,6 +1125,8 @@ div#form_wrap form label:nth-of-type(4):before {
 	background-position: -362px 0px;
 }
 
+body.rtl div#form_business form label:before,
+body.rtl div#form_customers form label:before,
 body.rtl div#form_wrap form label:before {
 	right: 0px;
 }
@@ -1050,17 +1137,25 @@ div#form_wrap form label:last-of-type {
 	width: 100%;
 }
 
+div#form_business form label span,
+div#form_customers form label span,
 div#form_wrap form label span {
 	display: block;
 	vertical-align: bottom;
 	padding-left: 35px;
+	text-align: left;
 }
 
+body.rtl div#form_business form label span,
+body.rtl div#form_customers form label span ,
 body.rtl div#form_wrap form label span {
 	padding-left: 0px;
 	padding-right: 35px;
+	text-align: right;
 }
 
+div#form_business form label input,
+div#form_customers form label input,
 div#form_wrap form label textarea,
 div#form_wrap form label input {
 	display: inline-block;
@@ -1073,6 +1168,8 @@ div#form_wrap form label input {
 	transition: all 0.3s;
 }
 
+div#form_business form label input:hover,
+div#form_customers form label input:hover,
 div#form_wrap form label textarea:hover,
 div#form_wrap form label input:hover {
 	border: 1px solid @color_ac_orange;
@@ -1083,17 +1180,30 @@ div#form_wrap form label textarea {
 	width: calc(~'(94% - 5px)');
 }
 
+body.rtl div#form_business form label input,
+body.rtl div#form_customers form label input,
 body.rtl div#form_wrap form label textarea,
 body.rtl div#form_wrap form label input {
 	padding-left: 0px;
 	padding-right: 5px;
 }
 
+div#form_customers form div.controls,
+div#form_business form div.controls,
 div#form_wrap form div.controls {
 	display: block;
 	text-align: center;
 }
 
+div#form_customers form div.controls,
+div#form_business form div.controls {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+
+div#form_customers form div.controls button,
+div#form_business form div.controls button,
 div#form_wrap form div.controls button {
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -1109,6 +1219,8 @@ div#form_wrap form div.controls button {
 	cursor: pointer;
 }
 
+div#form_customers form div.controls button:hover,
+div#form_business form div.controls button:hover,
 div#form_wrap form div.controls button:hover {
 	background-color: @color_ac_orange;
 }
