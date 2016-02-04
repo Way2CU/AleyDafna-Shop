@@ -11,6 +11,9 @@
 	<module name="country_list" order="2" preload="no"/>
 	<module name="gallery" order="3" preload="no"/>
 	<module name="shop" order="4" preload="no"/>
+	<module name="articles" order="5" preload="no"/>
+	<module name="news" order="6" preload="no"/>
+	<module name="faq" order="7" preload="no"/>
 
 	<user
 		fullname="Administrator"
