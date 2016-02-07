@@ -1392,6 +1392,10 @@ div.dialog div.content div.inner_content div > label > input {
 	color: @color_text;
 }
 
+body.rtl div.dialog div.content div.inner_content div > label > input {
+	text-align: right;
+}
+
 div.dialog div.command_bar a {
 	background-color: @color_ac_medium_green;
 	position: relative;
@@ -1401,6 +1405,19 @@ div.dialog div.command_bar a {
 
 div.dialog div.command_bar a:hover {
 	background-color: @color_ac_orange;
+}
+
+div.dialog div.content div.inner_content div > div.captcha label input {
+	width: 41%;
+}
+
+div.dialog div.content div.inner_content div div.captcha label img {
+	padding-left: 25px;
+}
+
+body.rtl div.dialog div.content div.inner_content div div.captcha label img {
+	padding-left: 0px;
+	padding-right: 25px;
 }
 
 /**
