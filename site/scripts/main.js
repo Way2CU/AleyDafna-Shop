@@ -1019,6 +1019,7 @@ Site.ItemView = function(item) {
 	self.label_total = null;
 	self.option_remove = null;
 
+
 	/**
 	 * Complete object initialization.
 	 */
@@ -1085,6 +1086,7 @@ Site.ItemView = function(item) {
 			.attr('data-currency', self.currency);
 	};
 
+
 	/**
 	 * Handle shopping cart currency change.
 	 *
@@ -1115,6 +1117,7 @@ Site.ItemView = function(item) {
  * Function called when document and images have been completely loaded.
  */
 Site.on_load = function() {
+
 	if (Site.is_mobile())
 		Site.mobile_menu = new Caracal.MobileMenu();
 
@@ -1139,30 +1142,40 @@ Site.on_load = function() {
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 
+	// function for 
+
 	/*Function inserting item to cart*/
 	function insertToCart() {
 		var uid = $('div.product_information').data('id');
 		var list = Site.cart.get_item_list_by_uid(uid);
+		var cart = $('div#popup');
 
 		var item_list = Site.cart.get_item_list_by_uid(uid);
 		var found_item = null;
+
+		setTimeout(function() {
+			cart.removeClass('show');
+		},2000);
 
 		for (var i=0, count=item_list.length; i<count; i++) {
 			var item = item_list[i];
 
 			if (item.uid) {
 				found_item = item;
+				// inserted_item_message(item);
 				break;
 			}
 		}
 
 			if (found_item == null) {
-				// add new item
+				// add new item;
 				Site.cart.add_item_by_uid(uid);
+				cart.addClass('show');
 
 			} else {
 				// increase count
 				found_item.alter_count(1);
+				cart.addClass('show');
 			}
 	}
 
