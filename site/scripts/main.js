@@ -1142,7 +1142,27 @@ Site.on_load = function() {
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 
-	// function for 
+	// function for displaying mobile slider 
+
+	if (Site.is_mobile()) {
+
+		// create controls for each slide
+		var slides = $('section#slider a');
+		var control_container = $('section#slider div.controls');
+
+		slides.each(function(index) {
+			$('<a>')
+				.attr('href', 'javascript: void(0);')
+				.appendTo(control_container);
+		});
+
+		Site.mobile_slider = new PageControl('section#slider', 'a');
+		Site.mobile_slider
+			.attachControls('section#slider div.controls a');	
+	}
+
+
+
 
 	/*Function inserting item to cart*/
 	function insertToCart() {
