@@ -1,0 +1,27 @@
+<document>
+	<div class="banner business">
+		<div>
+			<p><cms:text constant="title_bottom_banner"/></p>
+
+			<a
+				href="url_Make('business-clients', 'contact-us')"
+				cms:eval="href"
+				>
+				<cms:text constant="title_button_special_deals"/>
+			</a>
+		</div>
+	</div>
+
+	<div class="banner loyalty">
+		<div>
+			<p><cms:text constant="title_top_banner"/></p>
+
+			<a
+				href="url_Make('customer-clients', 'contact-us')"
+				cms:eval="href"
+				>
+				<cms:text constant="title_button_sign"/>
+			</a>
+		</div>
+	</div>
+</document>
