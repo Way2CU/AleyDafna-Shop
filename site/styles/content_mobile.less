@@ -53,6 +53,20 @@
  	position: relative;
  }
 
+section#customer {
+	background-image: url(../images/customer_clients.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto 100%;
+}
+
+section#business {
+	background-image: url(../images/business_clients.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto 100%;
+}
+
  section#warranty article,
  section#faq article,
  section#about article {
@@ -70,6 +84,7 @@
 	text-align: right;
  }
 
+section#contact h2,
 section#product div.product_information h2,
 section#category h2,
 section#warranty article h2,
@@ -710,13 +725,6 @@ div#related_items div.item p.name {
 
 //  contact page
 
-section#contact h2 {
-	padding-bottom: 10px;
-	text-align: center;
-	color: @color_ac_medium_green;
-	border-bottom: 1px solid @color_ac_medium_green;
-}
-
 section#contact figure {
 	display: block;
 	margin: auto;
@@ -861,6 +869,11 @@ div#form_wrap form {
 	display: block;
 }
 
+div#form_customers form,
+div#form_business form {
+	background-color: fade(@color_ac_text, 70%);
+}
+
 div#form_wrap form {
 	padding-bottom: 20px;
 }
@@ -933,6 +946,7 @@ div#form_wrap form label span {
 	vertical-align: bottom;
 	padding-left: 35px;
 	text-align: left;
+	font-weight: 700;
 }
 
 body.rtl div#form_business form label span,
