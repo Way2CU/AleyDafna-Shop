@@ -59,8 +59,6 @@
 						cms:eval="related,category"
 						/>
 				</div>
-				
-				<cms:template file="parts/banners.xml"/>
 			</section>		
 
 			<!-- Footer -->
