@@ -1,0 +1,93 @@
+/**
+ * Header Mobile Style Sheet
+ * Aley dafna site
+ *
+ * Copyright (c) 2015. by Way2CU, http://way2cu.com
+ * Authors:Tal Reznic
+ */
+
+header {
+ 	display: block;
+ 	text-align: center;
+ 	position: relative;
+}
+
+header div.mobile_title {
+	padding-top: 5px;
+	padding-bottom: 5px;
+ 	background-color: @color_ac_text;
+}
+
+header div.mobile_title a.logo {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+header div.mobile_title a.logo img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+
+header div.mobile_title a.menu {
+  	position: absolute;
+  	top: 50%;
+  	margin-top: -2.5px;
+  	left: 10px;
+  	background-color: @color_text;
+  	height: 5px;
+  	width: 30px;
+  	transition: all 0.3s;
+}
+
+header div.mobile_title.visible a.menu {
+	background-color: transparent;;
+}
+
+header div.mobile_title.visible a.menu:before{
+	top: 0px;
+	transform: rotate(45deg);
+	background-color: @color_ac_orange;
+}
+
+header div.mobile_title.visible a.menu:after{
+	top: 0px;
+	transform: rotate(-45deg);
+	background-color: @color_ac_orange;
+}
+
+header div.mobile_title a.menu:before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: 0px;
+	background-color: @color_text;
+	height: 5px;
+	width: 30px;
+	transition: all 0.3s;
+}
+
+header div.mobile_title a.menu:after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	background-color: @color_text;
+	height: 5px;
+	width: 30px;
+	transition: all 0.3s;
+}
+
+header div.mobile_title a.cart {
+ 	position: absolute;
+ 	top: 50%;
+ 	margin-top: -15px;
+ 	right: 10px;
+}
+
+header div.mobile_title a.cart svg {
+	width: 30px;
+	height: 30px;
+	fill: @color_text;
+}
