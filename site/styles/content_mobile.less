@@ -6,6 +6,220 @@
  * Authors:Tal Reznic
  */
 
+ section#special_categories,
+ section#promoted_category {
+ 	display: block;
+ 	padding-bottom: 10px;
+ 	text-align: center;
+ 	background-image: url(../images/greyzz-texture.png);
+ 	background-repeat: repeat;
+ 	background-position: center center;
+ 	background-size: 149px 139px;
+ }
+
+ section#promoted_category,
+ section#special_categories,
+ section#news,
+ section#slider
+ section#news,
+ section#banner,
+ section#special_categories {
+ 	background-image: none;
+ 	padding-top: 10px;
+ 	padding-bottom: 10px;
+ }
+
+ section#faq,
+ section#contact,
+ section#warranty,
+ section#about,
+ section#product,
+ section#category {
+ 	text-align: center;
+ 	margin-top: 63px;
+ }
+
+ section#business,
+ section#customer,
+ section#contact,
+ section#warranty,
+ section#faq,
+ section#about {
+ 	padding: 0px calc(~'(100% - 1200px)' / 2);
+ 	background-image: url(../images/greyzz-texture.png);
+ 	background-repeat: repeat;
+ 	background-size: 149px  139px;
+ 	background-position: center top;
+ 	position: relative;
+ }
+
+ section#warranty article,
+ section#faq article,
+ section#about article {
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	text-align: left;
+ 	width: 95%;
+ 	background-color: @color_ac_text;
+ }
+
+ body.rtl section#warranty article,
+ body.rtl section#faq article,
+ body.rtl section#about article {
+	text-align: right;
+ }
+
+section#product div.product_information h2,
+section#category h2,
+section#warranty article h2,
+section#faq article h2,
+section#about article h2 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	color: @color_ac_medium_green;
+	border-bottom: 1px solid @color_ac_medium_green;
+}
+
+section#product div.product_information h2,
+section#category h2 {
+	border-bottom: none;
+	color: @color_text;
+}
+
+ section#warranty article ol ul {
+ 	margin: 0px;
+ 	padding: 0px;
+ 	padding-left: 10px;
+ }
+
+ body.rtl  section#warranty article ol ul {
+ 	padding-left: 0px;
+ 	padding-right: 10px;
+ }
+
+ section#warranty article p {
+ 	margin-top: 10px;
+ }
+
+ section#faq article p:last-of-type {
+ 	padding-bottom: 0.5em;
+ }
+
+ section#faq article strong {
+ 	padding-top: 10px;
+ }
+
+ section#about article span {
+ 	display: block;
+ 	color: @color_ac_medium_green;
+ 	padding-bottom: 0.5em;
+ 	text-align: center;
+ }
+
+ section#about article img {
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	width: 50%;
+ }
+
+ div.banner {
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	width: 90%;
+ 	text-align: center;
+ 	position: relative;
+ 	z-index: 0;	
+ }
+
+ div.banner:before {
+ 	content: '';
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	width: 0px;
+ 	height: 100%;
+ }
+
+ div.banner:first-of-type {
+ 	margin-bottom: 20px;
+ 	background-image: url(../images/texture.png); 
+ 	background-repeat: repeat;
+ 	background-position: center center;
+ 	background-size: 150px 150px;
+ 	overflow: hidden;
+ 	height: 180px;
+ }
+
+ div.banner:last-of-type {
+ 	background-image: url(../images/business-banner.jpg);
+ 	background-repeat: no-repeat;
+ 	background-position: center top;
+ 	background-size: 100% auto;
+ 	background-color: #D5E9DF;
+ 	height: 115px;
+ 	overflow: hidden;
+ }
+
+ div.banner div {
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	position: relative;
+ }
+
+ div.banner:first-of-type div {
+ 	background-color: @color_ac_text;
+ 	padding: 15px;
+ 	width: 80%;
+ 	box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.4);
+ 	border-radius: 20px;
+ }
+
+ div.banner:last-of-type div {
+ 	padding-right: 50px;
+ }
+
+ div.banner strong {
+ 	display: block;
+ 	font-size: 1.2em;
+ 	color: @color_ac_medium_green;
+ }
+
+ div.banner p {
+ 	margin: 0px;
+ 	padding-left: 10px;
+ 	padding-right: 10px;
+ 	margin-bottom: 2px;
+ 	color: @color_ac_medium_green;
+ }
+
+ div.banner:last-of-type strong,
+ div.banner:last-of-type p {
+ 	font-size: 1em;
+ 	line-height: 1.2em;
+ 	color: @color_text;
+ }
+
+ div.banner a {
+ 	display: inline-block;
+ 	background-color: @color_ac_medium_green;
+ 	color: @color_ac_text;
+ 	font-weight: 700;
+ 	text-decoration: none;
+ 	padding-top: 3px;
+ 	padding-bottom: 3px;
+ 	padding-left: 15px;
+ 	padding-right: 15px;
+ 	transition: all 0.3s;
+ }
+
+ div.banner a:hover {
+ 	background-color: @color_ac_orange;
+ }
+
  section#slider {
  	display: block;
  	margin-top: 63px;
@@ -80,23 +294,6 @@ section#slider div.controls a.active {
 	background-color: @color_text; 
 }
 
-section#special_categories,
-section#promoted_category {
-	display: block;
-	padding-bottom: 10px;
-	text-align: center;
-	background-image: url(../images/greyzz-texture.png);
-	background-repeat: repeat;
-	background-position: center center;
-	background-size: 149px 139px;
-}
-
-section#news,
-section#special_categories {
-	background-image: none;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
 
 div.item,
 a.item {
@@ -113,6 +310,30 @@ a.item {
 	width: calc(~'(150px - 2px)');
 	position: relative;
 	overflow: hidden;
+}
+
+div#unique {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	transition: all 0.6s;
+}
+
+
+div#unique a.item {
+	visibility: visible;
+	transform: scale(1);
+	transition: transform 0.6s, width 0.6s, visibility 0.6s;
+	transition-delay: 0s, 0s, 0s;
+}
+
+div#unique a.item.hidden {
+	margin: 0px;
+	visibility: hidden;
+	width: 0px;
+	transform: scale(0);
+	
 }
 
 div.item img,
@@ -149,6 +370,19 @@ section#news span {
 	font-weight: 700;
 }
 
+div.product_information a {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-decoration: none;
+}
+
 div.product_information a svg,
 section#news span svg {
 	display: inline-block;
@@ -162,10 +396,11 @@ section#news span svg {
 div.product_information a svg {
 	width: 40px;
 	height: 40px;
+	fill: @color_ac_text;
 }
 
 div.product_information a.checkout svg  {
-	fill: @color_ac_orange;
+	fill: @color_ac_text;
 }
 
 section#news span svg use {
@@ -237,3 +472,544 @@ section#special_categories a img {
 	transition: all 0.3s;
 }
 
+/*category page*/
+
+section#category h2 {
+	text-align: center;
+}
+
+section#category section.group {
+	display: block;
+	text-align: center;
+}
+
+section#product div.product_wrapper {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 1px solid @color_ac_grey;
+}
+
+section#product div.product_information,
+section#product div.product_information section#product  figure {
+	display: block;
+	margin: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+}
+
+section#product div.product_information section#product  figure img {
+	padding: 10px;
+	border-bottom: 1px solid @color_ac_grey;
+}
+
+section#product div.product_information h2 {
+	color: @color_ac_medium_green;
+}
+
+div#checkboxes {
+	text-align: left;
+}
+
+body.rtl div#checkboxes {
+	text-align: right;
+}
+
+div#checkboxes label,
+section#product div.product_information label {
+	display: inline-block;
+	vertical-align: bottom;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-bottom: 35px;
+	text-align: center;
+	border-bottom: 1px solid @color_ac_grey;
+	width: 90px;
+	position: relative;	
+}
+
+div#checkboxes label {
+	border-bottom: none;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: auto;
+	background-color: @color_ac_medium_green;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+div#checkboxes label:hover {
+	background-color: @color_ac_orange;
+}
+
+div#checkboxes label input {
+	display: none;
+}
+
+div#checkboxes label  span {
+	display: block;
+	position: relative;
+	color: @color_ac_text;
+}
+
+section#product div.product_information label  figure {
+	display: block;
+	margin: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid @color_ac_grey;
+	width: 90px;
+	height: 90px;
+	position: relative;
+	transition: all 0.3s;
+}
+
+div#related_items div.item:hover img,
+section#product div.product_information label figure:hover {
+	border: 1px solid @color_ac_orange;
+}
+
+div#related_items div.item:hover img {
+	border: 2px solid @color_ac_orange;
+}
+
+section#product div.product_information label:hover span {
+	box-shadow: 0px 0px 0px 2px @color_ac_orange;
+}
+
+section#product div.product_information label figure:before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	width: 0px;
+	height: 100%;
+}
+
+section#product div.product_information label  figure img {
+	display: inline-block;
+	vertical-align: middle;
+	border-bottom: none;
+}
+
+section#product div.product_information label:first-of-type  figure img{
+	width: 30px;
+	height: 30px;
+}
+
+section#product div.product_information label:nth-of-type(2)  figure img{
+	width: 50px;
+	height: 50px;
+}
+
+section#product div.product_information label:last-of-type  figure img{
+	width: 70px;
+	height: 70px;
+}
+
+div#related_items div.item label span,
+section#product div.product_information label span {
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -5px;
+	width: 10px;
+	height: 10px;
+	border: 2px solid @color_ac_text;
+	box-shadow: 0px 0px 0px 2px darken(@color_ac_grey,40%);
+	border-radius: 50%;
+	transition: all 0.3s;
+}
+
+div#related_items div.item label span {
+	border-radius: 0px;
+	box-shadow: none;
+	width: 20px;
+	height: 20px;
+	left: auto;
+	right: 5px;
+	top: 148px;
+	border: 2px solid darken(@color_ac_grey,40%);
+}
+
+section#product div.product_information label input[type="radio"] {
+	display: none;
+}
+
+section#product div.product_information label input[type="radio"]:checked ~ span {
+	background-color: @color_ac_orange;
+	box-shadow: 0px 0px 0px 2px @color_ac_orange;
+}
+
+div#related_items {
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+div#related_items div.item {
+	border: none;
+	position: relative;
+}
+
+div#related_items div.item:hover span {
+	border: 2px solid @color_ac_orange;
+}
+
+div#related_items div.item label {
+	display: inline-block;
+	background-color: @color_ac_text;
+	transition: all 0.3s;
+}
+
+div#related_items div.item label img {
+	margin-bottom: 10px;
+	padding: 5px;
+	border: 2px solid @color_ac_grey;
+	transition: all 0.3s;
+}
+
+div#related_items div.item label span:before {
+	content: "";
+	display: block;
+	background-image: url(../images/checkmark.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 15px 15px;
+	width: 20px;
+	height: 20px;
+	opacity: 0;
+	transition: all 0.3s;
+}
+
+div#related_items div.item label input[type="checkbox"] {
+	display: none;
+}
+
+div#related_items div.item label input[type="checkbox"]:checked ~ span {
+	opacity: 1;
+	border: 2px solid @color_ac_orange;
+}
+
+div#related_items div.item label input[type="checkbox"]:checked ~ span:before {
+	opacity: 1;
+}
+
+div#related_items div.item p.price {
+	color: @color_ac_orange;
+	font-weight: 700;
+}
+
+div#related_items div.item p.name {
+	color: @color_text;
+}
+
+//  contact page
+
+section#contact h2 {
+	padding-bottom: 10px;
+	text-align: center;
+	color: @color_ac_medium_green;
+	border-bottom: 1px solid @color_ac_medium_green;
+}
+
+section#contact figure {
+	display: block;
+	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+}
+
+section#contact figure img {
+	width: 100%;
+}
+
+div#information_details {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+}
+
+div#information_details  a.facebook,
+div#information_details address,
+div#information_details div {
+	display: block;
+	text-align: left;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+body.rtl div#information_details  a.facebook,
+body.rtl div#information_details address,
+body.rtl div#information_details div {
+	text-align: right;
+}
+
+div#information_details address p,
+div#information_details div p {
+	display: inline-block;
+	vertical-align: middle;
+	width: 80%;
+	font-style: normal;
+}
+
+div#information_details div a {
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+	margin-right: 10px;
+	color: @color_text;
+	transition: all 0.3s;
+}
+
+div#information_details div a:hover {
+	color: @color_ac_orange;
+}
+
+body.rtl div#information_details div a {
+	margin-right: 0px;
+	margin-left: 10px;
+}
+
+div#information_details a.facebook {
+	text-decoration: none;
+	font-weight: 700;
+	color: @color_text;
+	transition: all 0.3s;
+}
+
+div#information_details a.facebook:hover {
+	color: @color_ac_medium_green;
+}
+
+div#information_details div p span {
+	display: block;
+}
+
+div#information_details a.facebook svg,
+div#information_details address svg,
+div#information_details div svg {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 10px;
+	width: 40px;
+	height: 40px;
+	fill: @color_ac_medium_green;	
+}
+
+div#information_details a.facebook svg {
+	fill: #34495e;
+}
+
+body.rtl div#information_details a.facebook svg,
+body.rtl div#information_details address svg,
+body.rtl div#information_details div svg {
+	padding-left: 10px;
+	padding-right: 0px;
+}
+
+div#information_details article {
+	border-top: 1px solid @color_ac_medium_green;
+}
+
+
+div#form_customers,
+div#form_business,
+div#form_wrap {
+	display: block;
+}
+
+div#form_customers,
+div#form_business {
+	border: 1px solid @color_ac_grey;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	width: 95%;
+}
+
+div#form_customers p,
+div#form_business p,
+div#form_wrap p {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 1.75em;
+	font-weight: 700;
+	text-align: center;
+	color: @color_ac_medium_green;
+}
+
+div#form_customers p,
+div#form_business p {
+	margin: 0px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	font-weight: 400;
+	color: @color_ac_text;
+	background-color: @color_ac_medium_green
+}
+
+div#form_customers form,
+div#form_business form,
+div#form_wrap form {
+	display: block;
+}
+
+div#form_wrap form {
+	padding-bottom: 20px;
+}
+
+div#form_customers form label,
+div#form_business form label,
+div#form_wrap form label {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	position: relative;
+}
+
+div#form_customers form label:before,
+div#form_business form label:before,
+div#form_wrap form label:before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 0px;
+	background-image: url(../images/icon-sprite.svg);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	background-size: 422px 32px;
+	width: 32px;
+	height: 32px;
+}
+
+div#form_business form label:first-of-type:before,
+div#form_customers form label:first-of-type:before,
+div#form_wrap form label:first-of-type:before {
+	background-position: -2px 0px;
+}
+
+div#form_business form label:nth-of-type(2):before,
+div#form_customers form label:nth-of-type(2):before,
+div#form_wrap form label:nth-of-type(2):before {
+	background-position: -32px 0px;
+}
+
+div#form_business form label:nth-of-type(3):before,
+div#form_customers form label:nth-of-type(3):before,
+div#form_wrap form label:nth-of-type(3):before {
+	background-position: -62px 0px;
+}
+
+div#form_wrap form label:nth-of-type(4):before {
+	background-position: -362px 0px;
+}
+
+body.rtl div#form_business form label:before,
+body.rtl div#form_customers form label:before,
+body.rtl div#form_wrap form label:before {
+	right: 0px;
+}
+
+div#form_wrap form label:last-of-type {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+div#form_business form label span,
+div#form_customers form label span,
+div#form_wrap form label span {
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	vertical-align: bottom;
+	padding-left: 35px;
+	text-align: left;
+}
+
+body.rtl div#form_business form label span,
+body.rtl div#form_customers form label span ,
+body.rtl div#form_wrap form label span {
+	padding-left: 0px;
+	padding-right: 35px;
+	text-align: right;
+}
+
+div#form_business form label input,
+div#form_customers form label input,
+div#form_wrap form label textarea,
+div#form_wrap form label input {
+	display: inline-block;
+	vertical-align: bottom;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	border: 1px solid @color_ac_medium_green;
+	width: calc(~'(100% - 5px)');
+	transition: all 0.3s;
+}
+
+div#form_business form label input:hover,
+div#form_customers form label input:hover,
+div#form_wrap form label textarea:hover,
+div#form_wrap form label input:hover {
+	border: 1px solid @color_ac_orange;
+}
+
+div#form_wrap form label textarea {
+	height: 30px;
+	width: calc(~'(94% - 5px)');
+}
+
+body.rtl div#form_business form label input,
+body.rtl div#form_customers form label input,
+body.rtl div#form_wrap form label textarea,
+body.rtl div#form_wrap form label input {
+	padding-left: 0px;
+	padding-right: 5px;
+}
+
+div#form_customers form div.controls,
+div#form_business form div.controls,
+div#form_wrap form div.controls {
+	display: block;
+	text-align: center;
+}
+
+div#form_customers form div.controls,
+div#form_business form div.controls {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+
+div#form_customers form div.controls button,
+div#form_business form div.controls button,
+div#form_wrap form div.controls button {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-decoration: none;
+	border: none;
+	color: @color_ac_text;
+	background-color: @color_ac_medium_green;
+	font-weight: 700;
+	position: relative;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+div#form_customers form div.controls button:hover,
+div#form_business form div.controls button:hover,
+div#form_wrap form div.controls button:hover {
+	background-color: @color_ac_orange;
+}
