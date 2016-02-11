@@ -6,6 +6,7 @@
 		<head>
 			<title><cms:text constant="site_title"/></title>
 			<cms:module name="shop" action="include_cart_scripts"/>
+			<cms:collection include="page_control"/>
 			<cms:collection include="communicator"/>
 			<cms:module name="head_tag" action="print_tag"/>
 		</head>
@@ -62,128 +63,258 @@
 						group="mobile_header_links"
 						template="parts/slider_image.xml"
 						/>
+					<div class="controls">
+						
+					</div>	
 				</section>
 			</cms:mobile>
+			
+			<cms:desktop>
+				<section id="news">
+					<div class="news_container">
+						<span>
+							<svg>
+								<use
+									href="#speaker"
+									xlink:href="site/images/site-sprite.svg#speaker"
+									/>
+							</svg>
+							<cms:text constant="title_button_updates"/>
+						</span>
 
-			<section id="news">
-				<div class="news_container">
-					<span>
-						<svg>
-							<use
-								href="#speaker"
-								xlink:href="site/images/site-sprite.svg#speaker"
+						<ul id="news_list">
+							<cms:module
+								name="news"
+								action="show_list"
+								group="news"
+								template="parts/news_article.xml"
 								/>
-						</svg>
-						<cms:text constant="title_button_updates"/>
-					</span>
+						</ul>
+					</div>	
 
-					<ul id="news_list">
-						<cms:module
-							name="news"
-							action="show_list"
-							group="news"
-							template="parts/news_article.xml"
-							/>
-					</ul>
-				</div>	
+				</section>
 
-			</section>
+				<section id="special_categories">
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="best_seller"
+						template="parts/special_category_template.xml"
+						/>
 
-			<section id="special_categories">
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="best_seller"
-					template="parts/special_category_template.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="thank_you"
+						template="parts/special_category_template.xml"
+						/>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="thank_you"
-					template="parts/special_category_template.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="treat"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="love"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="celebration"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="baby"
+						template="parts/special_category_template.xml"
+						/>	
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="combination"
+						template="parts/special_category_template.xml"
+						/>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="treat"
-					template="parts/special_category_template.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="condolences"
+						template="parts/special_category_template.xml"
+						/>
+
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="ballons"
+						template="parts/special_category_template.xml"
+						/>
+
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="chocolate"
+						template="parts/special_category_template.xml"
+						/>		
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="special_events"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="prosperity"
+						template="parts/special_category_template.xml"
+						/>				
 					
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="love"
-					template="parts/special_category_template.xml"
-					/>
-					
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="celebration"
-					template="parts/special_category_template.xml"
-					/>
-					
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="baby"
-					template="parts/special_category_template.xml"
-					/>	
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="combination"
-					template="parts/special_category_template.xml"
-					/>
+				</section>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="condolences"
-					template="parts/special_category_template.xml"
-					/>
+				<section id="promoted_category">
+					<cms:module
+						name="shop"
+						action="show_item_list"
+						category="promoted"
+						template="parts/category_items_template.xml"
+						/>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="ballons"
-					template="parts/special_category_template.xml"
-					/>
+				</section>
+			</cms:desktop>
+			
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="chocolate"
-					template="parts/special_category_template.xml"
-					/>		
-					
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="special_events"
-					template="parts/special_category_template.xml"
-					/>
-					
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="prosperity"
-					template="parts/special_category_template.xml"
-					/>				
+			<cms:mobile>
+
+				<section id="promoted_category">
+					<cms:module
+						name="shop"
+						action="show_item_list"
+						category="promoted"
+						template="parts/category_items_template.xml"
+						/>
+
+				</section>
+
+				<section id="news">
+					<div class="news_container">
+						<span>
+							<svg>
+								<use
+									href="#speaker"
+									xlink:href="site/images/site-sprite.svg#speaker"
+									/>
+							</svg>
+							<cms:text constant="title_button_updates"/>
+						</span>
+
+						<ul id="news_list">
+							<cms:module
+								name="news"
+								action="show_list"
+								group="news"
+								template="parts/news_article.xml"
+								/>
+						</ul>
+					</div>	
+
+				</section>
+
 				
-			</section>
+				<section id="special_categories">
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="best_seller"
+						template="parts/special_category_template.xml"
+						/>
 
-			<section id="promoted_category">
-				<cms:module
-					name="shop"
-					action="show_item_list"
-					category="promoted"
-					template="parts/category_items_template.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="thank_you"
+						template="parts/special_category_template.xml"
+						/>
 
-			</section>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="treat"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="love"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="celebration"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="baby"
+						template="parts/special_category_template.xml"
+						/>	
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="combination"
+						template="parts/special_category_template.xml"
+						/>
+
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="condolences"
+						template="parts/special_category_template.xml"
+						/>
+
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="ballons"
+						template="parts/special_category_template.xml"
+						/>
+
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="chocolate"
+						template="parts/special_category_template.xml"
+						/>		
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="special_events"
+						template="parts/special_category_template.xml"
+						/>
+						
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="prosperity"
+						template="parts/special_category_template.xml"
+						/>				
+					
+				</section>
+			</cms:mobile>
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
 		</body>
