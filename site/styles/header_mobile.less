@@ -91,3 +91,49 @@ header div.mobile_title a.cart svg {
 	height: 30px;
 	fill: @color_text;
 }
+
+header nav.mobile_menu {
+	top: 63px !important;
+	overflow-y: scroll;
+}
+
+header nav.mobile_menu.visible {
+	width: 100%;
+	right: auto;
+}
+
+header nav.mobile_menu ul {
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 50px;
+	list-style-type: none;
+}
+
+header nav.mobile_menu ul li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid @color_ac_grey;
+}
+
+header nav.mobile_menu ul li a.login,
+header nav.mobile_menu ul li a.sign-up {
+	color: @color_ac_orange;
+}
+
+header nav.mobile_menu ul li.phone p,
+header nav.mobile_menu ul li.language_menu p {
+	margin: 0px;
+	padding-top: 5px;
+	font-weight: 700;
+}
+
+header nav.mobile_menu ul li.phone a,
+header nav.mobile_menu ul li.language_menu a {
+	display: inline-block;
+	vertical-align: top;
+	font-weight: 400;
+}
+
+header nav.mobile_menu ul li a {
+	font-weight: 700;
+}
