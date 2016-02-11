@@ -1,6 +1,18 @@
 <document>
-	<figure>
-		<img src="$params['image']" alt="$params['title'][$language]" cms:eval="src,alt"/>
-		<figcaption><cms:var param="title" multilanguage="yes"/></figcaption>
-	</figure>
+	<cms:desktop>
+		<figure>
+			<img src="$params['image']" alt="$params['title'][$language]" cms:eval="src,alt"/>
+			<figcaption><cms:var param="title" multilanguage="yes"/></figcaption>
+		</figure>
+	</cms:desktop>
+
+	<cms:mobile>
+		<a 
+			href="$params['url']" 
+			style="'background-image: url('.$params['image'].');'"
+			cms:eval="href,style"
+			>
+			<cms:markdown param="description"/>	
+		</a>
+	</cms:mobile>
 </document>
