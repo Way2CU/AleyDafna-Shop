@@ -59,7 +59,10 @@
 						cms:eval="related,category"
 						/>
 				</div>
-			</section>		
+				<cms:desktop>
+					<cms:template file="parts/banners.xml"/>
+				</cms:desktop>
+			</section>
 
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
