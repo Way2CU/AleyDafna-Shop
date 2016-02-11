@@ -20,37 +20,50 @@
 				<cms:template file="parts/mobile_header.xml"/>
 			</cms:mobile>
 
-			<section id="slider">
-				<div class="banner_container">
-					<cms:template file="parts/banners.xml"/>
-				</div>
+			<cms:desktop>
+				<section id="slider">
+					<div class="banner_container">
+						<cms:template file="parts/banners.xml"/>
+					</div>
 
-				<div class="header_slider">
-					<a href="javascript:void(0)" class="previous">
-						<svg>
-							<use
-								href="#arrow"
-								xlink:href="site/images/site-sprite.svg#arrow"
-								/>
-						</svg>
-					</a>
+					<div class="header_slider">
+						<a href="javascript:void(0)" class="previous">
+							<svg>
+								<use
+									href="#arrow"
+									xlink:href="site/images/site-sprite.svg#arrow"
+									/>
+							</svg>
+						</a>
+						<cms:module
+							name="gallery"
+							action="show_image_list"
+							group="header_gallery"
+							template="parts/slider_image.xml"
+							/>
+						<a href="javascript:void(0)" class="next">
+							<svg>
+								<use
+									href="#arrow"
+									xlink:href="site/images/site-sprite.svg#arrow"
+									/>
+							</svg>
+						</a>	
+					</div>
+				</section>
+			</cms:desktop>
+
+			<!-- Mobile slider -->
+			<cms:mobile>
+				<section id="slider">
 					<cms:module
-						name="gallery"
-						action="show_image_list"
-						group="header_gallery"
+						name="links"
+						action="show_link_list"
+						group="mobile_header_links"
 						template="parts/slider_image.xml"
 						/>
-					<a href="javascript:void(0)" class="next">
-						<svg>
-							<use
-								href="#arrow"
-								xlink:href="site/images/site-sprite.svg#arrow"
-								/>
-						</svg>
-					</a>	
-				</div>
-
-			</section>
+				</section>
+			</cms:mobile>
 
 			<section id="news">
 				<div class="news_container">
