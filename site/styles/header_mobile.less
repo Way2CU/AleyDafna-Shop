@@ -79,14 +79,19 @@ header div.mobile_title a.menu:after {
 	transition: all 0.3s;
 }
 
-header div.mobile_title a.cart {
- 	position: absolute;
- 	top: 50%;
- 	margin-top: -15px;
- 	right: 10px;
+div#popup {
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+	right: 10px;
 }
 
-header div.mobile_title a.cart svg {
+div#popup a.cart {
+	display: inline-block;
+	
+}
+
+div#popup a.cart svg {
 	width: 30px;
 	height: 30px;
 	fill: @color_text;
