@@ -2,6 +2,15 @@
 	<div class="product_information" data-id="$params['uid']" cms:eval="data-id">
 		<h2><cms:var param="name" multilanguage="yes"/></h2>
 
+		<cms:mobile>
+			<figure>
+				<img 
+					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)" 
+					alt="$params['title'][$language]"  
+					cms:eval="src,alt"/>
+			</figure>
+		</cms:mobile>
+
 		<cms:markdown param="description" multilanguage="yes"/>
 
 		<!-- Product sizes -->
@@ -34,12 +43,14 @@
 		</a>	
 
 	</div>
-
-	<figure>
-		<img 
-			src="gallery::getGroupThumbnailById($params['gallery'], null, 350,Thumbnail::CONSTRAIN_BOTH)" 
-			alt="$params['title'][$language]"  
-			cms:eval="src,alt"/>
-	</figure>
+	
+	<cms:desktop>
+		<figure>
+			<img 
+				src="gallery::getGroupThumbnailById($params['gallery'], null, 350,Thumbnail::CONSTRAIN_BOTH)" 
+				alt="$params['title'][$language]"  
+				cms:eval="src,alt"/>
+		</figure>
+	</cms:desktop>
 
 </document>
