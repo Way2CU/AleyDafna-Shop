@@ -16,7 +16,13 @@
 
 		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
 			<!-- Header -->
-			<cms:template file="parts/header.xml"/>
+			<cms:desktop>
+				<cms:template file="parts/header.xml"/>
+			</cms:desktop>
+
+			<cms:mobile>
+				<cms:template file="parts/mobile_header.xml"/>
+			</cms:mobile>
 
 			<section id="about">
 				<article>
