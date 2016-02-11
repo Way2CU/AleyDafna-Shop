@@ -18,5 +18,115 @@
 			</a>
 
 		</div>
+
+		<nav class="mobile_menu">
+			<ul>	
+				<cms:guest>
+					<li><a class="sign-up" href="#"><cms:text constant="menu_signup"/></a></li>
+					<li><a class="login" href="#"><cms:text constant="menu_login"/></a></li>
+				</cms:guest>
+
+				<cms:user>
+					<li>
+						<a
+							class="control_panel"
+							href="url_Make('', 'user')"
+							cms:eval="href"
+							>
+							<cms:text constant="menu_account"/>
+						</a>
+					</li>
+					<li><a class="logout" href="#"><cms:text constant="menu_logout"/></a></li>
+				</cms:user>
+
+				<li class="language_menu">
+					<p><cms:text constant="title_nav_lang"/></p>
+					<cms:module
+						name="language_menu"
+						action="print"
+						/>
+				</li>
+
+				<li class='phone'>
+					<p><cms:text constant="label_phone"/></p>
+
+					<a
+						href="'tel:'.urlencode(Language::getText('phone'))"
+						cms:eval="href"
+						class="phone"
+						>
+						<cms:text constant="phone"/>
+					</a>
+
+					<a
+						href="'tel:'.urlencode(Language::getText('phone2'))"
+						cms:eval="href"
+						class="phone"
+						>
+						<cms:text constant="phone2"/>
+					</a>
+				</li>	
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="flowers"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="plants"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="artificial"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="additional_products"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="sales"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<li>
+					<a
+						class="$section == 'about' ? 'active' : false"
+						href="url_Make('', 'about')"
+						cms:eval="href"
+						cms:optional="class"
+						>
+						<cms:text constant="menu_about"/>
+					</a>
+				</li>
+				<cms:template file="parts/about_sub_list_menu.xml"/>
+
+
+				<li>
+					<a
+						class="$section == 'contact-us' ? 'active' : false"
+						href="url_Make('', 'contact-us')"
+						cms:eval="href"
+						cms:optional="class"
+						>
+						<cms:text constant="menu_contact"/>
+					</a>	
+				</li>
+				<cms:template file="parts/contact_sub_list_menu.xml"/>			
+			</ul>
+		</nav>
 	</header>
 </document>
