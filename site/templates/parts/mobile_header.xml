@@ -8,14 +8,16 @@
 				<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>
 			</a>
 			
-			<a href="javascript:void(0)" class="cart">
-				<svg>
-					<use
-						href="#basket"
-						xlink:href="site/images/site-sprite.svg#basket"
-						/>
-				</svg>
-			</a>
+			<div id="popup">
+				<a href="javascript:void(0)" class="cart">
+					<svg>
+						<use
+							href="#basket"
+							xlink:href="site/images/site-sprite.svg#basket"
+							/>
+					</svg>
+				</a>
+			</div>
 
 		</div>
 
