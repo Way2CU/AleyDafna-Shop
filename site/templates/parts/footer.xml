@@ -12,70 +12,72 @@
 				</cms:module>	
 			</ul>
 		</section>
+		
+		<cms:desktop>
+			<nav id="footer_nav">
+				<ul>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="flowers"
+						template="parts/category_list_menu.xml"
+						/>
 
-		<nav id="footer_nav">
-			<ul>
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="flowers"
-					template="parts/category_list_menu.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="plants"
+						template="parts/category_list_menu.xml"
+						/>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="plants"
-					template="parts/category_list_menu.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="artificial"
+						template="parts/category_list_menu.xml"
+						/>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="artificial"
-					template="parts/category_list_menu.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="additional_products"
+						template="parts/category_list_menu.xml"
+						/>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="additional_products"
-					template="parts/category_list_menu.xml"
-					/>
+					<cms:module
+						name="shop"
+						action="show_category"
+						text_id="sales"
+						template="parts/category_list_menu.xml"
+						/>
 
-				<cms:module
-					name="shop"
-					action="show_category"
-					text_id="sales"
-					template="parts/category_list_menu.xml"
-					/>
+					<li class="sub-menu">
+						<a
+							class="$section == 'about' ? 'active' : false"
+							href="url_Make('', 'about')"
+							cms:eval="href"
+							cms:optional="class"
+							>
+							<cms:text constant="menu_about"/>
+						</a>
+						<ul class="drop">					
+							<cms:template file="parts/about_sub_list_menu.xml"/>
+						</ul>
+					</li>
 
-				<li class="sub-menu">
-					<a
-						class="$section == 'about' ? 'active' : false"
-						href="url_Make('', 'about')"
-						cms:eval="href"
-						cms:optional="class"
-						>
-						<cms:text constant="menu_about"/>
-					</a>
-					<ul class="drop">					
-						<cms:template file="parts/about_sub_list_menu.xml"/>
-					</ul>
-				</li>
-
-				<li>
-					<a
-						class="$section == 'contact_us' ? 'active' : false"
-						href="url_Make('', 'contact')"
-						cms:eval="href"
-						cms:optional="class"
-						>
-						<cms:text constant="menu_contact"/>
-					</a>					
-				</li>								
-			</ul>
-		</nav>
+					<li>
+						<a
+							class="$section == 'contact_us' ? 'active' : false"
+							href="url_Make('', 'contact')"
+							cms:eval="href"
+							cms:optional="class"
+							>
+							<cms:text constant="menu_contact"/>
+						</a>					
+					</li>								
+				</ul>
+			</nav>
+		</cms:desktop>
 
 		<section id="information">
 			<div>
