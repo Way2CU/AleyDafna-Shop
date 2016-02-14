@@ -1159,10 +1159,14 @@ Site.on_load = function() {
 		Site.mobile_slider = new PageControl('section#slider', 'a');
 		Site.mobile_slider
 			.attachControls('section#slider div.controls a');	
+
+		var button_mobile_cart = $('div.mobile_title a.cart');
+		var cart_mobile = $('div#popup div.cart');
+		button_mobile_cart.on('click', function() {
+			cart_mobile.toggleClass('open');
+		})
+
 	}
-
-
-
 
 	/*Function inserting item to cart*/
 	function insertToCart() {
