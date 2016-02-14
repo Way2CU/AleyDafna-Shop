@@ -17,8 +17,8 @@
 							/>
 					</svg>
 				</a>
+				<cms:template file="stock/cart.xml"/>
 			</div>
-
 		</div>
 
 		<nav class="mobile_menu">
