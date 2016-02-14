@@ -7,7 +7,7 @@
 			<title>
 				<cms:text constant="site_title"/>
 				<cms:raw text=" - "/>
-				<cms:text constant="checkout"/>
+				<cms:text constant="title_checkout"/>
 			</title>
 
 			<cms:collection include="dialog"/>
