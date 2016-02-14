@@ -83,18 +83,21 @@ div#popup {
 	position: absolute;
 	top: 50%;
 	margin-top: -15px;
-	right: 10px;
+	right: 10px;	
 }
 
 div#popup a.cart {
 	display: inline-block;
-	
 }
 
-div#popup a.cart svg {
+div#popup  a.cart svg {
 	width: 30px;
 	height: 30px;
 	fill: @color_text;
+}
+
+div#popup.show  a.cart svg {
+	fill: @color_ac_orange;
 }
 
 header nav.mobile_menu {
@@ -144,3 +147,95 @@ header nav.mobile_menu ul li.language_menu a {
 header nav.mobile_menu ul li a {
 	font-weight: 700;
 }
+
+//  mobile shopping cart
+header div.cart {
+	position: fixed;
+	top: 63px;
+	right: -100%;
+	width: 100%;
+	z-index: 100;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+	background-color: white;
+	transition: all 0.6s;
+}
+
+header div.cart.open {
+	right: 0%;
+}
+
+div.cart ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	min-height: 250px;
+}
+
+div.cart ul li strong {
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-align: center;
+	width: 50px;
+	color: @color_ac_text;
+	font-size: 0.8em;
+}
+
+div.cart ul li.titles {
+	background-color: @color_ac_medium_green;
+}
+
+div.cart div.total p,
+div.cart div.total strong,
+div.cart ul li.item img,
+div.cart ul li.item a,
+div.cart ul li.item span {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	width: 50px;
+	color: @color_text;
+	font-size: 0.8em;
+}
+
+div.cart ul li.item a.remove {
+	background-image: url(../images/remove.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 15px 15px;
+	width: 50px;
+	height: 15px;
+}
+
+div.cart div.total p,
+div.cart div.total strong {
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: @color_text;
+}
+
+div.cart div.total a.checkout {
+	display: block;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 10px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-decoration: none;
+	background-color: @color_ac_medium_green;
+	color: @color_ac_text;
+	font-weight: 700;
+	transition: all 0.3s;
+}
+
+body.rtl div.cart div.total a.checkout {
+	left: 10px;
+	right: auto;
+}
+
+div.cart div.total a.checkout:hover {
+	background-color: @color_ac_orange;
+}
+
