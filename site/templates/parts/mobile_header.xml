@@ -17,6 +17,7 @@
 							/>
 					</svg>
 				</a>
+				<span class="items"></span>
 				<cms:template file="stock/cart.xml"/>
 			</div>
 		</div>
