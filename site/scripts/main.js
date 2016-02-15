@@ -140,6 +140,11 @@ function QuickFilter(container, categories, item) {
 		* 
 		*/
 		self._handle_category_toggle = function() {
+			var item = $(this).parent();
+			item.addClass('active');
+			self.checkbox_container.find('label').not(item).removeClass('active');
+
+			// self.checkbox_container.not(item).parent().removeClass('active');
 			var items = new Array();
 			var category = $(this).data('id');
 
