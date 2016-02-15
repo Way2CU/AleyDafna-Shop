@@ -213,7 +213,7 @@ div.cart ul li.titles {
 div.cart div.total p,
 div.cart div.total strong,
 div.cart ul li.item img,
-div.cart ul li.item a,
+div.cart ul li.item div.controls,
 div.cart ul li.item span {
 	display: inline-block;
 	vertical-align: middle;
@@ -223,13 +223,39 @@ div.cart ul li.item span {
 	font-size: 0.8em;
 }
 
-div.cart ul li.item a.remove {
-	background-image: url(../images/remove.svg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 15px 15px;
-	width: 50px;
-	height: 15px;
+div.cart ul li.item div.controls {
+	text-align: center;
+}
+
+div.cart ul li.item div a {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	background-color: @color_ac_grey;
+}
+
+div.cart ul li.item div a:last-of-type {
+	margin-bottom: 5px;
+}
+
+div.cart ul li.item div a svg {
+	display: inline-block;
+	vertical-align: middle;
+	width: 10px;
+	height: 10px;
+	fill: black;
+}
+
+div.cart ul li.item div a.remove {
+	background-color: @color_ac_orange;
+}
+
+div.cart ul li.item div a.remove svg {
+	fill: @color_ac_text;
 }
 
 div.cart div.total p,
@@ -240,11 +266,15 @@ div.cart div.total strong {
 	color: @color_text;
 }
 
+div.cart div.total {
+	background-color: @color_ac_grey;
+	padding-bottom: 10px;
+}
+
 div.cart div.total a.checkout {
 	display: block;
 	margin-left: 50px;
 	margin-right: 50px;
-	margin-bottom: 10px;
 	padding-top: 8px;
 	padding-bottom: 8px;
 	text-decoration: none;
