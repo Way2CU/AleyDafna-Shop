@@ -1039,22 +1039,6 @@ Site.ItemView = function(item) {
 		self.container.addClass('item');
 
 		// create labels
-		self.image = $('<img>').appendTo(self.container);
-
-		self.label_name = $('<span>').appendTo(self.container);	
-		self.label_name.addClass('name');
-
-		self.label_size = $('<span>').appendTo(self.container);
-		self.label_size.addClass('size');
-
-		self.label_count = $('<span>').appendTo(self.container);
-		self.label_count.addClass('count');
-
-		self.label_total = $('<span>').appendTo(self.container);
-		self.label_total
-				.addClass('total')
-				.attr('data-currency', self.currency);
-
 		self.options_control = $('<div>').appendTo(self.container);
 		self.options_control.attr('class','controls');
 
@@ -1080,7 +1064,23 @@ Site.ItemView = function(item) {
 				.html('<svg><use href="#close" xlink:href="site/images/site-sprite.svg#close"/></svg>')
 				.attr('href', 'javascript: void(0)')
 				.attr('class','remove')
-				.on('click', self._handle_remove);							
+				.on('click', self._handle_remove);
+				
+		self.image = $('<img>').appendTo(self.container);
+
+		self.label_name = $('<span>').appendTo(self.container);	
+		self.label_name.addClass('name');
+
+		self.label_size = $('<span>').appendTo(self.container);
+		self.label_size.addClass('size');
+
+		self.label_count = $('<span>').appendTo(self.container);
+		self.label_count.addClass('count');
+
+		self.label_total = $('<span>').appendTo(self.container);
+		self.label_total
+				.addClass('total')
+				.attr('data-currency', self.currency);							
 					
 	};
 
