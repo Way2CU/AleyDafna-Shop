@@ -65,16 +65,19 @@
 						</ul>
 					</li>
 
-					<li>
+					<li class="sub-menu">
 						<a
-							class="$section == 'contact_us' ? 'active' : false"
-							href="url_Make('', 'contact')"
+							class="$section == 'contact-us' ? 'active' : false"
+							href="url_Make('', 'contact-us')"
 							cms:eval="href"
 							cms:optional="class"
 							>
 							<cms:text constant="menu_contact"/>
-						</a>					
-					</li>								
+						</a>	
+						<ul class="drop">					
+							<cms:template file="parts/contact_sub_list_menu.xml"/>
+						</ul>
+					</li>							
 				</ul>
 			</nav>
 		</cms:desktop>
