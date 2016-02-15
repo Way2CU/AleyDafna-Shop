@@ -1018,6 +1018,7 @@ Site.ItemView = function(item) {
 	self.label_count = null;
 	self.label_total = null;
 	self.option_remove = null;
+	self.controls = {};
 
 
 	/**
@@ -1048,23 +1049,34 @@ Site.ItemView = function(item) {
 		self.label_total
 				.addClass('total')
 				.attr('data-currency', self.currency);
-		
-		self.option_remove = $('<a>').appendTo(self.container);
-		self.option_remove
+
+		self.options_control = $('<div>').appendTo(self.container);
+		self.options_control.attr('class','controls');
+
+		self.option_add = $('<a>').appendTo(self.options_control);
+		self.option_add
+				.html('<svg><use href="#plus" xlink:href="site/images/site-sprite.svg#plus"/></svg>')
 				.attr('href', 'javascript: void(0);')
+				.data('direction', 1)
+				.addClass('alter increase')
+				.on('click', self.controls.handle_alter);
+				
+
+		self.option_minus = $('<a>').appendTo(self.options_control);
+		self.option_minus
+				.html('<svg><use href="#minus" xlink:href="site/images/site-sprite.svg#minus"/></svg>')
+				.attr('href', 'javascript: void(0);')
+				.data('direction', -1)
+				.addClass('alter decrease')
+				.on('click', self.controls.handle_alter);
+
+		self.option_remove = $('<a>').appendTo(self.options_control);
+		self.option_remove
+				.html('<svg><use href="#close" xlink:href="site/images/site-sprite.svg#close"/></svg>')
+				.attr('href', 'javascript: void(0)')
 				.attr('class','remove')
-				.on('click', self._handle_remove);
-
-	};
-
-	/**
-	 * Handle clicking on remove item.
-	 *
-	 * @param object event
-	 */
-	self._handle_remove = function(event) {
-		event.preventDefault();
-		self.item.remove();
+				.on('click', self._handle_remove);							
+					
 	};
 
 	/**
@@ -1084,6 +1096,35 @@ Site.ItemView = function(item) {
 		self.label_total
 			.text((self.item.count * self.item.price * self.exchange_rate + " " + language_handler.getText(null, 'price1')))
 			.attr('data-currency', self.currency);
+
+		self.option_add.attr('data-uid',self.item.uid);
+		self.option_minus.attr('data-uid',self.item.uid);		
+	};
+
+	/**
+	 * Handle clicking on remove item.
+	 *
+	 * @param object event
+	 */
+	self._handle_remove = function(event) {
+		event.preventDefault();
+		self.item.remove();
+	};
+
+	/**
+	 * Handle increasing or decreasing item count.
+	 *
+	 * @param object event
+	 */
+	self.controls.handle_alter = function(event) {
+		var item = $(this);
+		var direction = item.data('direction');
+
+		// prevent default button behavior
+		event.preventDefault();
+
+		// alter item count
+		self.item.alter_count(direction);
 	};
 
 
@@ -1112,6 +1153,29 @@ Site.ItemView = function(item) {
 	// finalize object
 	self._init();
 }
+
+/**
+ * Function which handles altering item amount on page.
+ *
+ * @param object event
+ */
+Site.alter_item_count = function(event) {
+	var control = $(this);
+	var difference = control.hasClass('increase') ? 1 : -1;
+	var uid = control.data('uid');
+
+	// get item with specified unique id
+	var item = Site.cart.get_item_by_uid(uid);
+
+	if (item == null && difference > 0) {
+		// create new item
+		Site.cart.add_item_by_uid(uid);
+
+	} else {
+		item.remove();		
+	}
+};
+
 
 /**
  * Function called when document and images have been completely loaded.
@@ -1207,6 +1271,9 @@ Site.on_load = function() {
 
 	var button_add = $('a.add');
 	button_add.on('click',insertToCart);
+
+	// connect increase and decrease controls
+	$('div.cart div.controls a.alter').on('click', Site.alter_item_count);
 };
 
 
