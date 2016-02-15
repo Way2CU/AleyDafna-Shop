@@ -1127,7 +1127,6 @@ Site.ItemView = function(item) {
 		self.item.alter_count(direction);
 	};
 
-
 	/**
 	 * Handle shopping cart currency change.
 	 *
