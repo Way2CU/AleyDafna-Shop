@@ -208,8 +208,24 @@ section#slider  div.header_slider a {
 	top: 0px;
 	left: 0px;
 	height: 100%;
+	width: 50px;
 	z-index: 1;
 	background-color: fade(@color_text,30%);
+}
+
+section#slider  div.header_slider a:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+	margin-left: -12.5px;
+	left: 50%;
+	width: 30px;
+	height: 30px;
+	border: 5px solid @color_ac_text;
+	transform: rotate(-45deg);
+	border-right: none;
+	border-bottom: none;
 }
 
 section#slider  div.header_slider a:hover svg {
@@ -221,21 +237,18 @@ section#slider  div.header_slider a.previous {
 	right: 0px;
 }
 
-section#slider a svg {
-	position: relative;
+section#slider  div.header_slider a.previous:before {
+	content: "";
+	position: absolute;
 	top: 50%;
-	margin-top: -25px;
-	width: 50px;
-	height: 50px;
-	fill: @color_ac_text;
-	transition: all 0.3s;
-}
-
-section#slider a.previous svg use {
-	-webkit-transform-origin: inherit;
-	-webkit-transform: rotate(180deg); 
-	transform-origin: inherit;
-	transform: rotate(180deg); 
+	margin-top: -15px;
+	margin-left: -22.5px;
+	left: 50%;
+	width: 30px;
+	height: 30px;
+	border: 5px solid @color_ac_text;
+	border-left: none;
+	border-top: none;
 }
 
 section#slider div.header_slider figure {
