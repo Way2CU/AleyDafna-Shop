@@ -398,6 +398,25 @@ div.product_information a {
 	text-decoration: none;
 }
 
+div.product_information a.add:hover {
+	background-color: lighten(@color_ac_orange,10%);
+}
+
+div.product_information a.checkout {
+	border: 1px solid @color_ac_orange;
+	background-color: @color_ac_text;
+	color: @color_ac_orange;
+}
+
+div.product_information a.checkout svg {
+	fill: @color_ac_orange;
+}
+
+div.product_information a.checkout:hover {
+	background-color: darken(@color_ac_text,10%);
+	
+}
+
 div.product_information a svg,
 section#news span svg {
 	display: inline-block;
@@ -411,10 +430,6 @@ section#news span svg {
 div.product_information a svg {
 	width: 40px;
 	height: 40px;
-	fill: @color_ac_text;
-}
-
-div.product_information a.checkout svg  {
 	fill: @color_ac_text;
 }
 
