@@ -28,28 +28,14 @@
 					</div>
 
 					<div class="header_slider">
-						<a href="javascript:void(0)" class="previous">
-							<svg>
-								<use
-									href="#arrow"
-									xlink:href="site/images/site-sprite.svg#arrow"
-									/>
-							</svg>
-						</a>
+						<a href="javascript:void(0)" class="previous"></a>
 						<cms:module
 							name="gallery"
 							action="show_image_list"
 							group="header_gallery"
 							template="parts/slider_image.xml"
 							/>
-						<a href="javascript:void(0)" class="next">
-							<svg>
-								<use
-									href="#arrow"
-									xlink:href="site/images/site-sprite.svg#arrow"
-									/>
-							</svg>
-						</a>	
+						<a href="javascript:void(0)" class="next"></a>	
 					</div>
 				</section>
 			</cms:desktop>
