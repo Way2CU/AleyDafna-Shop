@@ -213,6 +213,10 @@ section#slider  div.header_slider a {
 	background-color: fade(@color_text,30%);
 }
 
+section#slider  div.header_slider a:hover:before {
+	border-color: @color_ac_orange;
+}
+
 section#slider  div.header_slider a:before {
 	content: "";
 	position: absolute;
@@ -226,15 +230,16 @@ section#slider  div.header_slider a:before {
 	transform: rotate(-45deg);
 	border-right: none;
 	border-bottom: none;
-}
-
-section#slider  div.header_slider a:hover svg {
-	fill: @color_ac_orange;
+	transition: all 0.3s;
 }
 
 section#slider  div.header_slider a.previous {
 	left: auto;
 	right: 0px;
+}
+
+section#slider  div.header_slider a.previous:hover:before {
+	border-color: @color_ac_orange;
 }
 
 section#slider  div.header_slider a.previous:before {
@@ -249,6 +254,7 @@ section#slider  div.header_slider a.previous:before {
 	border: 5px solid @color_ac_text;
 	border-left: none;
 	border-top: none;
+	transition: all 0.3s;
 }
 
 section#slider div.header_slider figure {
