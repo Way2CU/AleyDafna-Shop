@@ -45,12 +45,12 @@ Site.is_mobile = function() {
 	return result;
 };
 
-/* 
+/*
  *  Object for filtering shop items
- *  @param object container 
- *  @param object categories 
+ *  @param object container
+ *  @param object categories
  *  @param object item
- */ 
+ */
 function QuickFilter(container, categories, item) {
 	var self = this;
 
@@ -71,7 +71,7 @@ function QuickFilter(container, categories, item) {
 		//  create container for unique list items
 		self.unique_list_container = $('<div id="unique">');
 		self.container.append(self.unique_list_container);
-		
+
 		  //create unique items list
 		var items = self.categories.find(self.item);
 		items.each(function(index,value) {
@@ -137,7 +137,7 @@ function QuickFilter(container, categories, item) {
 
 		/**
 		* Show filtered items
-		* 
+		*
 		*/
 		self._handle_category_toggle = function() {
 			var item = $(this).parent();
@@ -166,12 +166,12 @@ function QuickFilter(container, categories, item) {
 
 				// check item membership
 				if (item_categories.indexOf(category.toString()) >= 0) {
-					item.removeClass('hidden'); 
-					items.push(item);	
+					item.removeClass('hidden');
+					items.push(item);
 				} else {
 					item.addClass('hidden');
 				}
-	
+
 			}
 
 			self._handle_container_height(items.length, item.outerHeight());
@@ -1049,7 +1049,7 @@ Site.ItemView = function(item) {
 				.data('direction', 1)
 				.addClass('alter increase')
 				.on('click', self.controls.handle_alter);
-				
+
 
 		self.option_minus = $('<a>').appendTo(self.options_control);
 		self.option_minus
@@ -1065,10 +1065,10 @@ Site.ItemView = function(item) {
 				.attr('href', 'javascript: void(0)')
 				.attr('class','remove')
 				.on('click', self._handle_remove);
-				
+
 		self.image = $('<img>').appendTo(self.container);
 
-		self.label_name = $('<span>').appendTo(self.container);	
+		self.label_name = $('<span>').appendTo(self.container);
 		self.label_name.addClass('name');
 
 		self.label_size = $('<span>').appendTo(self.container);
@@ -1080,8 +1080,8 @@ Site.ItemView = function(item) {
 		self.label_total = $('<span>').appendTo(self.container);
 		self.label_total
 				.addClass('total')
-				.attr('data-currency', self.currency);							
-					
+				.attr('data-currency', self.currency);
+
 	};
 
 	/**
@@ -1103,7 +1103,7 @@ Site.ItemView = function(item) {
 			.attr('data-currency', self.currency);
 
 		self.option_add.attr('data-uid',self.item.uid);
-		self.option_minus.attr('data-uid',self.item.uid);		
+		self.option_minus.attr('data-uid',self.item.uid);
 	};
 
 	/**
@@ -1176,7 +1176,7 @@ Site.alter_item_count = function(event) {
 		Site.cart.add_item_by_uid(uid);
 
 	} else {
-		item.remove();		
+		item.remove();
 	}
 };
 
@@ -1210,7 +1210,7 @@ Site.on_load = function() {
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 
-	// function for displaying mobile slider 
+	// function for displaying mobile slider
 
 	if (Site.is_mobile()) {
 
@@ -1226,7 +1226,7 @@ Site.on_load = function() {
 
 		Site.mobile_slider = new PageControl('section#slider', 'a');
 		Site.mobile_slider
-			.attachControls('section#slider div.controls a');	
+			.attachControls('section#slider div.controls a');
 
 		//  create function for opening mobile shopping cart
 		var button_mobile_cart = $('div.mobile_title a.cart');
