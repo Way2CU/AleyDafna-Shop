@@ -729,7 +729,7 @@ div#checkboxes label,
 section#product div.product_information label {
 	display: inline-block;
 	vertical-align: bottom;
-	padding-bottom: 35px;
+	padding-bottom: 30px;
 	text-align: center;
 	border-bottom: 1px solid @color_ac_grey;
 	width: 180px;
@@ -768,16 +768,23 @@ div#checkboxes label  span {
 	color: @color_ac_text;
 }
 
-section#product div.product_information label  figure {
+section#product div.product_information label figure {
 	display: block;
 	margin: 0px;
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid @color_ac_grey;
-	width: 150px;
-	height: 150px;
+	width: 160px;
+	height: 160px;
 	position: relative;
 	transition: all 0.3s;
+}
+
+section#product div.product_information label figure:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
 }
 
 div#related_items div.item:hover img,
@@ -793,37 +800,51 @@ section#product div.product_information label:hover span {
 	box-shadow: 0px 0px 0px 2px @color_ac_orange;
 }
 
-section#product div.product_information label figure:before {
-	content: '';
-	display: inline-block;
-	vertical-align: middle;
-	width: 0px;
-	height: 100%;
+section#product div.product_information label p.price {
+	color: @color_ac_orange;
+	font-weight: 700;
 }
 
-section#product div.product_information label  figure img {
+section#product div.product_information label p.name {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+section#product div.product_information label span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	border: 2px solid @color_ac_text;
+	box-shadow: 0px 0px 0px 2px darken(@color_ac_grey,40%);
+	border-radius: 50%;
+	transition: all 0.3s;
+}
+
+section#product div.product_information label figure img {
 	display: inline-block;
 	vertical-align: middle;
 	border-bottom: none;
 }
 
-section#product div.product_information label:first-of-type  figure img{
+section#product div.product_information label.regular  figure img{
 	width: 80px;
 	height: 80px;
 }
 
-section#product div.product_information label:nth-of-type(2)  figure img{
+section#product div.product_information label.medium  figure img{
 	width: 100px;
 	height: 100px;
 }
 
-section#product div.product_information label:last-of-type  figure img{
+section#product div.product_information label.big  figure img{
 	width: 120px;
 	height: 120px;
 }
 
-div#related_items div.item label span,
-section#product div.product_information label span {
+div#related_items div.item label span {
 	position: absolute;
 	bottom: 5px;
 	left: 50%;
