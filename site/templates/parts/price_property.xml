@@ -1,0 +1,20 @@
+<document>
+	<label class="substr($params['text_id'], 8)"  for="$params['name'][$language]" cms:eval="for,class">
+		<figure>
+			<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
+		</figure>
+		<p class="price"><cms:var param="value" /></p>
+
+		<p class="name"><cms:var param="name" multilanguage="yes"/></p>
+
+		<input 
+			type="radio" 
+			name="size" 
+			data-text_id="$params['text_id']"
+			id="$params['name'][$language]"
+			value="$params['value']"
+			cms:eval="value,id,data-text_id"
+			/> 
+		<span></span>	
+	</label>
+</document>
