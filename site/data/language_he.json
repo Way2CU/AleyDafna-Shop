@@ -60,6 +60,7 @@
     "label_password_recovery": "שכחת סיסמה?",
     "label_remember_me":"זכור אותי",
     "label_repeat_password": "הקלד סיסמה שנית",
+    "label_regular": "יפה",
     "login": "כניסת משתמש",
     "login_dialog_message": "הזינו את שם המשתמש והסיסמא שלך למטה. הסיסמה היא תלויית רישיות.",
     "login_dialog_title": "כניסת משתמש",
