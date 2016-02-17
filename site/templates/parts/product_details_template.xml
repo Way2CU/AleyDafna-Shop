@@ -16,7 +16,7 @@
 		<!-- Product sizes -->
 		<p><strong><cms:text constant="title_sizes"/></strong></p>
 
-		<label class="regular"  for="$params['name'][$language]" cms:eval="for">
+		<label class="regular"  for="Language::getText('label_regular')" cms:eval="for">
 			<figure>
 				<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
 			</figure>
@@ -29,9 +29,9 @@
 				type="radio" 
 				name="size"
 				checked="checked" 
-				id="$params['name'][$language]"
+				id="Language::getText('label_regular')"
 				value="$params['price']"
-				cms:eval="value,id"
+				cms:eval="value,id,name"
 				/> 
 			<span></span>	
 		</label>
@@ -76,7 +76,10 @@
 				src="gallery::getGroupThumbnailById($params['gallery'], null, 350,Thumbnail::CONSTRAIN_BOTH)" 
 				alt="$params['title'][$language]"  
 				cms:eval="src,alt"/>
+			<p class="selected_name"><cms:text constant="label_regular"/></p>
+			<p class="selected_price"><cms:var param="price" /></p>	
 		</figure>
+
 	</cms:desktop>
 
 </document>
