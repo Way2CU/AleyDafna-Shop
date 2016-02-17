@@ -16,11 +16,37 @@
 		<!-- Product sizes -->
 		<p><strong><cms:text constant="title_sizes"/></strong></p>
 
-		<cms:value_list
-			definition="$params['size_definition']"
-			template="parts/sizes.xml"
-			cms:eval="definition"
+		<label class="regular"  for="$params['name'][$language]" cms:eval="for">
+			<figure>
+				<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
+			</figure>
+
+			<p class="price"><cms:var param="price" /></p>
+
+			<p class="name"><cms:text constant="label_regular"/></p>
+
+			<input 
+				type="radio" 
+				name="size"
+				checked="checked" 
+				id="$params['name'][$language]"
+				value="$params['price']"
+				cms:eval="value,id"
+				/> 
+			<span></span>	
+		</label>
+
+		<cms:module 
+			name="shop" 
+			action="show_property_list" 
+			item="$params['id']" 
+			starts_with="price_"
+			sort_by="text_id"
+			cms:eval="item"
+			template="parts/price_property.xml"
 			/>
+
+		<br/>	
 			
 		<a href="javascript:void(0)" class="add">
 			<cms:text constant="title_button_add"/>
