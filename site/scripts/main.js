@@ -1013,6 +1013,7 @@ Site.ItemView = function(item) {
 	var self = this;
 
 	self.item = item;
+	console.log(self.item);
 	self.cart = item.cart;
 	self.currency = null;
 	self.exchange_rate = 1;
@@ -1024,6 +1025,7 @@ Site.ItemView = function(item) {
 	self.label_total = null;
 	self.option_remove = null;
 	self.controls = {};
+	
 
 
 	/**
@@ -1099,7 +1101,7 @@ Site.ItemView = function(item) {
 			.text( self.item.count + " " + language_handler.getText(null, 'unit'));
 
 		self.label_total
-			.text((self.item.count * self.item.price * self.exchange_rate + " " + language_handler.getText(null, 'price1')))
+			.text(((self.item.count * self.item.price * self.exchange_rate).toFixed(2) + " " + language_handler.getText(null, 'price1')))
 			.attr('data-currency', self.currency);
 
 		self.option_add.attr('data-uid',self.item.uid);
@@ -1241,6 +1243,7 @@ Site.on_load = function() {
 	/*Function inserting item to cart*/
 	function insertToCart() {
 		var uid = $('div.product_information').data('id');
+		var checked = $('div.product_information label input:checked').data('text_id');
 		var list = Site.cart.get_item_list_by_uid(uid);
 		var cart = $('div#popup');
 
@@ -1251,27 +1254,22 @@ Site.on_load = function() {
 			cart.removeClass('show');
 		},2000);
 
-		for (var i=0, count=item_list.length; i<count; i++) {
-			var item = item_list[i];
-
-			if (item.uid) {
-				found_item = item;
-				// inserted_item_message(item);
-				break;
-			}
-		}
-
-			if (found_item == null) {
-				// add new item;
-				Site.cart.add_item_by_uid(uid);
-				cart.addClass('show');
-
-			} else {
-				// increase count
-				found_item.alter_count(1);
-				cart.addClass('show');
-			}
+		Site.cart.add_item_by_uid(uid, {property_price:checked}, checked);
+		
 	}
+
+	var input_elements = $('section#product div.product_information label input[type="radio"]');
+	var figure_size = $('p.selected_name');
+	var figure_price = $('p.selected_price');
+	
+	// function displaying product price and name according to checked element
+	input_elements.on('click', function() {
+		var item = $(this);
+		var price = item.attr('value');
+		var name = item.attr('id');
+		figure_size.html(name);
+		figure_price.html(price);
+	})
 
 	var button_add = $('a.add');
 	button_add.on('click',insertToCart);
