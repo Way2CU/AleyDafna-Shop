@@ -877,13 +877,30 @@ section#product div.product_information label input[type="radio"]:checked ~ span
 	box-shadow: 0px 0px 0px 2px @color_ac_orange;
 }
 
-section#product  figure {
+section#product figure {
 	text-align: center;
 }
 
-section#product  figure img {
+section#product figure img {
 	padding: 10px;
+}
+
+section#product figure p.selected_price,
+section#product figure p.selected_name {
+	margin: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 60%;
+	font-size: 1.5em;
+	font-weight: 700;
 	border-bottom: 1px solid @color_ac_grey;
+}
+
+section#product figure p.selected_price {
+	color: @color_ac_orange;
+	border-bottom: none;
 }
 
 /*related items*/
