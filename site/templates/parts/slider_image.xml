@@ -12,7 +12,7 @@
 			style="'background-image: url('.$params['image'].');'"
 			cms:eval="href,style"
 			>
-			<cms:markdown param="description"/>	
+			<cms:markdown param="description" multilanguage="yes"/>	
 		</a>
 	</cms:mobile>
 </document>
