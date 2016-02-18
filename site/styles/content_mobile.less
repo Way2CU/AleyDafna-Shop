@@ -617,29 +617,51 @@ section#product div.product_information label figure:before {
 	height: 100%;
 }
 
+section#product div.product_information label p.price {
+	color: @color_ac_orange;
+	font-weight: 700;
+}
+
+section#product div.product_information label p.name {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+section#product div.product_information label span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	border: 2px solid @color_ac_text;
+	box-shadow: 0px 0px 0px 2px darken(@color_ac_grey,40%);
+	border-radius: 50%;
+	transition: all 0.3s;
+}
+
 section#product div.product_information label  figure img {
 	display: inline-block;
 	vertical-align: middle;
 	border-bottom: none;
 }
 
-section#product div.product_information label:first-of-type  figure img{
+section#product div.product_information label.regular figure img{
 	width: 30px;
 	height: 30px;
 }
 
-section#product div.product_information label:nth-of-type(2)  figure img{
+section#product div.product_information label.medium figure img{
 	width: 50px;
 	height: 50px;
 }
 
-section#product div.product_information label:last-of-type  figure img{
+section#product div.product_information label.big figure img{
 	width: 70px;
 	height: 70px;
 }
 
-div#related_items div.item label span,
-section#product div.product_information label span {
+div#related_items div.item label span {
 	position: absolute;
 	bottom: 5px;
 	left: 50%;
