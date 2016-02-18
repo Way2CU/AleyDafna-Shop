@@ -1013,7 +1013,6 @@ Site.ItemView = function(item) {
 	var self = this;
 
 	self.item = item;
-	console.log(self.item);
 	self.cart = item.cart;
 	self.currency = null;
 	self.exchange_rate = 1;
@@ -1212,8 +1211,15 @@ Site.on_load = function() {
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 
-	// function for displaying mobile slider
+	// function displaying home page slider
+	Site.slider = new PageControl('div.header_slider', 'figure');
+	Site.slider
+		.attachPreviousControl($('a.previous'))
+		.attachNextControl($('a.next'))
+		.setWrapAround(true);
 
+
+	// function for displaying mobile slider
 	if (Site.is_mobile()) {
 
 		// create controls for each slide
