@@ -24,22 +24,23 @@ class aley_dafna extends Module {
 		parent::__construct(__FILE__);
 
 		// register backend
-		if (class_exists('backend') && class_exists('shop')) {
+		if (class_exists('backend')) {
 			$backend = backend::getInstance();
 			$import_menu = $backend->getMenu('shop_import');
 
-			$import_menu->addChild(null, new backend_MenuItem(
-				$this->getLanguageConstant('menu_import_items'),
-				url_GetFromFilePath($this->path.'images/import.svg'),
-				window_Open( // on click open window
-					'shop_import_items',
-					350,
-					$this->getLanguageConstant('title_import_items'),
-					true, true,
-					backend_UrlMake($this->name, 'import')
-				),
-				5  // level
-			));
+			if (!is_null($import_menu))
+				$import_menu->addChild(null, new backend_MenuItem(
+					$this->getLanguageConstant('menu_import_items'),
+					url_GetFromFilePath($this->path.'images/import.svg'),
+					window_Open( // on click open window
+						'shop_import_items',
+						350,
+						$this->getLanguageConstant('title_import_items'),
+						true, true,
+						backend_UrlMake($this->name, 'import')
+					),
+					5  // level
+				));
 		}
 	}
 

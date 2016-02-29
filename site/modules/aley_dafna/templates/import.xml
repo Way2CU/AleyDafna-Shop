@@ -8,7 +8,7 @@
 		cms:eval="action"
 		>
 		<label>
-			<span><cms:text constant="label"/></span>
+			<span><cms:text constant="label_filename" module="aley_dafna"/></span>
 			<input type="file" name="name" style="width: 270px;" maxlength="30"/>
 		</label>
 		<div class="button_bar">

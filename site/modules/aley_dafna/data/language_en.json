@@ -1,5 +1,6 @@
 {
 	"import": "Import",
 	"menu_import_items": "Import items from file",
-	"title_import_items": "Shop: Import items from file"
+	"title_import_items": "Shop: Import items from file",
+	"label_filename": "File name:"
 }
