@@ -8,6 +8,10 @@
 		cms:eval="action"
 		>
 		<label>
+			<span><cms:text constant="label_number_to_import" module="aley_dafna"/></span>
+			<input type="number" name="number_to_import" style="width: 170px;"/>
+		</label>
+		<label>
 			<span><cms:text constant="label_filename" module="aley_dafna"/></span>
 			<input type="file" name="import" style="width: 270px;" maxlength="30"/>
 		</label>

@@ -206,6 +206,8 @@ class aley_dafna extends Module {
 
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
+		array_shift($csv_data);
+		$number_to_import = (isset($_REQUEST['number_to_import']) && !empty($_REQUEST['number_to_import'])) ? fix_id($_REQUEST['number_to_import']) : count($csv_data);
 
 		foreach ($csv_data as $row) {
 			// get item name and description
