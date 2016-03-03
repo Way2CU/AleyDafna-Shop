@@ -208,8 +208,13 @@ class aley_dafna extends Module {
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
 		array_shift($csv_data);
 		$number_to_import = (isset($_REQUEST['number_to_import']) && !empty($_REQUEST['number_to_import'])) ? fix_id($_REQUEST['number_to_import']) : count($csv_data);
+		$counter = 0;
 
 		foreach ($csv_data as $row) {
+			// make sure we are within our limits
+			if (++$counter > $number_to_import)
+				break;
+
 			// get item name and description
 			$item_name = array_fill(0, count($languages), '');
 			$item_name = array_combine($languages, $item_name);
