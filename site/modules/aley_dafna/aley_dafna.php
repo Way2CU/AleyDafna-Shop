@@ -122,8 +122,8 @@ class aley_dafna extends Module {
 		$handle = fopen($filename, 'r');
 
 		if ($handle) {
-			while (($row = fgetcsv($handle)) !== false)
-				$result[] = $row;
+			while (($line = fgets($handle)) !== false)
+				$result[] = explode("\t", $line);
 
 			fclose($handle);
 		}
@@ -212,7 +212,6 @@ class aley_dafna extends Module {
 		$number_to_import = (isset($_REQUEST['number_to_import']) && !empty($_REQUEST['number_to_import'])) ? fix_id($_REQUEST['number_to_import']) : count($csv_data);
 		$counter = 0;
 
-		define('SQL_DEBUG', 1);
 		foreach ($csv_data as $row) {
 			// make sure we are within our limits
 			if (++$counter > $number_to_import)
@@ -222,8 +221,8 @@ class aley_dafna extends Module {
 			$item_name = array_fill(0, count($languages), '');
 			$item_name = array_combine($languages, $item_name);
 			$item_description = $item_name;
-			$item_name[self::DEFAULT_LANGUAGE] = $db->escape_string($row[self::COL_NAME]);
-			$item_description[self::DEFAULT_LANGUAGE] = $db->escape_string($row[self::COL_DESCRIPTION]);
+			$item_name[self::DEFAULT_LANGUAGE] = $db->escape_string(trim($row[self::COL_NAME]));
+			$item_description[self::DEFAULT_LANGUAGE] = $db->escape_string(trim($row[self::COL_DESCRIPTION]));
 
 			// unpack price values
 			$prices = explode(',', $row[self::COL_PRICE]);
