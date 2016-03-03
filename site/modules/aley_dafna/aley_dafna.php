@@ -235,7 +235,7 @@ class aley_dafna extends Module {
 						'description'     => $item_description,
 						'price'           => count($prices) > 0 ? floatval($prices[0]) : 0
 					);
-				$item_manager->updateData($data, array('uid' => $uid));
+				$item_manager->updateData($data, array('id' => $existing_items[$uid]));
 
 			} else {
 				// prepare data
