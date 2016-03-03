@@ -220,7 +220,7 @@ class aley_dafna extends Module {
 			$price_names = explode(',', $row[self::COL_SIZE_LABELS]);
 
 			// generate uid and check if item exists in database
-			$uid = hash('sha256', 'item_'.$row[self::COL_ID])
+			$uid = hash('sha256', 'item_'.$row[self::COL_ID]);
 
 			if (array_key_exists($uid, $existing_items)) {
 				$data = array(
@@ -280,7 +280,7 @@ class aley_dafna extends Module {
 				}
 
 				// assign category membership
-				for ($i = COL_FIRST_CATEGORY; $i < count($row); $i++) {
+				for ($i = self::COL_FIRST_CATEGORY; $i < count($row); $i++) {
 					$category_name = $row[$i];
 					$category_id = $this->get_category_for_name($categories, $category_name);
 
