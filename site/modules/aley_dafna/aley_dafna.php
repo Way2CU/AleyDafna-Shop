@@ -16,15 +16,13 @@ class aley_dafna extends Module {
 	private static $_instance;
 
 	const DEFAULT_LANGUAGE = 'he';
-	const COL_NAME = 0;
-	const COL_DESCRIPTION = 1;
-	const COL_PRICE = 2;
-	const COL_IMAGE = 3;
-	const COL_SIZE_LABELS = 4;
-	const COL_CATEGORY_1 = 5;
-	const COL_CATEGORY_2 = 6;
-	const COL_CATEGORY_3 = 7;
-	const COL_CATEGORY_4 = 8;
+	const COL_ID = 0;
+	const COL_NAME = 1;
+	const COL_DESCRIPTION = 2;
+	const COL_PRICE = 3;
+	const COL_IMAGE = 4;
+	const COL_SIZE_LABELS = 5;
+	const COL_FIRST_CATEGORY = 6;
 
 	/**
 	 * Constructor
@@ -151,6 +149,36 @@ class aley_dafna extends Module {
 	}
 
 	/**
+	 * Get highest recommended category for specified name based on Levenshtein
+	 * distance algorithm. If distance is too big `null` will be returned.
+	 *
+	 * @param array $categories
+	 * @param string $name
+	 * @param integer $threshold
+	 * @return integer
+	 */
+	private function get_category_for_name(&$categories, $name, $threshold=8) {
+		$result = null;
+		$score = count($name) * 2;
+
+		// try to find matching category
+		foreach ($categories as $key => $category_name) {
+			$current_score = levenshtein($category_name, $name);
+
+			if ($current_score < $score) {
+				$score = $current_score;
+				$result = $key;
+			}
+		}
+
+		// make sure we don't return category above threshold
+		if ($score > $threshold)
+			$result = null;
+
+		return $result;
+	}
+
+	/**
 	 * Import items from uploaded file.
 	 */
 	private function import_from_file() {
@@ -160,6 +188,14 @@ class aley_dafna extends Module {
 		$category_manager = ShopCategoryManager::getInstance();
 		$property_manager = \Modules\Shop\Property\Manager::getInstance();
 		$membership_manager = \ShopItemMembershipManager::getInstance();
+
+		// load categories
+		$categories = array();
+		$raw_categories = $category_manager->getItems($category_manager->getFieldNames(), array());
+
+		if (count($raw_categories) > 0)
+			foreach ($raw_categories as $category)
+				$categories[$category->id] = $category->title[self::DEFAULT_LANGUAGE];
 
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
@@ -223,6 +259,18 @@ class aley_dafna extends Module {
 					// insert new price property
 					$property_manager->insertData($price_data);
 			   	}
+			}
+
+			// assign category membership
+			for ($i = COL_FIRST_CATEGORY; $i < count($row); $i++) {
+				$category_name = $row[$i];
+				$category_id = $this->get_category_for_name($categories, $category_name);
+
+				if (!is_null($category_id))
+					$membership_manager->insertData(array(
+						'category' => $category_id,
+						'item'     => $item_id
+					));
 			}
 		}
 
