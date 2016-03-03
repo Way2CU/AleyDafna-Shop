@@ -197,6 +197,13 @@ class aley_dafna extends Module {
 			foreach ($raw_categories as $category)
 				$categories[$category->id] = $category->title[self::DEFAULT_LANGUAGE];
 
+		// load existing items
+		$existing_items = array();
+		$items = $item_manager->getItems(array('id', 'uid'), array());
+
+		foreach ($items as $item)
+			$existing_items[$item->uid] = $item->id;
+
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
 
@@ -212,65 +219,77 @@ class aley_dafna extends Module {
 			$prices = explode(',', $row[self::COL_PRICE]);
 			$price_names = explode(',', $row[self::COL_SIZE_LABELS]);
 
-			// prepare data for insertion
-			$uid = '';
-			$data = array(
-					'name'            => $item_name,
-					'description'     => $item_description,
-					'price'           => count($prices) > 0 ? floatval($prices[0]) : 0,
-					'colors'          => '',
-					'tax'             => 0,
-					'weight'          => 0,
-					'manufacturer'    => 0,
-					'uid'             => $uid
-				);
+			// generate uid and check if item exists in database
+			$uid = hash('sha256', 'item_'.$row[self::COL_ID])
 
-			// store author of the uploaded item
-			$data['author'] = $_SESSION['uid'];
+			if (array_key_exists($uid, $existing_items)) {
+				$data = array(
+						'name'            => $item_name,
+						'description'     => $item_description,
+						'price'           => count($prices) > 0 ? floatval($prices[0]) : 0
+					);
+				$item_manager->updateData($data, array('uid' => $uid));
 
-			// create item gallery
-			$data['gallery'] = $gallery->createGallery($item_name);
+			} else {
+				// prepare data
+				$data = array(
+						'name'            => $item_name,
+						'description'     => $item_description,
+						'price'           => count($prices) > 0 ? floatval($prices[0]) : 0,
+						'colors'          => '',
+						'tax'             => 0,
+						'weight'          => 0,
+						'manufacturer'    => 0,
+						'uid'             => $uid
+					);
 
-			// add item to the database
-			$item_manager->insertData($data);
-			$item_id = $item_manager->getInsertedID();
+				// store author of the uploaded item
+				$data['author'] = $_SESSION['uid'];
 
-			// create price properties
-			if (count($prices) > 1) {
-				// generate default name
-				$price_name = array_fill(0, count($languages), '');
-				$price_name = array_combine($languages, $price_name);
+				// create item gallery
+				$data['gallery'] = $gallery->createGallery($item_name);
 
-				for ($i = 1; $i < count($prices); $i++) {
-					// set and reset specified name
-					if (isset($price_names[$i-1]))
-						$price_name[self::DEFAULT_LANGUAGE] = $price_names[$i-1]; else
-						$price_name[self::DEFAULT_LANGUAGE] = '';
+				// add item to the database
+				$item_manager->insertData($data);
+				$item_id = $item_manager->getInsertedID();
 
-					// prepare data for insertion
-					$price_data = array(
-							'item'    => $item_id,
-							'name'    => $price_name,
-							'text_id' => 'price_'.$i,
-							'type'    => 'decimal',
-							'value'   => serialize(floatval($prices[$i]))
-						);
+				// create price properties
+				if (count($prices) > 1) {
+					// generate default name
+					$price_name = array_fill(0, count($languages), '');
+					$price_name = array_combine($languages, $price_name);
 
-					// insert new price property
-					$property_manager->insertData($price_data);
-			   	}
-			}
+					for ($i = 1; $i < count($prices); $i++) {
+						// set and reset specified name
+						if (isset($price_names[$i-1]))
+							$price_name[self::DEFAULT_LANGUAGE] = $price_names[$i-1]; else
+							$price_name[self::DEFAULT_LANGUAGE] = '';
 
-			// assign category membership
-			for ($i = COL_FIRST_CATEGORY; $i < count($row); $i++) {
-				$category_name = $row[$i];
-				$category_id = $this->get_category_for_name($categories, $category_name);
+						// prepare data for insertion
+						$price_data = array(
+								'item'    => $item_id,
+								'name'    => $price_name,
+								'text_id' => 'price_'.$i,
+								'type'    => 'decimal',
+								'value'   => serialize(floatval($prices[$i]))
+							);
 
-				if (!is_null($category_id))
-					$membership_manager->insertData(array(
-						'category' => $category_id,
-						'item'     => $item_id
-					));
+						// insert new price property
+						$property_manager->insertData($price_data);
+					}
+				}
+
+				// assign category membership
+				for ($i = COL_FIRST_CATEGORY; $i < count($row); $i++) {
+					$category_name = $row[$i];
+					$category_id = $this->get_category_for_name($categories, $category_name);
+
+					if (!is_null($category_id))
+						$membership_manager->insertData(array(
+							'category' => $category_id,
+							'item'     => $item_id
+						));
+				}
 			}
 		}
 
