@@ -16,6 +16,8 @@ class aley_dafna extends Module {
 	private static $_instance;
 
 	const DEFAULT_LANGUAGE = 'he';
+	const DEFAULT_THRESHOLD = 10;
+
 	const COL_ID = 0;
 	const COL_NAME = 1;
 	const COL_DESCRIPTION = 2;
@@ -159,7 +161,7 @@ class aley_dafna extends Module {
 	 * @param integer $threshold
 	 * @return integer
 	 */
-	private function get_category_for_name(&$categories, $name, $threshold=8) {
+	private function get_category_for_name(&$categories, $name, $threshold) {
 		$result = null;
 		$score = count($name) * 2;
 
@@ -239,7 +241,8 @@ class aley_dafna extends Module {
 						'description'     => $item_description,
 						'price'           => count($prices) > 0 ? floatval($prices[0]) : 0
 					);
-				$item_manager->updateData($data, array('id' => $existing_items[$uid]));
+				$item_id = $existing_items[$uid];
+				$item_manager->updateData($data, array('id' => $item_id));
 
 			} else {
 				// prepare data
@@ -264,43 +267,55 @@ class aley_dafna extends Module {
 				$item_manager->insertData($data);
 				$item_id = $item_manager->getInsertedID();
 
-				// create price properties
-				if (count($prices) > 1) {
-					// generate default name
-					$price_name = array_fill(0, count($languages), '');
-					$price_name = array_combine($languages, $price_name);
+			}
 
-					for ($i = 1; $i < count($prices); $i++) {
-						// set and reset specified name
-						if (isset($price_names[$i-1]))
-							$price_name[self::DEFAULT_LANGUAGE] = $price_names[$i-1]; else
-							$price_name[self::DEFAULT_LANGUAGE] = '';
+			// remove existing prices
+			$property_manager->deleteData(array(
+					'item'          => $item_id,
+					'text_id'       => array(
+						'operation' => 'LIKE',
+						'value'     => 'price_%'
+					));
 
-						// prepare data for insertion
-						$price_data = array(
-								'item'    => $item_id,
-								'name'    => $price_name,
-								'text_id' => 'price_'.$i,
-								'type'    => 'decimal',
-								'value'   => serialize(floatval($prices[$i]))
-							);
+			// create price properties
+			if (count($prices) > 1) {
+				// generate default name
+				$price_name = array_fill(0, count($languages), '');
+				$price_name = array_combine($languages, $price_name);
 
-						// insert new price property
-						$property_manager->insertData($price_data);
-					}
+				for ($i = 1; $i < count($prices); $i++) {
+					// set and reset specified name
+					if (isset($price_names[$i-1]))
+						$price_name[self::DEFAULT_LANGUAGE] = $price_names[$i-1]; else
+						$price_name[self::DEFAULT_LANGUAGE] = '';
+
+					// prepare data for insertion
+					$price_data = array(
+							'item'    => $item_id,
+							'name'    => $price_name,
+							'text_id' => 'price_'.$i,
+							'type'    => 'decimal',
+							'value'   => serialize(floatval($prices[$i]))
+						);
+
+					// insert new price property
+					$property_manager->insertData($price_data);
 				}
+			}
 
-				// assign category membership
-				for ($i = self::COL_FIRST_CATEGORY; $i < count($row); $i++) {
-					$category_name = $row[$i];
-					$category_id = $this->get_category_for_name($categories, $category_name);
+			// remove existing category membership
+			$membership_manager->deleteData(array('item' => $item_id));
 
-					if (!is_null($category_id))
-						$membership_manager->insertData(array(
-							'category' => $category_id,
-							'item'     => $item_id
-						));
-				}
+			// assign category membership
+			for ($i = self::COL_FIRST_CATEGORY; $i < count($row); $i++) {
+				$category_name = $row[$i];
+				$category_id = $this->get_category_for_name($categories, $category_name, self::DEFAULT_THRESHOLD);
+
+				if (!is_null($category_id))
+					$membership_manager->insertData(array(
+						'category' => $category_id,
+						'item'     => $item_id
+					));
 			}
 		}
 
