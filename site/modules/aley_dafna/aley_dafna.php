@@ -233,7 +233,7 @@ class aley_dafna extends Module {
 			$price_names = explode(',', $row[self::COL_SIZE_LABELS]);
 
 			// generate uid and check if item exists in database
-			$uid = hash('sha256', 'item_'.$row[self::COL_ID];
+			$uid = hash('sha256', 'item_'.$row[self::COL_ID]);
 
 			if (array_key_exists($uid, $existing_items)) {
 				$data = array(
