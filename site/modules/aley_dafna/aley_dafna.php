@@ -275,7 +275,7 @@ class aley_dafna extends Module {
 					'text_id'       => array(
 						'operation' => 'LIKE',
 						'value'     => 'price_%'
-					));
+					)));
 
 			// create price properties
 			if (count($prices) > 1) {
