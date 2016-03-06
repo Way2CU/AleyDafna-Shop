@@ -368,9 +368,10 @@ class aley_dafna extends Module {
 			}
 
 			// upload images
-			$image_file = $row[self::COL_IMAGE];
+			$image_file = mb_strtolower($row[self::COL_IMAGE]);
 			$matched_file = $this->match_image_file($image_list, $image_file);
 
+			// we require a valid match
 			if (!is_null($matched_file)) {
 				$matched_hash = hash('md5', $matched_file);
 				$source_path = $site_path.'import/'.$matched_file;
@@ -378,7 +379,8 @@ class aley_dafna extends Module {
 				$destination_path = $site_path.'gallery/images/'.$destination_file;
 				$image_already_uploaded = !in_array($matched_hash, $existing_images[$gallery_id]);
 
-			   	if ($image_already_uploaded && rename($source_path, $destination_path) {
+				// only upload image if it wasn't uploaded already
+			   	if (!$image_already_uploaded && rename($source_path, $destination_path)) {
 					$gallery_manager->insertData(array(
 							'text_id'   => $matched_hash,
 							'size'      => filesize($source_path),
