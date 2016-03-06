@@ -26,6 +26,8 @@ class aley_dafna extends Module {
 	const COL_SIZE_LABELS = 5;
 	const COL_FIRST_CATEGORY = 6;
 
+	var $size_names = array('medium', 'big', 'extra-big', 'huge');
+
 	/**
 	 * Constructor
 	 */
@@ -163,7 +165,7 @@ class aley_dafna extends Module {
 	 */
 	private function get_category_for_name(&$categories, $name, $threshold) {
 		$result = null;
-		$score = count($name) * 2;
+		$score = mb_strlen($name) * 2;
 
 		// try to find matching category
 		foreach ($categories as $key => $category_name) {
@@ -273,8 +275,8 @@ class aley_dafna extends Module {
 			$property_manager->deleteData(array(
 					'item'          => $item_id,
 					'text_id'       => array(
-						'operation' => 'LIKE',
-						'value'     => 'price_%'
+						'operator' => 'LIKE',
+						'value'    => 'price_%'
 					)));
 
 			// create price properties
@@ -293,7 +295,7 @@ class aley_dafna extends Module {
 					$price_data = array(
 							'item'    => $item_id,
 							'name'    => $price_name,
-							'text_id' => 'price_'.$i,
+							'text_id' => 'price_'.$this->size_names[$i-1],
 							'type'    => 'decimal',
 							'value'   => serialize(floatval($prices[$i]))
 						);
