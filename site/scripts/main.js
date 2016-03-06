@@ -184,7 +184,7 @@ function QuickFilter(container, categories, item) {
 		*/
 		self._handle_container_height = function(items_counter, item_height) {
 			var num = Math.ceil(items_counter / 4);
-			var container_height = num * 256 + 40;
+			var container_height = num * 256+ 40;
 			self.unique_list_container.css('height', container_height );
 		}
 
