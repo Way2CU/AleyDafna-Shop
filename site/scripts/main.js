@@ -155,7 +155,6 @@ function QuickFilter(container, categories, item) {
 					items.push(item);
 				}
 
-				self._handle_container_height(items.length,self.items_list[uid].outerHeight());
 				return;
 			}
 
@@ -171,21 +170,7 @@ function QuickFilter(container, categories, item) {
 				} else {
 					item.addClass('hidden');
 				}
-
 			}
-
-			self._handle_container_height(items.length, item.outerHeight());
-		}
-
-		/**
-		* Show unique list container min-height
-		* @param int items_counter
-		* @param int item_height
-		*/
-		self._handle_container_height = function(items_counter, item_height) {
-			var num = Math.ceil(items_counter / 4);
-			var container_height = num * 256+ 40;
-			self.unique_list_container.css('height', container_height );
 		}
 
 	 // finalize object

@@ -170,10 +170,17 @@ section#about article h2 {
 	border-bottom: 1px solid @color_ac_medium_green;
 }
 
-section#category,
 section#promoted_category,
 section#special_categories {
 	text-align: center;
+}
+
+section#category {
+	text-align: left;
+}
+
+body.rtl section#category {
+	text-align: right;
 }
 
 section#news {
@@ -575,8 +582,9 @@ div#unique a.item {
 }
 
 div#unique a.item.hidden {
-	margin: 0px;
+	margin: -1px;
 	visibility: hidden;
+	height: 0px;
 	width: 0px;
 	transform: scale(0);
 	
