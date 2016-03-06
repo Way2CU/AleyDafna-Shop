@@ -170,7 +170,6 @@ function QuickFilter(container, categories, item) {
 				} else {
 					item.addClass('hidden');
 				}
-
 			}
 		}
 
