@@ -189,9 +189,10 @@ class aley_dafna extends Module {
 	 *
 	 * @param array $image_list
 	 * @param string $file_name
+	 * @param integer
 	 * @return string
 	 */
-	private function match_image_file(&$image_list, $file_name) {
+	private function match_image_file(&$image_list, $file_name, $threshold) {
 		$result = null;
 		$score = mb_strlen($file_name) * 2;
 
@@ -255,7 +256,8 @@ class aley_dafna extends Module {
 				$existing_images[$image->group][$image->id] = $image->text_id;
 			}
 
-		$image_list = scandir($site_path.'import/');
+		$image_list = scandir(_BASEPATH.'/'.$site_path.'import/');
+		error_log(var_export($image_list, true));
 
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
@@ -369,7 +371,7 @@ class aley_dafna extends Module {
 
 			// upload images
 			$image_file = mb_strtolower($row[self::COL_IMAGE]);
-			$matched_file = $this->match_image_file($image_list, $image_file);
+			$matched_file = $this->match_image_file($image_list, $image_file, 6);
 
 			// we require a valid match
 			if (!is_null($matched_file)) {
@@ -377,7 +379,7 @@ class aley_dafna extends Module {
 				$source_path = $site_path.'import/'.$matched_file;
 				$destination_file = hash('md5', $matched_file.strval(time())).'.'.pathinfo(strtolower($matched_file), PATHINFO_EXTENSION);
 				$destination_path = $site_path.'gallery/images/'.$destination_file;
-				$image_already_uploaded = !in_array($matched_hash, $existing_images[$gallery_id]);
+				$image_already_uploaded = array_key_exists($gallery_id, $existing_images) && !in_array($matched_hash, $existing_images[$gallery_id]);
 
 				// only upload image if it wasn't uploaded already
 			   	if (!$image_already_uploaded && rename($source_path, $destination_path)) {
@@ -387,7 +389,7 @@ class aley_dafna extends Module {
 							'filename'  => $destination_file,
 							'visible'   => 1,
 							'slideshow' => 0,
-							'protected' => 0,
+							'protected' => 0
 						));
 				}
 			}
