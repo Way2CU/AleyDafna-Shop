@@ -257,7 +257,6 @@ class aley_dafna extends Module {
 			}
 
 		$image_list = scandir(_BASEPATH.'/'.$site_path.'import/');
-		error_log(var_export($image_list, true));
 
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
@@ -376,16 +375,17 @@ class aley_dafna extends Module {
 			// we require a valid match
 			if (!is_null($matched_file)) {
 				$matched_hash = hash('md5', $matched_file);
-				$source_path = $site_path.'import/'.$matched_file;
+				$source_path = _BASEPATH.'/'.$site_path.'import/'.$matched_file;
 				$destination_file = hash('md5', $matched_file.strval(time())).'.'.pathinfo(strtolower($matched_file), PATHINFO_EXTENSION);
-				$destination_path = $site_path.'gallery/images/'.$destination_file;
+				$destination_path = _BASEPATH.'/'.$site_path.'gallery/images/'.$destination_file;
 				$image_already_uploaded = array_key_exists($gallery_id, $existing_images) && !in_array($matched_hash, $existing_images[$gallery_id]);
+				$file_size = filesize($source_path);
 
 				// only upload image if it wasn't uploaded already
-			   	if (!$image_already_uploaded && rename($source_path, $destination_path)) {
+			   	if (!$image_already_uploaded && copy($source_path, $destination_path)) {
 					$gallery_manager->insertData(array(
 							'text_id'   => $matched_hash,
-							'size'      => filesize($source_path),
+							'size'      => $file_size,
 							'filename'  => $destination_file,
 							'visible'   => 1,
 							'slideshow' => 0,
