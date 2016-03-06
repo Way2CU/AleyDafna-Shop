@@ -4,9 +4,9 @@
 
 		<cms:mobile>
 			<figure>
-				<img 
-					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)" 
-					alt="$params['title'][$language]"  
+				<img
+					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)"
+					alt="$params['title'][$language]"
 					cms:eval="src,alt"/>
 			</figure>
 		</cms:mobile>
@@ -16,38 +16,35 @@
 		<!-- Product sizes -->
 		<p><strong><cms:text constant="title_sizes"/></strong></p>
 
-		<label class="regular"  for="Language::getText('label_regular')" cms:eval="for">
+		<label class="regular">
 			<figure>
 				<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
 			</figure>
 
 			<p class="price"><cms:var param="price" /></p>
-
 			<p class="name"><cms:text constant="label_regular"/></p>
 
-			<input 
-				type="radio" 
+			<input
+				type="radio"
 				name="size"
-				checked="checked" 
-				id="Language::getText('label_regular')"
+				checked="checked"
 				value="$params['price']"
 				cms:eval="value,id,name"
-				/> 
-			<span></span>	
+				/>
+			<span/>
 		</label>
 
-		<cms:module 
-			name="shop" 
-			action="show_property_list" 
-			item="$params['id']" 
+		<cms:module
+			name="shop"
+			action="show_property_list"
+			item="$params['id']"
 			starts_with="price_"
-			sort_by="text_id"
+			sort_by="value"
 			cms:eval="item"
 			template="parts/price_property.xml"
 			/>
+		<br/>
 
-		<br/>	
-			
 		<a href="javascript:void(0)" class="add">
 			<cms:text constant="title_button_add"/>
 			<svg>
@@ -66,20 +63,17 @@
 					xlink:href="site/images/site-sprite.svg#cart-check"
 					/>
 			</svg>
-		</a>	
-
+		</a>
 	</div>
-	
+
 	<cms:desktop>
 		<figure>
-			<img 
-				src="gallery::getGroupThumbnailById($params['gallery'], null, 350,Thumbnail::CONSTRAIN_BOTH)" 
-				alt="$params['title'][$language]"  
+			<img
+				src="gallery::getGroupThumbnailById($params['gallery'], null, 350,Thumbnail::CONSTRAIN_BOTH)"
+				alt="$params['title'][$language]"
 				cms:eval="src,alt"/>
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
-			<p class="selected_price"><cms:var param="price" /></p>	
+			<p class="selected_price"><cms:var param="price" /></p>
 		</figure>
-
 	</cms:desktop>
-
 </document>
