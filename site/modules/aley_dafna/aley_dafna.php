@@ -185,12 +185,41 @@ class aley_dafna extends Module {
 	}
 
 	/**
+	 * Match image file against array of existing images and return real image.
+	 *
+	 * @param array $image_list
+	 * @param string $file_name
+	 * @return string
+	 */
+	private function match_image_file(&$image_list, $file_name) {
+		$result = null;
+		$score = mb_strlen($file_name) * 2;
+
+		// try to find matching category
+		foreach ($image_list as $real_file_name) {
+			$current_score = levenshtein($real_file_name, $file_name);
+
+			if ($current_score < $score) {
+				$score = $current_score;
+				$result = $real_file_name;
+			}
+		}
+
+		// make sure we don't return category above threshold
+		if ($score > $threshold)
+			$result = null;
+
+		return $result;
+	}
+
+	/**
 	 * Import items from uploaded file.
 	 */
 	private function import_from_file() {
-		global $db;
+		global $db, $site_path;
 
 		$gallery = gallery::getInstance();
+		$gallery_manager = GalleryManager::getInstance();
 		$languages = Language::getLanguages(false);
 		$item_manager = ShopItemManager::getInstance();
 		$category_manager = ShopCategoryManager::getInstance();
@@ -211,6 +240,22 @@ class aley_dafna extends Module {
 
 		foreach ($items as $item)
 			$existing_items[$item->uid] = $item->id;
+
+		// load existing images
+		$existing_images = array();
+		$images = $gallery_manager->getItems(array('group', 'text_id', 'id'), array());
+
+		if (count($images) > 0)
+			foreach ($images as $image) {
+				// make sure we have storage array
+				if (!array_key_exists($image->group, $existing_images))
+					$existing_images[$image->group] = array();
+
+				// add image to the list
+				$existing_images[$image->group][$image->id] = $image->text_id;
+			}
+
+		$image_list = scandir($site_path.'import/');
 
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
@@ -245,6 +290,7 @@ class aley_dafna extends Module {
 					);
 				$item_id = $existing_items[$uid];
 				$item_manager->updateData($data, array('id' => $item_id));
+				$gallery_id = $item_manager->getItemValue('gallery', array('id' => $item_id));
 
 			} else {
 				// prepare data
@@ -263,7 +309,8 @@ class aley_dafna extends Module {
 				$data['author'] = $_SESSION['uid'];
 
 				// create item gallery
-				$data['gallery'] = $gallery->createGallery($item_name);
+				$gallery_id = $gallery->createGallery($item_name);
+				$data['gallery'] = $gallery_id;
 
 				// add item to the database
 				$item_manager->insertData($data);
@@ -318,6 +365,29 @@ class aley_dafna extends Module {
 						'category' => $category_id,
 						'item'     => $item_id
 					));
+			}
+
+			// upload images
+			$image_file = $row[self::COL_IMAGE];
+			$matched_file = $this->match_image_file($image_list, $image_file);
+
+			if (!is_null($matched_file)) {
+				$matched_hash = hash('md5', $matched_file);
+				$source_path = $site_path.'import/'.$matched_file;
+				$destination_file = hash('md5', $matched_file.strval(time())).'.'.pathinfo(strtolower($matched_file), PATHINFO_EXTENSION);
+				$destination_path = $site_path.'gallery/images/'.$destination_file;
+				$image_already_uploaded = !in_array($matched_hash, $existing_images[$gallery_id]);
+
+			   	if ($image_already_uploaded && rename($source_path, $destination_path) {
+					$gallery_manager->insertData(array(
+							'text_id'   => $matched_hash,
+							'size'      => filesize($source_path),
+							'filename'  => $destination_file,
+							'visible'   => 1,
+							'slideshow' => 0,
+							'protected' => 0,
+						));
+				}
 			}
 		}
 
