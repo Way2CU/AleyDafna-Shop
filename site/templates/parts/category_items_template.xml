@@ -22,7 +22,7 @@
 			cms:eval="href,data-uid"
 			>
 
-			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_BOTH)" alt="$params['title'][$language]"  cms:eval="src,alt"/>
+			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['title'][$language]"  cms:eval="src,alt"/>
 			<p><cms:var param="name" multilanguage="yes"/></p>
 			<p><cms:var param="price"/></p>
 		</a>
