@@ -47,7 +47,14 @@
 						template="parts/category_name.xml"
 						cms:eval="id"
 						/>
-				</h2>	
+				</h2>
+
+				<cms:module
+						name="links"
+						action="show_link_list"
+						group="flowers"
+						template="parts/dynamic_banners.xml"
+						/>	
 				
 				<cms:module
 					name="shop"
