@@ -1167,81 +1167,6 @@ Site.alter_item_count = function(event) {
 };
 
 /**
- * Banners system object
- * 
- * @param object - elements
- * @param integer - counter
- * @param object -  container
- */
-
-// function BannersSystem(elements, counter, container) {
-// 	var self = this;
-
-// 	self.elements = elements;
-// 	self.counter = counter;
-// 	self.container = container;
-// 	self.banners_collection = [];
-
-// 	/*
-// 	 * Complete object initialization
-// 	 */
-// 	 self._init = function() {
-// 	 	// insert banners into array and remove banners from dom
-// 	 	self.elements.each(function(index, value) {
-// 	 		var element = $(this);
-// 	 		self.banners_collection.push(element);
-// 	 		element.remove();
-// 	 	});
-
-// 	 	self.container.prepend(self.banners_collection[0]);
-// 	 	// container.append(self.banners_collection.eq(1));
-
-// 	 	var products = self.container.find('a.item');
-
-// 	 	for(var i = 1; i <= products.length; i += self.counter) {
-// 	 		console.log(products[i]);
-// 	 		console.log(self.banners_collection[i]);
-// 	 		self.container.find();
-	 		
-// 	 	}
-
-// 	 }
-
-// 	 //  finalize object
-// 	 self._init()
-// }
-
-/**
- * PortraitImages object
- * @param object -  elements
- */
-function PortraitImages(elements) {
-	var self = $(this);
-
-	self.elements = elements;
-
-	/*
-	 * Complete object initialization
-	 */
-	 self._init = function() {
-	 	self.elements.each(function(index, value){
-	 		var item = $(this);
-	 		var image = self.elements.eq(index).find('img');
-	 		var width = image.innerWidth();
-	 		var height = image.innerHeight();
-	 		if( (height - width) > 0) {
-	 			item.addClass('portrait');
-	 		} 
-	 	});
-	 }
-
-	 //  finalize object
-	 self._init()
-}
-
-
-
-/**
  * Function called when document and images have been completely loaded.
  */
 Site.on_load = function() {
@@ -1269,9 +1194,6 @@ Site.on_load = function() {
 
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
-
-	// configure portrait images object
-	Site.portrait_images = new PortraitImages($('section#category a.item'));
 
 	// function displaying home page slider
 	Site.slider = new PageControl('div.header_slider', 'figure');
