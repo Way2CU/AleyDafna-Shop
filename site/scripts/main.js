@@ -1257,7 +1257,7 @@ Site.on_load = function() {
 	input_elements.on('click', function() {
 		var item = $(this);
 		var price = item.attr('value');
-		var name = item.attr('id');
+		var name = item.attr('name');
 		figure_size.html(name);
 		figure_price.html(price);
 	})
