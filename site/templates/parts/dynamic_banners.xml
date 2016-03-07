@@ -1,0 +1,5 @@
+<document>
+	<a class="banner" href="$params['url']" cms:eval="href">
+		
+	</a>
+</document>
