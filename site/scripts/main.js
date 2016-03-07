@@ -1272,9 +1272,6 @@ Site.on_load = function() {
 	// configure portrait images object
 	Site.portrait_images = new PortraitImages($('a.item'));
 
-	// configure banners system object 
-	Site.banners = new BannersSystem($('a.banner'), 12, $('div#unique'));
-
 	// function displaying home page slider
 	Site.slider = new PageControl('div.header_slider', 'figure');
 	Site.slider
