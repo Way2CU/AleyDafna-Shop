@@ -1271,7 +1271,7 @@ Site.on_load = function() {
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 
 	// configure portrait images object
-	Site.portrait_images = new PortraitImages($('a.item'));
+	Site.portrait_images = new PortraitImages($('section#category a.item'));
 
 	// function displaying home page slider
 	Site.slider = new PageControl('div.header_slider', 'figure');
