@@ -1,6 +1,6 @@
 <document>
 	<label
-		class="substr($params['text_id'], 8)"
+		class="substr($params['text_id'], 5)"
 		cms:eval="class"
 		>
 		<figure>
