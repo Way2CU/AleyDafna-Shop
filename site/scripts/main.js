@@ -1229,7 +1229,7 @@ function PortraitImages(elements) {
 	 		var image = self.elements.eq(index).find('img');
 	 		var width = image.innerWidth();
 	 		var height = image.innerHeight();
-	 		if( width < height) {
+	 		if( (height - width) > 0) {
 	 			item.addClass('portrait');
 	 		} 
 	 	});
