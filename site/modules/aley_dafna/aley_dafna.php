@@ -198,7 +198,8 @@ class aley_dafna extends Module {
 
 		// try to find matching category
 		foreach ($image_list as $real_file_name) {
-			$current_score = levenshtein($real_file_name, $file_name);
+			$name_to_match = pathinfo($real_file_name, PATHINFO_FILENAME);
+			$current_score = levenshtein($name_to_match, $file_name);
 
 			if ($current_score < $score) {
 				$score = $current_score;
