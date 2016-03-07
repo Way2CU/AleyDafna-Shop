@@ -15,7 +15,8 @@
 			name="size"
 			data-text_id="$params['text_id']"
 			value="$params['value']"
-			cms:eval="value,data-text_id"
+			id="$params['name'][$language]"
+			cms:eval="value,data-text_id,id"
 			/>
 		<span/>
 	</label>

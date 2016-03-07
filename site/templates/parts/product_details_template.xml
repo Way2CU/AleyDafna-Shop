@@ -27,9 +27,10 @@
 			<input
 				type="radio"
 				name="size"
+				id="Language::getText('label_regular')"
 				checked="checked"
 				value="$params['price']"
-				cms:eval="value,id,name"
+				cms:eval="value,id"
 				/>
 			<span/>
 		</label>
