@@ -1227,8 +1227,8 @@ function PortraitImages(elements) {
 	 	self.elements.each(function(index, value){
 	 		var item = $(this);
 	 		var image = self.elements.eq(index).find('img');
-	 		var width = image.width();
-	 		var height = image.height();
+	 		var width = image.innerWidth();
+	 		var height = image.innerHeight();
 	 		if( width < height) {
 	 			item.addClass('portrait');
 	 		} 
