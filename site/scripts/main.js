@@ -1225,11 +1225,12 @@ function PortraitImages(elements) {
 	 */
 	 self._init = function() {
 	 	self.elements.each(function(index, value){
+	 		var item = $(this);
 	 		var image = self.elements.eq(index).find('img');
 	 		var width = image.width();
 	 		var height = image.height();
 	 		if( width < height) {
-	 			$(this).addClass('portrait');
+	 			item.addClass('portrait');
 	 		} 
 	 	});
 	 }
