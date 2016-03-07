@@ -384,6 +384,7 @@ class aley_dafna extends Module {
 				// only upload image if it wasn't uploaded already
 			   	if (!$image_already_uploaded && copy($source_path, $destination_path)) {
 					$gallery_manager->insertData(array(
+							'group'     => $gallery_id,
 							'text_id'   => $matched_hash,
 							'size'      => $file_size,
 							'filename'  => $destination_file,
