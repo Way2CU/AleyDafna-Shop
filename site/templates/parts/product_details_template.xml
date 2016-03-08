@@ -21,7 +21,9 @@
 				<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
 			</figure>
 
-			<p class="price"><cms:var param="price" /></p>
+			<p class="price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
+				<cms:var param="price" />
+			</p>
 			<p class="name"><cms:text constant="label_regular"/></p>
 
 			<input
@@ -74,7 +76,9 @@
 				alt="$params['title'][$language]"
 				cms:eval="src,alt"/>
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
-			<p class="selected_price"><cms:var param="price" /></p>
+			<p class="selected_price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
+				<cms:var param="price" />
+			</p>
 		</figure>
 	</cms:desktop>
 </document>

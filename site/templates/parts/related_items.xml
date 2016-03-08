@@ -25,7 +25,7 @@
 			<span></span>		
 		</label>		
 
-		<p class="price">
+		<p class="price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
 			<cms:text constant="currency"/><cms:raw text=" "/><cms:var param="price"/>
 		</p>
 
