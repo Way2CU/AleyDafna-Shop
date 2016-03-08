@@ -39,10 +39,11 @@
 						template="parts/questions.xml"
 						/>
 				</article>
-			</section>	
+			</section>
 
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
+			
 		</body>
 	</html>
 </document>
