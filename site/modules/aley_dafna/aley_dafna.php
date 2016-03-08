@@ -194,22 +194,16 @@ class aley_dafna extends Module {
 	 */
 	private function match_image_file(&$image_list, $file_name, $threshold) {
 		$result = null;
-		$score = mb_strlen($file_name) * 2;
 
 		// try to find matching category
 		foreach ($image_list as $real_file_name) {
 			$name_to_match = pathinfo($real_file_name, PATHINFO_FILENAME);
-			$current_score = levenshtein($name_to_match, $file_name);
 
-			if ($current_score < $score) {
-				$score = $current_score;
+			if ($name_to_match == $file_name) {
 				$result = $real_file_name;
+				break;
 			}
 		}
-
-		// make sure we don't return category above threshold
-		if ($score > $threshold)
-			$result = null;
 
 		return $result;
 	}
@@ -261,7 +255,7 @@ class aley_dafna extends Module {
 
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
-		array_shift($csv_data);
+		array_shift($csv_data);  // remove header
 		$number_to_import = (isset($_REQUEST['number_to_import']) && !empty($_REQUEST['number_to_import'])) ? fix_id($_REQUEST['number_to_import']) : count($csv_data);
 		$counter = 0;
 
@@ -336,8 +330,8 @@ class aley_dafna extends Module {
 
 				for ($i = 1; $i < count($prices); $i++) {
 					// set and reset specified name
-					if (isset($price_names[$i-1]))
-						$price_name[self::DEFAULT_LANGUAGE] = $price_names[$i-1]; else
+					if (isset($price_names[$i]))
+						$price_name[self::DEFAULT_LANGUAGE] = $price_names[$i]; else
 						$price_name[self::DEFAULT_LANGUAGE] = '';
 
 					// prepare data for insertion
