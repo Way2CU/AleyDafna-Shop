@@ -1166,6 +1166,7 @@ Site.alter_item_count = function(event) {
 	}
 };
 
+ 
 /**
  * Function called when document and images have been completely loaded.
  */
