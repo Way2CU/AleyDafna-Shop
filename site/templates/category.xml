@@ -63,6 +63,8 @@
 					name="shop"
 					action="show_category_list"
 					parent_id="fix_id($_REQUEST['id'])"
+					order_by="text_id"
+					order_asc="0"
 					template="parts/category_list_template.xml"
 					cms:eval="parent_id"
 					/>

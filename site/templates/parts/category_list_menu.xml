@@ -10,6 +10,8 @@
 					<cms:children
 						parent_id="$params['id']"
 						template="parts/sub_menu_categories.xml"
+						order_by="text_id"
+						order_asc="0"
 						cms:eval="parent_id"
 						/>		
 				</ul>	
