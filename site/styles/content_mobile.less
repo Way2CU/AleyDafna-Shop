@@ -343,11 +343,11 @@ div#unique a.item {
 }
 
 div#unique a.item.hidden {
-	margin: 0px;
+	margin: -1px;
 	visibility: hidden;
+	height: 0px;
 	width: 0px;
-	transform: scale(0);
-	
+	transform: scale(0);		
 }
 
 div.item img,
@@ -361,6 +361,15 @@ div.item p,
 a.item p {
 	margin: 0px;
 	margin-bottom: 5px;
+}
+
+a.item p.price {
+	position: relative;
+}
+
+a.item p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 
@@ -620,6 +629,12 @@ section#product div.product_information label figure:before {
 section#product div.product_information label p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
+	position: relative;
+}
+
+section#product div.product_information label p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 section#product div.product_information label p.name {
@@ -752,6 +767,12 @@ div#related_items div.item label input[type="checkbox"]:checked ~ span:before {
 div#related_items div.item p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
+	position: relative;
+}
+
+div#related_items div.item p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 div#related_items div.item p.name {
