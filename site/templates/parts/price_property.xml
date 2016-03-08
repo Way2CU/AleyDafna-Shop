@@ -7,14 +7,14 @@
 			<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
 		</figure>
 
-		<p class="price"><cms:var param="value"/></p>
+		<p class="price"><cms:var name="number_format($params['value'], 2)"/></p>
 		<p class="name"><cms:var param="name" multilanguage="yes"/></p>
 
 		<input
 			type="radio"
 			name="size"
 			data-text_id="$params['text_id']"
-			value="$params['value']"
+			value="number_format($params['value'], 2)"
 			id="$params['name'][$language]"
 			cms:eval="value,data-text_id,id"
 			/>
