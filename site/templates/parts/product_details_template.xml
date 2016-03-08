@@ -70,7 +70,7 @@
 	<cms:desktop>
 		<figure>
 			<img
-				src="gallery::getGroupThumbnailById($params['gallery'], null, 350,Thumbnail::CONSTRAIN_BOTH)"
+				src="gallery::getGroupThumbnailById($params['gallery'], null, 500,Thumbnail::CONSTRAIN_BOTH)"
 				alt="$params['title'][$language]"
 				cms:eval="src,alt"/>
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
