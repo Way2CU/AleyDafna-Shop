@@ -43,8 +43,8 @@
 			item="$params['id']"
 			starts_with="price_"
 			sort_by="value"
-			cms:eval="item"
 			template="parts/price_property.xml"
+			cms:eval="item"
 			/>
 		<br/>
 

@@ -3,14 +3,14 @@
 		<label for="$params['name'][$language]" cms:eval="for">
 			<cms:desktop>
 				<img 
-					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)" 
+					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)"
 					alt="$params['title'][$language]"  
 					cms:eval="src,alt"/>
 			</cms:desktop>
 			
 			<cms:mobile>
 				<img 
-					src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_BOTH)" 
+					src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_BOTH)"
 					alt="$params['title'][$language]"  
 					cms:eval="src,alt"/>
 			</cms:mobile>		
