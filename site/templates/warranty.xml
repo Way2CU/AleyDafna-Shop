@@ -10,6 +10,12 @@
 				<cms:text constant="menu_agreement"/>
 			</title>
 			<!-- Page description -->
+			<cms:module 
+				name="page_info" 
+				action="set_description" 
+				article="warranty"
+				/>
+				
 			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:collection include="page_control"/>
 			<cms:module name="head_tag" action="print_tag"/>
