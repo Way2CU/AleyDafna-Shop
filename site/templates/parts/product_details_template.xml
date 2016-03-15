@@ -47,7 +47,6 @@
 			cms:eval="item"
 			/>
 		<br/>
-
 		<a href="javascript:void(0)" class="add">
 			<cms:text constant="title_button_add"/>
 			<svg>
@@ -75,6 +74,7 @@
 				src="gallery::getGroupThumbnailById($params['gallery'], null, 500,Thumbnail::CONSTRAIN_BOTH)"
 				alt="$params['title'][$language]"
 				cms:eval="src,alt"/>
+			<p class="disclaimer"><cms:text constant="title_disclaimer"/></p>	
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
 			<p class="selected_price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
 				<cms:var param="price" />
