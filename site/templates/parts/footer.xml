@@ -160,8 +160,6 @@
 				cms:eval="src"
 				/>
 
-			<p><cms:text constant="title_footer_sale"/></p>
-
 			<cms:module
 				name="contact_form"
 				action="show"
