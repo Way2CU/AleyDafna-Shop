@@ -132,7 +132,7 @@ function QuickFilter(container, categories, item) {
 			//handler for input element
 			input.on('change', self._handle_category_toggle);
 
-			self.checkbox_container.prepend(label);
+			self.checkbox_container.append(label);
 		}
 
 		/**
