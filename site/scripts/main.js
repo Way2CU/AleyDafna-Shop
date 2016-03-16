@@ -1235,8 +1235,6 @@ Site.on_load = function() {
 	function insertToCart() {
 		var uid = $('div.product_information').data('id');
 		var checked = $('div.product_information label input:checked').data('text_id');
-		var list = Site.cart.get_item_list_by_uid(uid);
-		var cart = $('div#popup');
 
 		var item_list = Site.cart.get_item_list_by_uid(uid);
 		var found_item = null;
@@ -1246,8 +1244,21 @@ Site.on_load = function() {
 		},2000);
 
 		Site.cart.add_item_by_uid(uid, {property_price:checked}, checked);
-		
 	}
+
+	// function for inserting and removing related items to cart
+	function insert_related_items() {
+		var item = $(this);
+		var uid = item.parent().attr('data-id');
+
+		if(item.prop('checked')) {
+			Site.cart.add_item_by_uid(uid);
+		} else {
+			Site.cart.remove_item_by_uid(uid);
+		}
+	}
+
+
 
 	var input_elements = $('section#product div.product_information label input[type="radio"]');
 	var figure_size = $('p.selected_name');
@@ -1263,13 +1274,15 @@ Site.on_load = function() {
 	})
 
 	var button_add = $('a.add');
+	var button_checkout = $('a.checkout');
+	var related_items = $('div#related_items div.item label input[type="checkbox"]');
+	related_items.on('change',insert_related_items);
+	button_checkout.on('click',insertToCart);
 	button_add.on('click',insertToCart);
 
 	// connect increase and decrease controls
 	$('div.cart div.controls a.alter').on('click', Site.alter_item_count);
-
 };
-
 
 // connect document `load` event with handler function
 $(Site.on_load);
