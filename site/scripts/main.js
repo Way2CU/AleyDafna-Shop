@@ -1258,8 +1258,6 @@ Site.on_load = function() {
 		}
 	}
 
-
-
 	var input_elements = $('section#product div.product_information label input[type="radio"]');
 	var figure_size = $('p.selected_name');
 	var figure_price = $('p.selected_price');
