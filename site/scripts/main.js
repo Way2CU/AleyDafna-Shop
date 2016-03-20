@@ -1190,8 +1190,11 @@ Site.on_load = function() {
 		.ui.add_total_count_label($('div.cart p.total_quantity'))
 		.add_item_view(Site.ItemView);
 
-	// Function displaying animation news
-	Site.news = new NewsSystem("news_list", 1, 5000, 1000);
+	// function displaying site news
+	Site.news = new PageControl('ul#news_list','li.news');
+	Site.news
+		.setInterval(6000)
+		.setWrapAround(true);
 
 	// Function displaying Quickefilter object
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
