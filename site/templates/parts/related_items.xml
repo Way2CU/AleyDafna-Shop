@@ -1,31 +1,32 @@
 <document>
-	<div class="item" data-id="$params['uid']" cms:eval="data-id">
-		<label for="$params['name'][$language]" cms:eval="for">
+	<div class="item">
+		<label for="$params['name'][$language]" data-id="$params['uid']" cms:eval="for,data-id">
 			<cms:desktop>
 				<img 
-					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)" 
+					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)"
 					alt="$params['title'][$language]"  
 					cms:eval="src,alt"/>
 			</cms:desktop>
 			
 			<cms:mobile>
 				<img 
-					src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_BOTH)" 
+					src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_BOTH)"
 					alt="$params['title'][$language]"  
 					cms:eval="src,alt"/>
 			</cms:mobile>		
 				
 			<input 
 				type="checkbox"
+				data-id="$params['uid']"
 				id="$params['name'][$language]"
 				name="related"
 				value="$params['name'][$language]"
-				cms:eval="value,id"
+				cms:eval="value,id,data-id"
 				/>
 			<span></span>		
 		</label>		
 
-		<p class="price">
+		<p class="price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
 			<cms:text constant="currency"/><cms:raw text=" "/><cms:var param="price"/>
 		</p>
 

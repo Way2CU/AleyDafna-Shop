@@ -10,6 +10,12 @@
 				<cms:text constant="menu_about"/>
 			</title>
 			<!-- Page description -->
+			<cms:module 
+				name="page_info" 
+				action="set_description" 
+				article="about"
+				/>
+
 			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:collection include="page_control"/>
 			<cms:module name="head_tag" action="print_tag"/>
@@ -41,10 +47,7 @@
 
 					<span><cms:text constant="title_logo"/></span>		
 				</article>
-				
-
 			</section>	
-
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>	
 		</body>

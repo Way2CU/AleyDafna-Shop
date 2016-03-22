@@ -5,6 +5,7 @@
  * Copyright (c) 2015. by Way2CU, http://way2cu.com
  * Authors:Tal Reznic
  */
+
 section#contact,
 section#warranty,
 section#about,
@@ -46,7 +47,6 @@ section#customer {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-
 
 section#business:before,
 section#customer:before,
@@ -443,7 +443,6 @@ div.product_information a.checkout {
 
 div.product_information a.checkout:hover {
 	background-color: darken(@color_ac_text,10%);
-	
 }
 
 div.product_information a svg,
@@ -502,10 +501,19 @@ body.rtl section#news ul {
 
 section#news ul li {
 	position: absolute;
-	top: 0;
+	top: -100%;
 	left: 40px;
 	right: 40px;
 	opacity: 0;
+	visibility: hidden;
+	transition: top 0.6s, opacity 0.6s, visibility 0.6s;
+	transition-delay:0s,0.3s,0s;
+}
+
+section#news ul li.visible {
+	top: 0px;
+	opacity: 1;
+	visibility: visible;
 }
 
 section#news ul li a {
@@ -599,8 +607,7 @@ div#unique a.item.hidden {
 	visibility: hidden;
 	height: 0px;
 	width: 0px;
-	transform: scale(0);
-	
+	transform: scale(0);	
 }
 
 a.item p.description {
@@ -634,6 +641,15 @@ a.item p {
 	margin: 0px;
 	margin-bottom: 5px;
 	transition: all 0.3s;
+}
+
+a.item p.price {
+	position: relative;
+}
+
+a.item p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 /*category page*/
@@ -837,6 +853,12 @@ section#product div.product_information label:hover span {
 section#product div.product_information label p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
+	position: relative;
+}
+
+section#product div.product_information label p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 section#product div.product_information label p.name {
@@ -920,6 +942,11 @@ section#product figure img {
 	padding: 10px;
 }
 
+section#product figure p.disclaimer {
+	font-size: 0.6em;
+	font-weight: 400;
+}
+
 section#product figure p.selected_price,
 section#product figure p.selected_name {
 	margin: 0px;
@@ -936,6 +963,12 @@ section#product figure p.selected_name {
 section#product figure p.selected_price {
 	color: @color_ac_orange;
 	border-bottom: none;
+	position: relative;
+}
+
+section#product figure p.selected_price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 /*related items*/
@@ -997,6 +1030,12 @@ div#related_items div.item label input[type="checkbox"]:checked ~ span:before {
 div#related_items div.item p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
+	position: relative;
+}
+
+div#related_items div.item p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 div#related_items div.item p.name {
@@ -1293,7 +1332,6 @@ div#form_business form div.controls {
 	margin-bottom: 15px;
 }
 
-
 div#form_customers form div.controls button,
 div#form_business form div.controls button,
 div#form_wrap form div.controls button {
@@ -1371,7 +1409,6 @@ div.dialog.login div.content form label span:before {
 	border: 1px solid @color_ac_medium_green;
 }
 
-
 div.dialog.login div.content form label span:after {
 	content: ' ';
 	position: absolute;
@@ -1400,7 +1437,6 @@ div.dialog.login div.content form input[type=checkbox] {
 
 div.dialog.login div.content form input[type=checkbox]:checked ~ span:after{
 	transform: scale(1);
-
 }
 
 div.dialog div.content form input:not([type=checkbox]) {

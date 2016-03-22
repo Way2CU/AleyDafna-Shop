@@ -21,7 +21,9 @@
 				<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
 			</figure>
 
-			<p class="price"><cms:var param="price" /></p>
+			<p class="price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
+				<cms:var param="price" />
+			</p>
 			<p class="name"><cms:text constant="label_regular"/></p>
 
 			<input
@@ -41,11 +43,10 @@
 			item="$params['id']"
 			starts_with="price_"
 			sort_by="value"
-			cms:eval="item"
 			template="parts/price_property.xml"
+			cms:eval="item"
 			/>
 		<br/>
-
 		<a href="javascript:void(0)" class="add">
 			<cms:text constant="title_button_add"/>
 			<svg>
@@ -73,8 +74,11 @@
 				src="gallery::getGroupThumbnailById($params['gallery'], null, 500,Thumbnail::CONSTRAIN_BOTH)"
 				alt="$params['title'][$language]"
 				cms:eval="src,alt"/>
+			<p class="disclaimer"><cms:text constant="title_disclaimer"/></p>	
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
-			<p class="selected_price"><cms:var param="price" /></p>
+			<p class="selected_price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
+				<cms:var param="price" />
+			</p>
 		</figure>
 	</cms:desktop>
 </document>

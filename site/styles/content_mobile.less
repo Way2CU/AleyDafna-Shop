@@ -308,7 +308,6 @@ section#slider div.controls a.active {
 	background-color: @color_text; 
 }
 
-
 div.item,
 a.item {
 	display: inline-block;
@@ -334,7 +333,6 @@ div#unique {
 	transition: all 0.6s;
 }
 
-
 div#unique a.item {
 	visibility: visible;
 	transform: scale(1);
@@ -343,11 +341,11 @@ div#unique a.item {
 }
 
 div#unique a.item.hidden {
-	margin: 0px;
+	margin: -1px;
 	visibility: hidden;
+	height: 0px;
 	width: 0px;
-	transform: scale(0);
-	
+	transform: scale(0);		
 }
 
 div.item img,
@@ -363,6 +361,14 @@ a.item p {
 	margin-bottom: 5px;
 }
 
+a.item p.price {
+	position: relative;
+}
+
+a.item p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
+}
 
 section#news div.news_container {
 	display: block;
@@ -372,6 +378,10 @@ section#news div.news_container {
 section#news ul {
 	margin: 0px;
 	padding: 0px;
+	list-style-type: none;
+	position: relative;
+	min-height: 100px;
+	overflow: hidden;
 }
 
 div.product_information a,
@@ -413,8 +423,7 @@ div.product_information a.checkout svg {
 }
 
 div.product_information a.checkout:hover {
-	background-color: darken(@color_ac_text,10%);
-	
+	background-color: darken(@color_ac_text,10%);	
 }
 
 div.product_information a svg,
@@ -453,23 +462,21 @@ body.rtl section#news span svg use {
 	transform: rotateY(0deg);
 }
 
-section#news ul {
-	margin: 0px;
-	padding: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 95%;
-	height: 100px;
-	list-style-type: none;
-	position: relative;
-	overflow: hidden;
-	transform: translateZ(0);
-}
-
 section#news ul li {
 	position: absolute;
-	top: 0%;
+	top: -100%;
+	left: 40px;
+	right: 40px;
 	opacity: 0;
+	visibility: hidden;
+	transition: top 0.6s, opacity 0.6s, visibility 0.6s;
+	transition-delay:0s,0.3s,0s;
+}
+
+section#news ul li.visible {
+	top: 0px;
+	opacity: 1;
+	visibility: visible;
 }
 
 section#news ul li a {
@@ -620,6 +627,12 @@ section#product div.product_information label figure:before {
 section#product div.product_information label p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
+	position: relative;
+}
+
+section#product div.product_information label p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 section#product div.product_information label p.name {
@@ -752,6 +765,12 @@ div#related_items div.item label input[type="checkbox"]:checked ~ span:before {
 div#related_items div.item p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
+	position: relative;
+}
+
+div#related_items div.item p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 div#related_items div.item p.name {
@@ -860,7 +879,6 @@ body.rtl div#information_details div svg {
 div#information_details article {
 	border-top: 1px solid @color_ac_medium_green;
 }
-
 
 div#form_customers,
 div#form_business,
@@ -1040,7 +1058,6 @@ div#form_business form div.controls {
 	margin-bottom: 15px;
 }
 
-
 div#form_customers form div.controls button,
 div#form_business form div.controls button,
 div#form_wrap form div.controls button {
@@ -1138,7 +1155,6 @@ body.rtl div.dialog.login div.content form label span:before {
 	left: 90%;
 }
 
-
 div.dialog.login div.content form label span:after {
 	content: ' ';
 	position: absolute;
@@ -1172,7 +1188,6 @@ div.dialog.login div.content form input[type=checkbox] {
 
 div.dialog.login div.content form input[type=checkbox]:checked ~ span:after{
 	transform: scale(1);
-
 }
 
 div.dialog div.content form input:not([type=checkbox]) {

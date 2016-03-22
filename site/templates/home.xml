@@ -49,9 +49,7 @@
 						group="mobile_header_links"
 						template="parts/slider_image.xml"
 						/>
-					<div class="controls">
-						
-					</div>	
+					<div class="controls">	</div>	
 				</section>
 			</cms:mobile>
 			
@@ -213,7 +211,6 @@
 					</div>	
 
 				</section>
-
 				
 				<section id="special_categories">
 					<cms:module
