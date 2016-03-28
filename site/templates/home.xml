@@ -24,7 +24,7 @@
 			<cms:desktop>
 				<section id="slider">
 					<div class="banner_container">
-						<cms:template file="parts/banners.xml"/>
+						<cms:template file="parts/home_page_banners.xml"/>
 					</div>
 
 					<div class="header_slider">
