@@ -48,6 +48,15 @@
 						cms:eval="id"
 						/>
 				</h2>
+
+				<!-- optional category description and image -->
+				<cms:module
+					name="shop"
+					action="show_category"
+					id="fix_id($_REQUEST['id'])"
+					template="parts/category_optional_description.xml"
+					cms:eval="id"
+					/>
 				
 				<cms:module
 					name="shop"
