@@ -59,6 +59,7 @@ function QuickFilter(container, categories, item) {
 	self.categories = categories;
 	self.item = item;
 	self.items_list = {};
+	self.on_visibility_change = new Array();
 
 	/**
 	 * Complete object initialization.
@@ -171,7 +172,33 @@ function QuickFilter(container, categories, item) {
 					item.addClass('hidden');
 				}
 			}
+
+			// emit event
+			self._emit();
 		}
+
+	/**
+	 * Add specified callback function to the list of
+	 * visibility change events.
+	 *
+	 * @param callable callback
+	 */
+	self.connect = function(callback) {
+		if (typeof callback != 'function')
+			return false;
+
+		self.on_visibility_change.push(callback);
+		return true;
+	};
+
+	/**
+	 * Call all the callback functions when item visibility is updated.
+	 */
+	 *
+	self._emit = function() {
+		for (var index in self.on_visibility_change)
+			self.on_visibility_change[index]();
+	};
 
 	 // finalize object
 	 self._init();
