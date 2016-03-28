@@ -194,7 +194,6 @@ function QuickFilter(container, categories, item) {
 	/**
 	 * Call all the callback functions when item visibility is updated.
 	 */
-	 *
 	self._emit = function() {
 		for (var index in self.on_visibility_change)
 			self.on_visibility_change[index]();
