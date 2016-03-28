@@ -1,146 +1,150 @@
 <document>
 	<header>
+		<cms:module
+			name="backend"
+			action="save_unpriviledged_user_timer"
+			/>
 		<cms:svg file="site-sprite.svg"/>
 
-			<a href="url_Make('', 'home')" class="logo" cms:eval="href">
-				<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>
-			</a>
-			<p><cms:text constant="title_header_sale"/></p>
+		<a href="url_Make('', 'home')" class="logo" cms:eval="href">
+			<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>
+		</a>
+		<p><cms:text constant="title_header_sale"/></p>
 
-			
-			<div class="languages">
-				<nav id="language">
-					<p><cms:text constant="title_nav_lang"/></p>
-					<cms:module
-						name="language_menu"
-						action="print"
-						/>
-				</nav>	
 
-				<p><cms:text constant="label_phone"/></p>
-
-				<a
-					href="'tel:'.urlencode(Language::getText('phone'))"
-					cms:eval="href"
-					class="phone"
-					>
-					<cms:text constant="phone"/>
-				</a>
-
-				<a
-					href="'tel:'.urlencode(Language::getText('phone2'))"
-					cms:eval="href"
-					class="phone"
-					>
-					<cms:text constant="phone2"/>
-				</a>
-			</div>
-
-			<div id="popup">
-				<svg>
-					<use
-						href="#basket"
-						xlink:href="site/images/site-sprite.svg#basket"
-						/>
-				</svg>
-				
-				<p><cms:text constant="title_cart"/></p>
-				<br/>
-
-				<span class="items">0 </span>
-
-				<span><cms:text constant="label_item"/></span>
-
-				<span class="price">0.00</span>
-				
-				<span><cms:text constant="label_price"/></span>
-
-				<cms:template file="stock/cart.xml"/>
-			</div>
-
-			<!-- Main site navigation -->
-			<nav id="main">
-				<ul>
-					<cms:module
-						name="shop"
-						action="show_category"
-						text_id="flowers"
-						template="parts/category_list_menu.xml"
-						/>
-
-					<cms:module
-						name="shop"
-						action="show_category"
-						text_id="plants"
-						template="parts/category_list_menu.xml"
-						/>
-
-					<cms:module
-						name="shop"
-						action="show_category"
-						text_id="artificial"
-						template="parts/category_list_menu.xml"
-						/>
-
-					<cms:module
-						name="shop"
-						action="show_category"
-						text_id="ballons_wine"
-						template="parts/category_list_menu.xml"
-						/>
-
-					<cms:module
-						name="shop"
-						action="show_category"
-						text_id="sales"
-						template="parts/category_list_menu.xml"
-						/>
-
-					<li class="sub-menu">
-						<a
-							class="$section == 'about' ? 'active' : false"
-							href="url_Make('', 'about')"
-							cms:eval="href"
-							cms:optional="class"
-							>
-							<cms:text constant="menu_about"/>
-						</a>
-						<ul class="drop">					
-							<cms:template file="parts/about_sub_list_menu.xml"/>
-						</ul>
-					</li>
-
-					<li class="sub-menu">
-						<a
-							class="$section == 'contact-us' ? 'active' : false"
-							href="url_Make('', 'contact-us')"
-							cms:eval="href"
-							cms:optional="class"
-							>
-							<cms:text constant="menu_contact"/>
-						</a>	
-						<ul class="drop">					
-							<cms:template file="parts/contact_sub_list_menu.xml"/>
-						</ul>
-					</li>
-
-					<cms:guest>
-						<li><a class="sign-up" href="#"><cms:text constant="menu_signup"/></a></li>
-						<li><a class="login" href="#"><cms:text constant="menu_login"/></a></li>
-					</cms:guest>
-					<cms:user>
-						<li>
-							<a
-								class="control_panel"
-								href="url_Make('', 'user')"
-								cms:eval="href"
-								>
-								<cms:text constant="menu_account"/>
-							</a>
-						</li>
-						<li><a class="logout" href="#"><cms:text constant="menu_logout"/></a></li>
-					</cms:user>								
-				</ul>
+		<div class="languages">
+			<nav id="language">
+				<p><cms:text constant="title_nav_lang"/></p>
+				<cms:module
+					name="language_menu"
+					action="print"
+					/>
 			</nav>
+
+			<p><cms:text constant="label_phone"/></p>
+
+			<a
+				href="'tel:'.urlencode(Language::getText('phone'))"
+				cms:eval="href"
+				class="phone"
+				>
+				<cms:text constant="phone"/>
+			</a>
+
+			<a
+				href="'tel:'.urlencode(Language::getText('phone2'))"
+				cms:eval="href"
+				class="phone"
+				>
+				<cms:text constant="phone2"/>
+			</a>
+		</div>
+
+		<div id="popup">
+			<svg>
+				<use
+					href="#basket"
+					xlink:href="site/images/site-sprite.svg#basket"
+					/>
+			</svg>
+
+			<p><cms:text constant="title_cart"/></p>
+			<br/>
+
+			<span class="items">0 </span>
+
+			<span><cms:text constant="label_item"/></span>
+
+			<span class="price">0.00</span>
+
+			<span><cms:text constant="label_price"/></span>
+
+			<cms:template file="stock/cart.xml"/>
+		</div>
+
+		<!-- Main site navigation -->
+		<nav id="main">
+			<ul>
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="flowers"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="plants"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="artificial"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="ballons_wine"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					text_id="sales"
+					template="parts/category_list_menu.xml"
+					/>
+
+				<li class="sub-menu">
+					<a
+						class="$section == 'about' ? 'active' : false"
+						href="url_Make('', 'about')"
+						cms:eval="href"
+						cms:optional="class"
+						>
+						<cms:text constant="menu_about"/>
+					</a>
+					<ul class="drop">
+						<cms:template file="parts/about_sub_list_menu.xml"/>
+					</ul>
+				</li>
+
+				<li class="sub-menu">
+					<a
+						class="$section == 'contact-us' ? 'active' : false"
+						href="url_Make('', 'contact-us')"
+						cms:eval="href"
+						cms:optional="class"
+						>
+						<cms:text constant="menu_contact"/>
+					</a>
+					<ul class="drop">
+						<cms:template file="parts/contact_sub_list_menu.xml"/>
+					</ul>
+				</li>
+
+				<cms:guest>
+					<li><a class="sign-up" href="#"><cms:text constant="menu_signup"/></a></li>
+					<li><a class="login" href="#"><cms:text constant="menu_login"/></a></li>
+				</cms:guest>
+				<cms:user>
+					<li>
+						<a
+							class="control_panel"
+							href="url_Make('', 'user')"
+							cms:eval="href"
+							>
+							<cms:text constant="menu_account"/>
+						</a>
+					</li>
+					<li><a class="logout" href="#"><cms:text constant="menu_logout"/></a></li>
+				</cms:user>
+			</ul>
+		</nav>
 	</header>
 </document>
