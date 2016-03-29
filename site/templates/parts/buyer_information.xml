@@ -305,19 +305,6 @@
 									/>
 								<small><cms:text constant="tooltip_street" module="shop"/></small>
 							</label>
-							<label class="separator">
-								<span></span>
-								<input
-									class="in_array('street2', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
-									name="street2"
-									value="isset($_POST['street2']) ? fix_chars($_POST['street2']) : ''"
-									maxlength="200"
-									autocomplete="on"
-									/>
-								<small><cms:text constant="tooltip_street2" module="shop"/></small>
-							</label>
 							<label>
 								<span><cms:text constant="label_city" module="shop"/></span>
 								<input
@@ -331,7 +318,7 @@
 									autocomplete="on"
 									/>
 							</label>
-							<label>
+							<label style="display:none;">
 								<span><cms:text constant="label_zip" module="shop"/></span>
 								<input
 									class="in_array('zip', $params['bad_fields']) ? 'bad' : ''"
@@ -386,18 +373,6 @@
 											/>
 									</select>
 								</cms:if>
-							</label>
-							<label>
-								<span><cms:text constant="label_state" module="shop"/></span>
-								<input
-									class="in_array('state', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
-									name="state"
-									value="isset($_POST['state']) ? fix_chars($_POST['state']) : ''"
-									maxlength="40"
-									autocomplete="on"
-									/>
 							</label>
 							<hr/>
 							<label>
