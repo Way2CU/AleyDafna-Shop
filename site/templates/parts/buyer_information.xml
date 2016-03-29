@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../../units/schema/template.dtd">
+<document>
+	<div id="checkout_container">
+		<div id="checkout_steps" class="input_details">
+			<cms:guest>
+				<a href="javascript:void(0);">
+					<cms:text constant="title_sign_in" module="shop"/>
+				</a>
+			</cms:guest>
+			<cms:if condition="$params['include_shipping']">
+				<a href="javascript:void(0);">
+					<cms:text constant="title_shipping_information" module="shop"/>
+				</a>
+			</cms:if>
+			<cms:if condition="is_null($params['payment_method'])">
+				<a href="javascript:void(0);">
+					<cms:text constant="title_payment_method" module="shop"/>
+				</a>
+			</cms:if>
+			<a href="javascript:void(0);">
+				<cms:text constant="title_billing_information" module="shop"/>
+			</a>
+			<a href="javascript:void(0);">
+				<cms:text constant="title_current_selection"/>
+			</a>
+			<a href="javascript:void(0);">
+				<cms:text constant="title_related_products"/>
+			</a>
+			<a href="javascript:void(0);">
+				<cms:text constant="title_checkout" module="shop"/>
+			</a>
+		</div>
+
+		<div id="input_details" cms:skip_cache="1">
+			<form method="POST" action="">
+				<div class="pages">
+					<!-- Sign In -->
+					<cms:guest>
+						<div class="page" id="sign_in">
+							<h1><cms:text constant="title_sign_in" module="shop"/></h1>
+
+							<label class="radio">
+								<input
+									type="radio"
+									name="existing_user"
+									value="log_in"
+									checked="checked"
+									/>
+								<span><cms:text constant="label_existing_user" module="shop"/></span>
+							</label>
+
+							<div class="existing_account visible">
+								<label>
+									<span><cms:text constant="label_email" module="shop"/></span>
+									<input
+										type="email"
+										name="sign_in_email"
+										maxlength="127"
+										autocomplete="on"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_password" module="shop"/></span>
+									<input
+										type="password"
+										name="sign_in_password"
+										maxlength="127"
+										autocomplete="off"
+										/>
+								</label>
+								<label
+									class="$params['show_captcha'] ? 'captcha' : 'captcha hidden'"
+									cms:eval="class"
+									>
+									<span><cms:text constant="label_captcha" module="shop"/></span>
+									<input
+										type="text"
+										name="captcha"
+										maxlength="4"
+										autocomplete="off"
+										/>
+									<cms:module
+										name="captcha"
+										action="print_image_tag"
+										/>
+								</label>
+								<a href="javascript:void();" class="password_recovery">
+									<cms:text constant="label_password_recovery" module="shop"/>
+								</a>
+							</div>
+
+							<hr/>
+
+							<label class="radio">
+								<input
+									type="radio"
+									name="existing_user"
+									value="sign_up"
+									/>
+								<span><cms:text constant="label_new_user" module="shop"/></span>
+							</label>
+
+							<div class="new_account">
+								<label>
+									<span><cms:text constant="label_first_name" module="shop"/></span>
+									<input
+										class="in_array('first_name', $params['bad_fields']) ? 'bad' : ''"
+										cms:eval="class,value"
+										type="text"
+										name="first_name"
+										value="isset($_POST['first_name']) ? fix_chars($_POST['first_name']) : ''"
+										maxlength="64"
+										data-required="1"
+										autocomplete="on"
+										/>
+								</label>
+								<label class="separator">
+									<span><cms:text constant="label_last_name" module="shop"/></span>
+									<input
+										class="in_array('last_name', $params['bad_fields']) ? 'bad' : ''"
+										cms:eval="class,value"
+										type="text"
+										name="last_name"
+										value="isset($_POST['last_name']) ? fix_chars($_POST['last_name']) : ''"
+										maxlength="64"
+										data-required="1"
+										autocomplete="on"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_email" module="shop"/></span>
+									<input
+										class="in_array('new_email', $params['bad_fields']) ? 'bad' : ''"
+										cms:eval="class,value"
+										type="email"
+										name="new_email"
+										value="isset($_POST['new_email']) ? fix_chars($_POST['new_email']) : ''"
+										maxlength="127"
+										data-required="1"
+										autocomplete="on"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_password" module="shop"/></span>
+									<input
+										type="password"
+										name="new_password"
+										maxlength="127"
+										data-required="1"
+										autocomplete="off"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_confirm" module="shop"/></span>
+									<input
+										type="password"
+										name="new_password_confirm"
+										maxlength="127"
+										data-required="1"
+										autocomplete="off"
+										/>
+								</label>
+								<cms:if condition="!is_null($params['terms_link'])">
+									<label class="checkbox">
+										<input
+											type="checkbox"
+											name="agree_to_terms"
+											data-required="1"
+											/>
+										<span>
+											<cms:text constant="label_agree_to_terms1" module="shop"/>
+											<cms:raw text=" "/>
+											<a
+												href="$params['terms_link']"
+												target="_blank"
+												cms:eval="href"
+												>
+												<cms:text constant="label_agree_to_terms2" module="shop"/>
+											</a>
+											<cms:raw text="."/>
+										</span>
+									</label>
+								</cms:if>
+								<label class="checkbox">
+									<input
+										type="checkbox"
+										name="want_promotions"
+										/>
+									<span><cms:text constant="label_want_promotions" module="shop"/></span>
+								</label>
+							</div>
+
+							<hr/>
+
+							<label class="radio">
+								<input
+									type="radio"
+									name="existing_user"
+									value="guest"
+									/>
+								<span><cms:text constant="label_guest" module="shop"/></span>
+							</label>
+
+							<div class="guest_checkout">
+								<cms:if condition="!is_null($params['terms_link'])">
+									<label class="checkbox">
+										<input
+											type="checkbox"
+											name="agree_to_terms"
+											data-required="1"
+											/>
+										<span>
+											<cms:text constant="label_agree_to_terms1" module="shop"/>
+											<cms:raw text=" "/>
+											<a
+												href="$params['terms_link']"
+												target="_blank"
+												cms:eval="href"
+												>
+												<cms:text constant="label_agree_to_terms2" module="shop"/>
+											</a>
+											<cms:raw text="."/>
+										</span>
+									</label>
+								</cms:if>
+								<label class="checkbox">
+									<input
+										type="checkbox"
+										name="want_promotions"
+										/>
+									<span><cms:text constant="label_want_promotions" module="shop"/></span>
+								</label>
+							</div>
+
+							<div class="checkout_controls">
+								<button class="next"><cms:text constant="next"/></button>
+							</div>
+						</div>
+					</cms:guest>
+
+					<!-- Shipping Information -->
+					<cms:if condition="$params['include_shipping']">
+						<div class="page" id="shipping_information">
+							<h1><cms:text constant="title_shipping_information" module="shop"/></h1>
+							<label>
+								<span><cms:text constant="label_presets" module="shop"/></span>
+								<select
+									name="presets"
+									data-autoload="$_SESSION['logged'] ? 1 : 0"
+									cms:eval="data-autoload"
+									/>
+							</label>
+							<label>
+								<span><cms:text constant="label_full_name" module="shop"/></span>
+								<input
+									class="in_array('name', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="name"
+									value="isset($_POST['name']) ? fix_chars($_POST['name']) : ''"
+									maxlength="64"
+									data-required="1"
+									autocomplete="on"
+									/>
+							</label>
+							<hr/>
+							<label>
+								<span><cms:text constant="label_email" module="shop"/></span>
+								<input
+									class="in_array('email', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="email"
+									name="email"
+									value="isset($_POST['email']) ? fix_chars($_POST['email']) : ''"
+									maxlength="127"
+									data-required="1"
+									autocomplete="on"
+									/>
+							</label>
+							<label>
+								<span><cms:text constant="label_phone_number" module="shop"/></span>
+								<input
+									class="in_array('phone', $params['bad_fields']) ? 'ltr bad' : 'ltr'"
+									cms:eval="class,value"
+									type="text"
+									name="phone"
+									value="isset($_POST['phone']) ? fix_chars($_POST['phone']) : ''"
+									maxlength="127"
+									autocomplete="on"
+									/>
+							</label>
+							<hr/>
+							<label>
+								<span><cms:text constant="label_street" module="shop"/></span>
+								<input
+									class="in_array('street', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="street"
+									value="isset($_POST['street']) ? fix_chars($_POST['street']) : ''"
+									maxlength="200"
+									data-required="1"
+									autocomplete="on"
+									/>
+								<small><cms:text constant="tooltip_street" module="shop"/></small>
+							</label>
+							<label class="separator">
+								<span></span>
+								<input
+									class="in_array('street2', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="street2"
+									value="isset($_POST['street2']) ? fix_chars($_POST['street2']) : ''"
+									maxlength="200"
+									autocomplete="on"
+									/>
+								<small><cms:text constant="tooltip_street2" module="shop"/></small>
+							</label>
+							<label>
+								<span><cms:text constant="label_city" module="shop"/></span>
+								<input
+									class="in_array('city', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="city"
+									value="isset($_POST['city']) ? fix_chars($_POST['city']) : ''"
+									maxlength="40"
+									data-required="1"
+									autocomplete="on"
+									/>
+							</label>
+							<label>
+								<span><cms:text constant="label_zip" module="shop"/></span>
+								<input
+									class="in_array('zip', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="zip"
+									value="isset($_POST['zip']) ? fix_chars($_POST['zip']) : ''"
+									maxlength="20"
+									data-required="1"
+									autocomplete="on"
+									/>
+							</label>
+							<label>
+								<span><cms:text constant="label_country" module="shop"/></span>
+								<cms:if condition="empty($params['fixed_country'])">
+									<select
+										name="country"
+										class="in_array('country', $params['bad_fields']) ? 'bad' : ''"
+										cms:eval="class"
+										data-required="1"
+										autocomplete="on"
+										>
+										<option/>
+										<option value="DE">Germany</option>
+										<option value="ES">Spain</option>
+										<option value="IT">Italy</option>
+										<option value="CZ">Czech republic</option>
+										<option value="UA">Ukraine</option>
+										<option value="RU">Russia</option>
+										<option value="FR">France</option>
+										<option value="NL">Netherlands</option>
+										<option value="SE">Sweden</option>
+										<option value="UK">United kingdom</option>
+										<option value="AT">Austria</option>
+										<option value="CH">Switzerland</option>
+										<option value="BE">Belgium</option>
+									</select>
+								</cms:if>
+								<cms:if condition="!empty($params['fixed_country'])">
+									<select
+										name="country"
+										class="in_array('country', $params['bad_fields']) ? 'bad' : ''"
+										cms:eval="class"
+										data-required="1"
+										autocomplete="on"
+										>
+										<cms:module
+											name="country_list"
+											action="show"
+											filter="$params['fixed_country']"
+											cms:eval="filter"
+											/>
+									</select>
+								</cms:if>
+							</label>
+							<label>
+								<span><cms:text constant="label_state" module="shop"/></span>
+								<input
+									class="in_array('state', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="state"
+									value="isset($_POST['state']) ? fix_chars($_POST['state']) : ''"
+									maxlength="40"
+									autocomplete="on"
+									/>
+							</label>
+							<hr/>
+							<label>
+								<span><cms:text constant="label_access_code" module="shop"/></span>
+								<input
+									class="in_array('access_code', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="access_code"
+									value="isset($_POST['access_code']) ? fix_chars($_POST['access_code']) : ''"
+									maxlength="40"
+									autocomplete="on"
+									/>
+								<small><cms:text constant="tooltip_access_code" module="shop"/></small>
+							</label>
+
+							<div class="checkout_controls">
+								<cms:guest>
+									<button class="previous"><cms:text constant="back"/></button>
+								</cms:guest>
+								<button class="next"><cms:text constant="next"/></button>
+							</div>
+
+							<cms:if condition="!empty($params['message'])">
+								<div class="message"><cms:var name="$params['message']"/></div>
+							</cms:if>
+						</div>
+					</cms:if>
+
+					<!-- Payment Method Selection -->
+					<cms:if condition="is_null($params['payment_method'])">
+						<div class="page" id="payment_method">
+							<h1><cms:text constant="title_payment_method" module="shop"/></h1>
+							<input type="hidden" name="payment_method" value=""/>
+							<div class="payment_methods">
+								<cms:payment_method_list/>
+							</div>
+
+							<div class="checkout_controls">
+								<button class="previous"><cms:text constant="back"/></button>
+								<button class="next"><cms:text constant="next"/></button>
+							</div>
+						</div>
+					</cms:if>
+
+					<!-- Billing Information -->
+					<div class="page" id="billing_information">
+						<h1><cms:text constant="title_billing_information" module="shop"/></h1>
+
+						<label>
+							<span><cms:text constant="label_full_name" module="shop"/></span>
+							<input
+								class="in_array('billing_full_name', $params['bad_fields']) ? 'bad' : ''"
+								cms:eval="class,value"
+								type="text"
+								name="billing_full_name"
+								value="isset($_POST['billing_full_name']) ? fix_chars($_POST['billing_first_name']) : ''"
+								maxlength="64"
+								autocomplete="on"
+								data-required="1"
+								/>
+						</label>
+						<hr/>
+						<label>
+							<span><cms:text constant="label_credit_card_type" module="shop"/></span>
+							<select name="billing_card_type" data-required="1">
+								<option/>
+								<cms:card_type/>
+							</select>
+						</label>
+						<label>
+							<span><cms:text constant="label_credit_card" module="shop"/></span>
+							<input
+								class="in_array('billing_credit_card', $params['bad_fields']) ? 'bad' : ''"
+								cms:eval="class,value"
+								type="text"
+								name="billing_credit_card"
+								value="isset($_POST['billing_credit_card']) ? fix_chars($_POST['billing_credit_card']) : ''"
+								maxlength="127"
+								autocomplete="on"
+								data-required="1"
+								/>
+						</label>
+						<div class="horizontal">
+							<label>
+								<span><cms:text constant="label_expiration_date" module="shop"/></span>
+								<input
+									class="in_array('billing_expire_month', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="billing_expire_month"
+									value="isset($_POST['billing_expire_month']) ? fix_chars($_POST['billing_expire_month']) : ''"
+									maxlength="2"
+									autocomplete="on"
+									placeholder="mm"
+									data-required="1"
+									/>
+							</label>
+							<label>
+								<input
+									class="in_array('billing_expire_year', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="text"
+									name="billing_expire_year"
+									value="isset($_POST['billing_expire_year']) ? fix_chars($_POST['billing_expire_year']) : ''"
+									maxlength="4"
+									autocomplete="on"
+									placeholder="yyyy"
+									data-required="1"
+									/>
+							</label>
+						</div>
+						<label>
+							<span><cms:text constant="label_cvv" module="shop"/></span>
+							<input
+								class="in_array('billing_cvv', $params['bad_fields']) ? 'bad' : ''"
+								cms:eval="class,value"
+								type="text"
+								name="billing_cvv"
+								value="isset($_POST['billing_cvv']) ? fix_chars($_POST['billing_cvv']) : ''"
+								maxlength="4"
+								autocomplete="on"
+								data-required="1"
+								/>
+							<cms:raw><![CDATA[&nbsp;]]></cms:raw>
+							<a href="javascript: void();" class="what_is_cvv">
+								<cms:text constant="label_cvv_question" module="shop"/>
+							</a>
+							<img
+								id="what_is_cvv"
+								src="_BASEURL.'/modules/shop/images/security_code.png'"
+								alt="CVV2"
+								cms:eval="src"
+								/>
+						</label>
+						<div class="checkout_controls">
+							<button class="previous"><cms:text constant="back"/></button>
+							<button class="next"><cms:text constant="next"/></button>
+						</div>
+					</div>
+
+					<!-- Static payment method information -->
+					<cms:if condition="!is_null($params['payment_method'])">
+						<cms:payment_method
+							name="$params['payment_method']"
+							template="hidden_payment_method.xml"
+							local="1"
+							cms:eval="name"
+							/>
+						<input type="hidden" name="stage" value="set-info"/>
+					</cms:if>
+
+					<div class="page" id="current_selection">
+						<h1><cms:text constant="title_current_selection"/></h1>
+						<cms:module
+							name="articles"
+							action="show"
+							text_id="current_selection"
+							template="parts/article_no_title.xml"
+							/>
+						<div class="container"/>
+						<div class="total">
+							<cms:text constant="label_total"/>
+							<span/>
+						</div>
+
+						<div class="checkout_controls">
+							<button class="previous"><cms:text constant="back"/></button>
+							<button class="next"><cms:text constant="next"/></button>
+						</div>
+					</div>
+
+					<div class="page" id="related_products">
+						<h1><cms:text constant="title_related_products"/></h1>
+						<div class="container">
+							<cms:module
+								name="shop"
+								action="show_item_list"
+								related="fix_chars($_REQUEST['package'])"
+								template="parts/related_item.xml"
+								cms:eval="related"
+								/>
+						</div>
+						<div class="checkout_controls">
+							<button class="previous"><cms:text constant="back"/></button>
+							<button class="next"><cms:text constant="next"/></button>
+						</div>
+					</div>
+
+					<div class="page" id="checkout"/>
+				</div>
+			</form>
+		</div>
+	</div>
+</document>
