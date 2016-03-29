@@ -322,10 +322,10 @@
 								<span><cms:text constant="label_zip" module="shop"/></span>
 								<input
 									class="in_array('zip', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
+									cms:eval="class"
 									type="text"
 									name="zip"
-									value="isset($_POST['zip']) ? fix_chars($_POST['zip']) : ''"
+									value="0"
 									maxlength="20"
 									data-required="1"
 									autocomplete="on"
