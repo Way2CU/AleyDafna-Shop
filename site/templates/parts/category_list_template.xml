@@ -8,7 +8,18 @@
 				template="parts/category_name.xml"
 				cms:eval="id"
 				/>
-		</h5>	
+		</h5>
+
+		<!-- optional category description and image -->
+		<cms:mobile>
+			<cms:module
+				name="shop"
+				action="show_category"
+				id="$params['id']"
+				template="parts/category_optional_description.xml"
+				cms:eval="id"
+				/>
+		</cms:mobile>
 
 		<cms:module
 			name="shop"
