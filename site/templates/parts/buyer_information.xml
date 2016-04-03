@@ -22,10 +22,10 @@
 				<cms:text constant="title_billing_information" module="shop"/>
 			</a>
 			<a href="javascript:void(0);">
-				<cms:text constant="title_current_selection"/>
+				<cms:text constant="title_card_text"/>
 			</a>
 			<a href="javascript:void(0);">
-				<cms:text constant="title_related_products"/>
+				<cms:text constant="title_card_select"/>
 			</a>
 			<a href="javascript:void(0);">
 				<cms:text constant="title_checkout" module="shop"/>
@@ -525,19 +525,12 @@
 						<input type="hidden" name="stage" value="set-info"/>
 					</cms:if>
 
-					<div class="page" id="current_selection">
-						<h1><cms:text constant="title_current_selection"/></h1>
-						<cms:module
-							name="articles"
-							action="show"
-							text_id="current_selection"
-							template="parts/article_no_title.xml"
-							/>
-						<div class="container"/>
-						<div class="total">
-							<cms:text constant="label_total"/>
-							<span/>
-						</div>
+					<div class="page" id="card_text">
+						<h1><cms:text constant="title_card_text"/></h1>
+						<label>
+							<span><cms:text constant="label_card_text"/></span>
+							<textarea name="card_text" maxlength="255" rows="4" cols="60"/>
+						</label>
 
 						<div class="checkout_controls">
 							<button class="previous"><cms:text constant="back"/></button>
@@ -545,17 +538,24 @@
 						</div>
 					</div>
 
-					<div class="page" id="related_products">
-						<h1><cms:text constant="title_related_products"/></h1>
+					<div class="page" id="card_selection">
+						<h1><cms:text constant="title_card_select"/></h1>
+
+						<label class="left">
+							<span><cms:text constant="label_card_select"/></span>
+							<select name="card" size="10">
+								<cms:module
+									name="shop"
+									action="show_item_list"
+									group="cards"
+									template="parts/card.xml"
+									/>
+							</select>
+						</label>
+
 						<div class="container">
-							<cms:module
-								name="shop"
-								action="show_item_list"
-								related="fix_chars($_REQUEST['package'])"
-								template="parts/related_item.xml"
-								cms:eval="related"
-								/>
 						</div>
+
 						<div class="checkout_controls">
 							<button class="previous"><cms:text constant="back"/></button>
 							<button class="next"><cms:text constant="next"/></button>
