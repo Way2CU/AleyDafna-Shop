@@ -530,7 +530,7 @@
 							<cms:module
 								name="shop"
 								action="show_item_list"
-								group="cards"
+								category="cards"
 								template="parts/card.xml"
 								/>
 							<a class="arrow next"/>
