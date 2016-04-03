@@ -1735,18 +1735,60 @@ div#input_details div.guest_checkout.visible {
  	max-height: 400px;
  }
 
-div#input_details div#card_text.page label {
+div#input_details div#card_selection.page label {
 	padding-bottom: 10px;
 }
 
-div#input_details div#card_text.page span {
+div#input_details div#card_selection.page span {
 	width: auto;
 	padding: 0;
 }
 
-div#input_details div#card_text.page textarea {
-	resize: vertical;
+div#input_details div#card_selection.page div.container {
+	display: block;
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
 }
 
-div#input_details div#card_selection label {
+div#input_details div#card_selection.page div.container a.arrow {
+	display: block;
+	width: 40px;
+	height: 60px;
+	top: 50%;
+	margin-top: -30px;
+	position: absolute;
+
+	background-color: fade(black, 50%);
+}
+
+div#input_details div#card_selection.page div.container a.arrow.previous {
+	left: 0;
+}
+
+div#input_details div#card_selection.page div.container a.arrow.next {
+	right: 0;
+}
+
+body.rtl div#input_details div#card_selection.page div.container a.arrow.previous {
+	left: auto;
+	right: 0;
+}
+
+body.rtl div#input_details div#card_selection.page div.container a.arrow.next {
+	right: auto;
+	left: 0;
+}
+
+div#input_details div#card_selection.page textarea {
+	display: inline-block;
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -150px;
+
+	resize: none;
 }
