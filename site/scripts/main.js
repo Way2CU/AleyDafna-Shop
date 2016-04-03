@@ -1201,7 +1201,7 @@ Site.insert_to_cart = function(event) {
 	// get item data
 	var uid = $('div.product_information').data('id');
 	var checked = $('div.product_information label input:checked').data('text_id');
-	var cart = $('div#popup');
+	var cart = $('div#popup')
 
 	// make cart blink
 	cart.addClass('show');
