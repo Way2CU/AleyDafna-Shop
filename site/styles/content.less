@@ -436,6 +436,13 @@ div.product_information a {
 	transition: all 0.3s;
 }
 
+div.product_information a:first-of-type {
+	margin-left: 0px;
+}
+body.rtl div.product_information a:first-of-type {
+	margin-right: 0px;
+}
+
 div.product_information a.add:hover {
 	background-color: lighten(@color_ac_orange,10%);
 }
@@ -453,11 +460,17 @@ div.product_information a svg,
 section#news span svg {
 	display: inline-block;
 	vertical-align: middle;
-	padding-right: 5px;
+	padding-left: 5px;
 	width: 50px;
 	height: 50px;
 	fill: @color_ac_text;
 	transition: all 0.3s;
+}
+
+body.rtl div.product_information a svg,
+body.rtl section#news span svg {
+	padding-left: 0px;
+	padding-right: 5px;
 }
 
 div.product_information a svg {
@@ -639,6 +652,7 @@ a.item img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	height: 200px;
 }
 
 div.item p,
@@ -814,11 +828,20 @@ div#checkboxes label,
 section#product div.product_information label {
 	display: inline-block;
 	vertical-align: bottom;
+	margin-left: 10px;
+	margin-right: 10px;
 	padding-bottom: 30px;
 	text-align: center;
 	border-bottom: 1px solid @color_ac_grey;
-	width: 180px;
 	position: relative;
+}
+
+section#product div.product_information label:first-of-type {
+	margin-left: 0px;
+}
+
+body.rtl section#product div.product_information label:first-of-type {
+	margin-right: 0px;
 }
 
 div#checkboxes label {
@@ -852,6 +875,7 @@ div#checkboxes label  span {
 	position: relative;
 	color: @color_ac_text;
 }
+
 
 section#product div.product_information label figure {
 	display: block;
@@ -972,6 +996,10 @@ section#product div.product_information label input[type="radio"]:checked ~ span
 
 section#product figure {
 	text-align: center;
+}
+
+section#product > figure img {
+	border: 1px solid @color_ac_grey;
 }
 
 section#product figure img {

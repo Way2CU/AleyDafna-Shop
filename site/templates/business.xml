@@ -11,7 +11,7 @@
 			</title>
 			<!-- Page description -->
 			<cms:module name="shop" action="include_cart_scripts"/>
-			<cms:collection include="page_control"/>
+			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
 			<cms:module name="head_tag" action="print_tag"/>
 		</head>
 
