@@ -1,9 +1,9 @@
 /**
  * Main JavaScript
- * Site Name
+ * Aley Dafna Flower Shop
  *
- * Copyright (c) 2015. by Way2CU, http://way2cu.com
- * Authors:
+ * Copyright (c) 2016. by Way2CU, http://way2cu.com
+ * Authors: Mladen Mijatov, Tal Reznik
  */
 
 // create or use existing site scope
@@ -137,9 +137,8 @@ function QuickFilter(container, categories, item) {
 		}
 
 		/**
-		* Show filtered items
-		*
-		*/
+		 * Show filtered items
+		 */
 		self._handle_category_toggle = function() {
 			var item = $(this).parent();
 			item.addClass('active');
@@ -1035,8 +1034,6 @@ Site.ItemView = function(item) {
 	self.label_total = null;
 	self.option_remove = null;
 	self.controls = {};
-	
-
 
 	/**
 	 * Complete object initialization.
@@ -1192,19 +1189,58 @@ Site.alter_item_count = function(event) {
 	}
 };
 
+/**
+ * Add item to the cart and checkout if needed.
+ *
+ * @param object event
+ */
+Site.insert_to_cart = function(event) {
+	// prevent default link behavior
+	event.preventDefault();
+
+	// get item data
+	var uid = $('div.product_information').data('id');
+	var checked = $('div.product_information label input:checked').data('text_id');
+
+	// make cart blink
+	cart.addClass('show');
+	setTimeout(function() {
+		cart.removeClass('show');
+	}, 2000);
+
+	// alter item count
+	Site.cart.add_item_by_uid(uid, {property_price: checked}, checked);
+}
+
+/**
+ * Handle clicking on related item.
+ *
+ * @param object event
+ */
+Site.insert_related_items = function(event) {
+	// prevent default checkbox behavior
+	event.preventDefault();
+
+	// get item data
+	var item = $(this);
+	var uid = item.parent().attr('data-id');
+
+	if(item.prop('checked'))
+		Site.cart.add_item_by_uid(uid); else
+		Site.cart.remove_item_by_uid(uid);
+}
  
 /**
  * Function called when document and images have been completely loaded.
  */
 Site.on_load = function() {
-
 	if (Site.is_mobile())
 		Site.mobile_menu = new Caracal.MobileMenu();
 
 	// create user dialogs
 	Site.dialog_system = new Site.DialogSystem();
 
-	// configuring caracal shop cart object
+	// configure shopping cart
 	Site.cart = new Caracal.Shop.Cart();
 	Site.cart
 		.set_checkout_url('/shop/checkout')
@@ -1216,26 +1252,23 @@ Site.on_load = function() {
 		.ui.add_total_count_label($('div.cart p.total_quantity'))
 		.add_item_view(Site.ItemView);
 
-	// function displaying site news
+	// create page control for news items
 	Site.news = new PageControl('ul#news_list','li.news');
 	Site.news
 		.setInterval(6000)
 		.setWrapAround(true);
 
-	// Function displaying Quickefilter object
+	// create filter for items by categories
 	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
 
-	// function displaying home page slider
+	// create page control for home page slider
 	Site.slider = new PageControl('div.header_slider', 'figure');
 	Site.slider
 		.attachPreviousControl($('a.previous'))
 		.attachNextControl($('a.next'))
 		.setWrapAround(true);
 
-
-	// function for displaying mobile slider
 	if (Site.is_mobile()) {
-
 		// create controls for each slide
 		var slides = $('section#slider a');
 		var control_container = $('section#slider div.controls');
@@ -1247,44 +1280,15 @@ Site.on_load = function() {
 		});
 
 		Site.mobile_slider = new PageControl('section#slider', 'a');
-		Site.mobile_slider
-			.attachControls('section#slider div.controls a');
+		Site.mobile_slider.attachControls('section#slider div.controls a');
 
-		//  create function for opening mobile shopping cart
+		// handle clicking on shopping cart button
 		var button_mobile_cart = $('div.mobile_title a.cart');
 		var cart_mobile = $('div#popup div.cart');
 
 		button_mobile_cart.on('click', function() {
 			cart_mobile.toggleClass('open');
 		})
-
-	}
-
-	/*Function inserting item to cart*/
-	function insertToCart() {
-		var uid = $('div.product_information').data('id');
-		var checked = $('div.product_information label input:checked').data('text_id');
-
-		var item_list = Site.cart.get_item_list_by_uid(uid);
-		var found_item = null;
-
-		setTimeout(function() {
-			cart.removeClass('show');
-		},2000);
-
-		Site.cart.add_item_by_uid(uid, {property_price:checked}, checked);
-	}
-
-	// function for inserting and removing related items to cart
-	function insert_related_items() {
-		var item = $(this);
-		var uid = item.parent().attr('data-id');
-
-		if(item.prop('checked')) {
-			Site.cart.add_item_by_uid(uid);
-		} else {
-			Site.cart.remove_item_by_uid(uid);
-		}
 	}
 
 	var input_elements = $('section#product div.product_information label input[type="radio"]');
@@ -1300,12 +1304,9 @@ Site.on_load = function() {
 		figure_price.html(price);
 	})
 
-	var button_add = $('a.add');
-	var button_checkout = $('a.checkout');
-	var related_items = $('div#related_items div.item label input[type="checkbox"]');
-	related_items.on('change',insert_related_items);
-	button_checkout.on('click',insertToCart);
-	button_add.on('click',insertToCart);
+	$('div#related_items div.item label input[type="checkbox"]').on('change', Site.insert_related_items);
+	$('div#product a.checkout').on('click', Site.insert_to_cart);
+	$('div#product a.add').on('click', Site.insert_to_cart);
 
 	// connect increase and decrease controls
 	$('div.cart div.controls a.alter').on('click', Site.alter_item_count);
