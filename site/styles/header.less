@@ -6,14 +6,14 @@
  * Authors:Tal Reznic
  */
 
- header {
- 	display: block;
- 	padding:0px calc(~'(100vw - 1200px)' / 2);
+header {
+	display: block;
+	padding:0px calc(~'(100vw - 1200px)' / 2);
 
- 	background: linear-gradient(to bottom, @color_ac_medium_green 0%,@color_ac_dark_green 100%);
- 	color: @color_ac_text;
- 	white-space: nowrap;
- }
+	background: linear-gradient(to bottom, @color_ac_medium_green 0%,@color_ac_dark_green 100%);
+	color: @color_ac_text;
+	white-space: nowrap;
+}
 
  /*Top header section*/
 
@@ -22,7 +22,6 @@ header a.logo {
 	vertical-align: middle;
 	padding-top: 5px;
 	padding-bottom: 5px;
-
 	background-image: url(../images/logo-background.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -366,6 +365,18 @@ div.cart {
 	z-index: 10000;
 }
 
+div.cart section.cart_container {
+	height: 350px;
+	overflow: hidden;
+}
+
+div.cart div.scrollbar_thumb {
+	width: 7px;
+	margin-left: 2px;
+	border-radius: 2px;
+	background-color: @color_ac_orange;
+}
+
 body.rtl div.cart {
 	right: auto;
 	left: 0%;
@@ -382,9 +393,6 @@ div.cart ul {
 	margin: 0px;
 	padding: 0px;
 	list-style-type: none;
-	max-height: 330px;
-	overflow-x: hidden;
-	overflow-y: scroll;
 }
 
 div.cart ul li strong {
