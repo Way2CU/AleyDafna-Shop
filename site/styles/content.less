@@ -460,11 +460,17 @@ div.product_information a svg,
 section#news span svg {
 	display: inline-block;
 	vertical-align: middle;
-	padding-right: 5px;
+	padding-left: 5px;
 	width: 50px;
 	height: 50px;
 	fill: @color_ac_text;
 	transition: all 0.3s;
+}
+
+body.rtl div.product_information a svg,
+body.rtl section#news span svg {
+	padding-left: 0px;
+	padding-right: 5px;
 }
 
 div.product_information a svg {
