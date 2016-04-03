@@ -2,16 +2,18 @@
 <!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
 <document>
 	<div class="cart">
-		<ul>
-			<li class="titles">
-				<strong></strong>
-				<strong><cms:text constant="title_cart_image"/></strong>
-				<strong><cms:text constant="title_cart_name"/></strong>
-				<strong><cms:text constant="title_cart_size"/></strong>
-				<strong><cms:text constant="title_cart_quantity"/></strong>
-				<strong><cms:text constant="title_cart_price"/></strong>
-			</li>
-		</ul>
+		<section class="cart_container">
+			<ul>
+				<li class="titles">
+					<strong></strong>
+					<strong><cms:text constant="title_cart_image"/></strong>
+					<strong><cms:text constant="title_cart_name"/></strong>
+					<strong><cms:text constant="title_cart_size"/></strong>
+					<strong><cms:text constant="title_cart_quantity"/></strong>
+					<strong><cms:text constant="title_cart_price"/></strong>
+				</li>
+			</ul>
+		</section>
 		<div class="total">
 			<strong><cms:text constant="title_total_price"/></strong>
 			
