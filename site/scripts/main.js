@@ -1201,6 +1201,7 @@ Site.insert_to_cart = function(event) {
 	// get item data
 	var uid = $('div.product_information').data('id');
 	var checked = $('div.product_information label input:checked').data('text_id');
+	var cart = $('div#popup');
 
 	// make cart blink
 	cart.addClass('show');
@@ -1251,6 +1252,9 @@ Site.on_load = function() {
 		.ui.add_total_count_label($('div#popup span.items'))
 		.ui.add_total_count_label($('div.cart p.total_quantity'))
 		.add_item_view(Site.ItemView);
+
+	// create scrollbar for shopping cart
+	Site.scrollbar = new Scrollbar('section.cart_container', 'ul', true);
 
 	// create page control for news items
 	Site.news = new PageControl('ul#news_list','li.news');
@@ -1305,8 +1309,8 @@ Site.on_load = function() {
 	})
 
 	$('div#related_items div.item label input[type="checkbox"]').on('change', Site.insert_related_items);
-	$('div#product a.checkout').on('click', Site.insert_to_cart);
-	$('div#product a.add').on('click', Site.insert_to_cart);
+	$('section#product a.checkout').on('click', Site.insert_to_cart);
+	$('section#product a.add').on('click', Site.insert_to_cart);
 
 	// connect increase and decrease controls
 	$('div.cart div.controls a.alter').on('click', Site.alter_item_count);
