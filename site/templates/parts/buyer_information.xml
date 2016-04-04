@@ -533,9 +533,9 @@
 								category="cards"
 								template="parts/card.xml"
 								/>
-							<a class="arrow next"/>
-							<a class="arrow previous"/>
 						</div>
+						<a class="arrow next"/>
+						<a class="arrow previous"/>
 
 						<!-- Text input for cards -->
 						<textarea name="card_text" maxlength="255" rows="4" cols="60"/>

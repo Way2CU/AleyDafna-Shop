@@ -1779,12 +1779,12 @@ div#input_details div#card_selection.page span {
 div#input_details div#card_selection.page div.container {
 	display: block;
 	width: 100%;
-	height: 340px;
+	height: 367px;
 	overflow: hidden;
 	position: relative;
 }
 
-div#input_details div#card_selection.page div.container a.arrow {
+div#input_details div#card_selection.page a.arrow {
 	display: block;
 	width: 40px;
 	height: 60px;
@@ -1795,23 +1795,23 @@ div#input_details div#card_selection.page div.container a.arrow {
 	background-color: fade(black, 50%);
 }
 
-div#input_details div#card_selection.page div.container a.arrow.previous {
+div#input_details div#card_selection.page a.arrow.previous {
 	left: 0;
 	border-radius: 0px 5px 5px 0px;
 }
 
-div#input_details div#card_selection.page div.container a.arrow.next {
+div#input_details div#card_selection.page a.arrow.next {
 	right: 0;
 	border-radius: 5px 0px 0px 5px;
 }
 
-body.rtl div#input_details div#card_selection.page div.container a.arrow.previous {
+body.rtl div#input_details div#card_selection.page a.arrow.previous {
 	left: auto;
 	right: 0;
 	border-radius: 5px 0px 0px 5px;
 }
 
-body.rtl div#input_details div#card_selection.page div.container a.arrow.next {
+body.rtl div#input_details div#card_selection.page a.arrow.next {
 	right: auto;
 	left: 0;
 	border-radius: 0px 5px 5px 0px;
@@ -1826,5 +1826,9 @@ div#input_details div#card_selection.page textarea {
 	left: 50%;
 	margin-left: -150px;
 
+	border: 0;
+	background-color: fade(white, 90%);
+
+	color: @color_text;
 	resize: none;
 }

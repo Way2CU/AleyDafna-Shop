@@ -36,8 +36,8 @@ Site.CardSelection = function() {
 		// create card selection user interface
 		self.slider = new Caracal.Gallery.Slider(1);
 		self.slider
-			.controls.attach_next(self.container.find('a.arrow.next'))
-			.controls.attach_previous(self.container.find('a.arrow.previous'))
+			.controls.attach_next($('#div.card_text a.arrow.next'))
+			.controls.attach_previous($('#div.card_text a.arrow.previous'))
 			.images.add(self.container.find('img'))
 			.images.set_center(true);
 
