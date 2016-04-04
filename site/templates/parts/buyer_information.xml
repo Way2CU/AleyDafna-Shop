@@ -533,12 +533,13 @@
 								category="cards"
 								template="parts/card.xml"
 								/>
+
+							<!-- Text input for cards -->
+							<textarea name="card_text" maxlength="255" rows="4" cols="60"/>
 						</div>
+
 						<a class="arrow next"/>
 						<a class="arrow previous"/>
-
-						<!-- Text input for cards -->
-						<textarea name="card_text" maxlength="255" rows="4" cols="60"/>
 
 						<div class="checkout_controls">
 							<button class="previous"><cms:text constant="back"/></button>

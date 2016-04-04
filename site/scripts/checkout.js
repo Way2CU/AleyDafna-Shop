@@ -29,7 +29,7 @@ Site.CardSelection = function() {
 	 * Finalize object.
 	 */
 	self._init = function() {
-		self.text_input = $('div#card_text textarea');
+		self.text_input = $('div#card_selection textarea');
 		self.card_selection = $('div#card_selection select');
 		self.container = $('div#card_selection div.container');
 
@@ -38,12 +38,13 @@ Site.CardSelection = function() {
 		self.slider
 			.controls.attach_next($('#div.card_text a.arrow.next'))
 			.controls.attach_previous($('#div.card_text a.arrow.previous'))
+			.images.set_container(self.container)
 			.images.add(self.container.find('img'))
 			.images.set_center(true);
 
 		// connect event for updating text input position
 		self.container.find('a.arrow').on('click', self.handler.card_switch);
-		
+
 		// position input element initially
 		self._update_input_position();
 	};
@@ -52,15 +53,15 @@ Site.CardSelection = function() {
 	 * Update text input pusition based on currently selected card.
 	 */
 	self._update_input_position = function() {
-		var current = self.container.find('img.active').data('uid');
+		var current = self.container.find('img.visible').data('uid');
 
-		if (current in self.images) {
-			var coordinates = self.images[current];
+		if (current in self.cards) {
+			var coordinates = self.cards[current];
 			self.text_input.css({
 					top: coordinates[0],
 					left: coordinates[1],
-					width: coordinates[2],
-					height: coordinates[3]
+					bottom: coordinates[2],
+					right: coordinates[3]
 				});
 		}
 	};
@@ -112,3 +113,7 @@ Site.CardSelection = function() {
 	// finalize object
 	self._init();
 };
+
+$(function() {
+	Site.card_selector = new Site.CardSelection();
+});

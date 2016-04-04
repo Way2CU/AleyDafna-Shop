@@ -1639,6 +1639,7 @@ div#input_details {
 
 div#input_details h1 {
 	color: @color_ac_text;
+	border-radius: 0;
 	background-color: @color_ac_medium_green;
 }
 
@@ -1787,34 +1788,37 @@ div#input_details div#card_selection.page div.container {
 div#input_details div#card_selection.page a.arrow {
 	display: block;
 	width: 40px;
-	height: 60px;
+	height: 70px;
 	top: 50%;
-	margin-top: -30px;
+	margin-top: -35px;
 	position: absolute;
 
-	background-color: fade(black, 50%);
+	background-image: url(../images/arrow.svg);
+	background-size: 40px auto;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 div#input_details div#card_selection.page a.arrow.previous {
-	left: 0;
-	border-radius: 0px 5px 5px 0px;
+	right: 105%;
+	transform: scaleX(-1);
 }
 
 div#input_details div#card_selection.page a.arrow.next {
-	right: 0;
-	border-radius: 5px 0px 0px 5px;
+	left: 105%;
+	transform: scaleX(1);
 }
 
 body.rtl div#input_details div#card_selection.page a.arrow.previous {
-	left: auto;
-	right: 0;
-	border-radius: 5px 0px 0px 5px;
+	right: auto;
+	left: 105%;
+	transform: scaleX(1);
 }
 
 body.rtl div#input_details div#card_selection.page a.arrow.next {
-	right: auto;
-	left: 0;
-	border-radius: 0px 5px 5px 0px;
+	left: auto;
+	right: 105%;
+	transform: scaleX(-1);
 }
 
 div#input_details div#card_selection.page textarea {
@@ -1822,9 +1826,6 @@ div#input_details div#card_selection.page textarea {
 	width: 300px;
 	height: 100px;
 	position: absolute;
-	top: 200px;
-	left: 50%;
-	margin-left: -150px;
 
 	border: 0;
 	background-color: fade(white, 90%);
