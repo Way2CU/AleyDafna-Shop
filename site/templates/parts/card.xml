@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../units/schema/language.dtd">
+<document>
+	<img
+		src="gallery::getGroupImageById($params['gallery'], null)"
+		alt="$params['name'][$language]"
+		data-uid="$params['uid']"
+		cms:eval="src,alt,data-uid"
+		/>
+</document>

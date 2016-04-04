@@ -22,10 +22,7 @@
 				<cms:text constant="title_billing_information" module="shop"/>
 			</a>
 			<a href="javascript:void(0);">
-				<cms:text constant="title_card_text"/>
-			</a>
-			<a href="javascript:void(0);">
-				<cms:text constant="title_card_select"/>
+				<cms:text constant="title_card_selection"/>
 			</a>
 			<a href="javascript:void(0);">
 				<cms:text constant="title_checkout" module="shop"/>
@@ -525,36 +522,23 @@
 						<input type="hidden" name="stage" value="set-info"/>
 					</cms:if>
 
-					<div class="page" id="card_text">
-						<h1><cms:text constant="title_card_text"/></h1>
-						<label>
-							<span><cms:text constant="label_card_text"/></span>
-							<textarea name="card_text" maxlength="255" rows="4" cols="60"/>
-						</label>
-
-						<div class="checkout_controls">
-							<button class="previous"><cms:text constant="back"/></button>
-							<button class="next"><cms:text constant="next"/></button>
-						</div>
-					</div>
-
 					<div class="page" id="card_selection">
-						<h1><cms:text constant="title_card_select"/></h1>
+						<h1><cms:text constant="title_card_selection"/></h1>
 
-						<label class="left">
-							<span><cms:text constant="label_card_select"/></span>
-							<select name="card" size="10">
-								<cms:module
-									name="shop"
-									action="show_item_list"
-									group="cards"
-									template="parts/card.xml"
-									/>
-							</select>
-						</label>
-
+						<!-- Card design container -->
 						<div class="container">
+							<cms:module
+								name="shop"
+								action="show_item_list"
+								category="cards"
+								template="parts/card.xml"
+								/>
 						</div>
+						<a class="arrow next"/>
+						<a class="arrow previous"/>
+
+						<!-- Text input for cards -->
+						<textarea name="card_text" maxlength="255" rows="4" cols="60"/>
 
 						<div class="checkout_controls">
 							<button class="previous"><cms:text constant="back"/></button>
