@@ -13,14 +13,6 @@
 					<cms:text constant="title_shipping_information" module="shop"/>
 				</a>
 			</cms:if>
-			<cms:if condition="is_null($params['payment_method'])">
-				<a href="javascript:void(0);">
-					<cms:text constant="title_payment_method" module="shop"/>
-				</a>
-			</cms:if>
-			<a href="javascript:void(0);">
-				<cms:text constant="title_billing_information" module="shop"/>
-			</a>
 			<a href="javascript:void(0);">
 				<cms:text constant="title_card_selection"/>
 			</a>
@@ -304,6 +296,13 @@
 							</label>
 							<label>
 								<span><cms:text constant="label_city" module="shop"/></span>
+								<!-- <select -->
+									<!-- 	name="city" -->
+									<!-- 	data-required="1" -->
+									<!-- 	autocomplete="on" -->
+									<!-- 	> -->
+									<!-- 	<option value=""></option> -->
+									<!-- </select> -->
 								<input
 									class="in_array('city', $params['bad_fields']) ? 'bad' : ''"
 									cms:eval="class,value"
@@ -330,46 +329,20 @@
 							</label>
 							<label>
 								<span><cms:text constant="label_country" module="shop"/></span>
-								<cms:if condition="empty($params['fixed_country'])">
-									<select
-										name="country"
-										class="in_array('country', $params['bad_fields']) ? 'bad' : ''"
-										cms:eval="class"
-										data-required="1"
-										autocomplete="on"
-										>
-										<option/>
-										<option value="DE">Germany</option>
-										<option value="ES">Spain</option>
-										<option value="IT">Italy</option>
-										<option value="CZ">Czech republic</option>
-										<option value="UA">Ukraine</option>
-										<option value="RU">Russia</option>
-										<option value="FR">France</option>
-										<option value="NL">Netherlands</option>
-										<option value="SE">Sweden</option>
-										<option value="UK">United kingdom</option>
-										<option value="AT">Austria</option>
-										<option value="CH">Switzerland</option>
-										<option value="BE">Belgium</option>
-									</select>
-								</cms:if>
-								<cms:if condition="!empty($params['fixed_country'])">
-									<select
-										name="country"
-										class="in_array('country', $params['bad_fields']) ? 'bad' : ''"
-										cms:eval="class"
-										data-required="1"
-										autocomplete="on"
-										>
-										<cms:module
-											name="country_list"
-											action="show"
-											filter="$params['fixed_country']"
-											cms:eval="filter"
-											/>
-									</select>
-								</cms:if>
+								<select
+									name="country"
+									class="in_array('country', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class"
+									data-required="1"
+									autocomplete="on"
+									>
+									<cms:module
+										name="country_list"
+										action="show"
+										filter="$params['fixed_country']"
+										cms:eval="filter"
+										/>
+								</select>
 							</label>
 							<hr/>
 							<label>
@@ -399,128 +372,21 @@
 						</div>
 					</cms:if>
 
-					<!-- Payment Method Selection -->
-					<cms:if condition="is_null($params['payment_method'])">
-						<div class="page" id="payment_method">
-							<h1><cms:text constant="title_payment_method" module="shop"/></h1>
-							<input type="hidden" name="payment_method" value=""/>
-							<div class="payment_methods">
-								<cms:payment_method_list/>
-							</div>
-
-							<div class="checkout_controls">
-								<button class="previous"><cms:text constant="back"/></button>
-								<button class="next"><cms:text constant="next"/></button>
-							</div>
-						</div>
-					</cms:if>
-
 					<!-- Billing Information -->
-					<div class="page" id="billing_information">
-						<h1><cms:text constant="title_billing_information" module="shop"/></h1>
-
-						<label>
-							<span><cms:text constant="label_full_name" module="shop"/></span>
-							<input
-								class="in_array('billing_full_name', $params['bad_fields']) ? 'bad' : ''"
-								cms:eval="class,value"
-								type="text"
-								name="billing_full_name"
-								value="isset($_POST['billing_full_name']) ? fix_chars($_POST['billing_first_name']) : ''"
-								maxlength="64"
-								autocomplete="on"
-								data-required="1"
-								/>
-						</label>
-						<hr/>
-						<label>
-							<span><cms:text constant="label_credit_card_type" module="shop"/></span>
-							<select name="billing_card_type" data-required="1">
-								<option/>
-								<cms:card_type/>
-							</select>
-						</label>
-						<label>
-							<span><cms:text constant="label_credit_card" module="shop"/></span>
-							<input
-								class="in_array('billing_credit_card', $params['bad_fields']) ? 'bad' : ''"
-								cms:eval="class,value"
-								type="text"
-								name="billing_credit_card"
-								value="isset($_POST['billing_credit_card']) ? fix_chars($_POST['billing_credit_card']) : ''"
-								maxlength="127"
-								autocomplete="on"
-								data-required="1"
-								/>
-						</label>
-						<div class="horizontal">
-							<label>
-								<span><cms:text constant="label_expiration_date" module="shop"/></span>
-								<input
-									class="in_array('billing_expire_month', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
-									name="billing_expire_month"
-									value="isset($_POST['billing_expire_month']) ? fix_chars($_POST['billing_expire_month']) : ''"
-									maxlength="2"
-									autocomplete="on"
-									placeholder="mm"
-									data-required="1"
-									/>
-							</label>
-							<label>
-								<input
-									class="in_array('billing_expire_year', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
-									name="billing_expire_year"
-									value="isset($_POST['billing_expire_year']) ? fix_chars($_POST['billing_expire_year']) : ''"
-									maxlength="4"
-									autocomplete="on"
-									placeholder="yyyy"
-									data-required="1"
-									/>
-							</label>
-						</div>
-						<label>
-							<span><cms:text constant="label_cvv" module="shop"/></span>
-							<input
-								class="in_array('billing_cvv', $params['bad_fields']) ? 'bad' : ''"
-								cms:eval="class,value"
-								type="text"
-								name="billing_cvv"
-								value="isset($_POST['billing_cvv']) ? fix_chars($_POST['billing_cvv']) : ''"
-								maxlength="4"
-								autocomplete="on"
-								data-required="1"
-								/>
-							<cms:raw><![CDATA[&nbsp;]]></cms:raw>
-							<a href="javascript: void();" class="what_is_cvv">
-								<cms:text constant="label_cvv_question" module="shop"/>
-							</a>
-							<img
-								id="what_is_cvv"
-								src="_BASEURL.'/modules/shop/images/security_code.png'"
-								alt="CVV2"
-								cms:eval="src"
-								/>
-						</label>
-						<div class="checkout_controls">
-							<button class="previous"><cms:text constant="back"/></button>
-							<button class="next"><cms:text constant="next"/></button>
-						</div>
-					</div>
+					<input type="hidden" name="billing_full_name" value="" />
+					<input type="hidden" name="billing_credit_card" value="" />
+					<input type="hidden" name="billing_expire_month" value="" />
+					<input type="hidden" name="billing_expire_year" value="" />
+					<input type="hidden" name="billing_cvv" value="" />
 
 					<!-- Static payment method information -->
-					<cms:if condition="!is_null($params['payment_method'])">
-						<cms:payment_method
-							name="$params['payment_method']"
-							template="hidden_payment_method.xml"
-							local="1"
-							cms:eval="name"
-							/>
-						<input type="hidden" name="stage" value="set-info"/>
-					</cms:if>
+					<cms:payment_method
+						name="$params['payment_method']"
+						template="hidden_payment_method.xml"
+						local="1"
+						cms:eval="name"
+						/>
+					<input type="hidden" name="stage" value="set-info"/>
 
 					<div class="page" id="card_selection">
 						<h1><cms:text constant="title_card_selection"/></h1>

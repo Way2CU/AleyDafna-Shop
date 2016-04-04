@@ -114,6 +114,42 @@ Site.CardSelection = function() {
 	self._init();
 };
 
+/**
+ * Save selected delivery date to server and enable checkout button.
+ */
+Site.save_delivery_date = function() {
+	var delivery_interface = $('div#checkout_container div.delivery_interface');
+	var method = $('#checkout div.delivery_provider input[type="radio"]:checked');
+	var field = $('div#checkout_container div.delivery_interface input[name=date]');
+
+	var data = {
+			method: method.val(),
+			type: field.data('value').split('T')[0]
+		};
+
+	new Communicator('shop')
+		.on_success(function(data) {
+				delivery_interface.removeClass('visible');
+				Site.checkout_form.enable_checkout_button();
+			})
+		.get('json_set_delivery_method', data);
+};
+
+/**
+ * Handle selecting date.
+ *
+ * @param object date
+ */
+Site.handle_date_select = function(date) {
+	var field = $('div#checkout_container div.delivery_interface input[name=date]');
+	var display_value = date.toLocaleDateString('he-IL');
+	var value = date.toISOString();
+
+	field
+		.data('value', value)
+		.val(display_value);
+};
+
 $(function() {
 	Site.card_selector = new Site.CardSelection();
 });

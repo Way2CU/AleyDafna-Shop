@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
+<document>
+	<form>
+		<label>
+			<span><cms:text constant="label_delivery_date" module="delivery"/></span>
+			<input
+				type="text"
+				name="date"
+				/>
+		</label>
+
+		<div class="controls">
+			<button type="button" onclick="javascript:Site.save_delivery_date()">
+				<cms:text constant="save"/>
+			</button>
+		</div>
+	</form>
+	<script type="text/javascript">
+		var params = {
+			field: $('div.delivery_interface input[name=date]')[0],
+			minDate: new Date(),
+			onSelect: Site.handle_date_select
+			};
+		Site.delivery_date_picker = new Pikaday(params);
+	</script>
+</document>
