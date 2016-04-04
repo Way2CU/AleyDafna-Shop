@@ -1193,8 +1193,9 @@ Site.alter_item_count = function(event) {
  * Add item to the cart and checkout if needed.
  *
  * @param object event
+ * @param boolean skip_alter
  */
-Site.insert_to_cart = function(event) {
+Site.insert_to_cart = function(event, skip_alter) {
 	// prevent default link behavior
 	event.preventDefault();
 
@@ -1209,9 +1210,39 @@ Site.insert_to_cart = function(event) {
 		cart.removeClass('show');
 	}, 2000);
 
-	// alter item count
-	Site.cart.add_item_by_uid(uid, {property_price: checked}, checked);
+	// find item with same uid
+	var item_list = Site.cart.get_item_list_by_uid(uid);
+	var properties = {
+			size: checked
+		};
+
+	// try to update existing item in the list
+	var updated = false;
+	for (var index in item_list) {
+		var item_in_cart = item_list[index];
+
+		if (item_in_cart.properties['size'] == checked) {
+			if (!skip_alter)
+				item_in_cart.alter_count(1);
+			updated = true;
+			break;
+		}
+	}
+
+	// if no items were updated add new item
+	if (!updated)
+		Site.cart.add_item_by_uid(uid, properties, checked);
 }
+
+/**
+ * Add item if needed and go to checkout page.
+ *
+ * @param object event
+ */
+Site.insert_and_checkout = function(event, skip_alter) {
+	Site.insert_to_cart(event, true);
+	Site.cart.checkout();
+};
 
 /**
  * Handle clicking on related item.
@@ -1230,7 +1261,7 @@ Site.insert_related_items = function(event) {
 		Site.cart.add_item_by_uid(uid); else
 		Site.cart.remove_item_by_uid(uid);
 }
- 
+
 /**
  * Function called when document and images have been completely loaded.
  */
@@ -1245,7 +1276,7 @@ Site.on_load = function() {
 	Site.cart = new Caracal.Shop.Cart();
 	Site.cart
 		.set_checkout_url('/shop/checkout')
-		.ui.connect_checkout_button($('a.checkout'))
+		.ui.connect_checkout_button($('header a.checkout'))
 		.ui.add_item_list($('div#popup div.cart ul'))
 		.ui.add_total_cost_label($('div#popup span.price'))
 		.ui.add_total_cost_label($('div.cart p.total'))
@@ -1298,7 +1329,7 @@ Site.on_load = function() {
 	var input_elements = $('section#product div.product_information label input[type="radio"]');
 	var figure_size = $('p.selected_name');
 	var figure_price = $('p.selected_price');
-	
+
 	// function displaying product price and name according to checked element
 	input_elements.on('click', function() {
 		var item = $(this);
@@ -1309,7 +1340,7 @@ Site.on_load = function() {
 	})
 
 	$('div#related_items div.item label input[type="checkbox"]').on('change', Site.insert_related_items);
-	$('section#product a.checkout').on('click', Site.insert_to_cart);
+	$('section#product a.checkout').on('click', Site.insert_and_checkout);
 	$('section#product a.add').on('click', Site.insert_to_cart);
 
 	// connect increase and decrease controls

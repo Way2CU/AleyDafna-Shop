@@ -296,36 +296,50 @@
 							</label>
 							<label>
 								<span><cms:text constant="label_city" module="shop"/></span>
-								<!-- <select -->
-									<!-- 	name="city" -->
-									<!-- 	data-required="1" -->
-									<!-- 	autocomplete="on" -->
-									<!-- 	> -->
-									<!-- 	<option value=""></option> -->
-									<!-- </select> -->
-								<input
-									class="in_array('city', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
+								<select
 									name="city"
-									value="isset($_POST['city']) ? fix_chars($_POST['city']) : ''"
-									maxlength="40"
 									data-required="1"
 									autocomplete="on"
-									/>
-							</label>
-							<label style="display:none;">
-								<span><cms:text constant="label_zip" module="shop"/></span>
-								<input
-									class="in_array('zip', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class"
-									type="text"
-									name="zip"
-									value="0"
-									maxlength="20"
-									data-required="1"
-									autocomplete="on"
-									/>
+									>
+									<option value=""></option>
+									<optgroup label="label_price_group1" cms:constant="label">
+										<option value="Ramat Gan"><cms:text constant="city_ramat_gan"/></option>
+										<option value="Givataim"><cms:text constant="city_givataim_"/></option>
+										<option value="Bney Brak"><cms:text constant="city_bney_brak"/></option>
+										<option value="Tel Aviv"><cms:text constant="city_tel_aviv"/></option>
+									</optgroup>
+									<optgroup label="label_price_group2" cms:constant="label">
+										<option value="Petah Tiqwa"><cms:text constant="city_petah_tiqwa"/></option>
+										<option value="Rosh Aain"><cms:text constant="city_rosh_aain"/></option>
+										<option value="Herzelia"><cms:text constant="city_herzelia"/></option>
+										<option value="Ramat Hasharon"><cms:text constant="city_ramat_hasharon"/></option>
+										<option value="Kfar Sava"><cms:text constant="city_kfar_sava"/></option>
+										<option value="Ramat Efal"><cms:text constant="city_ramat_efal"/></option>
+										<option value="Raanana"><cms:text constant="city_raanana"/></option>
+										<option value="Netanya"><cms:text constant="city_netanya"/></option>
+										<option value="Hod Hasharon"><cms:text constant="city_hod_hasharon"/></option>
+										<option value="Azur"><cms:text constant="city_azur"/></option>
+										<option value="Holon"><cms:text constant="city_holon"/></option>
+										<option value="Bat Yam"><cms:text constant="city_bat_yam"/></option>
+										<option value="Rishon Lezion"><cms:text constant="city_rishon_lezion"/></option>
+										<option value="Yavne"><cms:text constant="city_yavne"/></option>
+										<option value="Yahud"><cms:text constant="city_yahud"/></option>
+										<option value="Neve Monoson"><cms:text constant="city_neve_monoson"/></option>
+										<option value="Kiryat Ono"><cms:text constant="city_kiryat_ono"/></option>
+										<option value="Savion"><cms:text constant="city_savion"/></option>
+										<option value="Or Yehuda"><cms:text constant="city_or_yehuda"/></option>
+										<option value="Givat Shmuel"><cms:text constant="city_givat_shmuel"/></option>
+										<option value="Beit Dagan"><cms:text constant="city_beit_dagan"/></option>
+										<option value="Gedera"><cms:text constant="city_gedera"/></option>
+										<option value="Rehovot"><cms:text constant="city_rehovot"/></option>
+										<option value="Mazkeret Batya"><cms:text constant="city_mazkeret_batya"/></option>
+										<option value="Ramla"><cms:text constant="city_ramla"/></option>
+										<option value="Lod"><cms:text constant="city_lod"/></option>
+										<option value="Beer Sheva"><cms:text constant="city_beer_sheva"/></option>
+										<option value="Haifa"><cms:text constant="city_haifa"/></option>
+										<option value="Jerusalem"><cms:text constant="city_jerusalem"/></option>
+									</optgroup>
+								</select>
 							</label>
 							<label>
 								<span><cms:text constant="label_country" module="shop"/></span>
@@ -344,6 +358,12 @@
 										/>
 								</select>
 							</label>
+								<a
+									href="url_Make('', 'contact-us')"
+									cms:eval="href"
+									>
+									<cms:text constant="label_city_not_in_list"/>
+								</a>
 							<hr/>
 							<label>
 								<span><cms:text constant="label_access_code" module="shop"/></span>
@@ -372,12 +392,13 @@
 						</div>
 					</cms:if>
 
-					<!-- Billing Information -->
+					<!-- Hidden Information -->
 					<input type="hidden" name="billing_full_name" value="" />
 					<input type="hidden" name="billing_credit_card" value="" />
 					<input type="hidden" name="billing_expire_month" value="" />
 					<input type="hidden" name="billing_expire_year" value="" />
 					<input type="hidden" name="billing_cvv" value="" />
+					<input type="hidden" name="zip" value="0" />
 
 					<!-- Static payment method information -->
 					<cms:payment_method
