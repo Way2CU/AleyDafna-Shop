@@ -15,7 +15,7 @@ header {
 header div.mobile_title {
 	padding-top: 5px;
 	padding-bottom: 5px;
- 	background-color: @color_ac_text;
+	background-color: @color_ac_text;
 }
 
 header div.mobile_title a.logo {
@@ -176,6 +176,18 @@ header div.cart {
 	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
 	background-color: white;
 	transition: all 0.6s;
+}
+
+div.cart section.cart_container {
+	height: 350px;
+	overflow: hidden;
+}
+
+div.cart div.scrollbar_thumb {
+	width: 7px;
+	margin-left: 2px;
+	border-radius: 2px;
+	background-color: @color_ac_orange;
 }
 
 header div.cart.open {

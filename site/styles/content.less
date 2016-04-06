@@ -836,14 +836,6 @@ section#product div.product_information label {
 	position: relative;
 }
 
-section#product div.product_information label:first-of-type {
-	margin-left: 0px;
-}
-
-body.rtl section#product div.product_information label:first-of-type {
-	margin-right: 0px;
-}
-
 div#checkboxes label {
 	border-bottom: none;
 	text-align: center;
@@ -859,6 +851,15 @@ div#checkboxes label {
 	background-color: @color_ac_medium_green;
 	cursor: pointer;
 	transition: all 0.3s;
+}
+
+section#product div.product_information label:first-of-type {
+	margin-left: 0px;
+}
+
+body.rtl section#product div.product_information label:first-of-type {
+	margin-right: 0px;
+	margin-left: 10px;
 }
 
 div#checkboxes label.active,
