@@ -12,11 +12,11 @@ Site.CardSelection = function() {
 	var self = this;
 
 	self.text_input = null;
-	self.card_selection = null;
 	self.container = null;
 	self.slider = null;
 
-	self.use_card = false;
+	self.card_saved = false;
+	self.cart_connected = false;
 
 	self.handler = {};
 	self.validator = {};
@@ -24,13 +24,13 @@ Site.CardSelection = function() {
 			regular: [0, 0, 100, 100],
 			bow_tie: [100, 100, 100, 100]
 		};
+	self.default_position = [50, 50, 50, 50];
 
 	/**
 	 * Finalize object.
 	 */
 	self._init = function() {
 		self.text_input = $('div#card_selection textarea');
-		self.card_selection = $('div#card_selection select');
 		self.container = $('div#card_selection div.container');
 
 		// create card selection user interface
@@ -41,6 +41,9 @@ Site.CardSelection = function() {
 			.images.set_container(self.container)
 			.images.add(self.container.find('img'))
 			.images.set_center(true);
+
+		// connect validator
+		$('div#card_selection').data('validator', self.validator.card_selection);
 
 		// connect event for updating text input position
 		self.container.find('a.arrow').on('click', self.handler.card_switch);
@@ -55,24 +58,18 @@ Site.CardSelection = function() {
 	self._update_input_position = function() {
 		var current = self.container.find('img.visible').data('uid');
 
-		if (current in self.cards) {
-			var coordinates = self.cards[current];
-			self.text_input.css({
-					top: coordinates[0],
-					left: coordinates[1],
-					bottom: coordinates[2],
-					right: coordinates[3]
-				});
-		}
-	};
+		// get input field position
+		var coordinates = self.default_position;
+		if (current in self.cards)
+			coordinates = self.cards[current];
 
-	/**
-	 * Handle loosing focus on card text entry.
-	 *
-	 * @param object event
-	 */
-	self.handler.card_text_leave = function(event) {
-		self.use_card = self.text_input.val() != '';
+		// position input field
+		self.text_input.css({
+				top: coordinates[0],
+				left: coordinates[1],
+				bottom: coordinates[2],
+				right: coordinates[3]
+			});
 	};
 
 	/**
@@ -85,25 +82,44 @@ Site.CardSelection = function() {
 	};
 
 	/**
+	 * Handle adding card to cart.
+	 *
+	 * @param object cart
+	 * @param string uid
+	 * @param string variation_id
+	 * @param object properties
+	 */
+	self.handler.save_card = function(cart, uid, variation_id, properties) {
+		if (uid in self.cards)
+			self.card_saved = true;
+
+		Site.buyer_information_form.page_control.nextPage();
+	};
+
+	/**
 	 * Make sure if card text is entered that selection is right.
 	 *
 	 * @return boolean
 	 */
-	self.validator.card_selection = function() {
+	self.validator.card_selection = function(current_page) {
 		var result = false;
 
-		if (self.use_card) {
-			// check if card design is selected
-			var selected = self.card_selection.find('option:selected');
-			result = selected.length > 0;
+		// make sure we have event connected
+		if (!self.cart_connected) {
+			Site.cart.events.connect('item-added', self.handler.save_card);
+			self.cart_connected = true;
+		}
 
-			if (result) {
-				var properties = {'text': self.text_input.val()};
-				Site.cart.add_item_by_uid(selected.data('uid'), properties);
-			}
+		// decide if page should be switched
+		if (self.text_input.val() != '' && !self.card_saved) {
+			// save card
+			var selected_card = self.container.find('img.visible').data('uid');
+			var properties = {'text': self.text_input.val()};
+			Site.cart.add_item_by_uid(selected_card, properties);
 
 		} else {
 			// if there's no text entered we assume user doesn't want card
+			// or text was entered and card saved
 			result = true;
 		}
 

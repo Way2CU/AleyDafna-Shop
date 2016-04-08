@@ -1294,7 +1294,11 @@ Site.on_load = function() {
 		.setWrapAround(true);
 
 	// create filter for items by categories
-	Site.filter = new QuickFilter($('section#category'),$('section.group '),$('a'));
+	Site.filter = new QuickFilter(
+			$('section#category'),
+			$('section.group'),
+			$('a')
+		);
 
 	// create page control for home page slider
 	Site.slider = new PageControl('div.header_slider', 'figure');
