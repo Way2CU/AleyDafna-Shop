@@ -2,20 +2,20 @@
 	<div class="item">
 		<label for="$params['name'][$language]" data-id="$params['uid']" cms:eval="for,data-id">
 			<cms:desktop>
-				<img 
+				<img
 					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)"
-					alt="$params['title'][$language]"  
+					alt="$params['title'][$language]"
 					cms:eval="src,alt"/>
 			</cms:desktop>
-			
+
 			<cms:mobile>
-				<img 
+				<img
 					src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_BOTH)"
-					alt="$params['title'][$language]"  
+					alt="$params['title'][$language]"
 					cms:eval="src,alt"/>
-			</cms:mobile>		
-				
-			<input 
+			</cms:mobile>
+
+			<input
 				type="checkbox"
 				data-id="$params['uid']"
 				id="$params['name'][$language]"
@@ -23,15 +23,23 @@
 				value="$params['name'][$language]"
 				cms:eval="value,id,data-id"
 				/>
-			<span></span>		
-		</label>		
+			<span></span>
+		</label>
 
-		<p class="price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
-			<cms:text constant="currency"/><cms:raw text=" "/><cms:var param="price"/>
+		<p
+			class="price"
+			data-currency="shop::getDefaultCurrency()"
+			data-regular-price="($params['price'] != $params['regular_price']) ? $params['regular_price'] : false"
+			cms:eval="data-currency"
+			cms:optional="data-regular-price"
+			>
+			<cms:text constant="currency"/>
+			<cms:raw text=" "/>
+			<cms:var param="price"/>
 		</p>
 
 		<p class="name">
 			<cms:var param="name" multilanguage="yes"/>
 		</p>
-	</div>		
+	</div>
 </document>

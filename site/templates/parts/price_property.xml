@@ -7,7 +7,13 @@
 			<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
 		</figure>
 
-		<p class="price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
+		<p
+			class="price"
+			data-currency="shop::getDefaultCurrency()"
+			data-regular-price="($params['price'] != $params['regular_price']) ? $params['regular_price'] : false"
+			cms:eval="data-currency"
+			cms:optional="data-regular-price"
+			>
 			<cms:var name="number_format($params['value'], 2)"/>
 		</p>
 		<p class="name"><cms:var param="name" multilanguage="yes"/></p>
