@@ -661,6 +661,17 @@ section#product div.product_information label p.price {
 	position: relative;
 }
 
+div#related_items div.item p.price[data-discount-price] {
+	text-decoration: line-through;
+}
+
+div#related_items div.item p.price[data-discount-price]:before {
+	content: attr(data-discount-price);
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+}
+
 section#product div.product_information label p.price:after {
 	content: attr(data-currency);
 	padding-left: 10px;
@@ -797,6 +808,14 @@ div#related_items div.item p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
 	position: relative;
+}
+
+div#related_items div.item p.price[data-discount-price] {
+	text-decoration: line-through;
+}
+div#related_items div.item p.price[data-discount-price]:before {
+	content: attr(data-discount-price);
+	text-decoration: none;
 }
 
 div#related_items div.item p.price:after {

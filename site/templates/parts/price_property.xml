@@ -10,9 +10,9 @@
 		<p
 			class="price"
 			data-currency="shop::getDefaultCurrency()"
-			data-regular-price="($params['price'] != $params['regular_price']) ? $params['regular_price'] : false"
+			data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
 			cms:eval="data-currency"
-			cms:optional="data-regular-price"
+			cms:optional="data-discount-price"
 			>
 			<cms:var name="number_format($params['value'], 2)"/>
 		</p>
