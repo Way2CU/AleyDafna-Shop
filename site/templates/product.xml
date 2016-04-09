@@ -60,6 +60,7 @@
 						cms:eval="related,category"
 						/>
 				</div>
+
 				<cms:desktop>
 					<cms:template file="parts/banners.xml"/>
 				</cms:desktop>

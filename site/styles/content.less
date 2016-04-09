@@ -666,6 +666,17 @@ a.item p.price {
 	position: relative;
 }
 
+a.item p.price[data-discount-price] {
+	text-decoration: line-through;
+}
+
+a.item p.price[data-discount-price]:before {
+	content: attr(data-regular-price);
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+}
+
 a.item p.price:after {
 	content: attr(data-currency);
 	padding-left: 10px;
@@ -877,7 +888,6 @@ div#checkboxes label  span {
 	color: @color_ac_text;
 }
 
-
 section#product div.product_information label figure {
 	display: block;
 	margin: 0px;
@@ -915,6 +925,20 @@ section#product div.product_information label p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
 	position: relative;
+}
+
+section#product div.product_information label p.price[data-discount-price] {
+	text-decoration: line-through;
+	color: fade(@color_ac_orange, 50%);
+}
+
+section#product div.product_information label p.price[data-discount-price]:before {
+	display: inline-block;
+	content: attr(data-discount-price);
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: @color_ac_orange;
 }
 
 section#product div.product_information label p.price:after {
