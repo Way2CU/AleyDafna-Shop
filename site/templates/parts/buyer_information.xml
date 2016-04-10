@@ -436,7 +436,14 @@
 								/>
 
 							<!-- Text input for cards -->
-							<textarea name="card_text" maxlength="255" rows="4" cols="60"/>
+							<textarea
+								name="card_text"
+								maxlength="255"
+								rows="4"
+								cols="60"
+								placeholder="message_card"
+								cms:constant="placeholder"
+								/>
 						</div>
 
 						<a class="arrow next"/>
