@@ -63,6 +63,7 @@
     "label_remember_me":"זכור אותי",
     "label_repeat_password": "הקלד סיסמה שנית",
     "label_regular": "יפה",
+    "label_cellphone": "מספר סלולרי:",
     "login": "כניסת משתמש",
     "login_dialog_message": "הזינו את שם המשתמש והסיסמא שלך למטה. הסיסמה היא תלויית רישיות.",
     "login_dialog_title": "כניסת משתמש",
