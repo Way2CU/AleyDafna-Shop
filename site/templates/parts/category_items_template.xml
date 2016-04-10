@@ -9,7 +9,13 @@
 
 			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 200,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['title'][$language]"  cms:eval="src,alt"/>
 			<p><cms:var param="name" multilanguage="yes"/></p>
-			<p  class="price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
+			<p
+				class="price"
+				data-currency="shop::getDefaultCurrency()"
+				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
+				cms:eval="data-currency"
+				cms:optional="data-discount-price"
+				>
 				<cms:var param="price"/>
 			</p>
 			<p class="description"><cms:var param="description" multilanguage="yes"/></p>
