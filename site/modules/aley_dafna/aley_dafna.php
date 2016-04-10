@@ -32,7 +32,7 @@ class aley_dafna extends Module {
 	 * Constructor
 	 */
 	protected function __construct() {
-		global $section;
+		global $section, $action;
 
 		parent::__construct(__FILE__);
 

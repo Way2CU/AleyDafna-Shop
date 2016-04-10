@@ -355,12 +355,16 @@
 										/>
 								</select>
 							</label>
-								<a
-									href="url_Make('', 'contact-us')"
-									cms:eval="href"
-									>
-									<cms:text constant="label_city_not_in_list"/>
-								</a>
+							<input
+								type="hidden"
+								name="state"
+								/>
+							<a
+								href="url_Make('', 'contact-us')"
+								cms:eval="href"
+								>
+								<cms:text constant="label_city_not_in_list"/>
+							</a>
 							<hr/>
 							<label>
 								<span><cms:text constant="label_access_code" module="shop"/></span>
