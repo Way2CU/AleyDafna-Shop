@@ -4,7 +4,9 @@
 			href="url_Make('product', 'shop', array('category', fix_id($_REQUEST['id'])), array('id',$params['id']))"
 			class="item"
 			data-uid="$params['uid']"
+			data-discount="$params['discount'] > 0 ? $params['discount'] : false"
 			cms:eval="href,data-uid"
+			cms:optional="data-discount"
 			>
 
 			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 200,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['title'][$language]"  cms:eval="src,alt"/>
@@ -27,7 +29,9 @@
 			href="url_Make('product', 'shop', array('category', fix_id($_REQUEST['id'])), array('id',$params['id']))"
 			class="item"
 			data-uid="$params['uid']"
+			data-discount="$params['discount'] > 0 ? $params['discount'] : false"
 			cms:eval="href,data-uid"
+			cms:optional="data-discount"
 			>
 
 			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['title'][$language]"  cms:eval="src,alt"/>
