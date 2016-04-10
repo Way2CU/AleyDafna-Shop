@@ -138,7 +138,7 @@ Site.save_delivery_date = function() {
 	var delivery_interface = $('div#checkout_container div.delivery_interface');
 	var method = $('#checkout div.delivery_provider input[type="radio"]:checked');
 	var field = $('div#checkout_container div.delivery_interface input[name=date]');
-	var phone_number $('div#checkout_container input[name=phone_number]');
+	var phone_number = $('div#checkout_container input[name=phone_number]');
 
 	// make sure phone number is entered
 	if (phone_number.val() == '') {
@@ -172,7 +172,7 @@ Site.save_delivery_date = function() {
 
 	new Communicator('shop')
 			.on_success(save_date)
-			.post('json_save_remark', data);
+			.send('json_save_remark', data);
 };
 
 /**
@@ -221,5 +221,6 @@ Site.handle_page_switch = function(current_page, new_page) {
 
 $(function() {
 	Site.card_selector = new Site.CardSelection();
-	Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
+	if ($('#input_details').length > 0)
+		Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
 });
