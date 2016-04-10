@@ -3,7 +3,7 @@
 <document>
 	<form>
 		<label>
-			<span><cms:text constant="label_delivery_date" module="delivery"/></span>
+			<span><cms:text constant="label_delivery_date" module="aley_dafna"/></span>
 			<input
 				type="text"
 				name="date"

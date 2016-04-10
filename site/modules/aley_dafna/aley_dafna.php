@@ -32,7 +32,7 @@ class aley_dafna extends Module {
 	 * Constructor
 	 */
 	protected function __construct() {
-		global $section;
+		global $section, $action;
 
 		parent::__construct(__FILE__);
 
@@ -54,6 +54,18 @@ class aley_dafna extends Module {
 					),
 					5  // level
 				));
+		}
+
+		// register delivery method and create menu items
+		if (ModuleHandler::is_loaded('backend') && ModuleHandler::is_loaded('shop')) {
+			require_once('units/method.php');
+			Free_DeliveryMethod::getInstance($this);
+		}
+
+		if (ModuleHandler::is_loaded('head_tag') && $section == 'shop' && $action == 'checkout') {
+			$head_tag = head_tag::getInstance();
+			$head_tag->addTag('script', array( 'src'  => url_GetFromFilePath($this->path.'include/pikaday.js'), 'type' => 'text/javascript'));
+			$head_tag->addTag('link', array('href'=>url_GetFromFilePath($this->path.'include/pikaday.css'), 'rel'=>'stylesheet', 'type'=>'text/css'));
 		}
 	}
 

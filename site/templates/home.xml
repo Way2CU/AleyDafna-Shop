@@ -34,7 +34,7 @@
 							group="header_gallery"
 							template="parts/slider_image.xml"
 							/>
-						<a href="javascript:void(0)" class="next"></a>	
+						<a href="javascript:void(0)" class="next"></a>
 					</div>
 				</section>
 			</cms:desktop>
@@ -48,10 +48,10 @@
 						group="mobile_header_links"
 						template="parts/slider_image.xml"
 						/>
-					<div class="controls">	</div>	
+					<div class="controls">	</div>
 				</section>
 			</cms:mobile>
-			
+
 			<cms:desktop>
 				<section id="news">
 					<div class="news_container">
@@ -73,8 +73,7 @@
 								template="parts/news_article.xml"
 								/>
 						</ul>
-					</div>	
-
+					</div>
 				</section>
 
 				<section id="special_categories">
@@ -98,27 +97,27 @@
 						text_id="treat"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="love"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="celebration"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="baby"
 						template="parts/special_category_template.xml"
-						/>	
+						/>
 					<cms:module
 						name="shop"
 						action="show_category"
@@ -145,22 +144,22 @@
 						action="show_category"
 						text_id="chocolate"
 						template="parts/special_category_template.xml"
-						/>		
-						
+						/>
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="special_events"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="prosperity"
 						template="parts/special_category_template.xml"
-						/>				
-					
+						/>
+
 				</section>
 
 				<section id="promoted_category">
@@ -173,10 +172,8 @@
 
 				</section>
 			</cms:desktop>
-			
 
 			<cms:mobile>
-
 				<section id="promoted_category">
 					<cms:module
 						name="shop"
@@ -184,7 +181,6 @@
 						category="promoted"
 						template="parts/category_items_template.xml"
 						/>
-
 				</section>
 
 				<section id="news">
@@ -207,10 +203,10 @@
 								template="parts/news_article.xml"
 								/>
 						</ul>
-					</div>	
+					</div>
 
 				</section>
-				
+
 				<section id="special_categories">
 					<cms:module
 						name="shop"
@@ -232,27 +228,27 @@
 						text_id="treat"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="love"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="celebration"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="baby"
 						template="parts/special_category_template.xml"
-						/>	
+						/>
 					<cms:module
 						name="shop"
 						action="show_category"
@@ -279,26 +275,27 @@
 						action="show_category"
 						text_id="chocolate"
 						template="parts/special_category_template.xml"
-						/>		
-						
+						/>
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="special_events"
 						template="parts/special_category_template.xml"
 						/>
-						
+
 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="prosperity"
 						template="parts/special_category_template.xml"
-						/>				
-					
+						/>
+
 				</section>
 			</cms:mobile>
+
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
 		</body>
 	</html>
 </document>
