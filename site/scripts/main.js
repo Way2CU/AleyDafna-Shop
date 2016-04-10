@@ -1338,6 +1338,8 @@ Site.on_load = function() {
 	input_elements.on('click', function() {
 		var item = $(this);
 		var price = item.attr('value');
+		var discount = item.attr('data-discount-price');
+		console.log(discount)
 		var name = item.attr('id');
 		figure_size.html(name);
 		figure_price.html(price);

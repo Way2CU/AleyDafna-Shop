@@ -1056,6 +1056,21 @@ section#product figure p.selected_price {
 	position: relative;
 }
 
+section#product figure p.selected_price[data-discount-price] {
+	text-decoration: line-through;
+	color: fade(@color_ac_orange, 50%);
+}
+
+section#product figure p.selected_price[data-discount-price]:before {
+	display: inline-block;
+	content: attr(data-discount-price);
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: @color_ac_orange;
+}
+
+
 section#product figure p.selected_price:after {
 	content: attr(data-currency);
 	padding-left: 10px;

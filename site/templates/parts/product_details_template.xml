@@ -35,8 +35,10 @@
 			<input
 				type="radio"
 				name="size"
+				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
 				id="Language::getText('label_regular')"
 				checked="checked"
+				cms:optional="data-discount-price"
 				value="$params['price']"
 				cms:eval="value,id"
 				/>
@@ -83,7 +85,13 @@
 				cms:eval="src,alt"/>
 			<p class="disclaimer"><cms:text constant="title_disclaimer"/></p>	
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
-			<p class="selected_price" data-currency="shop::getDefaultCurrency()" cms:eval="data-currency">
+			<p
+				class="selected_price"
+				data-currency="shop::getDefaultCurrency()"
+				cms:eval="data-currency"
+				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
+				cms:optional="data-discount-price"
+				>
 				<cms:var param="price" />
 			</p>
 		</figure>
