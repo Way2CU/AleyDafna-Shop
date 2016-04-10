@@ -130,6 +130,7 @@ Site.CardSelection = function() {
 	self._init();
 };
 
+
 /**
  * Save selected delivery date to server and enable checkout button.
  */
@@ -166,6 +167,36 @@ Site.handle_date_select = function(date) {
 		.val(display_value);
 };
 
+/**
+ * Handle page control switching pages.
+ *
+ * @param object page_controls
+ * @param integer current page
+ * @param integer new_page
+ * @return boolean
+ */
+Site.handle_page_switch = function(current_page, new_page) {
+	if (current_page == 1 || new_page == 1) {
+		var phone = $('#input_details input[name=phone]');
+		var phone_number = $('#input_details input[name=phone_number]');
+		var cellphone_number = $('#input_details input[name=cellphone_number]');
+
+		// store phone number
+		if (current_page == 1)
+			phone.val(phone_number.val() + ',' + cellphone_number.val());
+
+		// restore phone number
+		if (new_page == 1 && current_page > new_page) {
+			var data = phone.val().split(',');
+			phone_number.val(data[0]);
+			cellphone_number.val(data[1]);
+		}
+	}
+
+	return true;
+};
+
 $(function() {
 	Site.card_selector = new Site.CardSelection();
+	Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
 });

@@ -254,28 +254,25 @@
 									/>
 							</label>
 							<hr/>
+							<input
+								type="hidden"
+								name="phone"
+								/>
 							<label>
-								<span><cms:text constant="label_email" module="shop"/></span>
+								<span><cms:text constant="label_phone_number" module="shop"/></span>
 								<input
-									class="in_array('email', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="email"
-									name="email"
-									value="isset($_POST['email']) ? fix_chars($_POST['email']) : ''"
-									maxlength="127"
-									data-required="1"
+									type="text"
+									name="phone_number"
+									maxlength="200"
 									autocomplete="on"
 									/>
 							</label>
 							<label>
-								<span><cms:text constant="label_phone_number" module="shop"/></span>
+								<span><cms:text constant="label_cellphone"/></span>
 								<input
-									class="in_array('phone', $params['bad_fields']) ? 'ltr bad' : 'ltr'"
-									cms:eval="class,value"
 									type="text"
-									name="phone"
-									value="isset($_POST['phone']) ? fix_chars($_POST['phone']) : ''"
-									maxlength="127"
+									name="cellphone_number"
+									maxlength="200"
 									autocomplete="on"
 									/>
 							</label>
@@ -377,6 +374,20 @@
 									autocomplete="on"
 									/>
 								<small><cms:text constant="tooltip_access_code" module="shop"/></small>
+							</label>
+							<hr/>
+							<label>
+								<span><cms:text constant="label_email" module="shop"/></span>
+								<input
+									class="in_array('email', $params['bad_fields']) ? 'bad' : ''"
+									cms:eval="class,value"
+									type="email"
+									name="email"
+									value="isset($_POST['email']) ? fix_chars($_POST['email']) : ''"
+									maxlength="200"
+									data-required="1"
+									autocomplete="on"
+									/>
 							</label>
 
 							<div class="checkout_controls">
