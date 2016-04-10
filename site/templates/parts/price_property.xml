@@ -24,6 +24,8 @@
 			data-text_id="$params['text_id']"
 			value="number_format($params['value'], 2)"
 			id="$params['name'][$language]"
+			data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
+			cms:optional="data-discount-price"
 			cms:eval="value,data-text_id,id"
 			/>
 		<span/>
