@@ -389,7 +389,6 @@
 									name="email"
 									value="isset($_POST['email']) ? fix_chars($_POST['email']) : ''"
 									maxlength="200"
-									data-required="1"
 									autocomplete="on"
 									/>
 							</label>
