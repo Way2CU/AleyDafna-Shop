@@ -591,16 +591,18 @@ a.item {
 
 a.item[data-discount]:after {
 	display: inline-block;
-	width: 141px;
+	width: 130px;
 	height: 45px;
-	padding-top: 55px;
+	padding-left: 20px;
+	padding-top: 85px;
 	content: attr(data-discount) "%";
 	position: absolute;
-	top: -30px;
-	left: -50px;
+	top: -55px;
+	left: -60px;
 
 	background-image: url(../images/shape.svg);
-	background-position: top center;
+	background-position: bottom center;
+	background-size: 200px 200px;
 	background-repeat: no-repeat;
 
 	color: white;
@@ -608,7 +610,7 @@ a.item[data-discount]:after {
 	font-weight: bold;
 	text-align: center;
 	line-height: 100%;
-	transform: rotate(-45deg);
+	transform: rotate(-30deg);
 }
 
 a.item:before {
