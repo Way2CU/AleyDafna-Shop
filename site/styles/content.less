@@ -589,6 +589,28 @@ a.item {
 	overflow: hidden;
 }
 
+a.item[data-discount]:after {
+	display: inline-block;
+	width: 141px;
+	height: 45px;
+	padding-top: 55px;
+	content: attr(data-discount) "%";
+	position: absolute;
+	top: -30px;
+	left: -50px;
+
+	background-image: url(../images/shape.svg);
+	background-position: top center;
+	background-repeat: no-repeat;
+
+	color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	line-height: 100%;
+	transform: rotate(-45deg);
+}
+
 a.item:before {
 	content: "";
 	position: absolute;

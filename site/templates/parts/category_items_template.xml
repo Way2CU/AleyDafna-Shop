@@ -4,7 +4,7 @@
 			href="url_Make('product', 'shop', array('category', fix_id($_REQUEST['id'])), array('id',$params['id']))"
 			class="item"
 			data-uid="$params['uid']"
-			data-discount="$params['discount'] > 0 ? $params['discount'] : false"
+			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
 			cms:eval="href,data-uid"
 			cms:optional="data-discount"
 			>
