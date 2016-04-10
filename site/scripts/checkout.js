@@ -138,18 +138,41 @@ Site.save_delivery_date = function() {
 	var delivery_interface = $('div#checkout_container div.delivery_interface');
 	var method = $('#checkout div.delivery_provider input[type="radio"]:checked');
 	var field = $('div#checkout_container div.delivery_interface input[name=date]');
+	var phone_number $('div#checkout_container input[name=phone_number]');
 
+	// make sure phone number is entered
+	if (phone_number.val() == '') {
+		phone_number.addClass('bad');
+		return;
+
+	} else {
+		phone_number.removeClass('bad');
+	}
+
+	// function to be called upon sucessfully saving remark
+	function save_date() {
+		var data = {
+				method: method.val(),
+				type: field.data('value').split('T')[0]
+			};
+
+		new Communicator('shop')
+			.on_success(function(data) {
+					delivery_interface.removeClass('visible');
+					Site.checkout_form.enable_checkout_button();
+				})
+			.get('json_set_delivery_method', data);
+	}
+
+	// save remark first
 	var data = {
-			method: method.val(),
-			type: field.data('value').split('T')[0]
+			append: 1,
+			remark: phone_number.val()
 		};
 
 	new Communicator('shop')
-		.on_success(function(data) {
-				delivery_interface.removeClass('visible');
-				Site.checkout_form.enable_checkout_button();
-			})
-		.get('json_set_delivery_method', data);
+			.on_success(save_date)
+			.post('json_save_remark', data);
 };
 
 /**
