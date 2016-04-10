@@ -1034,6 +1034,7 @@ Site.ItemView = function(item) {
 	self.label_total = null;
 	self.option_remove = null;
 	self.controls = {};
+	self.set_up = false;
 
 	/**
 	 * Complete object initialization.
@@ -1090,29 +1091,28 @@ Site.ItemView = function(item) {
 		self.label_total
 				.addClass('total')
 				.attr('data-currency', self.currency);
-
 	};
 
 	/**
 	 * Handler externally called when item count has changed.
 	 */
 	self.handle_change = function() {
-		self.image
-			.attr('src', self.item.image)
-			.attr('alt', self.item.name[language_handler.current_language]);
-
-		self.label_name
-			.text(self.item.name[language_handler.current_language]);
-
-		self.label_count
-			.text( self.item.count + " " + language_handler.getText(null, 'unit'));
+		self.label_name.text(self.item.name[language_handler.current_language]);
+		self.label_count.text(self.item.count);
 
 		self.label_total
-			.text(((self.item.count * self.item.price * self.exchange_rate).toFixed(2) + " " + language_handler.getText(null, 'price1')))
+			.text((self.item.get_total_cost().toFixed(2)))
 			.attr('data-currency', self.currency);
 
-		self.option_add.attr('data-uid',self.item.uid);
-		self.option_minus.attr('data-uid',self.item.uid);
+		if (!self.set_up) {
+			self.set_up = true;
+			self.image
+				.attr('src', self.item.image)
+				.attr('alt', self.item.name[language_handler.current_language]);
+
+			self.option_add.attr('data-uid', self.item.uid);
+			self.option_minus.attr('data-uid', self.item.uid);
+		}
 	};
 
 	/**
