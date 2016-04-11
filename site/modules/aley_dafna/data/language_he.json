@@ -1,11 +1,11 @@
 {
-	"import": "Import",
-	"menu_import_items": "Import items from file",
-	"title_import_items": "Shop: Import items from file",
-	"label_filename": "File name:",
-	"label_number_to_import": "Number of items to import:",
-	"message_import_complete": "Data import was completed!",
-	"delivery_method_title": "Aley Dafna",
-	"label_delivery_date": "Please select delivery date:",
-	"label_phone_number": "Phone number in case of emergency:"
+	"import": "יבא",
+	"menu_import_items": "יבא פריטים מקובץ",
+	"title_import_items": "חנות: יבא פריטים מקובץ",
+	"label_filename": "שם קובץ:",
+	"label_number_to_import": "מספר פריטים ליבוא",
+	"message_import_complete": "ייבוא מידע נסתיים",
+	"delivery_method_title": "עלי דפנה",
+	"label_delivery_date": "אנא בחרו תאריך למשלוח:",
+	"label_phone_number": "טלפון השולח למקרה חירום:"
 }

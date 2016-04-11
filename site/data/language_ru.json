@@ -69,5 +69,6 @@
     "recovery_dialog_title": "Восстановление пароля",
     "sign_up": "Регистрация",
     "signup_dialog_message": "Введите ниже свои данные. Эта информация будет использоваться для восстановления пароля",
-    "signup_dialog_title": "Регистрация"
+    "signup_dialog_title": "Регистрация",
+	"message_card": "Select card and enter text. If left empty no card will be added."
 }
