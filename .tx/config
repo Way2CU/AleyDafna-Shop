@@ -1,0 +1,12 @@
+[main]
+host = https://www.transifex.com
+
+[aley-dafna.web-site]
+file_filter = site/data/language_<lang>.json
+source_lang = he
+type = KEYVALUEJSON
+
+[aley-dafna.module]
+file_filter = site/modules/aley_dafna/data/language_<lang>.json
+source_lang = he
+type = KEYVALUEJSON
