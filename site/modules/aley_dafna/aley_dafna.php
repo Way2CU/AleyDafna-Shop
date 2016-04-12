@@ -19,12 +19,14 @@ class aley_dafna extends Module {
 	const DEFAULT_THRESHOLD = 10;
 
 	const COL_ID = 0;
-	const COL_NAME = 1;
-	const COL_DESCRIPTION = 2;
-	const COL_PRICE = 3;
-	const COL_IMAGE = 4;
-	const COL_SIZE_LABELS = 5;
-	const COL_FIRST_CATEGORY = 6;
+	const COL_NAME_HE = 1;
+	const COL_NAME_RU = 2;
+	const COL_DESCRIPTION_HE = 3;
+	const COL_DESCRIPTION_RU = 4;
+	const COL_PRICE = 5;
+	const COL_IMAGE = 6;
+	const COL_SIZE_LABELS = 7;
+	const COL_FIRST_CATEGORY = 8;
 
 	var $size_names = array('medium', 'big', 'extra-big', 'huge');
 
@@ -280,8 +282,10 @@ class aley_dafna extends Module {
 			$item_name = array_fill(0, count($languages), '');
 			$item_name = array_combine($languages, $item_name);
 			$item_description = $item_name;
-			$item_name[self::DEFAULT_LANGUAGE] = $db->escape_string($row[self::COL_NAME]);
-			$item_description[self::DEFAULT_LANGUAGE] = $db->escape_string($row[self::COL_DESCRIPTION]);
+			$item_name['he'] = $db->escape_string($row[self::COL_NAME_HE]);
+			$item_name['ru'] = $db->escape_string($row[self::COL_NAME_RU]);
+			$item_description['he'] = $db->escape_string($row[self::COL_DESCRIPTION_HE]);
+			$item_description['ru'] = $db->escape_string($row[self::COL_DESCRIPTION_RU]);
 
 			// unpack price values
 			$prices = explode(',', $row[self::COL_PRICE]);
