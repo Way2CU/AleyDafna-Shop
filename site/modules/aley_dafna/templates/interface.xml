@@ -10,6 +10,20 @@
 				/>
 		</label>
 		<label>
+			<span><cms:text constant="label_extra_phone_number" module="aley_dafna"/></span>
+			<input
+				type="text"
+				name="phone_number2"
+				/>
+		</label>
+		<label>
+			<span><cms:text constant="label_invoice_email" module="aley_dafna"/></span>
+			<input
+				type="text"
+				name="invoice_email"
+				/>
+		</label>
+		<label>
 			<span><cms:text constant="label_delivery_date" module="aley_dafna"/></span>
 			<input
 				type="text"

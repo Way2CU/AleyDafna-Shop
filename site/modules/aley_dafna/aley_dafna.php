@@ -396,6 +396,7 @@ class aley_dafna extends Module {
 			   	if (!$image_already_uploaded && copy($source_path, $destination_path)) {
 					$gallery_manager->insertData(array(
 							'group'     => $gallery_id,
+							'title'		=> $item_name,
 							'text_id'   => $matched_hash,
 							'size'      => $file_size,
 							'filename'  => $destination_file,

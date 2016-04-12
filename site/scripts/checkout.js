@@ -139,6 +139,8 @@ Site.save_delivery_date = function() {
 	var method = $('#checkout div.delivery_provider input[type="radio"]:checked');
 	var field = $('div#checkout_container div.delivery_interface input[name=date]');
 	var phone_number = $('div#checkout_container input[name=phone_number]');
+	var phone_number2 = $('div#checkout_container input[name=phone_number2]');
+	var invoice_email = $('div#checkout_container input[name=invoice_email]');
 
 	// make sure phone number is entered
 	if (phone_number.val() == '') {
@@ -165,9 +167,13 @@ Site.save_delivery_date = function() {
 	}
 
 	// save remark first
+	var remark = phone_number.val();
+	remark += "\n" + phone_number2.val();
+	remark += "\n" + invoice_email.val();
+
 	var data = {
 			append: 1,
-			remark: phone_number.val()
+			remark: remark
 		};
 
 	new Communicator('shop')
