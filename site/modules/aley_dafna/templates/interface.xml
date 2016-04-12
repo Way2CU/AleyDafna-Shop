@@ -10,7 +10,7 @@
 				/>
 		</label>
 		<label>
-			<span><cms:text constant="label_extra_phone_number" module="aley_dafna"/></span>
+			<span><cms:text constant="label_phone_number2" module="aley_dafna"/></span>
 			<input
 				type="text"
 				name="phone_number2"
