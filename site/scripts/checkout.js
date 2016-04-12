@@ -160,6 +160,13 @@ Site.save_delivery_date = function() {
 
 		new Communicator('shop')
 			.on_success(function(data) {
+					// update shipping data
+					var checkout_details = $('div#checkout table.checkout_details');
+					checkout_details.find('.subtotal-value.shipping').html(parseFloat(data.shipping).toFixed(2));
+					checkout_details.find('.subtotal-value.handling').html(parseFloat(data.handling).toFixed(2));
+					checkout_details.find('.total-value').html(parseFloat(data.total).toFixed(2) + ' ' + data.currency);
+
+					// hide interface and enable button
 					delivery_interface.removeClass('visible');
 					Site.checkout_form.enable_checkout_button();
 				})

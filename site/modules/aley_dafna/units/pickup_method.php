@@ -1,48 +1,13 @@
 <?php
 
-class Paid_DeliveryMethod extends DeliveryMethod {
+class Pickup_DeliveryMethod extends DeliveryMethod {
 	private static $_instance;
-	private $prices = array(
-			'Ramat Gan'      => 25,
-			'Givataim'       => 25,
-			'Bney Brak'      => 25,
-			'Tel Aviv'       => 25,
-			'Petah Tiqwa'    => 35,
-			'Rosh Aain'      => 35,
-			'Herzelia'       => 35,
-			'Ramat Hasharon' => 35,
-			'Kfar Sava'      => 35,
-			'Ramat Efal'     => 35,
-			'Raanana'        => 35,
-			'Netanya'        => 35,
-			'Hod Hasharon'   => 35,
-			'Azur'           => 35,
-			'Holon'          => 35,
-			'Bat Yam'        => 35,
-			'Rishon Lezion'  => 35,
-			'Yavne'          => 35,
-			'Yahud'          => 35,
-			'Neve Monoson'   => 35,
-			'Kiryat Ono'     => 35,
-			'Savion'         => 35,
-			'Or Yehuda'      => 35,
-			'Givat Shmuel'   => 35,
-			'Beit Dagan'     => 35,
-			'Gedera'         => 35,
-			'Rehovot'        => 35,
-			'Mazkeret Batya' => 35,
-			'Ramla'          => 35,
-			'Lod'            => 35,
-			'Beer Sheva'     => 35,
-			'Haifa'          => 35,
-			'Jerusalem'      => 35
-		);
 
 	protected function __construct($parent) {
 		parent::__construct($parent);
 
 		// register delivery method
-		$this->name = 'delivery';
+		$this->name = 'pickup';
 
 		if (class_exists('shop'))
 			Modules\Shop\Delivery::register_method($this->name, $this);
@@ -56,6 +21,35 @@ class Paid_DeliveryMethod extends DeliveryMethod {
 			self::$_instance = new self($parent);
 
 		return self::$_instance;
+	}
+
+	/**
+	 * Get localized name of delivery method.
+	 *
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->parent->getLanguageConstant('pickup_method_title');
+	}
+
+	/**
+	 * Get URL of 200x55 pixel image for delivery method. This image is a
+	 * logo of delivery method and is used in forms for selection.
+	 *
+	 * @return string
+	 */
+	public function getImage() {
+		return url_GetFromFilePath($this->parent->path.'images/pick_up.png');
+	}
+
+	/**
+	 * Get URL of 100x28 pixel image for delivery method. This image is a
+	 * logo of delivery method and is used in forms for selection.
+	 *
+	 * @return string
+	 */
+	public function getSmallImage() {
+		return url_GetFromFilePath($this->parent->path.'images/pick_up_small.png');
 	}
 
 	/**
@@ -123,11 +117,10 @@ class Paid_DeliveryMethod extends DeliveryMethod {
 	 * @param array $items
 	 * @param array $shipper
 	 * @param array $recipient
-	 * @param object $transaction
+	 * @param string $transaction
 	 * @return array
 	 */
 	public function getDeliveryTypes($items, $shipper, $recipient, $transaction) {
-		return array();
 	}
 
 	/**
@@ -144,9 +137,6 @@ class Paid_DeliveryMethod extends DeliveryMethod {
 	 * @return array
 	 */
 	public function getSupportedPackageTypes() {
-		return array(
-				PackageType::USER_PACKAGING
-			);
 	}
 
 	/**
@@ -210,12 +200,7 @@ class Paid_DeliveryMethod extends DeliveryMethod {
 	 * @return float
 	 */
 	public function getCustomEstimate($items, $shipper, $recipient, $transaction, $selection) {
-		$result = 0;
-
-		if (array_key_exists($recipient['city'], $this->prices))
-			$result = $this->prices[$recipient['city']];
-
-		return $result;
+		return 0;
 	}
 
 	/**

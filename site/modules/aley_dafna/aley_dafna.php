@@ -61,7 +61,9 @@ class aley_dafna extends Module {
 		// register delivery method and create menu items
 		if (ModuleHandler::is_loaded('backend') && ModuleHandler::is_loaded('shop')) {
 			require_once('units/method.php');
-			Free_DeliveryMethod::getInstance($this);
+			require_once('units/pickup_method.php');
+			Paid_DeliveryMethod::getInstance($this);
+			Pickup_DeliveryMethod::getInstance($this);
 		}
 
 		if (ModuleHandler::is_loaded('head_tag') && $section == 'shop' && $action == 'checkout') {
