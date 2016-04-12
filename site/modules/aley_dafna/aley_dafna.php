@@ -66,8 +66,9 @@ class aley_dafna extends Module {
 
 		if (ModuleHandler::is_loaded('head_tag') && $section == 'shop' && $action == 'checkout') {
 			$head_tag = head_tag::getInstance();
-			$head_tag->addTag('script', array( 'src'  => url_GetFromFilePath($this->path.'include/pikaday.js'), 'type' => 'text/javascript'));
-			$head_tag->addTag('link', array('href'=>url_GetFromFilePath($this->path.'include/pikaday.css'), 'rel'=>'stylesheet', 'type'=>'text/css'));
+			$head_tag->addTag('script', array( 'src' => url_GetFromFilePath($this->path.'include/pikaday.js'), 'type' => 'text/javascript'));
+			$head_tag->addTag('link', array('href' => url_GetFromFilePath($this->path.'include/pikaday.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
+			$head_tag->addTag('link', array('href' => url_GetFromFilePath($this->path.'include/checkout.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
 		}
 	}
 
