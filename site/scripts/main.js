@@ -1240,8 +1240,10 @@ Site.insert_to_cart = function(event, skip_alter) {
  * @param object event
  */
 Site.insert_and_checkout = function(event, skip_alter) {
+	Site.cart.events.connect('item-added', function() {
+		Site.cart.checkout();
+	});
 	Site.insert_to_cart(event, true);
-	Site.cart.checkout();
 };
 
 /**
