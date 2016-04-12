@@ -7,5 +7,7 @@
     "message_import_complete": "Data import was completed!",
     "delivery_method_title": "Aley Dafna",
     "label_delivery_date": "Please select delivery date:",
-    "label_phone_number": "Phone number in case of emergency:"
+    "label_phone_number": "Phone number in case of emergency:",
+    "label_phone_number2": "מספר טלפון נוסף:",
+    "label_invoice_email": "מייל למשלוח חשבונית:"
 }
