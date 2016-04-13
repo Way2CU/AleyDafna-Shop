@@ -105,8 +105,8 @@
 	"city_beer_sheva": "באר שבע",
 	"city_haifa": "חיפה",
 	"city_jerusalem": "ירושליים",
-	"label_price_group1": "25 ₪",
-	"label_price_group2": "35 ₪",
+	"label_price_group1": "מחיר משלוח: 25 ₪",
+	"label_price_group2": "מחיר משלוח: 35 ₪",
 	"label_city_not_in_list": "למשלוח למקום אחר נא להתקשר לחנות",
 	"message_card": "בחרו כרטיס והזינו טקסט. אם לא יוזן טקסט הכרטיס לא יתווסף להזמנה"
 }
