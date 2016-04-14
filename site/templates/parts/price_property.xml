@@ -9,10 +9,11 @@
 
 		<p
 			class="price"
-			data-currency="shop::getDefaultCurrency()"
+			data-currency="currency"
 			data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
 			cms:eval="data-currency"
 			cms:optional="data-discount-price"
+			cms:constant="data-currency"
 			>
 			<cms:var name="number_format($params['value'], 2)"/>
 		</p>

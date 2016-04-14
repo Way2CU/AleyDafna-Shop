@@ -23,10 +23,11 @@
 
 			<p
 				class="price"
-				data-currency="shop::getDefaultCurrency()"
+				data-currency="currency"
 				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
 				cms:eval="data-currency"
 				cms:optional="data-discount-price"
+				cms:constant="data-currency"
 				>
 				<cms:var param="price" />
 			</p>
@@ -87,10 +88,11 @@
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
 			<p
 				class="selected_price"
-				data-currency="shop::getDefaultCurrency()"
+				data-currency="currency"
 				cms:eval="data-currency"
 				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
 				cms:optional="data-discount-price"
+				cms:constant="data-currency"
 				>
 				<cms:var param="price" />
 			</p>
