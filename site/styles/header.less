@@ -271,7 +271,6 @@ nav#main > ul > li.sub-menu> a:before {
 	border-right: 5px solid transparent;
 	border-top: 10px solid @color_ac_text;
 	transition: all 0.3s;
-	transition-delay: 0.3s;
 }
 
 body.rtl nav#main > ul > li.sub-menu> a:before {
@@ -299,8 +298,11 @@ nav#main ul li > ul.drop {
 	
 	border: 1px solid @color_ac_dark_green;
 	background-color: @color_ac_text;
+	transform: rotateX(-90deg);
+	transform-style: preserve-3d;
+	transform-origin: 50% 0%;
 	transition: all 0.6s;
-	transition-delay: 0.3s;
+	transition-delay: 0s;
 
 	text-align: left;
 }
@@ -315,6 +317,7 @@ nav#main ul li:hover ul.drop {
 	visibility: visible;
 	opacity: 1;
 	max-height: 500px;
+	transform: rotateX(0deg);
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -347,7 +350,10 @@ nav#main  ul  ul.drop  li:hover a {
 div#popup:hover div.cart {
 	opacity: 1;
 	visibility: visible;
+	transform: rotateX(0deg);
 	max-height: 600px;
+	transition: all 0.6s;
+	transition-delay: 0s;
 }
 
 div.cart {
@@ -361,7 +367,11 @@ div.cart {
 	opacity: 0;
 	visibility: hidden;
 	overflow: hidden;
+	transform: rotateX(-90deg);
+	transform-style: preserve-3d;
+	transform-origin: 50% 0;
 	transition: all 0.6s;
+	transition-delay: 0.3s;
 	z-index: 10000;
 }
 
