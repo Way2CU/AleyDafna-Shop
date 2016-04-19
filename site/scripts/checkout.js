@@ -137,52 +137,11 @@ Site.CardSelection = function() {
 Site.save_delivery_date = function() {
 	var container = $('div#shipping_information');
 	var delivery_interface = container.find('div.container.interface');
-	var method = container.find('div.container.provider a.selected');
 	var field = container.find('div.container.interface input[name=date]');
-	var phone_number = container.find('div.container.interface input[name=phone_number]');
-	var phone_number2 = container.find('div.container.interface input[name=phone_number2]');
-	var invoice_email = container.find('div.container.interface input[name=invoice_email]');
-
-	// make sure phone number is entered
-	if (phone_number.val() == '') {
-		phone_number.addClass('bad');
-		return;
-
-	} else {
-		phone_number.removeClass('bad');
-	}
 
 	// function to be called upon sucessfully saving remark
-	function save_date() {
-		var data = {
-				method: method.val(),
-				type: field.data('value').split('T')[0]
-			};
-
-		new Communicator('shop')
-			.on_success(function(data) {
-					// update shipping data
-					delivery_interface.find('div.summary span').html(parseFloat(data.total).toFixed(2) + ' ' + data.currency);
-
-					// hide interface and enable button
-					delivery_interface.addClass('completed');
-				})
-			.get('json_set_delivery_method', data);
-	}
-
-	// save remark first
-	var remark = phone_number.val();
-	remark += "\n" + phone_number2.val();
-	remark += "\n" + invoice_email.val();
-
-	var data = {
-			append: 1,
-			remark: remark
-		};
-
-	new Communicator('shop')
-			.on_success(save_date)
-			.send('json_save_remark', data);
+	Site.buyer_information_form.set_delivery_method(null, field.data('value').split('T')[0]);
+	delivery_interface.addClass('completed');
 };
 
 /**

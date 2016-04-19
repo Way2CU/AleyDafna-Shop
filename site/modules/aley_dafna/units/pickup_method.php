@@ -120,7 +120,7 @@ class Pickup_DeliveryMethod extends DeliveryMethod {
 	 * @param string $transaction
 	 * @return array
 	 */
-	public function getDeliveryTypes($items, $shipper, $recipient, $transaction) {
+	public function getDeliveryTypes($items, $shipper, $recipient, $transaction=null) {
 	}
 
 	/**
@@ -195,11 +195,11 @@ class Pickup_DeliveryMethod extends DeliveryMethod {
 	 * @param array $items
 	 * @param array $shipper
 	 * @param array $recipient
-	 * @param object $transaction
 	 * @param string $selection
+	 * @param object $transaction
 	 * @return float
 	 */
-	public function getCustomEstimate($items, $shipper, $recipient, $transaction, $selection) {
+	public function getCustomEstimate($items, $shipper, $recipient, $selection, $transaction=null) {
 		return 0;
 	}
 
