@@ -135,12 +135,13 @@ Site.CardSelection = function() {
  * Save selected delivery date to server and enable checkout button.
  */
 Site.save_delivery_date = function() {
-	var delivery_interface = $('div#checkout_container div.delivery_interface');
-	var method = $('#checkout div.delivery_provider input[type="radio"]:checked');
-	var field = $('div#checkout_container div.delivery_interface input[name=date]');
-	var phone_number = $('div#checkout_container input[name=phone_number]');
-	var phone_number2 = $('div#checkout_container input[name=phone_number2]');
-	var invoice_email = $('div#checkout_container input[name=invoice_email]');
+	var container = $('div#shipping_information');
+	var delivery_interface = container.find('div.container.interface');
+	var method = container.find('div.container.provider a.selected');
+	var field = container.find('div.container.interface input[name=date]');
+	var phone_number = container.find('div.container.interface input[name=phone_number]');
+	var phone_number2 = container.find('div.container.interface input[name=phone_number2]');
+	var invoice_email = container.find('div.container.interface input[name=invoice_email]');
 
 	// make sure phone number is entered
 	if (phone_number.val() == '') {
@@ -161,14 +162,10 @@ Site.save_delivery_date = function() {
 		new Communicator('shop')
 			.on_success(function(data) {
 					// update shipping data
-					var checkout_details = $('div#checkout table.checkout_details');
-					checkout_details.find('.subtotal-value.shipping').html(parseFloat(data.shipping).toFixed(2));
-					checkout_details.find('.subtotal-value.handling').html(parseFloat(data.handling).toFixed(2));
-					checkout_details.find('.total-value').html(parseFloat(data.total).toFixed(2) + ' ' + data.currency);
+					delivery_interface.find('div.summary span').html(parseFloat(data.total).toFixed(2) + ' ' + data.currency);
 
 					// hide interface and enable button
-					delivery_interface.removeClass('visible');
-					Site.checkout_form.enable_checkout_button();
+					delivery_interface.addClass('completed');
 				})
 			.get('json_set_delivery_method', data);
 	}
@@ -194,7 +191,7 @@ Site.save_delivery_date = function() {
  * @param object date
  */
 Site.handle_date_select = function(date) {
-	var field = $('div#checkout_container div.delivery_interface input[name=date]');
+	var field = $('div#checkout_container div.interface input[name=date]');
 	var display_value = date.toLocaleDateString('he-IL');
 	var value = date.toISOString();
 

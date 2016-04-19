@@ -10,5 +10,7 @@
     "label_delivery_date": "אנא בחרו תאריך למשלוח:",
     "label_phone_number": "טלפון השולח למקרה חירום:",
     "label_phone_number2": "מספר טלפון נוסף:",
-    "label_invoice_email": "מייל למשלוח חשבונית:"
+    "label_invoice_email": "מייל למשלוח חשבונית:",
+    "label_additional_information": "פרטים נוספים:",
+    "label_delivery_cost": "עלות משלוח:"
 }

@@ -221,6 +221,15 @@ class Pickup_DeliveryMethod extends DeliveryMethod {
 	public function hasCustomInterface() {
 		return true;
 	}
+
+	/**
+	 * We don't require system to ask user for delivery address for this method.
+	 *
+	 * @return boolean
+	 */
+	public function requiresUserInformation() {
+		return false;
+	}
 }
 
 ?>

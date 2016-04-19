@@ -10,5 +10,7 @@
     "label_delivery_date": "Please select delivery date:",
     "label_phone_number": "Emergency phone number:",
     "label_phone_number2": "Extra phone number:",
-    "label_invoice_email": "Invoice email:"
+    "label_invoice_email": "Invoice email:",
+    "label_additional_information": "Additional information:",
+    "label_delivery_cost": "Cost of delivery:"
 }

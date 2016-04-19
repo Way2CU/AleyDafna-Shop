@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
 <document>
-	<form>
-		<label>
-			<span><cms:text constant="label_phone_number" module="aley_dafna"/></span>
-			<input
-				type="text"
-				name="phone_number"
-				/>
-		</label>
-		<label>
-			<span><cms:text constant="label_phone_number2" module="aley_dafna"/></span>
-			<input
-				type="text"
-				name="phone_number2"
-				/>
-		</label>
-		<label>
-			<span><cms:text constant="label_invoice_email" module="aley_dafna"/></span>
-			<input
-				type="text"
-				name="invoice_email"
-				/>
-		</label>
-		<label>
-			<span><cms:text constant="label_delivery_date" module="aley_dafna"/></span>
-			<input
-				type="text"
-				name="date"
-				/>
-		</label>
+	<hr/>
+	<h4><cms:text constant="label_additional_information" module="aley_dafna"/></h4>
 
-		<div class="controls">
-			<button type="button" onclick="javascript:Site.save_delivery_date()">
-				<cms:text constant="save"/>
-			</button>
-		</div>
-	</form>
+	<div class="summary">
+		<span
+			data-label="label_delivery_cost"
+			cms:constant="data-label"
+			/>
+	</div>
+
+	<div class="details">
+		<form>
+			<label>
+				<span><cms:text constant="label_phone_number" module="aley_dafna"/></span>
+				<input
+					type="text"
+					name="phone_number"
+					/>
+			</label>
+			<label>
+				<span><cms:text constant="label_phone_number2" module="aley_dafna"/></span>
+				<input
+					type="text"
+					name="phone_number2"
+					/>
+			</label>
+			<label>
+				<span><cms:text constant="label_invoice_email" module="aley_dafna"/></span>
+				<input
+					type="text"
+					name="invoice_email"
+					/>
+			</label>
+			<label>
+				<span><cms:text constant="label_delivery_date" module="aley_dafna"/></span>
+				<input
+					type="text"
+					name="date"
+					autocomplete="off"
+					/>
+			</label>
+			<div class="overlay"/>
+		</form>
+	</div>
 	<script type="text/javascript">
 		var params = {
-			field: $('div.delivery_interface input[name=date]')[0],
+			field: $('div#shipping_information div.interface input[name=date]')[0],
 			minDate: new Date(),
 			onSelect: Site.handle_date_select
 			};
 		Site.delivery_date_picker = new Pikaday(params);
+		Site.buyer_information_form.set_interface_save_function(Site.save_delivery_date);
 	</script>
 </document>
