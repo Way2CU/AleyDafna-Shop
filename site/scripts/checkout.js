@@ -135,13 +135,41 @@ Site.CardSelection = function() {
  * Save selected delivery date to server and enable checkout button.
  */
 Site.save_delivery_date = function() {
-	var container = $('div#shipping_information');
-	var delivery_interface = container.find('div.container.interface');
-	var field = container.find('div.container.interface input[name=date]');
+	var delivery_interface = $('div#shipping_information div.container.interface');
+	var summary = delivery_interface.find('div.summary span');
+	var field = delivery_interface.find('input[name=date]');
+	var method_name = Site.buyer_information_form.get_selected_delivery_method();
+	var selected_city = Site.buyer_information_form.shipping.address_container.find('[name=city]').val();
+
+	if (!field.data('value')) {
+		field.addClass('bad');
+		return;
+
+	} else {
+		field.removeClass('bad');
+	}
 
 	// function to be called upon sucessfully saving remark
-	Site.buyer_information_form.set_delivery_method(null, field.data('value').split('T')[0]);
-	delivery_interface.addClass('completed');
+	Site.buyer_information_form.set_delivery_method(method_name, field.data('value').split('T')[0]);
+
+	// get delivery estimate from server
+	if (method_name == 'delivery') {
+		var data = {
+				method: method_name,
+				city: selected_city
+			};
+
+		new Communicator('shop')
+			.on_success(function(data) {
+				summary.html(data.shipping);
+				delivery_interface.addClass('completed');
+			})
+			.get('json_get_delivery_estimate', data);
+
+	} else if (method_name == 'pickup') {
+		summary.html('0');
+		delivery_interface.addClass('completed');
+	}
 };
 
 /**
@@ -150,7 +178,7 @@ Site.save_delivery_date = function() {
  * @param object date
  */
 Site.handle_date_select = function(date) {
-	var field = $('div#checkout_container div.interface input[name=date]');
+	var field = $('div#shipping_information div.container.interface input[name=date]');
 	var display_value = date.toLocaleDateString('he-IL');
 	var value = date.toISOString();
 

@@ -109,5 +109,6 @@
     "label_price_group2": "Delivery price: 35 ₪",
     "label_city_not_in_list": "Anywhere else, call the store.",
     "message_card": "Select card and enter text. If left empty no card will be added.",
-    "currency": "₪"
+    "currency": "₪",
+    "label_delivery_cost": "Cost of delivery:"
 }
