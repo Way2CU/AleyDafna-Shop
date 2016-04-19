@@ -180,10 +180,9 @@ Site.save_delivery_date = function() {
 Site.handle_date_select = function(date) {
 	var field = $('div#shipping_information div.container.interface input[name=date]');
 	var display_value = date.toLocaleDateString('he-IL');
-	var value = date.toISOString();
 
 	field
-		.data('value', value)
+		.data('value', display_value)
 		.val(display_value);
 };
 
@@ -218,6 +217,6 @@ Site.handle_page_switch = function(current_page, new_page) {
 
 $(function() {
 	Site.card_selector = new Site.CardSelection();
-	if ($('#input_details').length > 0)
-		Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
+	// if ($('#input_details').length > 0)
+	// 	Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
 });
