@@ -15,6 +15,7 @@
 	<module name="news" order="6" preload="no"/>
 	<module name="faq" order="7" preload="no"/>
 	<module name="links" order="8" preload="no"/>
+	<module name="aley_dafna" order="9" preload="no"/>
 
 	<user
 		fullname="Administrator"

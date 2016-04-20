@@ -476,10 +476,11 @@
 										cms:constant="data-label"
 										/>
 									<span
-										class="phone"
+										class="phone_number"
 										data-label="label_phone_number"
 										cms:constant="data-label"
 										/>
+									<span class="cellphone_number"/>
 								</div>
 
 								<div class="details">
@@ -514,12 +515,25 @@
 											/>
 									</label>
 
+									<input type="hidden" name="phone" />
 									<label>
 										<span><cms:text constant="label_phone_number" module="shop"/></span>
 										<input
 											type="text"
-											name="phone"
+											name="phone_number"
 											maxlength="127"
+											data-required="1"
+											autocomplete="on"
+											/>
+									</label>
+
+									<label>
+										<span><cms:text constant="label_phone_number2" module="aley_dafna"/></span>
+										<input
+											type="text"
+											name="cellphone_number"
+											maxlength="127"
+											data-required="1"
 											autocomplete="on"
 											/>
 									</label>

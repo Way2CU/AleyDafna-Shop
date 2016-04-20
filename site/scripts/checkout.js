@@ -217,6 +217,7 @@ Site.handle_page_switch = function(current_page, new_page) {
 
 $(function() {
 	Site.card_selector = new Site.CardSelection();
-	// if ($('#input_details').length > 0)
-	// 	Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
+
+	if ($('#input_details').length > 0)
+		Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
 });
