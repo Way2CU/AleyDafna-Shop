@@ -21,20 +21,20 @@ Site.CardSelection = function() {
 	self.handler = {};
 	self.validator = {};
 	self.cards = {
-			aley_dafna_1:     [25, 10, 10, 10],
-			aley_dafna_2:     [40, 10, 20, 10],
-			baloons_1:        [50, 10, 30, 10],
-			baloons_2:        [60, 10, 10, 10],
-			baloons_3:        [40, 10, 10, 40],
-			green_edge_1:     [30, 10, 30, 10],
-			green_edge_2:     [30, 10, 30, 10],
-			green_wave:       [10, 10, 30, 10],
-			happy_birthday_1: [40, 10, 10, 40],
-			happy_birthday_2: [60, 10, 10, 10],
-			happy_birthday_3: [40, 10, 10, 40],
-			heart_dust:       [10, 10, 40, 10],
-			heart:            [40, 10, 40, 10],
-			heart_ornaments:  [40, 10, 10, 10]
+			aley_dafna_1: [25, 10, 10, 10],
+			aley_dafna_2: [40, 10, 20, 10],
+			baloons_1:    [50, 10, 30, 10],
+			baloons_2:    [60, 10, 10, 10],
+			baloons_3:    [40, 10, 10, 40],
+			green_edge_1: [30, 10, 30, 10],
+			green_edge_2: [30, 10, 30, 10],
+			green_wave:   [10, 10, 30, 10],
+			happy_bday_1: [40, 10, 10, 40],
+			happy_bday_2: [60, 10, 10, 10],
+			happy_bday_3: [40, 10, 10, 40],
+			heart_dust:   [10, 10, 40, 10],
+			heart:        [40, 10, 40, 10],
+			ornaments:    [40, 10, 10, 10]
 		};
 	self.default_position = [10, 10, 10, 10];
 
