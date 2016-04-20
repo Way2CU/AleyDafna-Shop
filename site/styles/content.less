@@ -1858,7 +1858,14 @@ div#input_details div#card_selection.page div.container {
 }
 
 div#input_details div#card_selection.page div.container img {
+	opacity: 0;
 	width: 100%;
+
+	transition: opacity 0.5s;
+}
+
+div#input_details div#card_selection.page div.container img.visible {
+	opacity: 1;
 }
 
 div#input_details div#card_selection.page a.arrow {
