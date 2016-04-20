@@ -325,6 +325,30 @@ a.item {
 	overflow: hidden;
 }
 
+a.item[data-discount]:after {
+	display: inline-block;
+	width: 100px;
+	height: 15px;
+	padding-left: 15px;
+	padding-top: 80px;
+	content: attr(data-discount) "%";
+	position: absolute;
+	top: -55px;
+	left: -60px;
+
+	background-image: url(../images/shape.svg);
+	background-position: bottom center;
+	background-size: 200px 200px;
+	background-repeat: no-repeat;
+
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	line-height: 0;
+	transform: rotate(-30deg);
+}
+
 div#unique {
 	display: block;
 	margin-left: auto;
