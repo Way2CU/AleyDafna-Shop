@@ -389,6 +389,20 @@ a.item p.price {
 	position: relative;
 }
 
+a.item p.price[data-discount-price] {
+	text-decoration: line-through;
+	color: fade(@color_ac_medium_green, 50%);
+}
+
+a.item p.price[data-discount-price]:before {
+	display: inline-block;
+	content: attr(data-discount-price);
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: @color_ac_medium_green;
+}
+
 a.item p.price:after {
 	content: attr(data-currency);
 	padding-left: 10px;
@@ -683,6 +697,25 @@ section#product div.product_information label p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
 	position: relative;
+}
+
+section#product div.product_information label p.price[data-discount-price] {
+	text-decoration: line-through;
+	color: fade(@color_ac_orange, 50%);
+}
+
+section#product div.product_information label p.price[data-discount-price]:before {
+	display: inline-block;
+	content: attr(data-discount-price);
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: @color_ac_orange;
+}
+
+section#product div.product_information label p.price:after {
+	content: attr(data-currency);
+	padding-left: 10px;
 }
 
 div#related_items div.item p.price[data-discount-price] {
