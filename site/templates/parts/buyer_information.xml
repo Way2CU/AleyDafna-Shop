@@ -13,6 +13,16 @@
 					<cms:text constant="title_shipping_information" module="shop"/>
 				</a>
 			</cms:if>
+			<cms:if condition="is_null($params['payment_method'])">
+				<a href="javascript:void(0);">
+					<cms:text constant="title_payment_method" module="shop"/>
+				</a>
+			</cms:if>
+			<!--
+			<a href="javascript:void(0);">
+				<cms:text constant="title_billing_information" module="shop"/>
+			</a>
+			-->
 			<a href="javascript:void(0);">
 				<cms:text constant="title_card_selection"/>
 			</a>
@@ -94,11 +104,8 @@
 								<label>
 									<span><cms:text constant="label_first_name" module="shop"/></span>
 									<input
-										class="in_array('first_name', $params['bad_fields']) ? 'bad' : ''"
-										cms:eval="class,value"
 										type="text"
 										name="first_name"
-										value="isset($_POST['first_name']) ? fix_chars($_POST['first_name']) : ''"
 										maxlength="64"
 										data-required="1"
 										autocomplete="on"
@@ -107,24 +114,27 @@
 								<label class="separator">
 									<span><cms:text constant="label_last_name" module="shop"/></span>
 									<input
-										class="in_array('last_name', $params['bad_fields']) ? 'bad' : ''"
-										cms:eval="class,value"
 										type="text"
 										name="last_name"
-										value="isset($_POST['last_name']) ? fix_chars($_POST['last_name']) : ''"
 										maxlength="64"
 										data-required="1"
 										autocomplete="on"
 										/>
 								</label>
 								<label>
+									<span><cms:text constant="label_phone_number" module="shop"/></span>
+									<input
+										type="text"
+										name="new_phone_number"
+										maxlength="200"
+										autocomplete="on"
+										/>
+								</label>
+								<label class="separator">
 									<span><cms:text constant="label_email" module="shop"/></span>
 									<input
-										class="in_array('new_email', $params['bad_fields']) ? 'bad' : ''"
-										cms:eval="class,value"
 										type="email"
 										name="new_email"
-										value="isset($_POST['new_email']) ? fix_chars($_POST['new_email']) : ''"
 										maxlength="127"
 										data-required="1"
 										autocomplete="on"
@@ -192,6 +202,46 @@
 							</label>
 
 							<div class="guest_checkout">
+								<label>
+									<span><cms:text constant="label_first_name" module="shop"/></span>
+									<input
+										type="text"
+										name="guest_first_name"
+										maxlength="64"
+										data-required="1"
+										autocomplete="on"
+										/>
+								</label>
+								<label class="separator">
+									<span><cms:text constant="label_last_name" module="shop"/></span>
+									<input
+										type="text"
+										name="guest_last_name"
+										maxlength="64"
+										data-required="1"
+										autocomplete="on"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_phone_number" module="shop"/></span>
+									<input
+										type="email"
+										name="guest_phone"
+										maxlength="200"
+										autocomplete="on"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_email" module="shop"/></span>
+									<input
+										type="email"
+										name="guest_email"
+										maxlength="127"
+										data-required="1"
+										autocomplete="on"
+										/>
+								</label>
+
 								<cms:if condition="!is_null($params['terms_link'])">
 									<label class="checkbox">
 										<input
@@ -232,166 +282,261 @@
 					<cms:if condition="$params['include_shipping']">
 						<div class="page" id="shipping_information">
 							<h1><cms:text constant="title_shipping_information" module="shop"/></h1>
-							<label>
-								<span><cms:text constant="label_presets" module="shop"/></span>
-								<select
-									name="presets"
-									data-autoload="$_SESSION['logged'] ? 1 : 0"
-									cms:eval="data-autoload"
-									/>
-							</label>
-							<label>
-								<span><cms:text constant="label_full_name" module="shop"/></span>
-								<input
-									class="in_array('name', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
-									name="name"
-									value="isset($_POST['name']) ? fix_chars($_POST['name']) : ''"
-									maxlength="64"
-									data-required="1"
-									autocomplete="on"
-									/>
-							</label>
-							<hr/>
-							<input
-								type="hidden"
-								name="phone"
-								/>
-							<label>
-								<span><cms:text constant="label_phone_number" module="shop"/></span>
-								<input
-									type="text"
-									name="phone_number"
-									maxlength="200"
-									autocomplete="on"
-									/>
-							</label>
-							<label>
-								<span><cms:text constant="label_cellphone"/></span>
-								<input
-									type="text"
-									name="cellphone_number"
-									maxlength="200"
-									autocomplete="on"
-									/>
-							</label>
-							<hr/>
-							<label>
-								<span><cms:text constant="label_street" module="shop"/></span>
-								<input
-									class="in_array('street', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
-									name="street"
-									value="isset($_POST['street']) ? fix_chars($_POST['street']) : ''"
-									maxlength="200"
-									data-required="1"
-									autocomplete="on"
-									/>
-								<small><cms:text constant="tooltip_street" module="shop"/></small>
-							</label>
-							<label>
-								<span><cms:text constant="label_city" module="shop"/></span>
-								<select
-									name="city"
-									data-required="1"
-									autocomplete="on"
-									>
-									<option value=""></option>
-									<optgroup label="label_price_group1" cms:constant="label">
-										<option value="Ramat Gan"><cms:text constant="city_ramat_gan"/></option>
-										<option value="Givataim"><cms:text constant="city_givataim_"/></option>
-										<option value="Bney Brak"><cms:text constant="city_bney_brak"/></option>
-										<option value="Tel Aviv"><cms:text constant="city_tel_aviv"/></option>
-									</optgroup>
-									<optgroup label="label_price_group2" cms:constant="label">
-										<option value="Petah Tiqwa"><cms:text constant="city_petah_tiqwa"/></option>
-										<option value="Rosh Aain"><cms:text constant="city_rosh_aain"/></option>
-										<option value="Herzelia"><cms:text constant="city_herzelia"/></option>
-										<option value="Ramat Hasharon"><cms:text constant="city_ramat_hasharon"/></option>
-										<option value="Kfar Sava"><cms:text constant="city_kfar_sava"/></option>
-										<option value="Ramat Efal"><cms:text constant="city_ramat_efal"/></option>
-										<option value="Raanana"><cms:text constant="city_raanana"/></option>
-										<option value="Netanya"><cms:text constant="city_netanya"/></option>
-										<option value="Hod Hasharon"><cms:text constant="city_hod_hasharon"/></option>
-										<option value="Azur"><cms:text constant="city_azur"/></option>
-										<option value="Holon"><cms:text constant="city_holon"/></option>
-										<option value="Bat Yam"><cms:text constant="city_bat_yam"/></option>
-										<option value="Rishon Lezion"><cms:text constant="city_rishon_lezion"/></option>
-										<option value="Yavne"><cms:text constant="city_yavne"/></option>
-										<option value="Yahud"><cms:text constant="city_yahud"/></option>
-										<option value="Neve Monoson"><cms:text constant="city_neve_monoson"/></option>
-										<option value="Kiryat Ono"><cms:text constant="city_kiryat_ono"/></option>
-										<option value="Savion"><cms:text constant="city_savion"/></option>
-										<option value="Or Yehuda"><cms:text constant="city_or_yehuda"/></option>
-										<option value="Givat Shmuel"><cms:text constant="city_givat_shmuel"/></option>
-										<option value="Beit Dagan"><cms:text constant="city_beit_dagan"/></option>
-										<option value="Gedera"><cms:text constant="city_gedera"/></option>
-										<option value="Rehovot"><cms:text constant="city_rehovot"/></option>
-										<option value="Mazkeret Batya"><cms:text constant="city_mazkeret_batya"/></option>
-										<option value="Ramla"><cms:text constant="city_ramla"/></option>
-										<option value="Lod"><cms:text constant="city_lod"/></option>
-										<option value="Beer Sheva"><cms:text constant="city_beer_sheva"/></option>
-										<option value="Haifa"><cms:text constant="city_haifa"/></option>
-										<option value="Jerusalem"><cms:text constant="city_jerusalem"/></option>
-									</optgroup>
-								</select>
-							</label>
-							<label>
-								<span><cms:text constant="label_country" module="shop"/></span>
-								<select
-									name="country"
-									class="in_array('country', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class"
-									data-required="1"
-									autocomplete="on"
-									>
-									<cms:module
-										name="country_list"
-										action="show"
-										filter="$params['fixed_country']"
-										cms:eval="filter"
+
+							<input type="hidden" name="delivery_method"/>
+							<input type="hidden" name="delivery_type"/>
+
+							<!-- Delivery method selection -->
+							<div class="container method visible">
+								<h4><cms:text constant="label_delivery_method" module="shop"/></h4>
+
+								<div class="details">
+									<cms:delivery_methods
+										shopping_cart="1"
+										template="delivery_checkout.xml"
+										local="1"
 										/>
-								</select>
-							</label>
-							<input
-								type="hidden"
-								name="state"
-								/>
-							<a
-								href="url_Make('', 'contact-us')"
-								cms:eval="href"
-								>
-								<cms:text constant="label_city_not_in_list"/>
-							</a>
-							<hr/>
-							<label>
-								<span><cms:text constant="label_access_code" module="shop"/></span>
-								<input
-									class="in_array('access_code', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="text"
-									name="access_code"
-									value="isset($_POST['access_code']) ? fix_chars($_POST['access_code']) : ''"
-									maxlength="40"
-									autocomplete="on"
-									/>
-								<small><cms:text constant="tooltip_access_code" module="shop"/></small>
-							</label>
-							<hr/>
-							<label>
-								<span><cms:text constant="label_email" module="shop"/></span>
-								<input
-									class="in_array('email', $params['bad_fields']) ? 'bad' : ''"
-									cms:eval="class,value"
-									type="email"
-									name="email"
-									value="isset($_POST['email']) ? fix_chars($_POST['email']) : ''"
-									maxlength="200"
-									autocomplete="on"
-									/>
-							</label>
+								</div>
+
+								<div class="overlay"/>
+							</div>
+
+							<!-- Person and address receiving the shippment -->
+							<div class="container address">
+								<hr/>
+								<h4><cms:text constant="label_shipping_address" module="shop"/></h4>
+
+								<div class="summary">
+									<span
+										class="street"
+										data-label="label_street"
+										cms:constant="data-label"
+										/>
+									<span
+										class="city"
+										data-label="label_city"
+										cms:constant="data-label"
+										/>
+									<span
+										class="zip"
+										data-label="label_zip"
+										cms:constant="data-label"
+										style="display: none;"
+										/>
+									<span
+										class="country"
+										data-label="label_country"
+										cms:constant="data-label"
+										style="display: none;"
+										/>
+									<span
+										class="state"
+										data-label="label_state"
+										cms:constant="data-label"
+										style="display: none;"
+										/>
+									<span
+										class="access_code"
+										data-label="label_access_code"
+										cms:constant="data-label"
+										/>
+								</div>
+
+								<div class="details">
+									<label>
+										<span><cms:text constant="label_street" module="shop"/></span>
+										<input
+											type="text"
+											name="street"
+											maxlength="200"
+											data-required="1"
+											autocomplete="on"
+											/>
+										<small><cms:text constant="tooltip_street" module="shop"/></small>
+									</label>
+
+									<label class="separator">
+										<span></span>
+										<input
+											type="text"
+											name="street2"
+											maxlength="200"
+											autocomplete="on"
+											/>
+										<small><cms:text constant="tooltip_street2" module="shop"/></small>
+									</label>
+
+									<label>
+										<span><cms:text constant="label_city" module="shop"/></span>
+										<select
+											name="city"
+											data-required="1"
+											autocomplete="on"
+											>
+											<option value=""></option>
+											<optgroup label="label_price_group1" cms:constant="label">
+												<option value="Ramat Gan"><cms:text constant="city_ramat_gan"/></option>
+												<option value="Givataim"><cms:text constant="city_givataim_"/></option>
+												<option value="Bney Brak"><cms:text constant="city_bney_brak"/></option>
+												<option value="Tel Aviv"><cms:text constant="city_tel_aviv"/></option>
+											</optgroup>
+											<optgroup label="label_price_group2" cms:constant="label">
+												<option value="Petah Tiqwa"><cms:text constant="city_petah_tiqwa"/></option>
+												<option value="Rosh Aain"><cms:text constant="city_rosh_aain"/></option>
+												<option value="Herzelia"><cms:text constant="city_herzelia"/></option>
+												<option value="Ramat Hasharon"><cms:text constant="city_ramat_hasharon"/></option>
+												<option value="Kfar Sava"><cms:text constant="city_kfar_sava"/></option>
+												<option value="Ramat Efal"><cms:text constant="city_ramat_efal"/></option>
+												<option value="Raanana"><cms:text constant="city_raanana"/></option>
+												<option value="Netanya"><cms:text constant="city_netanya"/></option>
+												<option value="Hod Hasharon"><cms:text constant="city_hod_hasharon"/></option>
+												<option value="Azur"><cms:text constant="city_azur"/></option>
+												<option value="Holon"><cms:text constant="city_holon"/></option>
+												<option value="Bat Yam"><cms:text constant="city_bat_yam"/></option>
+												<option value="Rishon Lezion"><cms:text constant="city_rishon_lezion"/></option>
+												<option value="Yavne"><cms:text constant="city_yavne"/></option>
+												<option value="Yahud"><cms:text constant="city_yahud"/></option>
+												<option value="Neve Monoson"><cms:text constant="city_neve_monoson"/></option>
+												<option value="Kiryat Ono"><cms:text constant="city_kiryat_ono"/></option>
+												<option value="Savion"><cms:text constant="city_savion"/></option>
+												<option value="Or Yehuda"><cms:text constant="city_or_yehuda"/></option>
+												<option value="Givat Shmuel"><cms:text constant="city_givat_shmuel"/></option>
+												<option value="Beit Dagan"><cms:text constant="city_beit_dagan"/></option>
+												<option value="Gedera"><cms:text constant="city_gedera"/></option>
+												<option value="Rehovot"><cms:text constant="city_rehovot"/></option>
+												<option value="Mazkeret Batya"><cms:text constant="city_mazkeret_batya"/></option>
+												<option value="Ramla"><cms:text constant="city_ramla"/></option>
+												<option value="Lod"><cms:text constant="city_lod"/></option>
+												<option value="Beer Sheva"><cms:text constant="city_beer_sheva"/></option>
+												<option value="Haifa"><cms:text constant="city_haifa"/></option>
+												<option value="Jerusalem"><cms:text constant="city_jerusalem"/></option>
+											</optgroup>
+										</select>
+									</label>
+
+									<label>
+										<span><cms:text constant="label_country" module="shop"/></span>
+										<cms:if condition="empty($params['fixed_country'])">
+											<select
+												name="country"
+												data-required="1"
+												autocomplete="on"
+												>
+												<option/>
+												<cms:module
+													name="country_list"
+													action="show"
+													/>
+											</select>
+										</cms:if>
+										<cms:if condition="!empty($params['fixed_country'])">
+											<select
+												name="country"
+												data-required="1"
+												autocomplete="on"
+												>
+												<cms:module
+													name="country_list"
+													action="show"
+													filter="$params['fixed_country']"
+													cms:eval="filter"
+													/>
+											</select>
+										</cms:if>
+									</label>
+									<input type="hidden" name="state" maxlength="40" />
+
+									<label>
+										<span><cms:text constant="label_access_code" module="shop"/></span>
+										<input
+											type="text"
+											name="access_code"
+											maxlength="40"
+											autocomplete="on"
+											/>
+										<small><cms:text constant="tooltip_access_code" module="shop"/></small>
+									</label>
+								</div>
+							</div>
+
+							<!-- Contact information in case of a need -->
+							<div class="container contact">
+								<hr/>
+								<h4><cms:text constant="label_contact_information" module="shop"/></h4>
+
+								<div class="summary">
+									<span
+										class="name"
+										data-label="label_full_name"
+										cms:constant="data-label"
+										/>
+									<span
+										class="email"
+										data-label="label_email"
+										cms:constant="data-label"
+										/>
+									<span
+										class="phone"
+										data-label="label_phone_number"
+										cms:constant="data-label"
+										/>
+								</div>
+
+								<div class="details">
+									<label>
+										<span><cms:text constant="label_presets" module="shop"/></span>
+										<select
+											name="presets"
+											data-autoload="$_SESSION['logged'] ? 1 : 0"
+											cms:eval="data-autoload"
+											/>
+									</label>
+
+									<label>
+										<span><cms:text constant="label_full_name" module="shop"/></span>
+										<input
+											type="text"
+											name="name"
+											maxlength="64"
+											data-required="1"
+											autocomplete="on"
+											/>
+									</label>
+
+									<label>
+										<span><cms:text constant="label_email" module="shop"/></span>
+										<input
+											type="email"
+											name="email"
+											maxlength="127"
+											data-required="1"
+											autocomplete="on"
+											/>
+									</label>
+
+									<label>
+										<span><cms:text constant="label_phone_number" module="shop"/></span>
+										<input
+											type="text"
+											name="phone"
+											maxlength="127"
+											autocomplete="on"
+											/>
+									</label>
+								</div>
+							</div>
+
+							<div class="container types">
+								<hr/>
+								<h4><cms:text constant="label_delivery_types" module="shop"/></h4>
+
+								<div class="details">
+								</div>
+
+								<div class="overlay"/>
+							</div>
+
+							<div class="container interface"/>
 
 							<div class="checkout_controls">
 								<cms:guest>
@@ -399,30 +544,116 @@
 								</cms:guest>
 								<button class="next"><cms:text constant="next"/></button>
 							</div>
-
-							<cms:if condition="!empty($params['message'])">
-								<div class="message"><cms:var name="$params['message']"/></div>
-							</cms:if>
 						</div>
 					</cms:if>
 
-					<!-- Hidden Information -->
-					<input type="hidden" name="billing_full_name" value="" />
-					<input type="hidden" name="billing_credit_card" value="" />
-					<input type="hidden" name="billing_expire_month" value="" />
-					<input type="hidden" name="billing_expire_year" value="" />
-					<input type="hidden" name="billing_cvv" value="" />
+					<!-- Payment Method Selection -->
+					<cms:if condition="is_null($params['payment_method'])">
+						<div class="page" id="payment_method">
+							<h1><cms:text constant="title_payment_method" module="shop"/></h1>
+							<input type="hidden" name="payment_method" value=""/>
+							<div class="payment_methods">
+								<cms:payment_method_list/>
+							</div>
+
+							<div class="checkout_controls">
+								<button class="previous"><cms:text constant="back"/></button>
+								<button class="next"><cms:text constant="next"/></button>
+							</div>
+						</div>
+					</cms:if>
+
+					<!-- Billing Information -->
+					<!--
+					<div class="page" id="billing_information">
+						<h1><cms:text constant="title_billing_information" module="shop"/></h1>
+
+						<label>
+							<span><cms:text constant="label_full_name" module="shop"/></span>
+							<input
+								type="text"
+								name="billing_full_name"
+								maxlength="64"
+								autocomplete="on"
+								data-required="1"
+								/>
+						</label>
+						<hr/>
+						<label>
+							<span><cms:text constant="label_credit_card_type" module="shop"/></span>
+							<select name="billing_card_type" data-required="1">
+								<option/>
+								<cms:card_type/>
+							</select>
+						</label>
+						<label>
+							<span><cms:text constant="label_credit_card" module="shop"/></span>
+							<input
+								type="text"
+								name="billing_credit_card"
+								maxlength="127"
+								autocomplete="on"
+								data-required="1"
+								/>
+						</label>
+						<div class="horizontal">
+							<label>
+								<span><cms:text constant="label_expiration_date" module="shop"/></span>
+								<input
+									type="text"
+									name="billing_expire_month"
+									maxlength="2"
+									autocomplete="on"
+									placeholder="mm"
+									data-required="1"
+									/>
+							</label>
+							<label>
+								<input
+									type="text"
+									name="billing_expire_year"
+									maxlength="4"
+									autocomplete="on"
+									placeholder="yyyy"
+									data-required="1"
+									/>
+							</label>
+						</div>
+						<label>
+							<span><cms:text constant="label_cvv" module="shop"/></span>
+							<input
+								type="text"
+								name="billing_cvv"
+								maxlength="4"
+								autocomplete="on"
+								data-required="1"
+								/>
+							<cms:raw><![CDATA[&nbsp;]]></cms:raw>
+							<a href="javascript: void();" class="what_is_cvv">
+								<cms:text constant="label_cvv_question" module="shop"/>
+							</a>
+							<img
+								id="what_is_cvv"
+								src="_BASEURL.'/modules/shop/images/security_code.png'"
+								alt="CVV2"
+								cms:eval="src"
+								/>
+						</label>
+						<div class="checkout_controls">
+							<button class="previous"><cms:text constant="back"/></button>
+							<button class="next"><cms:text constant="next"/></button>
+						</div>
+					</div>
+					-->
+					<!-- Legacy fields, kept for reverse compatibility -->
+					<input type="hidden" name="billing_full_name" />
+					<input type="hidden" name="billing_credit_card" />
+					<input type="hidden" name="billing_expire_month" />
+					<input type="hidden" name="billing_expire_year" />
+					<input type="hidden" name="billing_cvv" />
 					<input type="hidden" name="zip" value="0" />
 
-					<!-- Static payment method information -->
-					<cms:payment_method
-						name="$params['payment_method']"
-						template="hidden_payment_method.xml"
-						local="1"
-						cms:eval="name"
-						/>
-					<input type="hidden" name="stage" value="set-info"/>
-
+					<!-- Card selection -->
 					<div class="page" id="card_selection">
 						<h1><cms:text constant="title_card_selection"/></h1>
 
@@ -455,7 +686,19 @@
 						</div>
 					</div>
 
+					<!-- Dummy checkout page -->
 					<div class="page" id="checkout"/>
+
+					<!-- Static payment method information -->
+					<cms:if condition="!is_null($params['payment_method'])">
+						<cms:payment_method
+							name="$params['payment_method']"
+							template="hidden_payment_method.xml"
+							local="1"
+							cms:eval="name"
+							/>
+						<input type="hidden" name="stage" value="set-info"/>
+					</cms:if>
 				</div>
 			</form>
 		</div>
