@@ -195,6 +195,40 @@ Site.handle_date_select = function(date) {
  * @return boolean
  */
 Site.handle_page_switch = function(current_page, new_page) {
+	if (current_page == 0 || new_page == 0) {
+		var phone = $('#input_details input[name=guest_phone]');
+		var phone_number = $('#input_details input[name=guest_phone1]');
+		var cellphone_number = $('#input_details input[name=guest_phone2]');
+
+		// store phone number
+		if (current_page == 0)
+			phone.val(phone_number.val() + ',' + cellphone_number.val());
+
+		// restore phone number
+		if (new_page == 0 && current_page > new_page) {
+			var data = phone.val().split(',');
+			phone_number.val(data[0]);
+			cellphone_number.val(data[1]);
+		}
+	}
+
+	if (current_page == 0 || new_page == 0) {
+		var phone = $('#input_details input[name=new_phone_number]');
+		var phone_number = $('#input_details input[name=new_phone_number1]');
+		var cellphone_number = $('#input_details input[name=new_phone_number2]');
+
+		// store phone number
+		if (current_page == 0)
+			phone.val(phone_number.val() + ',' + cellphone_number.val());
+
+		// restore phone number
+		if (new_page == 0 && current_page > new_page) {
+			var data = phone.val().split(',');
+			phone_number.val(data[0]);
+			cellphone_number.val(data[1]);
+		}
+	}
+
 	if (current_page == 1 || new_page == 1) {
 		var phone = $('#input_details input[name=phone]');
 		var phone_number = $('#input_details input[name=phone_number]');
