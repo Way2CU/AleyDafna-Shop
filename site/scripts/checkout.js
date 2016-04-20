@@ -48,8 +48,8 @@ Site.CardSelection = function() {
 		// create card selection user interface
 		self.slider = new Caracal.Gallery.Slider(1);
 		self.slider
-			.controls.attach_next($('#div.card_text a.arrow.next'))
-			.controls.attach_previous($('#div.card_text a.arrow.previous'))
+			.controls.attach_next($('div#card_selection a.arrow.next_image'))
+			.controls.attach_previous($('div#card_selection a.arrow.previous_image'))
 			.images.set_container(self.container)
 			.images.add(self.container.find('img'))
 			.images.set_center(true);
@@ -58,7 +58,7 @@ Site.CardSelection = function() {
 		$('div#card_selection').data('validator', self.validator.card_selection);
 
 		// connect event for updating text input position
-		self.container.find('a.arrow').on('click', self.handler.card_switch);
+		$('div#card_selection a.arrow').on('click', self.handler.card_switch);
 
 		// position input element initially
 		self._update_input_position();

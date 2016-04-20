@@ -713,8 +713,8 @@
 								/>
 						</div>
 
-						<a class="arrow next"/>
-						<a class="arrow previous"/>
+						<a class="arrow next_image"/>
+						<a class="arrow previous_image"/>
 
 						<div class="checkout_controls">
 							<button class="previous"><cms:text constant="back"/></button>
