@@ -201,6 +201,7 @@ div#popup > p {
 nav#main {
 	display: block;
 	padding-top: 20px;
+	white-space: normal;
 }
 
 nav#main ul {
@@ -225,7 +226,7 @@ nav#main > ul > li > a {
 	text-decoration: none;
 	border-left: 1px solid fade(@color_ac_text,50%);
 	color: @color_ac_text;
-	font-weight: 700;
+	font-weight: 400;
 	position: relative;
 	transition: all 0.3s;
 }
@@ -338,6 +339,8 @@ nav#main ul ul.drop li a {
 	line-height: 100%;
 	color: @color_ac_dark_green;
 	transition: all 0.3s;
+	max-width: 250px;
+	white-space: normal;
 }
 
 nav#main  ul  ul.drop  li:hover a {
