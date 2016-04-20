@@ -21,10 +21,22 @@ Site.CardSelection = function() {
 	self.handler = {};
 	self.validator = {};
 	self.cards = {
-			regular: [0, 0, 100, 100],
-			bow_tie: [100, 100, 100, 100]
+			aley_dafna_1:     [25, 10, 10, 10],
+			aley_dafna_2:     [40, 10, 20, 10],
+			baloons_1:        [50, 10, 30, 10],
+			baloons_2:        [60, 10, 10, 10],
+			baloons_3:        [40, 10, 10, 40],
+			green_edge_1:     [30, 10, 30, 10],
+			green_edge_2:     [30, 10, 30, 10],
+			green_wave:       [10, 10, 30, 10],
+			happy_birthday_1: [40, 10, 10, 40],
+			happy_birthday_2: [60, 10, 10, 10],
+			happy_birthday_3: [40, 10, 10, 40],
+			heart_dust:       [10, 10, 40, 10],
+			heart:            [40, 10, 40, 10],
+			heart_ornaments:  [40, 10, 10, 10]
 		};
-	self.default_position = [50, 50, 50, 50];
+	self.default_position = [10, 10, 10, 10];
 
 	/**
 	 * Finalize object.
@@ -65,10 +77,10 @@ Site.CardSelection = function() {
 
 		// position input field
 		self.text_input.css({
-				top: coordinates[0],
-				left: coordinates[1],
-				bottom: coordinates[2],
-				right: coordinates[3]
+				top: coordinates[0] + '%',
+				left: coordinates[1] + '%',
+				bottom: coordinates[2] + '%',
+				right: coordinates[3] + '%'
 			});
 	};
 
