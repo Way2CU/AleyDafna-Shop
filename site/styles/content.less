@@ -54,8 +54,7 @@ section#customer {
 }
 
 section#business {
-	padding-top: 150px;
-	padding-bottom: 150px;
+	padding: 130px calc(~'(100% - 1200px)' / 2);
 }
 
 section#customer:before,
@@ -82,28 +81,39 @@ section#customer:before {
 	background-image: url(../images/customer_clients.jpg);
 }
 
-section#business div{
+section#business div {
 	display: inline-block;
 	vertical-align: top;
 	width: 500px;
+	text-align: left;
+}
+
+body.rtl section#business div {
 	text-align: right;
 }
 
 section#business div.title{
 	width: 450px;
-	margin-left: 142px;
+	margin-right: 142px;
 	background-color: fade(@color_ac_text, 80%);
+}
+
+body.rtl section#business div.title {
+	margin-left: 142px;
+	margin-right: auto;
 }
 
 section#business div  h2 {
 	margin: 0px;
 	padding-top: 10px;
+	padding-left: 5px;
 	padding-right: 5px;
 	font-size: 3em;
 }
 
 section#business div p {
 	margin-top: 0px;
+	padding-left: 5px;
 	padding-right: 5px;
 	font-size: 1.5em;
 }
