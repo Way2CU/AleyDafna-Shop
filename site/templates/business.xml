@@ -26,7 +26,10 @@
 			</cms:mobile>
 
 			<section id="business">
-				<h2><cms:text constant="title_business"/></h2>
+				<div class="title">
+					<h2><cms:text constant="title_business"/></h2>
+					<p><cms:text constant="description_business"/></p>
+				</div>
 
 				<div id="form_business">
 
