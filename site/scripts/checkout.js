@@ -52,7 +52,7 @@ Site.CardSelection = function() {
 			.controls.attach_previous($('div#card_selection a.arrow.previous_image'))
 			.images.set_container(self.container)
 			.images.add(self.container.find('img'))
-			.images.set_center(true);
+			.images.set_center(false);
 
 		// connect validator
 		$('div#card_selection').data('validator', self.validator.card_selection);
