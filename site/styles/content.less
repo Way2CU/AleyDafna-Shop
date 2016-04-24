@@ -21,7 +21,6 @@ section#slider {
 	position: relative;
 }
 
-section#business,
 section#customer,
 section#contact,
 section#warranty,
@@ -40,6 +39,12 @@ section#contact {
 	z-index: 0;
 }
 
+section#business {
+	background-image: url(../images/business-background.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
 section#business,
 section#customer {
 	z-index: 0;
@@ -48,7 +53,11 @@ section#customer {
 	padding-bottom: 20px;
 }
 
-section#business:before,
+section#business {
+	padding-top: 150px;
+	padding-bottom: 150px;
+}
+
 section#customer:before,
 section#contact:before {
 	content: "";
@@ -62,22 +71,43 @@ section#contact:before {
 	z-index: -1;
 }
 
-section#business:before,
 section#customer:before {
 	background-repeat: no-repeat;
 	background-position: right top;
 	background-size: auto 100%;
 }
 
-section#business:before {
-	background-image: url(../images/business_clients.jpg);
-}
 
 section#customer:before {
 	background-image: url(../images/customer_clients.jpg);
 }
 
-section#business h2,
+section#business div{
+	display: inline-block;
+	vertical-align: top;
+	width: 500px;
+	text-align: right;
+}
+
+section#business div.title{
+	width: 450px;
+	margin-left: 142px;
+	background-color: fade(@color_ac_text, 80%);
+}
+
+section#business div  h2 {
+	margin: 0px;
+	padding-top: 10px;
+	padding-right: 5px;
+	font-size: 3em;
+}
+
+section#business div p {
+	margin-top: 0px;
+	padding-right: 5px;
+	font-size: 1.5em;
+}
+
 section#customer h2 {
 	margin: 0px;
 	padding-bottom: 15px;
@@ -1313,6 +1343,11 @@ div#form_business {
 	width: 500px;
 	margin-left: calc(~'(50% - 502px)');
 	margin-right: auto;
+}
+
+div#form_business  {
+	margin-left: calc(~'(50% - 502px)');
+	background-color: fade(@color_ac_text, 90%);
 }
 
 div#form_customers p,
