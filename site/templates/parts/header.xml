@@ -1,6 +1,6 @@
 <document>
+	<cms:raw file="gtm.txt"/>
 	<header>
-		<cms:raw file="gtm.txt"/>
 		<cms:module
 			name="backend"
 			action="save_unpriviledged_user_timer"
