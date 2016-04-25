@@ -21,7 +21,10 @@
 				>
 				<cms:var param="price"/>
 			</p>
-			<p class="description"><cms:var param="description" multilanguage="yes"/></p>
+
+			<div>
+				<cms:markdown param="description" multilanguage="yes"/>
+			</div>
 		</a>
 	</cms:desktop>
 

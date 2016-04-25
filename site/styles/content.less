@@ -691,7 +691,7 @@ div#unique a.item.hidden {
 	transform: scale(0);
 }
 
-a.item p.description {
+a.item div {
 	position: absolute;
 	padding: 15px;
 	bottom: -100%;
@@ -702,11 +702,7 @@ a.item p.description {
 	transition: all 0.5s;
 }
 
-a.item:hover p:not(.description) {
-	opacity: 0;
-}
-
-a.item:hover p.description {
+a.item:hover div {
 	bottom: 0%;
 }
 
