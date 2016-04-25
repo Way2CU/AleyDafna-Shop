@@ -93,13 +93,14 @@
 					</article>	
 				</div>
 
-				<figure>
+				<a  href="https://www.google.co.il/maps/place/%D7%A2%D7%9C%D7%99+%D7%93%D7%A4%D7%A0%D7%94%E2%80%AD/@32.0817867,34.8070791,17z/data=!3m1!4b1!4m2!3m1!1s0x151d4bb844b1a821:0x586f5cf739269744"
+					class="map">
 					<img 
 						src="_BASEURL.'/site/images/map.png'" 
 						alt="map"
 						cms:eval="src"
 						/>
-				</figure>
+				</a>
 
 				<div id="form_wrap">
 					<p><cms:text constant="title_form"/></p>
