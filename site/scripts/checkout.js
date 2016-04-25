@@ -21,10 +21,22 @@ Site.CardSelection = function() {
 	self.handler = {};
 	self.validator = {};
 	self.cards = {
-			regular: [0, 0, 100, 100],
-			bow_tie: [100, 100, 100, 100]
+			aley_dafna_1: [25, 10, 10, 10],
+			aley_dafna_2: [40, 10, 20, 10],
+			baloons_1:    [50, 10, 30, 10],
+			baloons_2:    [60, 10, 10, 10],
+			baloons_3:    [40, 10, 40, 10],
+			green_edge_1: [30, 10, 30, 10],
+			green_edge_2: [30, 10, 30, 10],
+			green_wave:   [10, 10, 30, 10],
+			happy_bday_1: [40, 10, 40, 10],
+			happy_bday_2: [60, 10, 10, 10],
+			happy_bday_3: [40, 10, 40, 10],
+			heart_dust:   [10, 10, 40, 10],
+			heart:        [40, 10, 40, 10],
+			ornaments:    [40, 10, 10, 10]
 		};
-	self.default_position = [50, 50, 50, 50];
+	self.default_position = [10, 10, 10, 10];
 
 	/**
 	 * Finalize object.
@@ -36,17 +48,17 @@ Site.CardSelection = function() {
 		// create card selection user interface
 		self.slider = new Caracal.Gallery.Slider(1);
 		self.slider
-			.controls.attach_next($('#div.card_text a.arrow.next'))
-			.controls.attach_previous($('#div.card_text a.arrow.previous'))
+			.controls.attach_next($('div#card_selection a.arrow.next_image'))
+			.controls.attach_previous($('div#card_selection a.arrow.previous_image'))
 			.images.set_container(self.container)
 			.images.add(self.container.find('img'))
-			.images.set_center(true);
+			.images.set_center(false);
 
 		// connect validator
 		$('div#card_selection').data('validator', self.validator.card_selection);
 
 		// connect event for updating text input position
-		self.container.find('a.arrow').on('click', self.handler.card_switch);
+		$('div#card_selection a.arrow').on('click', self.handler.card_switch);
 
 		// position input element initially
 		self._update_input_position();
@@ -65,10 +77,10 @@ Site.CardSelection = function() {
 
 		// position input field
 		self.text_input.css({
-				top: coordinates[0],
-				left: coordinates[1],
-				bottom: coordinates[2],
-				right: coordinates[3]
+				top: coordinates[0] + '%',
+				left: coordinates[1] + '%',
+				bottom: coordinates[2] + '%',
+				right: coordinates[3] + '%'
 			});
 	};
 
@@ -195,6 +207,40 @@ Site.handle_date_select = function(date) {
  * @return boolean
  */
 Site.handle_page_switch = function(current_page, new_page) {
+	if (current_page == 0 || new_page == 0) {
+		var phone = $('#input_details input[name=guest_phone]');
+		var phone_number = $('#input_details input[name=guest_phone1]');
+		var cellphone_number = $('#input_details input[name=guest_phone2]');
+
+		// store phone number
+		if (current_page == 0)
+			phone.val(phone_number.val() + ',' + cellphone_number.val());
+
+		// restore phone number
+		if (new_page == 0 && current_page > new_page) {
+			var data = phone.val().split(',');
+			phone_number.val(data[0]);
+			cellphone_number.val(data[1]);
+		}
+	}
+
+	if (current_page == 0 || new_page == 0) {
+		var phone = $('#input_details input[name=new_phone_number]');
+		var phone_number = $('#input_details input[name=new_phone_number1]');
+		var cellphone_number = $('#input_details input[name=new_phone_number2]');
+
+		// store phone number
+		if (current_page == 0)
+			phone.val(phone_number.val() + ',' + cellphone_number.val());
+
+		// restore phone number
+		if (new_page == 0 && current_page > new_page) {
+			var data = phone.val().split(',');
+			phone_number.val(data[0]);
+			cellphone_number.val(data[1]);
+		}
+	}
+
 	if (current_page == 1 || new_page == 1) {
 		var phone = $('#input_details input[name=phone]');
 		var phone_number = $('#input_details input[name=phone_number]');

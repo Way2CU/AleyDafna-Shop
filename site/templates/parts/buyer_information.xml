@@ -121,12 +121,23 @@
 										autocomplete="on"
 										/>
 								</label>
+								<input type="hidden" name="new_phone_number"/>
 								<label>
 									<span><cms:text constant="label_phone_number" module="shop"/></span>
 									<input
 										type="text"
-										name="new_phone_number"
-										maxlength="200"
+										name="new_phone_number1"
+										data-required="1"
+										maxlength="100"
+										autocomplete="on"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_phone_number2" module="aley_dafna"/></span>
+									<input
+										type="text"
+										name="new_phone_number2"
+										maxlength="100"
 										autocomplete="on"
 										/>
 								</label>
@@ -222,11 +233,22 @@
 										autocomplete="on"
 										/>
 								</label>
+								<input type="hidden" name="guest_phone"/>
 								<label>
 									<span><cms:text constant="label_phone_number" module="shop"/></span>
 									<input
 										type="email"
-										name="guest_phone"
+										name="guest_phone1"
+										maxlength="200"
+										autocomplete="on"
+										data-required="1"
+										/>
+								</label>
+								<label>
+									<span><cms:text constant="label_phone_number2" module="aley_dafna"/></span>
+									<input
+										type="email"
+										name="guest_phone2"
 										maxlength="200"
 										autocomplete="on"
 										/>
@@ -691,8 +713,8 @@
 								/>
 						</div>
 
-						<a class="arrow next"/>
-						<a class="arrow previous"/>
+						<a class="arrow next_image"/>
+						<a class="arrow previous_image"/>
 
 						<div class="checkout_controls">
 							<button class="previous"><cms:text constant="back"/></button>

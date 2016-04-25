@@ -1558,4 +1558,83 @@ div#input_details div.existing_account.visible,
 div#input_details div.new_account.visible,
 div#input_details div.guest_checkout.visible {
  	max-height: 400px;
- }
+}
+
+div#input_details div#card_selection.page h1 {
+	margin-bottom: 0;
+}
+
+div#input_details div#card_selection.page label {
+	padding-bottom: 10px;
+}
+
+div#input_details div#card_selection.page span {
+	width: auto;
+	padding: 0;
+}
+
+div#input_details div#card_selection.page div.container {
+	display: block;
+	width: 90vw;
+	height: calc(90vw * 1.4138461538461);
+	overflow: hidden;
+	position: relative;
+}
+
+div#input_details div#card_selection.page div.container img {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+
+	transition: left 0.5s;
+}
+
+div#input_details div#card_selection.page a.arrow {
+	display: block;
+	width: 40px;
+	height: 70px;
+	top: 50%;
+	margin-top: -35px;
+	position: absolute;
+
+	background-image: url(../images/arrow.svg);
+	background-size: 40px auto;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+div#input_details div#card_selection.page a.arrow.previous_image {
+	right: 105%;
+	transform: scaleX(-1);
+}
+
+div#input_details div#card_selection.page a.arrow.next_image {
+	left: 105%;
+	transform: scaleX(1);
+}
+
+body.rtl div#input_details div#card_selection.page a.arrow.previous_image {
+	right: auto;
+	left: 105%;
+	transform: scaleX(1);
+}
+
+body.rtl div#input_details div#card_selection.page a.arrow.next_image {
+	left: auto;
+	right: 105%;
+	transform: scaleX(-1);
+}
+
+div#input_details div#card_selection.page textarea {
+	display: inline-block;
+	position: absolute;
+
+	border: 1px dashed #e0e0e0;
+	background-color: transparent;
+
+	color: @color_text;
+	resize: none;
+
+	transition: all 0.5s;
+}

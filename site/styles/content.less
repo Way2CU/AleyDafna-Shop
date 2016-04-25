@@ -1896,14 +1896,19 @@ div#input_details div#card_selection.page span {
 
 div#input_details div#card_selection.page div.container {
 	display: block;
-	width: 100%;
-	height: 777px;
+	width: 650px;
+	height: calc(650px * 1.4138461538461);
 	overflow: hidden;
 	position: relative;
 }
 
 div#input_details div#card_selection.page div.container img {
+	position: absolute;
+	top: 0;
+	left: -100%;
 	width: 100%;
+
+	transition: left 0.5s;
 }
 
 div#input_details div#card_selection.page a.arrow {
@@ -1920,23 +1925,23 @@ div#input_details div#card_selection.page a.arrow {
 	background-repeat: no-repeat;
 }
 
-div#input_details div#card_selection.page a.arrow.previous {
+div#input_details div#card_selection.page a.arrow.previous_image {
 	right: 105%;
 	transform: scaleX(-1);
 }
 
-div#input_details div#card_selection.page a.arrow.next {
+div#input_details div#card_selection.page a.arrow.next_image {
 	left: 105%;
 	transform: scaleX(1);
 }
 
-body.rtl div#input_details div#card_selection.page a.arrow.previous {
+body.rtl div#input_details div#card_selection.page a.arrow.previous_image {
 	right: auto;
 	left: 105%;
 	transform: scaleX(1);
 }
 
-body.rtl div#input_details div#card_selection.page a.arrow.next {
+body.rtl div#input_details div#card_selection.page a.arrow.next_image {
 	left: auto;
 	right: 105%;
 	transform: scaleX(-1);
@@ -1944,15 +1949,14 @@ body.rtl div#input_details div#card_selection.page a.arrow.next {
 
 div#input_details div#card_selection.page textarea {
 	display: inline-block;
-	width: 300px;
-	height: 100px;
 	position: absolute;
 
-	border: 0;
-	background-color: fade(white, 90%);
+	border: 1px dashed #e0e0e0;
+	background-color: transparent;
 
 	color: @color_text;
 	resize: none;
+	transition: all 0.5s;
 }
 
 div#checkout_container div.delivery_interface label {
