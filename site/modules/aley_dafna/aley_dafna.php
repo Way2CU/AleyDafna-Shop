@@ -17,7 +17,7 @@ class aley_dafna extends Module {
 	private static $_instance;
 
 	const API_KEY = 'AIzaSyDqFY0uvnULTUryKNgwMJFiH3mDF4DSk6Q';
-	const CALENDAR_ID = '';
+	const CALENDAR_ID = 'sales@aleydafna.co.il';
 
 	const DEFAULT_LANGUAGE = 'he';
 	const DEFAULT_THRESHOLD = 10;
@@ -101,23 +101,23 @@ class aley_dafna extends Module {
 		// global control actions
 		if (isset($params['action']))
 			switch ($params['action']) {
-				default:
-					break;
+			default:
+			break;
 			}
 
 		// global control actions
 		if (isset($params['backend_action']))
 			switch ($params['backend_action']) {
-				case 'import':
-					$this->show_import();
-					break;
+			case 'import':
+				$this->show_import();
+				break;
 
-				case 'import_from_file':
-					$this->import_from_file();
-					break;
+			case 'import_from_file':
+				$this->import_from_file();
+				break;
 
-				default:
-					break;
+			default:
+				break;
 			}
 	}
 
@@ -142,25 +142,65 @@ class aley_dafna extends Module {
 		if ($transaction->status != TransactionStatus::COMPLETED)
 			return;
 
+		// get managers
+		$buyer_manager = ShopBuyersManager::getInstance();
+		$address_manager = ShopDeliveryAddressManager::getInstance();
+		$transaction_items_manager = ShopTransactionItemsManager::getInstance();
+		$item_manager = ShopItemManager::getInstance();
+
+		// get transaction data
+		$buyer = $buyer_manager->getSingleItem(
+			$buyer_manager->getFieldNames(),
+			array('id' => $transaction->buyer)
+		);
+		$address = $address_manager->getSingleItem(
+			$address_manager->getFieldNames(),
+			array('id' => $transaction->address)
+		);
+		$transaction_items = $transaction_items_manager->getSingleItem(
+			$transaction_items_manager->getFieldNames(),
+			array('transaction' => $transaction->id)
+		);
+
 		$timestamp = array(
-				'date'     => $date;
-				'timeZone' => 'Asia/Jerusalem'
-			);
+			'date'     => $date,
+			'timeZone' => 'Asia/Jerusalem'
+		);
 
 		$header= array(
-				'Content-type: application/json',
-				/* 'Authorization: Bearer ' . $this->access_token, */
-				/* 'X-JavaScript-User-Agent: Google APIs Explorer' */
-			);
+			'Content-type: application/json',
+			/* 'Authorization: Bearer ' . $this->access_token, */
+			/* 'X-JavaScript-User-Agent: Google APIs Explorer' */
+		);
+
+		// prepare data
+		$title = $buyer->first_name.' '.$buyer->last_name.' - '.$transaction->uid;
+		$location = $address->street.' '.$address->street2.', '.$address->zip.' '.$address->city.', '.$address->country;
+
+		$id_list = array();
+		$name_by_id = array();
+		$description = '';
+
+		if (count($transaction_items) > 0) {
+			foreach ($items as $item)
+				$id_list[] = $item->item;
+
+			$items = $item_manager->getItems(array('id', 'name'), array('id' => $id_list));
+			foreach ($items as $item)
+				$name_by_id[$item->id] = $item->name;
+
+			foreach ($transaction_items as $item)
+				$description .= $name_by_id[$item->item].' - '.$item->amount."\n";
+		}
 
 		$post_data = array(
-				'start'       => $timestamp,
-				'end'         => $timestamp,
-				'summary'     => $title,
-				'description' => $description,
-				'location'    => $location,
-				'key'         => self::API_KEY
-			);
+			'start'       => $timestamp,
+			'end'         => $timestamp,
+			'summary'     => $title,
+			'description' => $description,
+			'location'    => $location,
+			'key'         => self::API_KEY
+		);
 
 		$post_data = json_encode($post_data);
 		$url = 'https://www.googleapis.com/calendar/v3/calendars/' . self::CALENDAR_ID . '/events';
@@ -212,9 +252,9 @@ class aley_dafna extends Module {
 		$template->setMappedModule($this->name);
 
 		$params = array(
-					'form_action'	=> backend_UrlMake($this->name, 'import_from_file'),
-					'cancel_action'	=> window_Close('shop_import_items')
-				);
+			'form_action'	=> backend_UrlMake($this->name, 'import_from_file'),
+			'cancel_action'	=> window_Close('shop_import_items')
+		);
 
 		$template->restoreXML();
 		$template->setLocalParams($params);
@@ -349,10 +389,10 @@ class aley_dafna extends Module {
 
 			if (array_key_exists($uid, $existing_items)) {
 				$data = array(
-						'name'            => $item_name,
-						'description'     => $item_description,
-						'price'           => count($prices) > 0 ? floatval($prices[0]) : 0
-					);
+					'name'            => $item_name,
+					'description'     => $item_description,
+					'price'           => count($prices) > 0 ? floatval($prices[0]) : 0
+				);
 				$item_id = $existing_items[$uid];
 				$item_manager->updateData($data, array('id' => $item_id));
 				$gallery_id = $item_manager->getItemValue('gallery', array('id' => $item_id));
@@ -360,15 +400,15 @@ class aley_dafna extends Module {
 			} else {
 				// prepare data
 				$data = array(
-						'name'            => $item_name,
-						'description'     => $item_description,
-						'price'           => count($prices) > 0 ? floatval($prices[0]) : 0,
-						'colors'          => '',
-						'tax'             => 0,
-						'weight'          => 0,
-						'manufacturer'    => 0,
-						'uid'             => $uid
-					);
+					'name'            => $item_name,
+					'description'     => $item_description,
+					'price'           => count($prices) > 0 ? floatval($prices[0]) : 0,
+					'colors'          => '',
+					'tax'             => 0,
+					'weight'          => 0,
+					'manufacturer'    => 0,
+					'uid'             => $uid
+				);
 
 				// store author of the uploaded item
 				$data['author'] = $_SESSION['uid'];
@@ -385,11 +425,11 @@ class aley_dafna extends Module {
 
 			// remove existing prices
 			$property_manager->deleteData(array(
-					'item'          => $item_id,
-					'text_id'       => array(
-						'operator' => 'LIKE',
-						'value'    => 'price_%'
-					)));
+				'item'          => $item_id,
+				'text_id'       => array(
+					'operator' => 'LIKE',
+					'value'    => 'price_%'
+				)));
 
 			// create price properties
 			if (count($prices) > 1) {
@@ -401,16 +441,16 @@ class aley_dafna extends Module {
 					// set and reset specified name
 					if (isset($price_names[$i]))
 						$price_name[self::DEFAULT_LANGUAGE] = $price_names[$i]; else
-						$price_name[self::DEFAULT_LANGUAGE] = '';
+							$price_name[self::DEFAULT_LANGUAGE] = '';
 
 					// prepare data for insertion
 					$price_data = array(
-							'item'    => $item_id,
-							'name'    => $price_name,
-							'text_id' => 'price_'.$this->size_names[$i-1],
-							'type'    => 'decimal',
-							'value'   => serialize(floatval($prices[$i]))
-						);
+						'item'    => $item_id,
+						'name'    => $price_name,
+						'text_id' => 'price_'.$this->size_names[$i-1],
+						'type'    => 'decimal',
+						'value'   => serialize(floatval($prices[$i]))
+					);
 
 					// insert new price property
 					$property_manager->insertData($price_data);
@@ -446,17 +486,17 @@ class aley_dafna extends Module {
 				$file_size = filesize($source_path);
 
 				// only upload image if it wasn't uploaded already
-			   	if (!$image_already_uploaded && copy($source_path, $destination_path)) {
+				if (!$image_already_uploaded && copy($source_path, $destination_path)) {
 					$gallery_manager->insertData(array(
-							'group'     => $gallery_id,
-							'title'		=> $item_name,
-							'text_id'   => $matched_hash,
-							'size'      => $file_size,
-							'filename'  => $destination_file,
-							'visible'   => 1,
-							'slideshow' => 0,
-							'protected' => 0
-						));
+						'group'     => $gallery_id,
+						'title'		=> $item_name,
+						'text_id'   => $matched_hash,
+						'size'      => $file_size,
+						'filename'  => $destination_file,
+						'visible'   => 1,
+						'slideshow' => 0,
+						'protected' => 0
+					));
 				}
 			}
 		}
@@ -466,10 +506,10 @@ class aley_dafna extends Module {
 		$template->setMappedModule($this->name);
 
 		$params = array(
-					'message'	=> $this->getLanguageConstant('message_import_complete'),
-					'button'	=> $this->getLanguageConstant('close'),
-					'action'	=> window_Close('shop_import_items')
-				);
+			'message'	=> $this->getLanguageConstant('message_import_complete'),
+			'button'	=> $this->getLanguageConstant('close'),
+			'action'	=> window_Close('shop_import_items')
+		);
 
 		$template->restoreXML();
 		$template->setLocalParams($params);
