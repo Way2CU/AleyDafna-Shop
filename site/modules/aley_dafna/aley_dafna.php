@@ -10,10 +10,14 @@
  * Author: Mladen Mijatov
  */
 use Core\Module;
+use Core\Events;
 
 
 class aley_dafna extends Module {
 	private static $_instance;
+
+	const API_KEY = 'AIzaSyDqFY0uvnULTUryKNgwMJFiH3mDF4DSk6Q';
+	const CALENDAR_ID = '';
 
 	const DEFAULT_LANGUAGE = 'he';
 	const DEFAULT_THRESHOLD = 10;
@@ -72,6 +76,9 @@ class aley_dafna extends Module {
 			$head_tag->addTag('link', array('href' => url_GetFromFilePath($this->path.'include/pikaday.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
 			$head_tag->addTag('link', array('href' => url_GetFromFilePath($this->path.'include/checkout.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
 		}
+
+		// connect transaction handling event
+		Events::connect('shop', 'transaction-completed', 'on_transaction_completed', $this);
 	}
 
 	/**
@@ -124,6 +131,49 @@ class aley_dafna extends Module {
 	 * Event triggered upon module deinitialization
 	 */
 	public function onDisable() {
+	}
+
+	/**
+	 * Handle transaction status change.
+	 *
+	 * @param object transaction
+	 */
+	public function on_transaction_completed($transaction) {
+		if ($transaction->status != TransactionStatus::COMPLETED)
+			return;
+
+		$timestamp = array(
+				'date'     => $date;
+				'timeZone' => 'Asia/Jerusalem'
+			);
+
+		$header= array(
+				'Content-type: application/json',
+				/* 'Authorization: Bearer ' . $this->access_token, */
+				/* 'X-JavaScript-User-Agent: Google APIs Explorer' */
+			);
+
+		$post_data = array(
+				'start'       => $timestamp,
+				'end'         => $timestamp,
+				'summary'     => $title,
+				'description' => $description,
+				'location'    => $location,
+				'key'         => self::API_KEY
+			);
+
+		$post_data = json_encode($post_data);
+		$url = 'https://www.googleapis.com/calendar/v3/calendars/' . self::CALENDAR_ID . '/events';
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_HTTPGET, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$response = curl_exec($ch);
 	}
 
 	/**
