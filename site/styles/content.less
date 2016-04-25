@@ -630,6 +630,7 @@ a.item {
 	overflow: hidden;
 }
 
+section#product figure[data-discount]:after,
 a.item[data-discount]:after {
 	display: inline-block;
 	width: 130px;
@@ -883,14 +884,14 @@ section#product  figure {
 	width: 50%;
 }
 
-section#product div.product_information {
-	padding-left: 50px;
-	width: calc(~'(50% - 50px)');
+section#product  figure {
+	width: auto;
 }
 
-body.rtl section#product div.product_information {
+section#product div.product_information {
 	padding-right: 50px;
-	padding-left: 0px;
+	padding-left: 50px;
+	width: calc(~'(50% - 50px)');
 }
 
 section#product div.product_information h2 {
@@ -1091,15 +1092,14 @@ section#product div.product_information label input[type="radio"]:checked ~ span
 
 section#product figure {
 	text-align: center;
+	position: relative;
+	overflow: hidden;
 }
 
 section#product > figure img {
 	border: 1px solid @color_ac_grey;
 }
 
-section#product figure img {
-	padding: 10px;
-}
 
 section#product figure p.disclaimer {
 	font-size: 0.6em;

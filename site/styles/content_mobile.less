@@ -325,6 +325,8 @@ a.item {
 	overflow: hidden;
 }
 
+
+section#product figure[data-discount]:after,
 a.item[data-discount]:after {
 	display: inline-block;
 	width: 100px;
@@ -596,12 +598,18 @@ section#product div.product_wrapper {
 }
 
 section#product div.product_information,
-section#product div.product_information section#product  figure {
+section#product  figure {
 	display: block;
 	margin: 0px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 95%;
+	overflow: hidden;
+	position: relative;
+}
+
+section#product  figure {
+	width: 250px;
 }
 
 section#product div.product_information section#product  figure img {

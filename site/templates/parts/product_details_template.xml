@@ -3,7 +3,10 @@
 		<h2><cms:var param="name" multilanguage="yes"/></h2>
 
 		<cms:mobile>
-			<figure>
+			<figure
+				data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
+				cms:optional="data-discount"
+				>
 				<img
 					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)"
 					alt="$params['title'][$language]"
@@ -79,7 +82,10 @@
 	</div>
 
 	<cms:desktop>
-		<figure>
+		<figure 
+			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
+			cms:optional="data-discount"
+			>
 			<img
 				src="gallery::getGroupThumbnailById($params['gallery'], null, 500,Thumbnail::CONSTRAIN_BOTH)"
 				alt="$params['title'][$language]"
