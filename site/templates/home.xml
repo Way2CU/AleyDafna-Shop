@@ -29,8 +29,8 @@
 					<div class="header_slider">
 						<a href="javascript:void(0)" class="previous"></a>
 						<cms:module
-							name="gallery"
-							action="show_image_list"
+							name="links"
+							action="show_link_list"
 							group="header_gallery"
 							template="parts/slider_image.xml"
 							/>
