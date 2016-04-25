@@ -3,6 +3,7 @@
 		<figure>
 			<img src="$params['image']" alt="$params['title'][$language]" cms:eval="src,alt"/>
 			<figcaption><cms:var param="title" multilanguage="yes"/></figcaption>
+			<cms:markdown param="description" multilanguage="yes"/>
 		</figure>
 	</cms:desktop>
 
