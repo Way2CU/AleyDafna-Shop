@@ -1635,10 +1635,10 @@ div.dialog div.content form input:not([type=checkbox]) {
 	text-align: left;
 	padding: 10px;
 
-	border: 1px solid @color_ac_medium_green;
+	border: 1px solid @color_ac_light_green;
 	background-color: @color_ac_grey;
 
-	color: @color_text;
+	color: @color_ac_black;
 	transition: all 0.3s;
 }
 
@@ -1648,7 +1648,7 @@ body.rtl div.dialog div.content form input:not([type=checkbox]) {
 
 div.dialog div.content form input:not([type=checkbox]):focus,
 div.dialog div.content form input:not([type=checkbox]):hover {
-	border: 1px solid @color_ac_orange;
+	border: 1px solid @color_ac_light_orange;
 }
 
 div.dialog div.content hr {
@@ -1779,7 +1779,7 @@ div#input_details div.guest_checkout.visible input,
 div#checkout_container div.page input {
 	text-align: left;
 	padding: 10px;
-	border: 1px solid @color_ac_medium_green;
+	border: 1px solid @color_ac_light_green;
 	border-radius: 0px 0px 0px 0px;
 	background-color: @color_ac_grey;
 	color: @color_text;
@@ -1813,20 +1813,21 @@ div#input_details label select {
 	width: 300px;
 	text-align: left;
 	padding: 10px;
-	border: 1px solid @color_ac_medium_green;
+	border: 1px solid @color_ac_light_green;
 	border-radius: 0px 0px 0px 0px;
 	background-color: @color_ac_grey;
 	color: @color_text;
 	transition: all 0.3s;
 }
 
+div#input_details label select:focus,
 div#input_details label input:focus,
 div#payment_method input:focus,
 div#billing_information input:focus,
 div#input_details div.existing_account.visible input:focus,
 div#input_details div.new_account.visible input:focus,
 div#input_details div.guest_checkout.visible input:focus {
-	border: 1px solid @color_ac_medium_green;
+	border: 1px solid @color_ac_light_orange;
 }
 
 div#input_details label input:hover,
@@ -1835,6 +1836,15 @@ div#billing_information input:hover,
 div#input_details div.existing_account.visible input:hover,
 div#input_details div.new_account.visible input:hover,
 div#input_details div.guest_checkout.visible input:hover {
+	border: 1px solid @color_ac_light_orange;
+}
+
+div#input_details label input.bad,
+div#payment_method input.bad,
+div#billing_information input.bad,
+div#input_details div.existing_account.visible input.bad,
+div#input_details div.new_account.visible input.bad,
+div#input_details div.guest_checkout.visible input.bad {
 	border: 1px solid @color_ac_orange;
 }
 
