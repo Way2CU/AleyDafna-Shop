@@ -144,7 +144,11 @@
 		</section>
 
 		<section id="payments">
-			<a href="#" class="share">
+			<a 
+				href="'https://www.facebook.com/sharer/sharer.php?u='.urlencode(url_Make('','home'))" 
+				class="share"
+				cms:eval="href"
+				>
 				<svg>
 					<use
 						href="#facebook"

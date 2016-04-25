@@ -1,9 +1,8 @@
 <document>
 	<cms:desktop>
-		<figure>
+		<a href="$params['url']"  class="link" cms:eval="href">
 			<img src="$params['image']" alt="$params['title'][$language]" cms:eval="src,alt"/>
-			<figcaption><cms:var param="title" multilanguage="yes"/></figcaption>
-		</figure>
+		</a>
 	</cms:desktop>
 
 	<cms:mobile>
