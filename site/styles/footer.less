@@ -271,18 +271,30 @@ section#payments form label {
 	display: inline-block;
 }
 
-section#payments form label  input {
+section#payments form label span {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-weight: 700;
+}
+
+section#payments form label input {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 5px;
 	padding-right: 5px;
-	border: 1px solid @color_ac_medium_green;
+	border: 1px solid @color_ac_light_green;
 	width: 200px;
 	transition: all 0.3s;
 }
 
+section#payments form label  input:hover {
+	border: 1px solid @color_ac_medium_green;
+}
+
 section#payments form label  input:focus {
-	border: 1px solid @color_ac_orange;
+	border: 1px solid @color_ac_light_orange;
 }
 
 section#payments form div.controls {
