@@ -1,11 +1,12 @@
 <document>
 	<header>
+		<cms:raw file="gtm.txt"/>
 		<cms:module
 			name="backend"
 			action="save_unpriviledged_user_timer"
 			/>
-		<cms:svg file="site-sprite.svg"/>
 
+		<cms:svg file="site-sprite.svg"/>
 		<a href="url_Make('', 'home')" class="logo" cms:eval="href">
 			<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>
 		</a>
