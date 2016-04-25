@@ -1303,10 +1303,12 @@ Site.on_load = function() {
 		);
 
 	// create page control for home page slider
-	Site.slider = new PageControl('div.header_slider', 'figure');
+	Site.slider = new PageControl('div.header_slider', 'a.link');
 	Site.slider
 		.attachPreviousControl($('a.previous'))
 		.attachNextControl($('a.next'))
+		.setInterval(6000)
+		.setPauseOnHover(true)
 		.setWrapAround(true);
 
 	if (Site.is_mobile()) {
