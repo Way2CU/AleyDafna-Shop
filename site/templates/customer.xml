@@ -26,12 +26,9 @@
 			</cms:mobile>
 			
 			<section id="customer">
-				<h2><cms:text constant="title_customers"/></h2>
-				
 				<div id="form_customers">
-
+					<h2><cms:text constant="title_customers"/></h2>
 					<p><cms:text constant="title_form_customers"/></p>
-
 					<cms:module
 						name="contact_form"
 						action="show"

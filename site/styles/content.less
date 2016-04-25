@@ -21,7 +21,6 @@ section#slider {
 	position: relative;
 }
 
-section#customer,
 section#contact,
 section#warranty,
 section#faq,
@@ -45,6 +44,12 @@ section#business {
 	background-position: center top;
 }
 
+section#customer {
+	background-image: url(../images/member-club-background.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
 section#business,
 section#customer {
 	z-index: 0;
@@ -57,7 +62,10 @@ section#business {
 	padding: 130px calc(~'(100% - 1200px)' / 2);
 }
 
-section#customer:before,
+section#customer {
+	padding: 110px calc(~'(100% - 1200px)' / 2);
+}
+
 section#contact:before {
 	content: "";
 	position: absolute;
@@ -68,17 +76,6 @@ section#contact:before {
 	height: 100%;
 	background-color: white;
 	z-index: -1;
-}
-
-section#customer:before {
-	background-repeat: no-repeat;
-	background-position: right top;
-	background-size: auto 100%;
-}
-
-
-section#customer:before {
-	background-image: url(../images/customer_clients.jpg);
 }
 
 section#business div {
@@ -116,16 +113,6 @@ section#business div p {
 	padding-left: 5px;
 	padding-right: 5px;
 	font-size: 1.5em;
-}
-
-section#customer h2 {
-	margin: 0px;
-	padding-bottom: 15px;
-	text-align: center;
-	padding-right: calc(~'(1200px - 700px)');
-	color: @color_ac_medium_green;
-	font-size: 3em;
-	font-weight: 400;
 }
 
 section#warranty article,
@@ -1344,7 +1331,6 @@ div#form_wrap {
 
 div#form_customers,
 div#form_business {
-	border: 1px solid @color_ac_grey;
 	text-align: center;
 	text-align: center;
 	width: 500px;
@@ -1352,12 +1338,25 @@ div#form_business {
 	margin-right: auto;
 }
 
+div#form_customers,
 div#form_business  {
 	margin-left: calc(~'(50% - 502px)');
 	background-color: fade(@color_ac_text, 90%);
 }
 
-div#form_customers p,
+div#form_customers {
+	background-color: transparent;
+}
+
+div#form_customers h2 {
+	margin: 0px;
+	font-size: 2em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: @color_ac_text;
+	background-color: fade(@color_ac_medium_green, 80%);
+}
+
 div#form_business p,
 div#form_wrap p {
 	padding-left: 10px;
@@ -1368,7 +1367,15 @@ div#form_wrap p {
 	color: @color_ac_medium_green;
 }
 
-div#form_customers p,
+div#form_customers p {
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 1.2em;
+	font-weight: 700;
+	background-color: fade(@color_ac_text, 80%);
+}
+
 div#form_business p {
 	margin: 0px;
 	padding-top: 0.5em;
@@ -1384,6 +1391,10 @@ div#form_wrap form {
 	display: block;
 }
 
+div#form_customers form {
+	background-color: fade(@color_ac_text, 80%);
+}
+
 div#form_customers form label,
 div#form_business form label,
 div#form_wrap form label {
@@ -1393,6 +1404,10 @@ div#form_wrap form label {
 	margin-right: 1%;
 	width: 30%;
 	position: relative;
+}
+
+div#form_customers form label:first-of-type {
+	margin-top: 0px;
 }
 
 div#form_customers form label,
@@ -1534,6 +1549,10 @@ div#form_wrap form div.controls button {
 	position: relative;
 	transition: all 0.3s;
 	cursor: pointer;
+}
+
+div#form_customers form div.controls button {
+	margin-bottom: 20px;
 }
 
 div#form_customers form div.controls button:hover,
