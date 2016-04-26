@@ -1,4 +1,5 @@
 <document>
+	<cms:raw file="gtm.txt"/>
 	<header>
 		<cms:svg file="site-sprite.svg"/>
 		<div class="mobile_title">
