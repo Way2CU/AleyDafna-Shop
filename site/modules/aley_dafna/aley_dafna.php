@@ -138,9 +138,6 @@ class aley_dafna extends Module {
 	public function on_transaction_completed($transaction) {
 		global $language;
 
-		$google_calendar = new GCalendar(self::USERNAME, self::PASSWORD);
-		$google_calendar->authenticate();
-
 		// get managers
 		$buyer_manager = ShopBuyersManager::getInstance();
 		$address_manager = ShopDeliveryAddressManager::getInstance();
@@ -167,12 +164,6 @@ class aley_dafna extends Module {
 			'timeZone' => 'Asia/Jerusalem'
 		);
 
-		$header= array(
-			'Content-type: application/json',
-			/* 'Authorization: Bearer ' . $this->access_token, */
-			/* 'X-JavaScript-User-Agent: Google APIs Explorer' */
-		);
-
 		// prepare data
 		$title = $buyer->first_name.' '.$buyer->last_name.' - '.$transaction->uid;
 		$location = $address->street.' '.$address->street2.', '.$address->zip.' '.$address->city.', '.$address->country;
@@ -193,7 +184,15 @@ class aley_dafna extends Module {
 				$description .= $name_by_id[$item->item][$language].' - '.$item->amount."\n";
 		}
 
+		$post_data = array(
+				'start'       => $timestamp,
+				'end'         => $timestamp,
+				'title'       => $title,
+				'location'    => $location,
+				'description' => $description
+			);
 		$post_data = json_encode($post_data);
+
 		$url = 'https://zapier.com/hooks/catch/133542/uti08e';
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
