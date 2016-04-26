@@ -165,11 +165,11 @@ class aley_dafna extends Module {
 
 		if ($transaction->delivery_type == 'pickup') {
 			$location = '';
-			$color = '#5484ed';
+			$color = 9;
 
 		} else {
 			$location = $address->street.' '.$address->street2.', '.$address->zip.' '.$address->city.', '.$address->country;
-			$color = '#51b749';
+			$color = 10;
 		}
 
 		$id_list = array();
