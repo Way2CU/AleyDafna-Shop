@@ -38,8 +38,6 @@
  	margin-top: 63px;
  }
 
- section#business,
- section#customer,
  section#contact,
  section#warranty,
  section#faq,
@@ -52,18 +50,35 @@
  	position: relative;
  }
 
+section#business,
 section#customer {
-	background-image: url(../images/customer_clients.jpg);
+	margin-top: 63px;
+	padding-top: 150px;
+	background-image: url(../images/mobile-member-club-background.jpg);
 	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: auto 100%;
+	background-position: center top;
+	background-size: 100% auto;
 }
 
 section#business {
-	background-image: url(../images/business_clients.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: auto 100%;
+	background-image: url(../images/mobile-header-background.jpg);
+}
+
+section#business div.title {
+	padding-bottom: 10px; 
+	text-align: center;
+	background-color: @color_ac_medium_green;
+	color: @color_ac_text;
+}
+
+section#business div.title h2,
+section#business div.title > p {
+	margin: 0px;
+	font-weight: 700;
+}
+
+section#business div.title h2 {
+	font-size: 2.2em;
 }
 
  section#warranty article,
@@ -1003,32 +1018,48 @@ div#form_wrap {
 
 div#form_customers,
 div#form_business {
-	border: 1px solid @color_ac_grey;
 	text-align: center;
 	margin-right: auto;
 	margin-left: auto;
-	width: 95%;
+	width: 100%;
 }
 
-div#form_customers p,
-div#form_business p,
+div#form_customers h2 {
+	margin: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: @color_ac_medium_green;
+	color: @color_ac_text;
+}
+
 div#form_wrap p {
-	padding-left: 10px;
-	padding-right: 10px;
+	margin: 0px;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	font-size: 1.75em;
 	font-weight: 700;
 	text-align: center;
 	color: @color_ac_medium_green;
 }
 
-div#form_customers p,
 div#form_business p {
 	margin: 0px;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
-	font-weight: 400;
-	color: @color_ac_text;
-	background-color: @color_ac_medium_green
+	font-weight: 700;
+	font-size: 1.2em;
+	color: @color_ac_black;
+}
+
+div#form_customers p {
+	margin: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 1.2em;
+	font-weight: 700;
+
 }
 
 div#form_customers form,
