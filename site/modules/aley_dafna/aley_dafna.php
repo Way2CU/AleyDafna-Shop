@@ -159,21 +159,25 @@ class aley_dafna extends Module {
 		);
 
 		$date_time = date('Y-m-d', strtotime($transaction->delivery_type));
-		$timestamp = array(
-			'date'     => $date_time[0],
-			'timeZone' => 'Asia/Jerusalem'
-		);
 
 		// prepare data
 		$title = $buyer->first_name.' '.$buyer->last_name.' - '.$transaction->uid;
-		$location = $address->street.' '.$address->street2.', '.$address->zip.' '.$address->city.', '.$address->country;
+
+		if ($transaction->delivery_type == 'pickup') {
+			$location = '';
+			$color = '#5484ed';
+
+		} else {
+			$location = $address->street.' '.$address->street2.', '.$address->zip.' '.$address->city.', '.$address->country;
+			$color = '#51b749';
+		}
 
 		$id_list = array();
 		$name_by_id = array();
 		$description = '';
 
 		if (count($transaction_items) > 0) {
-			foreach ($items as $item)
+			foreach ($transaction_items as $item)
 				$id_list[] = $item->item;
 
 			$items = $item_manager->getItems(array('id', 'name'), array('id' => $id_list));
@@ -185,11 +189,12 @@ class aley_dafna extends Module {
 		}
 
 		$post_data = array(
-				'start'       => $timestamp,
-				'end'         => $timestamp,
+				'start'       => $date_time,
+				'end'         => $date_time,
 				'title'       => $title,
 				'location'    => $location,
-				'description' => $description
+				'description' => $description,
+				'color'       => $color
 			);
 		$post_data = json_encode($post_data);
 
