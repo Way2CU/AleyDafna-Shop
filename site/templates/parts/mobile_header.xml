@@ -1,6 +1,12 @@
 <document>
 	<cms:raw file="gtm.txt"/>
 	<header>
+		<a
+			href="'tel:'.urlencode(Language::getText('phone'))"
+			cms:eval="href"
+			class="fixed_phone"
+			>
+		</a>
 		<cms:svg file="site-sprite.svg"/>
 		<div class="mobile_title">
 			<a href="javascript:void(0)" class="menu">
@@ -131,7 +137,7 @@
 						<cms:text constant="menu_contact"/>
 					</a>	
 				</li>
-				<cms:template file="parts/contact_sub_list_menu.xml"/>			
+				<cms:template file="parts/contact_sub_list_menu.xml"/>
 			</ul>
 		</nav>
 	</header>
