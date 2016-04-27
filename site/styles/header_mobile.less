@@ -12,6 +12,25 @@ header {
  	position: relative;
 }
 
+header a.fixed_phone {
+	position: fixed;
+	bottom: 100px;
+	right: 0px;
+	width: 3em;
+	height: 4em;
+	padding-right: 1em;
+	background-color: #27AE60;
+	background-image: url(../images/phone.svg);
+	background-repeat: no-repeat;
+	background-position: 0.3em center;
+	background-size: 3em 3em;
+	border: 2px solid @color_ac_grey;
+	border-right: none;
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;
+	z-index: 1000;
+}
+
 header div.mobile_title {
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -33,49 +52,59 @@ header div.mobile_title a.logo img {
 header div.mobile_title a.menu {
   	position: absolute;
   	top: 50%;
-  	margin-top: -2.5px;
+  	margin-top: -17.5px;
   	left: 10px;
-  	background-color: @color_text;
-  	height: 5px;
-  	width: 30px;
+  	height: 35px;
+  	width: 35px;
   	transition: all 0.3s;
 }
 
-header div.mobile_title.visible a.menu {
-	background-color: transparent;;
+header div.mobile_title a.menu span{
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	margin-top: -2.5px;
+	height: 5px;
+	width: 100%;
+	background-color: @color_text;
+	transition: all 0.3s;
 }
 
-header div.mobile_title.visible a.menu:before{
+header div.mobile_title.visible a.menu span {
+	background-color: transparent;
+}
+
+header div.mobile_title.visible a.menu span:before{
 	top: 0px;
 	transform: rotate(45deg);
 	background-color: @color_ac_orange;
 }
 
-header div.mobile_title.visible a.menu:after{
+header div.mobile_title.visible a.menu span:after{
 	top: 0px;
 	transform: rotate(-45deg);
 	background-color: @color_ac_orange;
 }
 
-header div.mobile_title a.menu:before {
+header div.mobile_title a.menu span:before {
 	content: "";
 	position: absolute;
 	top: -10px;
 	left: 0px;
 	background-color: @color_text;
 	height: 5px;
-	width: 30px;
+	width: 35px;
 	transition: all 0.3s;
 }
 
-header div.mobile_title a.menu:after {
+header div.mobile_title a.menu span:after {
 	content: "";
 	position: absolute;
 	top: 10px;
 	left: 0px;
 	background-color: @color_text;
 	height: 5px;
-	width: 30px;
+	width: 35px;
 	transition: all 0.3s;
 }
 
@@ -116,16 +145,13 @@ div#popup span.items {
 body.rtl header nav.mobile_menu,
 header nav.mobile_menu {
 	top: 63px !important;
-	right: auto;
-	left: -200px;
 	overflow-y: scroll;
 }
 
 body.rtl header nav.mobile_menu.visible,
 header nav.mobile_menu.visible {
 	width: 100%;
-	right: auto;
-	left: 0px;
+
 }
 
 header nav.mobile_menu ul {

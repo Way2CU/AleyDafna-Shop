@@ -22,7 +22,7 @@
 			<strong><cms:text constant="title_total_quantity"/></strong>
 			<p class="total_quantity"></p>
 
-			<a href="javascript:void()" class="checkout">
+			<a href="javascript:void(0)" class="checkout">
 				<cms:text constant="title_button_order"/>
 			</a>
 		</div>

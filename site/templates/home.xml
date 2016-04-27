@@ -31,7 +31,7 @@
 						<cms:module
 							name="links"
 							action="show_link_list"
-							group="header_gallery"
+							group="slider"
 							template="parts/slider_image.xml"
 							/>
 						<a href="javascript:void(0)" class="next"></a>

@@ -3,11 +3,11 @@
 		class="substr($params['text_id'], 6)"
 		cms:eval="class"
 		>
-		<figure>
+		<span class="image_border">
 			<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
-		</figure>
+		</span>
 
-		<p
+		<span
 			class="price"
 			data-currency="currency"
 			data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
@@ -16,8 +16,8 @@
 			cms:constant="data-currency"
 			>
 			<cms:var name="number_format($params['value'], 2)"/>
-		</p>
-		<p class="name"><cms:var param="name" multilanguage="yes"/></p>
+		</span>
+		<span class="name"><cms:var param="name" multilanguage="yes"/></span>
 
 		<input
 			type="radio"
@@ -29,6 +29,6 @@
 			cms:optional="data-discount-price"
 			cms:eval="value,data-text_id,id"
 			/>
-		<span/>
+		<span class="round"/>
 	</label>
 </document>

@@ -1,7 +1,10 @@
 <document>
 	<cms:desktop>
-		<a href="$params['url']"  class="link" cms:eval="href">
+		<a href="$params['url']" class="link" cms:eval="href">
 			<img src="$params['image']" alt="$params['title'][$language]" cms:eval="src,alt"/>
+			<div class="$params['text_id']" cms:eval="class">
+				<cms:markdown param="description" multilanguage="yes"/>
+			</div>
 		</a>
 	</cms:desktop>
 

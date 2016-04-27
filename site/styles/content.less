@@ -100,7 +100,7 @@ body.rtl section#business div.title {
 	margin-right: auto;
 }
 
-section#business div  h2 {
+section#business div h2 {
 	margin: 0px;
 	padding-top: 10px;
 	padding-left: 5px;
@@ -179,7 +179,7 @@ section#about article span {
 	padding-bottom: 0.5em;
 }
 
-section#about article img {
+section#about article img.logo{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -304,6 +304,7 @@ section#slider div.header_slider a.link {
 	width: 100%;
 	height: 100%;
 	transition: all 0.6s;
+	overflow: hidden;
 	visibility: hidden;
 	opacity: 0;
 }
@@ -311,6 +312,49 @@ section#slider div.header_slider a.link {
 section#slider div.header_slider a.link.visible {
 	visibility: visible;
 	opacity: 1;
+}
+
+section#slider div.header_slider a.link div.right,
+section#slider div.header_slider a.link div.left{
+	position: absolute;
+	top: 20px;
+	left: 150px;
+	text-align: center;
+	width: 350px;
+}
+
+section#slider div.header_slider a.link div.right {
+	left: auto;
+	right: 150px;
+}
+
+section#slider div.header_slider a.link div p {
+	margin: 0px;
+	font-size: 1.7em;
+	font-weight: 300;
+	color: @color_ac_orange;
+}
+
+body.rtl section#slider div.header_slider a.link div p:first-of-type {
+	font-size: 2.5em;
+}
+
+section#slider div.header_slider a.link div p:last-of-type {
+	display: inline-block;
+	margin-top: 10px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 1.2em;
+	border: 1px solid @color_ac_light_orange;
+	color: @color_ac_orange;
+	transition: all 0.3s;
+}
+
+section#slider div.header_slider a.link div p:last-of-type:hover {
+	color: @color_ac_text;
+	background-color: @color_ac_orange;
 }
 
 section#slider div.header_slider a.link img {
@@ -946,28 +990,28 @@ div#checkboxes label  span {
 	color: @color_ac_text;
 }
 
-section#product div.product_information label figure {
+section#product div.product_information label span.image_border {
 	display: block;
 	margin: 0px;
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid @color_ac_grey;
+	border-radius: 0px;
+	box-shadow: none;
 	width: 160px;
 	height: 160px;
 	position: relative;
 	transition: all 0.3s;
 }
 
-section#product div.product_information label figure:before {
+section#product div.product_information label span.image_border:before {
 	content: "";
 	display: inline-block;
 	vertical-align: middle;
 	height: 100%;
 }
 
-div#related_items div.item:hover img,
-section#product div.product_information label:hover figure,
-section#product div.product_information label figure:hover {
+div#related_items div.item:hover img {
 	border: 1px solid @color_ac_orange;
 }
 
@@ -975,22 +1019,26 @@ div#related_items div.item:hover img {
 	border: 2px solid @color_ac_orange;
 }
 
-section#product div.product_information label:hover span {
+section#product div.product_information label:hover span.round,
+section#product div.product_information label:hover span.image_border{
 	box-shadow: 0px 0px 0px 2px @color_ac_orange;
 }
 
-section#product div.product_information label p.price {
+section#product div.product_information label span.price {
+	display: block;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	color: @color_ac_orange;
 	font-weight: 700;
 	position: relative;
 }
 
-section#product div.product_information label p.price[data-discount-price] {
+section#product div.product_information label span.price[data-discount-price] {
 	text-decoration: line-through;
 	color: fade(@color_ac_orange, 50%);
 }
 
-section#product div.product_information label p.price[data-discount-price]:before {
+section#product div.product_information label span.price[data-discount-price]:before {
 	display: inline-block;
 	content: attr(data-discount-price);
 	padding-left: 10px;
@@ -999,12 +1047,12 @@ section#product div.product_information label p.price[data-discount-price]:befor
 	color: @color_ac_orange;
 }
 
-section#product div.product_information label p.price:after {
+section#product div.product_information label span.price:after {
 	content: attr(data-currency);
 	padding-left: 10px;
 }
 
-section#product div.product_information label p.name {
+section#product div.product_information label span.name {
 	display: inline-block;
 	vertical-align: middle;
 	margin: 0px;
@@ -1012,7 +1060,7 @@ section#product div.product_information label p.name {
 	margin-right: 10px;
 }
 
-section#product div.product_information label span {
+section#product div.product_information label span.round {
 	display: inline-block;
 	vertical-align: middle;
 	width: 16px;
@@ -1023,23 +1071,23 @@ section#product div.product_information label span {
 	transition: all 0.3s;
 }
 
-section#product div.product_information label figure img {
+section#product div.product_information label span.image_border img {
 	display: inline-block;
 	vertical-align: middle;
 	border-bottom: none;
 }
 
-section#product div.product_information label.regular  figure img{
+section#product div.product_information label.regular span.image_border img{
 	width: 80px;
 	height: 80px;
 }
 
-section#product div.product_information label.medium  figure img{
+section#product div.product_information label.medium span.image_border img{
 	width: 100px;
 	height: 100px;
 }
 
-section#product div.product_information label.big  figure img{
+section#product div.product_information label.big  span.image_border img{
 	width: 120px;
 	height: 120px;
 }
@@ -1375,6 +1423,8 @@ div#form_customers p {
 	margin: 0px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
 	font-size: 1.2em;
 	font-weight: 700;
 	background-color: fade(@color_ac_text, 80%);

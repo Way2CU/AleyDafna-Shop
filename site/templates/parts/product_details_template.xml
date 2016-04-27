@@ -20,11 +20,11 @@
 		<p><strong><cms:text constant="title_sizes"/></strong></p>
 
 		<label class="regular">
-			<figure>
+			<span class="image_border">
 				<img src="_BASEURL.'/site/images/flowers.svg'" alt="flowers-logo" cms:eval="src" />
-			</figure>
+			</span>
 
-			<p
+			<span
 				class="price"
 				data-currency="currency"
 				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
@@ -33,8 +33,8 @@
 				cms:constant="data-currency"
 				>
 				<cms:var param="price" />
-			</p>
-			<p class="name"><cms:text constant="label_regular"/></p>
+			</span>
+			<span class="name"><cms:text constant="label_regular"/></span>
 
 			<input
 				type="radio"
@@ -46,7 +46,7 @@
 				value="$params['price']"
 				cms:eval="value,id"
 				/>
-			<span/>
+			<span class="round"/>
 		</label>
 
 		<cms:module

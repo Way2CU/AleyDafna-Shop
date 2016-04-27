@@ -42,10 +42,19 @@
 					<img 
 						src="_BASEURL.'/site/images/logo-vertical.svg'"  
 						alt="logo"
+						class="logo"
 						cms:eval="src"
 						/>
 
-					<span><cms:text constant="title_logo"/></span>		
+					<span><cms:text constant="title_logo"/></span>
+					
+					<!-- Aley dafna about image -->
+					<cms:module
+						name="gallery"
+						action="show_image"
+						text_id="aley_dafna"
+						template="parts/image.xml"
+						/>
 				</article>
 			</section>	
 			<!-- Footer -->

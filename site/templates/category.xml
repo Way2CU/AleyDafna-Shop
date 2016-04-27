@@ -38,9 +38,9 @@
 				<cms:template file="parts/mobile_header.xml"/>
 			</cms:mobile>
 
-			<section id="category">	
+			<section id="category">
 				<!-- Show subcategory without menu -->
-				<cms:if condition="isset($_REQUEST['subcategory'])">
+				<cms:if condition="isset($_REQUEST['subcategory'])" >
 					<h2>
 						<cms:module
 							name="shop"
@@ -81,6 +81,16 @@
 							cms:eval="id"
 							/>
 					</h2>
+
+					<cms:module
+						name="shop"
+						action="show_item_list"
+						category="fix_id($_REQUEST['id'])"
+						order_by="priority"
+						order_asc="0"
+						template="parts/category_items_template.xml"
+						cms:eval="category"
+						/>
 					
 					<cms:module
 						name="shop"
