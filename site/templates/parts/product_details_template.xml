@@ -65,7 +65,8 @@
 			<svg>
 				<use
 					href="#cart-plus"
-					xlink:href="site/images/site-sprite.svg#cart-plus"
+					xlink:href="_BASEURL.'/site/images/site-sprite.svg#cart-plus'"
+					cms:eval="xlink:href"
 					/>
 			</svg>
 		</a>
@@ -75,7 +76,8 @@
 			<svg>
 				<use
 					href="#cart-check"
-					xlink:href="site/images/site-sprite.svg#cart-check"
+					xlink:href="_BASEURL.'/site/images/site-sprite.svg#cart-check'"
+					cms:eval="xlink:href"
 					/>
 			</svg>
 		</a>

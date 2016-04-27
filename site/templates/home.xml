@@ -59,7 +59,8 @@
 							<svg>
 								<use
 									href="#speaker"
-									xlink:href="site/images/site-sprite.svg#speaker"
+									xlink:href="_BASEURL.'/site/images/site-sprite.svg#speaker/"
+									cms:eval="xlink:href"
 									/>
 							</svg>
 							<cms:text constant="title_button_updates"/>
@@ -189,7 +190,8 @@
 							<svg>
 								<use
 									href="#speaker"
-									xlink:href="site/images/site-sprite.svg#speaker"
+									xlink:href="_BASEURL.'/site/images/site-sprite.svg#speaker'"
+									cms:eval="xlink:href"
 									/>
 							</svg>
 							<cms:text constant="title_button_updates"/>

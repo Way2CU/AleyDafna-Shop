@@ -45,7 +45,8 @@
 			<svg>
 				<use
 					href="#basket"
-					xlink:href="site/images/site-sprite.svg#basket"
+					xlink:href="_BASEURL.'/site/images/site-sprite.svg#basket'"
+					cms:eval="xlink:href"
 					/>
 			</svg>
 

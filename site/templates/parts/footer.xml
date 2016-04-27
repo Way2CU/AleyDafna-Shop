@@ -87,7 +87,8 @@
 				<svg>
 					<use
 						href="#globe"
-						xlink:href="site/images/site-sprite.svg#globe"
+						xlink:href="_BASEURL.'/site/images/site-sprite.svg#globe'"
+						cms:eval="xlink:href"
 						/>
 				</svg>
 				<cms:module
@@ -100,7 +101,8 @@
 				<svg>
 					<use
 						href="#location"
-						xlink:href="site/images/site-sprite.svg#location"
+						xlink:href="_BASEURL.'/site/images/site-sprite.svg#location'"
+						cms:eval="xlink:href"
 						/>
 				</svg>
 				<p><cms:text constant="address"/></p>
@@ -110,7 +112,8 @@
 				<svg>
 					<use
 						href="#clock"
-						xlink:href="site/images/site-sprite.svg#clock"
+						xlink:href="_BASEURL.'/site/images/site-sprite.svg#clock'"
+						cms:eval="xlink:href"
 						/>
 				</svg>
 				<p><cms:text constant="working_hours"/></p>
@@ -120,7 +123,8 @@
 				<svg>
 					<use
 						href="#phone"
-						xlink:href="site/images/site-sprite.svg#phone"
+						xlink:href="_BASEURL.'/site/images/site-sprite.svg#phone'"
+						cms:eval="xlink:href"
 						/>
 				</svg>
 				<a
@@ -151,7 +155,8 @@
 				<svg>
 					<use
 						href="#facebook"
-						xlink:href="site/images/site-sprite.svg#facebook"
+						xlink:href="_BASEURL.'/site/images/site-sprite.svg#facebook'"
+						cms:eval="xlink:href"
 						/>
 				</svg>
 				<cms:text constant="title_facebook"/>
