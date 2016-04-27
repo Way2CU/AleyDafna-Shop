@@ -313,6 +313,48 @@ section#slider div.header_slider a.link.visible {
 	opacity: 1;
 }
 
+section#slider div.header_slider a.link div.right,
+section#slider div.header_slider a.link div.left{
+	position: absolute;
+	top: 35px;
+	left: 150px;
+	text-align: center;
+	width: 350px;
+}
+
+section#slider div.header_slider a.link div.right {
+	left: auto;
+	right: 150px;
+}
+
+section#slider div.header_slider a.link div p:first-of-type {
+	margin: 0px;
+	font-size: 1.7em;
+	font-weight: 300;
+	color: @color_ac_orange;
+}
+
+body.rtl section#slider div.header_slider a.link div p:first-of-type {
+	font-size: 2.5em;
+}
+
+section#slider div.header_slider a.link div p:last-of-type {
+	display: inline-block;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 1.2em;
+	border: 1px solid @color_ac_light_orange;
+	color: @color_ac_orange;
+	transition: all 0.3s;
+}
+
+section#slider div.header_slider a.link div p:last-of-type:hover {
+	color: @color_ac_text;
+	background-color: @color_ac_orange;
+}
+
 section#slider div.header_slider a.link img {
 	display: block;
 	width: 100%;
