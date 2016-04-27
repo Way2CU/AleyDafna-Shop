@@ -3,7 +3,9 @@
 	<header>
 		<cms:svg file="site-sprite.svg"/>
 		<div class="mobile_title">
-			<a href="javascript:void(0)" class="menu"></a>
+			<a href="javascript:void(0)" class="menu">
+				<span/>
+			</a>
 
 			<a href="url_Make('', 'home')" class="logo" cms:eval="href">
 				<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>

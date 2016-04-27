@@ -33,48 +33,58 @@ header div.mobile_title a.logo img {
 header div.mobile_title a.menu {
   	position: absolute;
   	top: 50%;
-  	margin-top: -2.5px;
+  	margin-top: -17.5px;
   	left: 10px;
-  	background-color: @color_text;
-  	height: 8px;
+  	height: 35px;
   	width: 35px;
   	transition: all 0.3s;
 }
 
-header div.mobile_title.visible a.menu {
-	background-color: transparent;;
+header div.mobile_title a.menu span{
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	margin-top: -2.5px;
+	height: 5px;
+	width: 100%;
+	background-color: @color_text;
+	transition: all 0.3s;
 }
 
-header div.mobile_title.visible a.menu:before{
+header div.mobile_title.visible a.menu span {
+	background-color: transparent;
+}
+
+header div.mobile_title.visible a.menu span:before{
 	top: 0px;
 	transform: rotate(45deg);
 	background-color: @color_ac_orange;
 }
 
-header div.mobile_title.visible a.menu:after{
+header div.mobile_title.visible a.menu span:after{
 	top: 0px;
 	transform: rotate(-45deg);
 	background-color: @color_ac_orange;
 }
 
-header div.mobile_title a.menu:before {
+header div.mobile_title a.menu span:before {
 	content: "";
 	position: absolute;
-	top: -11px;
+	top: -10px;
 	left: 0px;
 	background-color: @color_text;
-	height: 8px;
+	height: 5px;
 	width: 35px;
 	transition: all 0.3s;
 }
 
-header div.mobile_title a.menu:after {
+header div.mobile_title a.menu span:after {
 	content: "";
 	position: absolute;
-	top: 11px;
+	top: 10px;
 	left: 0px;
 	background-color: @color_text;
-	height: 8px;
+	height: 5px;
 	width: 35px;
 	transition: all 0.3s;
 }
