@@ -690,7 +690,7 @@ div#checkboxes label  span {
 	color: @color_ac_text;
 }
 
-section#product div.product_information label figure {
+section#product div.product_information label span.image_border {
 	display: block;
 	margin: 0px;
 	margin-left: auto;
@@ -703,7 +703,7 @@ section#product div.product_information label figure {
 }
 
 div#related_items div.item:hover img,
-section#product div.product_information label figure:hover {
+section#product div.product_information label span.image_border:hover {
 	border: 1px solid @color_ac_orange;
 }
 
@@ -711,11 +711,11 @@ div#related_items div.item:hover img {
 	border: 2px solid @color_ac_orange;
 }
 
-section#product div.product_information label:hover span {
+section#product div.product_information label:hover span .round{
 	box-shadow: 0px 0px 0px 2px @color_ac_orange;
 }
 
-section#product div.product_information label figure:before {
+section#product div.product_information label span.image_border:before {
 	content: '';
 	display: inline-block;
 	vertical-align: middle;
@@ -723,18 +723,21 @@ section#product div.product_information label figure:before {
 	height: 100%;
 }
 
-section#product div.product_information label p.price {
+section#product div.product_information label span.price {
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	color: @color_ac_orange;
 	font-weight: 700;
 	position: relative;
 }
 
-section#product div.product_information label p.price[data-discount-price] {
+section#product div.product_information label span.price[data-discount-price] {
 	text-decoration: line-through;
 	color: fade(@color_ac_orange, 50%);
 }
 
-section#product div.product_information label p.price[data-discount-price]:before {
+section#product div.product_information label span.price[data-discount-price]:before {
 	display: inline-block;
 	content: attr(data-discount-price);
 	padding-left: 10px;
@@ -743,28 +746,28 @@ section#product div.product_information label p.price[data-discount-price]:befor
 	color: @color_ac_orange;
 }
 
-section#product div.product_information label p.price:after {
+section#product div.product_information label span.price:after {
 	content: attr(data-currency);
 	padding-left: 10px;
 }
 
-div#related_items div.item p.price[data-discount-price] {
+div#related_items div.item span.price[data-discount-price] {
 	text-decoration: line-through;
 }
 
-div#related_items div.item p.price[data-discount-price]:before {
+div#related_items div.item span.price[data-discount-price]:before {
 	content: attr(data-discount-price);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 }
 
-section#product div.product_information label p.price:after {
+section#product div.product_information label span.price:after {
 	content: attr(data-currency);
 	padding-left: 10px;
 }
 
-section#product div.product_information label p.name {
+section#product div.product_information label span.name {
 	display: inline-block;
 	vertical-align: middle;
 	margin: 0px;
@@ -772,7 +775,7 @@ section#product div.product_information label p.name {
 	margin-right: 10px;
 }
 
-section#product div.product_information label span {
+section#product div.product_information label span.round {
 	display: inline-block;
 	vertical-align: middle;
 	width: 16px;
@@ -783,23 +786,23 @@ section#product div.product_information label span {
 	transition: all 0.3s;
 }
 
-section#product div.product_information label  figure img {
+section#product div.product_information label  span.image_border img {
 	display: inline-block;
 	vertical-align: middle;
 	border-bottom: none;
 }
 
-section#product div.product_information label.regular figure img{
+section#product div.product_information label.regular span.image_border img{
 	width: 30px;
 	height: 30px;
 }
 
-section#product div.product_information label.medium figure img{
+section#product div.product_information label.medium span.image_border img{
 	width: 50px;
 	height: 50px;
 }
 
-section#product div.product_information label.big figure img{
+section#product div.product_information label.big span.image_border img{
 	width: 70px;
 	height: 70px;
 }
