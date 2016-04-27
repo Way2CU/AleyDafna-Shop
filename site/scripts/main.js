@@ -1359,13 +1359,8 @@ Site.on_load = function() {
 
 	// Remove mobile phone number on checkout page
 	if (Site.is_mobile()) {
-		var phone = $('a.fixed_phone');
-
-		if($('div#checkout_container').length > 0) {
-			phone.addClass('hide');
-		} else {
-			phone.removeClass('hide');
-		}
+		if($('div#checkout_container').length > 0)
+			$('a.fixed_phone').addClass('hide');
 	}
 };
 
