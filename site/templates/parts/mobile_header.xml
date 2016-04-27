@@ -61,14 +61,14 @@
 						>
 						<cms:text constant="phone"/>
 					</a>
-
-					<a
+					<!-- Hide 1700 number -->
+				<!-- <a
 						href="'tel:'.urlencode(Language::getText('phone2'))"
 						cms:eval="href"
 						class="phone"
 						>
 						<cms:text constant="phone2"/>
-					</a>
+					</a> -->
 				</li>	
 
 				<cms:module
