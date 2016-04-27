@@ -59,7 +59,7 @@
 							<svg>
 								<use
 									href="#speaker"
-									xlink:href="_BASEURL.'/site/images/site-sprite.svg#speaker/"
+									xlink:href="_BASEURL.'/site/images/site-sprite.svg#speaker'"
 									cms:eval="xlink:href"
 									/>
 							</svg>

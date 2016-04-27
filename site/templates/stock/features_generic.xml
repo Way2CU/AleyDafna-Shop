@@ -16,7 +16,7 @@
 			<svg>
 				<use
 					href="'#'.$params['text_id']"
-					xlink:href="$template['sprite'].'#'.$params['text_id']"
+					xlink:href="_BASEURL.'/'.$template['sprite'].'#'.$params['text_id']"
 					cms:eval="href,xlink:href"
 					/>
 			</svg>

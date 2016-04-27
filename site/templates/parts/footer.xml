@@ -9,7 +9,7 @@
 					template="stock/features_generic.xml"
 					>
 					<param name="sprite" value="site/images/site-sprite.svg"/>
-				</cms:module>	
+				</cms:module>
 			</ul>
 		</section>
 		
