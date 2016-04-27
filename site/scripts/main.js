@@ -1356,6 +1356,17 @@ Site.on_load = function() {
 
 	// connect increase and decrease controls
 	$('div.cart div.controls a.alter').on('click', Site.alter_item_count);
+
+	// Remove mobile phone number on checkout page
+	if (Site.is_mobile()) {
+		var phone = $('a.fixed_phone');
+
+		if($('div#checkout_container').length > 0) {
+			phone.addClass('hide');
+		} else {
+			phone.removeClass('hide');
+		}
+	}
 };
 
 // connect document `load` event with handler function
