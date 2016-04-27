@@ -16,9 +16,6 @@ use Core\Events;
 class aley_dafna extends Module {
 	private static $_instance;
 
-	const API_KEY = 'AIzaSyDqFY0uvnULTUryKNgwMJFiH3mDF4DSk6Q';
-	const CALENDAR_ID = 'sales@aleydafna.co.il';
-
 	const DEFAULT_LANGUAGE = 'he';
 	const DEFAULT_THRESHOLD = 10;
 
@@ -139,8 +136,7 @@ class aley_dafna extends Module {
 	 * @param object transaction
 	 */
 	public function on_transaction_completed($transaction) {
-		if ($transaction->status != TransactionStatus::COMPLETED)
-			return;
+		global $language;
 
 		// get managers
 		$buyer_manager = ShopBuyersManager::getInstance();
@@ -162,27 +158,26 @@ class aley_dafna extends Module {
 			array('transaction' => $transaction->id)
 		);
 
-		$timestamp = array(
-			'date'     => $date,
-			'timeZone' => 'Asia/Jerusalem'
-		);
-
-		$header= array(
-			'Content-type: application/json',
-			/* 'Authorization: Bearer ' . $this->access_token, */
-			/* 'X-JavaScript-User-Agent: Google APIs Explorer' */
-		);
+		$date_time = date('Y-m-d', strtotime($transaction->delivery_type));
 
 		// prepare data
 		$title = $buyer->first_name.' '.$buyer->last_name.' - '.$transaction->uid;
-		$location = $address->street.' '.$address->street2.', '.$address->zip.' '.$address->city.', '.$address->country;
+
+		if ($transaction->delivery_type == 'pickup') {
+			$location = '';
+			$color = 9;
+
+		} else {
+			$location = $address->street.' '.$address->street2.', '.$address->zip.' '.$address->city.', '.$address->country;
+			$color = 10;
+		}
 
 		$id_list = array();
 		$name_by_id = array();
 		$description = '';
 
 		if (count($transaction_items) > 0) {
-			foreach ($items as $item)
+			foreach ($transaction_items as $item)
 				$id_list[] = $item->item;
 
 			$items = $item_manager->getItems(array('id', 'name'), array('id' => $id_list));
@@ -190,29 +185,26 @@ class aley_dafna extends Module {
 				$name_by_id[$item->id] = $item->name;
 
 			foreach ($transaction_items as $item)
-				$description .= $name_by_id[$item->item].' - '.$item->amount."\n";
+				$description .= $name_by_id[$item->item][$language].' - '.$item->amount."\n";
 		}
 
 		$post_data = array(
-			'start'       => $timestamp,
-			'end'         => $timestamp,
-			'summary'     => $title,
-			'description' => $description,
-			'location'    => $location,
-			'key'         => self::API_KEY
-		);
-
+				'start'       => $date_time,
+				'end'         => $date_time,
+				'title'       => $title,
+				'location'    => $location,
+				'description' => $description,
+				'color'       => $color
+			);
 		$post_data = json_encode($post_data);
-		$url = 'https://www.googleapis.com/calendar/v3/calendars/' . self::CALENDAR_ID . '/events';
 
+		$url = 'https://zapier.com/hooks/catch/133542/uti08e';
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_HTTPGET, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
 		$response = curl_exec($ch);
 	}
 
