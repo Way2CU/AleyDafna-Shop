@@ -98,7 +98,6 @@ function QuickFilter(container, categories, item) {
 			categories.push(category_id);
 		});
 
-
 		//  create checkbox element for all categories
 		self.categories.each(function(index) {
 			var category = $(this);
@@ -107,7 +106,7 @@ function QuickFilter(container, categories, item) {
 			self._create_checkbox(category_name,category_id);
 			category.remove();
 		});
-
+		
 		//  create default checkbox element
 		if(self.categories.length > 0)
 		 	self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
