@@ -265,5 +265,5 @@ $(function() {
 	Site.card_selector = new Site.CardSelection();
 
 	if ($('#input_details').length > 0)
-		Site.buyer_information_form.page_control.connect('page-flip', Site.handle_page_switch);
+		Site.buyer_information_form.page_control.events.connect('page-flip', Site.handle_page_switch);
 });
