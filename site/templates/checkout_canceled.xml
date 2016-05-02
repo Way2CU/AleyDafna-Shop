@@ -26,12 +26,10 @@
 				<cms:template file="parts/mobile_header.xml"/>
 			</cms:mobile>
 
-			<section id="checkout_message">
-				<cms:module
-					name="shop"
-					action="show_canceled_message"
-					/>
-			</section>
+			<cms:module
+				name="shop"
+				action="show_canceled_message"
+				/>
 
 			<cms:template file="parts/footer.xml"/>
 		</body>
