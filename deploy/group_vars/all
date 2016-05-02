@@ -3,7 +3,7 @@ site:
   domain: aleydafna.co.il
   subdomain: test
   make_alias: false
-  root: httpdocs
+  root: test
   username: aleyd
   caracal_branch: develop
   # ip_address: 0.0.0.0
