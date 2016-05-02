@@ -1265,6 +1265,17 @@ Site.insert_related_items = function(event) {
 }
 
 /**
+ * Handle successful contact form submission.
+ *
+ * @param object data
+ * @return boolean
+ */
+Site.handle_form_submit_success = function(data) {
+	dataLayer.push({'event': 'leadSent'});
+	return true;
+};
+
+/**
  * Function called when document and images have been completely loaded.
  */
 Site.on_load = function() {
@@ -1332,6 +1343,10 @@ Site.on_load = function() {
 		button_mobile_cart.on('click', function() {
 			cart_mobile.toggleClass('open');
 		})
+
+		// remove phone number on checkout pages
+		if($('div#checkout_container').length > 0)
+			$('a.fixed_phone').addClass('hide');
 	}
 
 	var input_elements = $('section#product div.product_information label input[type="radio"]');
@@ -1357,11 +1372,12 @@ Site.on_load = function() {
 	// connect increase and decrease controls
 	$('div.cart div.controls a.alter').on('click', Site.alter_item_count);
 
-	// Remove mobile phone number on checkout page
-	if (Site.is_mobile()) {
-		if($('div#checkout_container').length > 0)
-			$('a.fixed_phone').addClass('hide');
-	}
+	// connect to every form and handle submission
+	if (dataLayer && Caracal.ContactForm.list.length > 0)
+		for (var index in Caracal.ContactForm.list) {
+			var form = Caracal.ContactForm.list[index];
+			form.events.connect('submit-success', Site.handle_form_submit_success);
+		}
 };
 
 // connect document `load` event with handler function
