@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../units/schema/language.dtd">
+<document>
+	<cms:var name="_DOCTYPE"/>
+	<html lang="$language" cms:eval="lang">
+		<head>
+			<title>
+				<cms:text constant="site_title"/>
+				<cms:raw text=" - "/>
+				<cms:text constant="title_checkout"/>
+			</title>
+
+			<cms:collection include="dialog"/>
+			<cms:module name="shop" action="include_cart_scripts"/>
+			<cms:module name="shop" action="include_scripts"/>
+			<cms:collection include="communicator,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
+			<cms:module name="head_tag" action="print_tag"/>
+		</head>
+
+		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
+			<cms:desktop>
+				<cms:template file="parts/header.xml"/>
+			</cms:desktop>
+
+			<cms:mobile>
+				<cms:template file="parts/mobile_header.xml"/>
+			</cms:mobile>
+
+			<cms:module
+				name="shop"
+				action="show_canceled_message"
+				/>
+
+			<cms:template file="parts/footer.xml"/>
+		</body>
+	</html>
+</document>

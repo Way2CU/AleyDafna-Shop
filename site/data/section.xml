@@ -9,6 +9,8 @@
 			<action name="category" file="category.xml"/>
 			<action name="product" file="product.xml"/>
 			<action name="checkout" file="checkout.xml"/>
+			<action name="checkout_completed" file="checkout_completed.xml"/>
+			<action name="checkout_canceled" file="checkout_canceled.xml"/>
 		</language>
 	</section>
 	<section name="about">
