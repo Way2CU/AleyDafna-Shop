@@ -1,7 +1,7 @@
 ---
 site:
   domain: aleydafna.co.il
-  # subdomain: test
+  subdomain: test
   make_alias: true
   root: httpdocs
   username: aleyd
