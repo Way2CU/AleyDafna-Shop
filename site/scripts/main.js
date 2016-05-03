@@ -1381,6 +1381,14 @@ Site.on_load = function() {
 			var form = Caracal.ContactForm.list[index];
 			form.events.connect('submit-success', Site.handle_form_submit_success);
 		}
+
+	// save transaction data and cart contents for tracking purposes later
+	if (dataLayer && $('div#checkout table.checkout_details').length > 0)
+		Site.cart.events.register('cart-loaded', Site.save_transaction_data);
+
+	// push transaction data to Google's data layer
+	if (dataLayer && $('div#checkout div.checkout_message').length > 0)
+		Site.push_transaction_data();
 };
 
 // connect document `load` event with handler function
