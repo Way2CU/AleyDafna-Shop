@@ -1384,7 +1384,7 @@ Site.on_load = function() {
 
 	// save transaction data and cart contents for tracking purposes later
 	if (dataLayer && $('div#checkout table.checkout_details').length > 0)
-		Site.cart.events.register('cart-loaded', Site.save_transaction_data);
+		Site.cart.events.connect('cart-loaded', Site.save_transaction_data);
 
 	// push transaction data to Google's data layer
 	if (dataLayer && $('div#checkout div.checkout_message').length > 0)
