@@ -268,8 +268,8 @@ Site.save_transaction_data = function() {
 	var data = new Object();
 	var language = language_handler.current_language;
 
-	transaction_id = $('input[type=hidden][name=transaction_id]').val();
-	total_amount = $('input[type=hidden][name=sum]').val();
+	var transaction_id = $('input[type=hidden][name=transaction_id]').val();
+	var total_amount = $('input[type=hidden][name=sum]').val();
 
 	// store transaction data
 	data.actionField = {
@@ -307,7 +307,10 @@ Site.push_transaction_data = function() {
 	// push data if available
 	if (data_string) {
 		var data = JSON.parse(data_string);
-		dataLayer.push({ecommerce: {purchase: data}});
+		dataLayer.push({
+			ecommerce: {purchase: data},
+			event: 'purchase'
+		});
 	}
 
 	// clear local storage
