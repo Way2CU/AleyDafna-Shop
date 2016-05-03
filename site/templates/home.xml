@@ -160,7 +160,6 @@
 						text_id="prosperity"
 						template="parts/special_category_template.xml"
 						/>
-
 				</section>
 
 				<section id="promoted_category">
@@ -170,7 +169,6 @@
 						category="promoted"
 						template="parts/category_items_template.xml"
 						/>
-
 				</section>
 			</cms:desktop>
 
@@ -206,7 +204,6 @@
 								/>
 						</ul>
 					</div>
-
 				</section>
 
 				<section id="special_categories">
@@ -292,7 +289,6 @@
 						text_id="prosperity"
 						template="parts/special_category_template.xml"
 						/>
-
 				</section>
 			</cms:mobile>
 
