@@ -526,6 +526,8 @@ section#news span svg {
 	display: inline-block;
 	vertical-align: middle;
 	padding-left: 5px;
+
+	padding-right: 5px;
 	width: 50px;
 	height: 50px;
 	fill: @color_ac_text;
@@ -567,7 +569,7 @@ body.rtl section#news span svg use {
 section#news ul {
 	margin: 0px;
 	padding: 0px;
-	width: calc(~'(100% - 300px)');
+	width: calc(~'(100% - 350px)');
 	height: 65px;
 	list-style-type: none;
 	position: relative;
@@ -597,8 +599,12 @@ section#news ul li.visible {
 }
 
 section#news ul li p {
-	font-size: 1.3em;
+	font-size: 1em;
 	font-weight: 700;
+}
+
+body.rtl section#news ul li p {
+	font-size: 1.3em;
 }
 
 section#news ul li a {
@@ -636,7 +642,8 @@ section#special_categories a img {
 	display: block;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	width: 100%;
+	width: 192px;
+	height: 192px;
 	height: auto;
 	opacity: 1;
 	transition: all 0.3s;
@@ -1136,10 +1143,9 @@ section#product figure {
 	overflow: hidden;
 }
 
-section#product > figure img {
+section#product figure img {
 	border: 1px solid @color_ac_grey;
 }
-
 
 section#product figure p.disclaimer {
 	font-size: 0.6em;

@@ -73,6 +73,18 @@ function QuickFilter(container, categories, item) {
 		self.unique_list_container = $('<div id="unique">');
 		self.container.append(self.unique_list_container);
 
+		//  create checkbox element for all categories
+		self.categories.each(function(index) {
+		var category = $(this);
+		var category_name = self.categories.eq(index).find('h5').text();
+		var category_id = self.categories.eq(index).attr('id');
+
+		if(category.find($('section.group a.item')).length > 0) {
+			self._create_checkbox(category_name,category_id);
+		}
+		category.remove();
+		});
+
 		  //create unique items list
 		var items = self.categories.find(self.item);
 		items.each(function(index,value) {
@@ -98,16 +110,7 @@ function QuickFilter(container, categories, item) {
 			categories.push(category_id);
 		});
 
-
-		//  create checkbox element for all categories
-		self.categories.each(function(index) {
-			var category = $(this);
-			var category_name = self.categories.eq(index).find('h5').text();
-			var category_id = self.categories.eq(index).attr('id');
-			self._create_checkbox(category_name,category_id);
-			category.remove();
-		});
-
+		
 		//  create default checkbox element
 		if(self.categories.length > 0)
 		 	self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));

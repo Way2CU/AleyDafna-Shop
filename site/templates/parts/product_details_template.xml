@@ -92,7 +92,7 @@
 				src="gallery::getGroupThumbnailById($params['gallery'], null, 500,Thumbnail::CONSTRAIN_BOTH)"
 				alt="$params['title'][$language]"
 				cms:eval="src,alt"/>
-			<p class="disclaimer"><cms:text constant="title_disclaimer"/></p>	
+			<p class="disclaimer"><cms:text constant="title_disclaimer"/></p>
 			<p class="selected_name"><cms:text constant="label_regular"/></p>
 			<p
 				class="selected_price"
