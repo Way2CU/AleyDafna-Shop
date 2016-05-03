@@ -77,7 +77,7 @@
 						<ul class="drop">					
 							<cms:template file="parts/contact_sub_list_menu.xml"/>
 						</ul>
-					</li>							
+					</li>
 				</ul>
 			</nav>
 		</cms:desktop>
