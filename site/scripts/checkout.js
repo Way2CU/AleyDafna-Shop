@@ -281,15 +281,17 @@ Site.save_transaction_data = function() {
 	// store cart contents
 	for (var index in Site.cart.items) {
 		var item = Site.cart.items[index];
-		var data = new Object();
+		var item_data = new Object();
 
-		data.name = item.name[language];
-		data.id = index;
-		data.quantity = item.count;
+		item_data.name = item.name[language];
+		item_data.id = index;
+		item_data.quantity = item.count;
 
 		if (item.discount > 0)
-			data.price = item.discount_price; else
-			data.price = item.price;
+			item_data.price = item.discount_price; else
+			item_data.price = item.price;
+
+		data.products.push(item_data);
 	}
 
 	// store data for later usage
