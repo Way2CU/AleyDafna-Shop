@@ -9,13 +9,12 @@
 			cms:optional="data-discount"
 			>
 
-			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 200,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['title'][$language]"  cms:eval="src,alt"/>
+			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 200,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['name'][$language]"  cms:eval="src,alt"/>
 			<p><cms:var param="name" multilanguage="yes"/></p>
 			<p
 				class="price"
 				data-currency="currency"
 				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
-				cms:eval="data-currency"
 				cms:optional="data-discount-price"
 				cms:constant="data-currency"
 				>
@@ -38,13 +37,12 @@
 			cms:optional="data-discount"
 			>
 
-			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['title'][$language]"  cms:eval="src,alt"/>
+			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['name'][$language]"  cms:eval="src,alt"/>
 			<p><cms:var param="name" multilanguage="yes"/></p>
 			<p
 				class="price"
 				data-currency="currency"
 				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
-				cms:eval="data-currency"
 				cms:optional="data-discount-price"
 				cms:constant="data-currency"
 				>
