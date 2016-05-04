@@ -764,16 +764,18 @@ a.item p.price[data-discount-price] {
 
 a.item p.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price);
+	content: attr(data-discount-price) ' ' attr(data-currency);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 	color: @color_ac_medium_green;
 }
 
-a.item p.price:after {
+a.item.price:not([data-discount-price]):after {
+	display: inline-block;
 	content: attr(data-currency);
-	padding-left: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 /*category page*/
@@ -1037,16 +1039,18 @@ section#product div.product_information label span.price[data-discount-price] {
 
 section#product div.product_information label span.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price);
+	content: attr(data-discount-price) ' ' attr(data-currency);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 	color: @color_ac_orange;
 }
 
-section#product div.product_information label span.price:after {
+section#product div.product_information label span.price:not([data-discount-price]):after {
+	display: inline-block;
 	content: attr(data-currency);
-	padding-left: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 section#product div.product_information label span.name {
@@ -1125,6 +1129,7 @@ section#product div.product_information label input[type="radio"]:checked ~ span
 section#product figure {
 	text-align: center;
 	position: relative;
+	width: 500px;
 	overflow: hidden;
 }
 
@@ -1163,7 +1168,7 @@ section#product figure p.selected_price[data-discount-price] {
 
 section#product figure p.selected_price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price);
+	content: attr(data-discount-price) ' ' attr(data-currency);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
@@ -1171,9 +1176,11 @@ section#product figure p.selected_price[data-discount-price]:before {
 }
 
 
-section#product figure p.selected_price:after {
+section#product figure p.selected_price:not([data-discount-price]):after {
+	display: inline-block;
 	content: attr(data-currency);
-	padding-left: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 /*related items*/
