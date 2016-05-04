@@ -417,16 +417,18 @@ a.item p.price[data-discount-price] {
 
 a.item p.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price);
+	content: attr(data-discount-price) ' ' attr(data-currency);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 	color: @color_ac_medium_green;
 }
 
-a.item p.price:after {
+a.item.price:not([data-discount-price]):after {
+	display: inline-block;
 	content: attr(data-currency);
-	padding-left: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 section#news div.news_container {
@@ -577,7 +579,7 @@ section#category h2 {
 section#category p {
 	text-align: center;
 	width: 95%;
-	font-size: 1.3em;
+	font-size: 1em;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -770,16 +772,18 @@ section#product div.product_information label span.price[data-discount-price] {
 
 section#product div.product_information label span.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price);
+	content: attr(data-discount-price) ' ' attr(data-currency);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 	color: @color_ac_orange;
 }
 
-section#product div.product_information label span.price:after {
+section#product div.product_information label span.price:not([data-discount-price]):after {
+	display: inline-block;
 	content: attr(data-currency);
-	padding-left: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 div#related_items div.item span.price[data-discount-price] {
