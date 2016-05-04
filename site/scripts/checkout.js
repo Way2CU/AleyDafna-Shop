@@ -5,7 +5,7 @@
  * Copyright (c) 2016. by Way2CU, http://way2cu.com
  * Authors: Mladen Mijatov
  */
-var Site = Site || {};
+var Site = Site || new Object();
 
 
 Site.CardSelection = function() {
@@ -18,8 +18,8 @@ Site.CardSelection = function() {
 	self.card_saved = false;
 	self.cart_connected = false;
 
-	self.handler = {};
-	self.validator = {};
+	self.handler = new Object();
+	self.validator = new Object();
 	self.cards = {
 			aley_dafna_1: [25, 10, 10, 10],
 			aley_dafna_2: [40, 10, 20, 10],
@@ -261,9 +261,68 @@ Site.handle_page_switch = function(current_page, new_page) {
 	return true;
 };
 
+/**
+ * Save transaction data and cart contents for later use on thank you page for tracking.
+ */
+Site.save_transaction_data = function() {
+	var data = new Object();
+	var language = language_handler.current_language;
+
+	var transaction_id = $('input[type=hidden][name=transaction_id]').val();
+	var total_amount = $('input[type=hidden][name=sum]').val();
+
+	// store transaction data
+	data.actionField = {
+			id: transaction_id,
+			revenue: total_amount,
+		};
+	data.products = new Array();
+
+	// store cart contents
+	for (var index in Site.cart.items) {
+		var item = Site.cart.items[index];
+		var item_data = new Object();
+
+		item_data.name = item.name[language];
+		item_data.id = index;
+		item_data.quantity = item.count;
+
+		if (item.discount > 0)
+			item_data.price = item.discount_price; else
+			item_data.price = item.price;
+
+		data.products.push(item_data);
+	}
+
+	// store data for later usage
+	localStorage.setItem('transaction', JSON.stringify(data));
+};
+
+/**
+ * Submit transaction data to Google Analytics.
+ */
+Site.push_transaction_data = function() {
+	var data_string = localStorage.getItem('transaction');
+
+	// push data if available
+	if (data_string) {
+		var data = JSON.parse(data_string);
+		dataLayer.push({
+			ecommerce: {purchase: data},
+			event: 'purchase'
+		});
+	}
+
+	// clear local storage
+	localStorage.removeItem('transaction');
+};
+
+
 $(function() {
 	Site.card_selector = new Site.CardSelection();
 
+	// integrate multiple phone numbers by handling page switch
+	// and storing them into single field
 	if ($('#input_details').length > 0)
 		Site.buyer_information_form.page_control.events.connect('page-flip', Site.handle_page_switch);
 });
