@@ -42,17 +42,7 @@ header a.logo img {
 	width: 80%;
 }
 
-header > p {
-	display: inline-block;
-	vertical-align: middle;
-	margin: 0px;
-	padding-right: 30px;
-	padding-left: 30px;
-	font-size: 1em;
-	font-weight: 700;
-	line-height: 100%;
-}
-
+ul.user,
 div#popup,
 div.languages {
 	display: inline-block;
@@ -62,8 +52,26 @@ div.languages {
 	position: relative;
 }
 
+div.languages {
+	padding-left: 60px;
+}
+
+body.rtl div.languages {
+	padding-right: 60px;
+	padding-left: 30px;
+}
+
+ul.user {
+	list-style-type: none;
+	padding-left: 90px;
+}
+
+body.rtl ul.user  {
+	padding-left: 0px;
+	padding-right: 90px;
+}
+
 div#popup {
-	margin-right: 30px;
 	padding-left: 10px;
 	padding-right: 40px;
 	padding-top: 10px;
@@ -209,6 +217,7 @@ nav#main ul {
 	list-style-type: none;
 }
 
+ul.user li,
 nav#main > ul > li {
 	display: inline-block;
 	vertical-align: top;
@@ -216,6 +225,7 @@ nav#main > ul > li {
 	position: relative;
 }
 
+ul.user li a,
 nav#main > ul > li > a {
 	display: block;
 	padding-top: 15px;
@@ -230,10 +240,16 @@ nav#main > ul > li > a {
 	transition: all 0.3s;
 }
 
-nav#main > ul > li > a.logout,
-nav#main > ul > li > a.control_panel,
-nav#main > ul > li > a.login,
-nav#main > ul > li > a.sign-up {
+ul.user li a {
+	border: none;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+ul.user li a.logout,
+ul.user li a.control_panel,
+ul.user li a.login,
+ul.user li a.sign-up {
 	background-color: fade(@color_ac_text,10%);
 }
 
@@ -254,6 +270,7 @@ nav#main > ul > li.sub-menu > a {
 	padding-right: 35px;
 }
 
+ul.user li a:hover,
 nav#main > ul > li > a:hover {
 	background-color: @color_ac_orange;
 }
