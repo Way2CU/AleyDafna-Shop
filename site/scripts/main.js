@@ -75,14 +75,14 @@ function QuickFilter(container, categories, item) {
 
 		//  create checkbox element for all categories
 		self.categories.each(function(index) {
-		var category = $(this);
-		var category_name = self.categories.eq(index).find('h5').text();
-		var category_id = self.categories.eq(index).attr('id');
+			var category = $(this);
+			var category_name = self.categories.eq(index).find('h5').text();
+			var category_id = self.categories.eq(index).attr('id');
 
-		if(category.find($('section.group a.item')).length > 0) {
-			self._create_checkbox(category_name,category_id);
-		}
-		category.remove();
+			if (category.find($('section.group a.item')).length > 0)
+				self._create_checkbox(category_name, category_id);
+
+			category.remove();
 		});
 
 		  //create unique items list
