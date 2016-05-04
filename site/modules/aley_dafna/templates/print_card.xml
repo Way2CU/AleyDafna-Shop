@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../../../units/schema/language.dtd">
+<document>
+	<div
+		class="card"
+		style="'background-image: url('.$params['image'].');'"
+		cms:eval="style"
+		>
+		<span
+			class="text"
+			style="'left: '.$params['left'].'; top: '.$params['top'].'; right: '.$params['right'].'; bottom: '.$params['bottom'].';'"
+			cms:eval="style"
+			>
+			<cms:var param="text"/>
+		</span>
+	</div>
+</document>
