@@ -64,7 +64,7 @@
 						action="show_item_list"
 						category="fix_id($_REQUEST['subcategory'])"
 						order_by="priority"
-						order_asc="0"
+						order_asc="1"
 						template="parts/category_items_template.xml"
 						cms:eval="category"
 						/>
@@ -87,7 +87,7 @@
 						action="show_item_list"
 						category="fix_id($_REQUEST['id'])"
 						order_by="priority"
-						order_asc="0"
+						order_asc="1"
 						template="parts/category_items_template.xml"
 						cms:eval="category"
 						/>
@@ -97,7 +97,7 @@
 						action="show_category_list"
 						parent_id="fix_id($_REQUEST['id'])"
 						order_by="text_id"
-						order_asc="0"
+						order_asc="1"
 						template="parts/category_list_template.xml"
 						cms:eval="parent_id"
 						/>
