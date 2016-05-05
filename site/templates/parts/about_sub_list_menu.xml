@@ -1,8 +1,8 @@
 <document>
 	<li>
 		<a
-			class="$section == 'warranty-agreement' ? 'active' : false"
-			href="url_Make('warranty-agreement', 'about')"
+			class="$section == 'terms-and-conditions' ? 'active' : false"
+			href="url_Make('terms-and-conditions', 'about-us')"
 			cms:eval="href"
 			cms:optional="class"
 			>
@@ -13,7 +13,7 @@
 	<li>
 		<a
 			class="$section == 'faq' ? 'active' : false"
-			href="url_Make('faq', 'about')"
+			href="url_Make('faq', 'about-us')"
 			cms:eval="href"
 			cms:optional="class"
 			>
