@@ -117,8 +117,8 @@
 
 				<li>
 					<a
-						class="$section == 'about' ? 'active' : false"
-						href="url_Make('', 'about')"
+						class="$section == 'about-us' ? 'active' : false"
+						href="url_Make('', 'about-us')"
 						cms:eval="href"
 						cms:optional="class"
 						>
