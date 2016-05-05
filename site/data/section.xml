@@ -13,10 +13,10 @@
 			<action name="checkout-canceled" file="checkout_canceled.xml"/>
 		</language>
 	</section>
-	<section name="about">
+	<section name="about-us">
 		<language name="all">
 			<action name="_default" file="about.xml"/>
-			<action name="warranty-agreement" file="warranty.xml"/>
+			<action name="terms-and-conditions" file="warranty.xml"/>
 			<action name="faq" file="faq.xml"/>
 		</language>
 	</section>
@@ -27,5 +27,4 @@
 			<action name="business-clients" file="business.xml"/>
 		</language>
 	</section>
-
 </document>

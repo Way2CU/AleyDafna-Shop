@@ -30,6 +30,22 @@ class aley_dafna extends Module {
 	const COL_FIRST_CATEGORY = 8;
 
 	var $size_names = array('medium', 'big', 'extra-big', 'huge');
+	var $text_position = array(
+			'aley_dafna_1' => array(25, 10, 10, 10),
+			'aley_dafna_2' => array(40, 10, 20, 10),
+			'baloons_1'    => array(50, 10, 30, 10),
+			'baloons_2'    => array(60, 10, 10, 10),
+			'baloons_3'    => array(40, 10, 40, 10),
+			'green_edge_1' => array(30, 10, 30, 10),
+			'green_edge_2' => array(30, 10, 30, 10),
+			'green_wave'   => array(10, 10, 30, 10),
+			'happy_bday_1' => array(40, 10, 40, 10),
+			'happy_bday_2' => array(60, 10, 10, 10),
+			'happy_bday_3' => array(40, 10, 40, 10),
+			'heart_dust'   => array(10, 10, 40, 10),
+			'heart'        => array(40, 10, 40, 10),
+			'ornaments'    => array(40, 10, 10, 10)
+		);
 
 	/**
 	 * Constructor
@@ -74,6 +90,11 @@ class aley_dafna extends Module {
 			$head_tag->addTag('link', array('href' => url_GetFromFilePath($this->path.'include/checkout.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
 		}
 
+		if (ModuleHandler::is_loaded('backend') && ModuleHandler::is_loaded('head_tag') && $section == 'backend') {
+			$head_tag = head_tag::getInstance();
+			$head_tag->addTag('script', array( 'src' => url_GetFromFilePath($this->path.'include/backend.js'), 'type' => 'text/javascript'));
+		}
+
 		// connect transaction handling event
 		Events::connect('shop', 'transaction-completed', 'on_transaction_completed', $this);
 	}
@@ -98,23 +119,27 @@ class aley_dafna extends Module {
 		// global control actions
 		if (isset($params['action']))
 			switch ($params['action']) {
-			default:
-			break;
+				default:
+				break;
 			}
 
 		// global control actions
 		if (isset($params['backend_action']))
 			switch ($params['backend_action']) {
-			case 'import':
-				$this->show_import();
-				break;
+				case 'print_card':
+					$this->print_card();
+					break;
 
-			case 'import_from_file':
-				$this->import_from_file();
-				break;
+				case 'import':
+					$this->show_import();
+					break;
 
-			default:
-				break;
+				case 'import_from_file':
+					$this->import_from_file();
+					break;
+
+				default:
+					break;
 			}
 	}
 
@@ -506,6 +531,82 @@ class aley_dafna extends Module {
 		$template->restoreXML();
 		$template->setLocalParams($params);
 		$template->parse();
+	}
+
+	/**
+	 * Show page for printing all attached cards with selected text.
+	 */
+	private function print_card() {
+		$id = fix_id($_REQUEST['transaction']);
+		$manager = ShopTransactionsManager::getInstance();
+		$item_manager = ShopItemManager::getInstance();
+		$transaction_item_manager = ShopTransactionItemsManager::getInstance();
+
+		// get transaction with specified id
+		$transaction = $manager->getSingleItem(
+				array('id'),
+				array('id' => $id)
+			);
+
+		// ensure transaction is a valid one
+		if (!is_object($transaction))
+			return;
+
+		// get items associated with transaction
+		$transaction_items = $transaction_item_manager->getItems(
+				array('item', 'description'),
+				array('transaction' => $transaction->id)
+			);
+
+		if (count($transaction_items) == 0)
+			return;
+
+		$id_list = array();
+		$description_list = array();
+		foreach ($transaction_items as $item) {
+			$id_list[] = $item->item;
+			$description_list[$item->item] = $item->description;
+		}
+
+		// get unique id and gallery
+		$shop_items = $item_manager->getItems(
+				array('id', 'uid', 'gallery'),
+				array('id' => $id_list)
+			);
+
+		if (count($shop_items) == 0)
+			return;
+
+		// prepare final list and only include items that are actually known cards
+		$items = array();
+		foreach ($shop_items as $item) {
+			if (!array_key_exists($item->uid, $this->text_position))
+				continue;
+
+			$position = $this->text_position[$item->uid];
+			$description = unserialize($description_list[$item->id]);
+
+			$data = array(
+					'text'   => $description['text'],
+					'top'    => $position[0].'%',
+					'left'   => $position[1].'%',
+					'bottom' => $position[2].'%',
+					'right'  => $position[3].'%',
+					'image'  => gallery::getGroupImageById($item->gallery)
+				);
+
+			$items[] = $data;
+		}
+
+		// prepare template
+		$template = new TemplateHandler('print_card.xml', $this->path.'templates/');
+
+		if (count($items) > 0)
+			foreach ($items as $item) {
+				$template->setLocalParams($item);
+				$template->restoreXML();
+				$template->parse();
+			}
 	}
 }
 
