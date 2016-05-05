@@ -700,18 +700,11 @@ body.rtl div#unique {
 }
 
 div#unique a.item {
-	visibility: visible;
-	transform: scale(1);
-	transition: transform 0.6s, width 0.6s, visibility 0.6s;
-	transition-delay: 0s, 0s, 0s;
+	display: inline-block;
 }
 
 div#unique a.item.hidden {
-	margin: -1px;
-	visibility: hidden;
-	height: 0px;
-	width: 0px;
-	transform: scale(0);
+	display: none;
 }
 
 a.item div {
