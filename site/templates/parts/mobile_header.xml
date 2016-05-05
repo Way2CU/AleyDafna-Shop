@@ -16,7 +16,7 @@
 			<a href="url_Make('', 'home')" class="logo" cms:eval="href">
 				<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>
 			</a>
-			
+
 			<div id="popup">
 				<a href="javascript:void(0)" class="cart">
 					<svg>
@@ -33,7 +33,7 @@
 		</div>
 
 		<nav class="mobile_menu">
-			<ul>	
+			<ul>
 				<cms:guest>
 					<li><a class="sign-up" href="#"><cms:text constant="menu_signup"/></a></li>
 					<li><a class="login" href="#"><cms:text constant="menu_login"/></a></li>
@@ -78,7 +78,7 @@
 						>
 						<cms:text constant="phone2"/>
 					</a> -->
-				</li>	
+				</li>
 
 				<cms:module
 					name="shop"
@@ -136,7 +136,7 @@
 						cms:optional="class"
 						>
 						<cms:text constant="menu_contact"/>
-					</a>	
+					</a>
 				</li>
 				<cms:template file="parts/contact_sub_list_menu.xml"/>
 			</ul>
