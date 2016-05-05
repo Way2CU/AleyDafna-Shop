@@ -700,18 +700,11 @@ body.rtl div#unique {
 }
 
 div#unique a.item {
-	visibility: visible;
-	transform: scale(1);
-	transition: transform 0.6s, width 0.6s, visibility 0.6s;
-	transition-delay: 0s, 0s, 0s;
+	display: inline-block;
 }
 
 div#unique a.item.hidden {
-	margin: -1px;
-	visibility: hidden;
-	height: 0px;
-	width: 0px;
-	transform: scale(0);
+	display: none;
 }
 
 a.item div {
@@ -974,8 +967,11 @@ body.rtl section#product div.product_information label:first-of-type {
 	margin-left: 10px;
 }
 
-div#checkboxes label.active,
 div#checkboxes label:hover {
+	background-color: @color_ac_light_orange;
+}
+
+div#checkboxes label.active {
 	background-color: @color_ac_orange;
 }
 
