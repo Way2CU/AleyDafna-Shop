@@ -85,11 +85,11 @@ Caracal.PrintSupport = function() {
 				section: 'backend_module',
 				action: 'transfer_control',
 				module: 'aley_dafna',
-				backend_action: 'print_cart',
+				backend_action: 'print_card',
 				transaction: transaction_id,
 				timestamp: Date.now().toString()
 			};
-		var print_url = base_url + '/' + $.param(params);
+		var print_url = base_url + '/?' + $.param(params);
 		iframe.attr('src', print_url);
 	};
 

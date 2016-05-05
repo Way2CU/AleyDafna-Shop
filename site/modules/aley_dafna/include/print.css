@@ -1,0 +1,33 @@
+/**
+ * Print Card Style Sheet
+ * Aley Dafna Flower Shop
+ *
+ * Copyright (c) 2016. by Way2CU, http://way2cu.com
+ * Authors: Mladen Mijatov
+ */
+
+@page {
+	margin: 0.5cm;
+}
+
+body.print {
+	color: black;
+}
+
+div.card {
+	position: relative;
+	width: 20cm;
+	height: 28.7cm;
+
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+div.card span.text {
+	position: absolute;
+	word-wrap: break-word;
+
+	font-size: 20pt;
+	text-align: center;
+}

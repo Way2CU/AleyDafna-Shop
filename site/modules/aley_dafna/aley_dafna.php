@@ -538,7 +538,7 @@ class aley_dafna extends Module {
 	 */
 	private function print_card() {
 		$id = fix_id($_REQUEST['transaction']);
-		$manager = ShopTransactionManager::getInstance();
+		$manager = ShopTransactionsManager::getInstance();
 		$item_manager = ShopItemManager::getInstance();
 		$transaction_item_manager = ShopTransactionItemsManager::getInstance();
 
@@ -553,35 +553,57 @@ class aley_dafna extends Module {
 			return;
 
 		// get items associated with transaction
-		$items = $transaction_item_manager->getItems(
-				$transaction_item_manager->getFieldNames(),
-				array('transaction', $transaction->id)
+		$transaction_items = $transaction_item_manager->getItems(
+				array('item', 'description'),
+				array('transaction' => $transaction->id)
 			);
 
-		if (count($items) == 0)
+		if (count($transaction_items) == 0)
 			return;
 
 		$id_list = array();
-		foreach ($items as $item)
+		$description_list = array();
+		foreach ($transaction_items as $item) {
 			$id_list[] = $item->item;
+			$description_list[$item->item] = $item->description;
+		}
 
-		// TODO: Continue!
+		// get unique id and gallery
+		$shop_items = $item_manager->getItems(
+				array('id', 'uid', 'gallery'),
+				array('id' => $id_list)
+			);
+
+		if (count($shop_items) == 0)
+			return;
+
+		// prepare final list and only include items that are actually known cards
+		$items = array();
+		foreach ($shop_items as $item) {
+			if (!array_key_exists($item->uid, $this->text_position))
+				continue;
+
+			$position = $this->text_position[$item->uid];
+			$description = unserialize($description_list[$item->id]);
+
+			$data = array(
+					'text'   => $description['text'],
+					'top'    => $position[0].'%',
+					'left'   => $position[1].'%',
+					'bottom' => $position[2].'%',
+					'right'  => $position[3].'%',
+					'image'  => gallery::getGroupImageById($item->gallery)
+				);
+
+			$items[] = $data;
+		}
 
 		// prepare template
 		$template = new TemplateHandler('print_card.xml', $this->path.'templates/');
 
 		if (count($items) > 0)
 			foreach ($items as $item) {
-				$params = array(
-						'text'   => $item['text'],
-						'top'    => $top,
-						'left'   => $left,
-						'right'  => $right,
-						'bottom' => $bottom
-						'image'  => $image_url
-					);
-
-				$template->setLocalParams($params);
+				$template->setLocalParams($item);
 				$template->restoreXML();
 				$template->parse();
 			}
