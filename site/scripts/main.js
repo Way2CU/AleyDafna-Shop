@@ -472,7 +472,7 @@ Site.DialogSystem = function() {
 				.on('keyup', self._handleRecoveryKeyPress);
 
 		// prepare captcha image
-		var base = $('base').attr('href');
+		var base = $('meta[property=base-url]').attr('content');
 
 		self.recovery.input_captcha
 				.on('focusin', self._handleFocusIn)
@@ -728,7 +728,7 @@ Site.DialogSystem = function() {
 	self._handleCaptchaClick = function(event) {
 		event.preventDefault();
 
-		var base = $('base').attr('href');
+		var base = $('meta[property=base-url]').attr('content');
 		var url = base + '?section=captcha&action=print_image&' + Date.now();
 
 		self.recovery.image_captcha.attr('src', url);

@@ -80,7 +80,7 @@ Caracal.PrintSupport = function() {
 				});
 
 		// open location for print
-		var base_url = $('base').attr('href');
+		var base_url = $('meta[property=base-url]').attr('content');
 		var params = {
 				section: 'backend_module',
 				action: 'transfer_control',
