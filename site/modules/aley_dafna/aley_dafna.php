@@ -24,10 +24,10 @@ class aley_dafna extends Module {
 	const COL_ID = 0;
 	const COL_NAME_HE = 1;
 	const COL_NAME_RU = 2;
-	const COL_NAME_EN = 2;
+	const COL_NAME_EN = 3;
 	const COL_DESCRIPTION_HE = 3;
 	const COL_DESCRIPTION_RU = 4;
-	const COL_DESCRIPTION_EN = 4;
+	const COL_DESCRIPTION_EN = 5;
 	const COL_PRICE = 5;
 	const COL_IMAGE = 6;
 	const COL_SIZE_LABELS = 7;
@@ -75,7 +75,20 @@ class aley_dafna extends Module {
 						true, true,
 						backend_UrlMake($this->name, 'import')
 					),
-					5  // level
+					6  // level
+				));
+
+				$import_menu->addChild(null, new backend_MenuItem(
+					$this->getLanguageConstant('menu_import_english'),
+					url_GetFromFilePath($this->path.'images/import.svg'),
+					window_Open( // on click open window
+						'shop_import_items',
+						350,
+						$this->getLanguageConstant('title_import_items'),
+						true, true,
+						backend_UrlMake($this->name, 'import_english')
+					),
+					6  // level
 				));
 		}
 
@@ -135,11 +148,16 @@ class aley_dafna extends Module {
 					break;
 
 				case 'import':
-					$this->show_import();
+				case 'import_english':
+					$this->show_import($params['backend_action']);
 					break;
 
 				case 'import_from_file':
 					$this->import_from_file();
+					break;
+
+				case 'import_english_from_file':
+					$this->import_english();
 					break;
 
 				default:
@@ -262,12 +280,12 @@ class aley_dafna extends Module {
 	/**
 	 * Show form for selecting file for import.
 	 */
-	private function show_import() {
+	private function show_import($action) {
 		$template = new TemplateHandler('import.xml', $this->path.'templates/');
 		$template->setMappedModule($this->name);
 
 		$params = array(
-			'form_action'	=> backend_UrlMake($this->name, 'import_from_file'),
+			'form_action'	=> backend_UrlMake($this->name, $action),
 			'cancel_action'	=> window_Close('shop_import_items')
 		);
 

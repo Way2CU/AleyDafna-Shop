@@ -1,6 +1,7 @@
 {
 	"import": "יבא",
 	"menu_import_items": "יבא פריטים מקובץ",
+    "menu_import_english": "יבא תרגום באנגלית",
 	"title_import_items": "חנות: יבא פריטים מקובץ",
 	"label_filename": "שם קובץ:",
 	"label_number_to_import": "מספר פריטים ליבוא",
@@ -12,5 +13,5 @@
 	"label_phone_number2": "מספר טלפון נוסף:",
 	"label_invoice_email": "מייל למשלוח חשבונית:",
 	"label_additional_information": "פרטים נוספים:",
-	"print_card": "Print card"
+	"print_card": "הדפס כרטיס"
 }

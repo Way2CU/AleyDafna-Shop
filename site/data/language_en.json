@@ -37,7 +37,7 @@
     "title_form_business": "Fill out the form below and we will get back to you soon",
     "title_disclaimer": "* Photos for illustration only, usually refer to the largest size",
     "title_card_selection": "Greeting card",
-    "description_business": "הנחות ואפשרויות מיוחדות לבתי עסק וחברות",
+    "description_business": "Discount and special offers for businesses and companies.",
     "label_phone": "Phone:",
     "label_item": "Products",
     "menu_about": "About",
@@ -110,5 +110,5 @@
     "label_city_not_in_list": "Anywhere else, call the store.",
     "message_card": "Select card and enter text. If left empty no card will be added.",
     "currency": "₪",
-    "label_delivery_cost": "עלות משלוח:"
+    "label_delivery_cost": "Delivery cost:"
 }

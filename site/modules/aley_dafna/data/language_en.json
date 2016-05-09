@@ -1,6 +1,7 @@
 {
     "import": "Import",
     "menu_import_items": "Import items from file",
+    "menu_import_english": "Import English translation",
     "title_import_items": "Shop: Import items from file",
     "label_filename": "File name:",
     "label_number_to_import": "Number of items to import:",
