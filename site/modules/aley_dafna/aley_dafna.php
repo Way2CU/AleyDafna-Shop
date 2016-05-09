@@ -64,7 +64,7 @@ class aley_dafna extends Module {
 			$backend = backend::getInstance();
 			$import_menu = $backend->getMenu('shop_import');
 
-			if (!is_null($import_menu))
+			if (!is_null($import_menu)) {
 				$import_menu->addChild(null, new backend_MenuItem(
 					$this->getLanguageConstant('menu_import_items'),
 					url_GetFromFilePath($this->path.'images/import.svg'),
@@ -90,6 +90,7 @@ class aley_dafna extends Module {
 					),
 					6  // level
 				));
+			}
 		}
 
 		// register delivery method and create menu items
@@ -367,6 +368,7 @@ class aley_dafna extends Module {
 
 		// load csv file
 		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
+		$number_to_import = (isset($_REQUEST['number_to_import']) && !empty($_REQUEST['number_to_import'])) ? fix_id($_REQUEST['number_to_import']) : count($csv_data);
 		array_shift($csv_data);  // remove header
 		$counter = 0;
 
@@ -377,6 +379,10 @@ class aley_dafna extends Module {
 			// make sure item already exists
 			if (!array_key_exists($uid, $existing_items))
 				continue;
+
+			// make sure we are within our limits
+			if (++$counter > $number_to_import)
+				break;
 
 			// preare data
 			$data = $existing_items[$uid];
