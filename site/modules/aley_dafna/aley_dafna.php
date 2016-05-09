@@ -22,8 +22,10 @@ class aley_dafna extends Module {
 	const COL_ID = 0;
 	const COL_NAME_HE = 1;
 	const COL_NAME_RU = 2;
+	const COL_NAME_EN = 2;
 	const COL_DESCRIPTION_HE = 3;
 	const COL_DESCRIPTION_RU = 4;
+	const COL_DESCRIPTION_EN = 4;
 	const COL_PRICE = 5;
 	const COL_IMAGE = 6;
 	const COL_SIZE_LABELS = 7;
@@ -330,6 +332,55 @@ class aley_dafna extends Module {
 	 * Import content in English.
 	 */
 	private function import_english() {
+		global $db;
+
+		// get managers
+		$item_manager = ShopItemManager::getInstance();
+		$gallery_manager = GalleryManager::getInstance();
+
+		// load existing items
+		$existing_items = array();
+		$items = $item_manager->getItems(array('name', 'description', 'uid'), array());
+
+		foreach ($items as $item)
+			$existing_items[$item->uid] = $item;
+
+		// load csv file
+		$csv_data = $this->load_csv_file($_FILES['import']['tmp_name']);
+		array_shift($csv_data);  // remove header
+		$counter = 0;
+
+		foreach ($csv_data as $row) {
+			// generate uid and check if item exists in database
+			$uid = hash('sha256', 'item_'.$row[self::COL_ID]);
+
+			// make sure item already exists
+			if (!array_key_exists($uid, $existing_items))
+				continue;
+
+			// preare data
+			$data = $existing_items[$uid];
+			unset($data['uid']);
+			$data['name']['en'] = $row[self::COL_NAME_EN];
+			$data['description']['en'] = $row[self::COL_DESCRIPTION_EN];
+
+			// update data
+			$item_manager->updateData($data, array('uid' => $uid));
+		}
+
+		// show result message
+		$template = new TemplateHandler('message.xml', $this->path.'templates/');
+		$template->setMappedModule($this->name);
+
+		$params = array(
+			'message'	=> $this->getLanguageConstant('message_import_complete'),
+			'button'	=> $this->getLanguageConstant('close'),
+			'action'	=> window_Close('shop_import_items')
+		);
+
+		$template->restoreXML();
+		$template->setLocalParams($params);
+		$template->parse();
 	}
 
 	/**
