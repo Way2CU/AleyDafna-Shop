@@ -170,15 +170,9 @@ class aley_dafna extends Module {
 		$item_manager = ShopItemManager::getInstance();
 
 		// get transaction data
-		$buyer = $buyer_manager->getSingleItem(
-			$buyer_manager->getFieldNames(),
-			array('id' => $transaction->buyer)
-		);
-		$address = $address_manager->getSingleItem(
-			$address_manager->getFieldNames(),
-			array('id' => $transaction->address)
-		);
-		$transaction_items = $transaction_items_manager->getSingleItem(
+		$buyer = Transaction::get_buyer($transaction);
+		$address = Transaction::get_address($transaction);
+		$transaction_items = $transaction_items_manager->getItems(
 			$transaction_items_manager->getFieldNames(),
 			array('transaction' => $transaction->id)
 		);
@@ -330,6 +324,12 @@ class aley_dafna extends Module {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Import content in English.
+	 */
+	private function import_english() {
 	}
 
 	/**
