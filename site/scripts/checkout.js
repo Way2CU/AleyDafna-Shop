@@ -325,4 +325,10 @@ $(function() {
 	// and storing them into single field
 	if ($('#input_details').length > 0)
 		Site.buyer_information_form.page_control.events.connect('page-flip', Site.handle_page_switch);
+
+	// make sure we are the top level window because
+	// Tranzila payment method is retarded as it gets and likes
+	// to redirect inside of iframe, instead of outside
+	if (window.top !== window.self)
+		window.top.location.href = window.self.location.href;
 });
