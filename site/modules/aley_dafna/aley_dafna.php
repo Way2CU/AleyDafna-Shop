@@ -12,6 +12,8 @@
 use Core\Module;
 use Core\Events;
 
+use \Modules\Shop\Transaction as Transaction;
+
 
 class aley_dafna extends Module {
 	private static $_instance;
