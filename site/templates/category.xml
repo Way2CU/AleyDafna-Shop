@@ -15,6 +15,7 @@
 					cms:eval="id"
 					/>
 			</title>
+
 			<!-- Page description -->
 			<cms:module
 				name="shop"
@@ -23,8 +24,11 @@
 				template="parts/page_description.xml"
 				cms:eval="id"
 				/>
-			<cms:module name="shop" action="include_cart_scripts"/>
+
 			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
+			<cms:script src="_BASEURL.'/site/scripts/filter.js'" cms:eval="src"/>
+			<cms:script src="_BASEURL.'/site/scripts/banners.js'" cms:eval="src"/>
+			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:module name="head_tag" action="print_tag"/>
 		</head>
 
