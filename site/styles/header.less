@@ -230,14 +230,19 @@ nav#main > ul > li > a {
 	display: block;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 	text-decoration: none;
 	border-left: 1px solid fade(@color_ac_text,50%);
 	color: @color_ac_text;
 	font-weight: 400;
 	position: relative;
 	transition: all 0.3s;
+}
+
+body.rtl nav#main > ul > li > a {
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 ul.user li a {
@@ -267,6 +272,10 @@ body.rtl nav#main > ul > li:last-of-type > a {
 }
 
 nav#main > ul > li.sub-menu > a {
+	padding-right: 30px;
+}
+
+body.rtl nav#main > ul > li.sub-menu > a {
 	padding-right: 35px;
 }
 
