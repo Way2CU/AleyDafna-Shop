@@ -879,6 +879,7 @@ Site.ItemView = function(item) {
 	self.option_remove = null;
 	self.controls = {};
 	self.set_up = false;
+	self.base_url = document.querySelector('meta[property]').getAttribute('content');
 
 	/**
 	 * Complete object initialization.
@@ -898,7 +899,7 @@ Site.ItemView = function(item) {
 
 		self.option_add = $('<a>').appendTo(self.options_control);
 		self.option_add
-				.html('<svg><use href="#plus" xlink:href="site/images/site-sprite.svg#plus"/></svg>')
+				.html('<svg><use href="#plus" xlink:href=' + self.base_url + '/site/images/site-sprite.svg#plus/></svg>')
 				.attr('href', 'javascript: void(0);')
 				.data('direction', 1)
 				.addClass('alter increase')
@@ -907,7 +908,7 @@ Site.ItemView = function(item) {
 
 		self.option_minus = $('<a>').appendTo(self.options_control);
 		self.option_minus
-				.html('<svg><use href="#minus" xlink:href="site/images/site-sprite.svg#minus"/></svg>')
+				.html('<svg><use href="#minus" xlink:href='+ self.base_url + '/site/images/site-sprite.svg#minus/></svg>')
 				.attr('href', 'javascript: void(0);')
 				.data('direction', -1)
 				.addClass('alter decrease')
@@ -915,7 +916,7 @@ Site.ItemView = function(item) {
 
 		self.option_remove = $('<a>').appendTo(self.options_control);
 		self.option_remove
-				.html('<svg><use href="#close" xlink:href="site/images/site-sprite.svg#close"/></svg>')
+				.html('<svg><use href="#close" xlink:href='+ self.base_url + '/site/images/site-sprite.svg#close/></svg>')
 				.attr('href', 'javascript: void(0)')
 				.attr('class','remove')
 				.on('click', self._handle_remove);
