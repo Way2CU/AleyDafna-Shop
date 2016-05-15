@@ -1152,6 +1152,7 @@ Site.on_load = function() {
 
 	// create filter for items by categories
 	Site.filter = new Site.QuickFilter('section#category', 'section.group', 'a.item');
+	Site.banner_system = new Site.BannerSystem();
 
 	// create page control for home page slider
 	Site.slider = new PageControl('div.header_slider', 'a.link');
