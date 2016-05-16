@@ -55,17 +55,19 @@ Site.BannerSystem = function() {
 			return;
 
 		// place links in DOM tree
-		for (var i=0, count=self.links.length; i<count; i++) {
-			var link = self.links[i];
-			var position = i * self.show_interval;
+		var position = 0;
+		for (var to_display = self.links.slice(0); to_display.length > 0;) {
+			var index = Math.floor(Math.random() * to_display.length - 1);
+			var link = to_display.splice(index, 1)[0];
+			var final_position = position++ * self.show_interval;
 
-			if (position >= visible_items.length) {
+			if (final_position >= visible_items.length) {
 				// remove excess links
 				link.remove();
 
 			} else {
 				// insert/reposition link
-				container.insertBefore(link, visible_items[position][0]);
+				container.insertBefore(link, visible_items[final_position][0]);
 			}
 		}
 	};
