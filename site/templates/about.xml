@@ -12,7 +12,7 @@
 			<!-- Page description -->
 			<cms:module 
 				name="page_info" 
-				action="set_description" 
+				action="set_description"
 				article="about"
 				/>
 

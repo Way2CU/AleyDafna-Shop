@@ -872,6 +872,7 @@ Site.ItemView = function(item) {
 	self.exchange_rate = 1;
 
 	self.container = null;
+	self.name_container = null;
 	self.label_name = null;
 	self.label_size = null;
 	self.label_count = null;
@@ -886,6 +887,7 @@ Site.ItemView = function(item) {
 	self._init = function() {
 		// get list containers
 		var item_list = self.cart.get_list_container();
+		console.log(self.cart);
 		self.currency = self.cart.default_currency;
 
 		// create container
@@ -922,10 +924,13 @@ Site.ItemView = function(item) {
 
 		self.image = $('<img>').appendTo(self.container);
 
-		self.label_name = $('<span>').appendTo(self.container);
+		self.name_container = $('<div>').appendTo(self.container);
+		self.name_container.addClass('name_container');
+
+		self.label_name = $('<span>').appendTo(self.name_container);
 		self.label_name.addClass('name');
 
-		self.label_size = $('<span>').appendTo(self.container);
+		self.label_size = $('<span>').appendTo(self.name_container);
 		self.label_size.addClass('size');
 
 		self.label_count = $('<span>').appendTo(self.container);
@@ -942,6 +947,7 @@ Site.ItemView = function(item) {
 	 */
 	self.handle_change = function() {
 		self.label_name.text(self.item.name[language_handler.current_language]);
+		self.label_size.text(self.item.properties.size_name);
 		self.label_count.text(self.item.count);
 
 		self.label_total
@@ -1045,6 +1051,7 @@ Site.insert_to_cart = function(event, skip_alter) {
 
 	// get item data
 	var uid = $('div.product_information').data('id');
+	var size_definition = $('div.product_information label input:checked').attr('id');
 	var checked = $('div.product_information label input:checked').data('text_id');
 	var cart = $('div#popup')
 
@@ -1057,7 +1064,8 @@ Site.insert_to_cart = function(event, skip_alter) {
 	// find item with same uid
 	var item_list = Site.cart.get_item_list_by_uid(uid);
 	var properties = {
-			size: checked
+			size: checked,
+			size_name: size_definition
 		};
 
 	// try to update existing item in the list
@@ -1151,7 +1159,7 @@ Site.on_load = function() {
 		.setWrapAround(true);
 
 	// create filter for items by categories
-	Site.filter = new Site.QuickFilter('section#category', 'section.group', 'a.item');
+	// Site.filter = new Site.QuickFilter('section#category', 'section.group', 'a.item');
 
 	// create page control for home page slider
 	Site.slider = new PageControl('div.header_slider', 'a.link');

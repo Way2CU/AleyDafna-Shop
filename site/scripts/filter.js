@@ -153,3 +153,7 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 	// finalize object
 	self._init();
 }
+
+$(function() {
+	Site.filter = new Site.QuickFilter('section#category', 'section.group', 'a.item');
+})
