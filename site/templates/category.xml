@@ -45,15 +45,13 @@
 			<section id="category">
 				<!-- Show subcategory without menu -->
 				<cms:if condition="isset($_REQUEST['subcategory'])" >
-					<h2>
-						<cms:module
-							name="shop"
-							action="show_category"
-							id="fix_id($_REQUEST['subcategory'])"
-							template="parts/category_name.xml"
-							cms:eval="id"
-							/>
-					</h2>
+					<cms:module
+						name="shop"
+						action="show_category"
+						id="fix_id($_REQUEST['subcategory'])"
+						template="parts/category_name.xml"
+						cms:eval="id"
+						/>
 
 					<cms:module
 						name="shop"
@@ -76,15 +74,13 @@
 
 				<!-- Show list of categories in their own containers -->
 				<cms:if condition="!isset($_REQUEST['subcategory'])">
-					<h2>
-						<cms:module
-							name="shop"
-							action="show_category"
-							id="fix_id($_REQUEST['id'])"
-							template="parts/category_name.xml"
-							cms:eval="id"
-							/>
-					</h2>
+					<cms:module
+						name="shop"
+						action="show_category"
+						id="fix_id($_REQUEST['id'])"
+						template="parts/category_name.xml"
+						cms:eval="id"
+						/>
 
 					<cms:module
 						name="shop"

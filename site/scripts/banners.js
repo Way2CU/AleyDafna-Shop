@@ -32,6 +32,12 @@ Site.BannerSystem = function() {
 				'group': 'banners'
 			};
 
+		// attach extra category to select from
+		var title = document.querySelector('section#category > h2');
+		if (title.dataset.id)
+			data.group += ',' + title.dataset.id;
+
+		// get links
 		new Communicator('links')
 			.on_success(self.handler.links_load)
 			.on_error(self.handler.links_load_error)

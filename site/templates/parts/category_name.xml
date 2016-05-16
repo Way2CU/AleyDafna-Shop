@@ -1,3 +1,5 @@
 <document>
-	<cms:var param="title" multilanguage="yes"/>
+	<h2 data-id="$params['text_id']" cms:eval="data-id">
+		<cms:var param="title" multilanguage="yes"/>
+	</h2>
 </document>
