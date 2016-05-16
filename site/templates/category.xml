@@ -62,7 +62,7 @@
 						template="parts/category_optional_description.xml"
 						cms:eval="id"
 						/>
-					
+
 					<cms:module
 						name="shop"
 						action="show_item_list"
@@ -95,7 +95,7 @@
 						template="parts/category_items_template.xml"
 						cms:eval="category"
 						/>
-					
+
 					<cms:module
 						name="shop"
 						action="show_category_list"
@@ -112,7 +112,7 @@
 				<cms:template file="parts/banners.xml"/>
 			</section>
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
 		</body>
 	</html>
 </document>

@@ -124,9 +124,13 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 		// show all items
 		if (category == undefined) {
 			for (var uid in self.items_list) {
-				self.items_list[uid].removeClass('hidden');
+				var item = self.items_list[uid];
+				item.removeClass('hidden');
 				items.push(item);
 			}
+
+			// trigger event
+			self.events.trigger('visibility-change', self.container[0], items);
 
 			return;
 		}
@@ -147,13 +151,9 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 		}
 
 		// trigger event
-		self.events.trigger('visibility-change', items);
+		self.events.trigger('visibility-change', self.container[0], items);
 	}
 
 	// finalize object
 	self._init();
 }
-
-$(function() {
-	Site.filter = new Site.QuickFilter('section#category', 'section.group', 'a.item');
-})

@@ -20,10 +20,6 @@ Site.BannerSystem = function() {
 	 * Object initialization function
 	 */
 	self._init = function() {
-		// connect events
-		if (Site.filter)
-			Site.filter.events.connect('visibility-change', self.handler.item_visibility_change);
-
 		// load links from the server
 		self._load_links();
 	};
@@ -43,26 +39,29 @@ Site.BannerSystem = function() {
 	};
 
 	/**
-	 * Place banners on page.
+	 * Handle event sent by the filter object when item visibility changes.
+	 *
+	 * @param object container
+	 * @param array visible_items
 	 */
-	self._position_banners = function() {
+	self.handler.item_visibility_change = function(container, visible_items) {
 		if (self.links.length == 0)
 			return;
 
 		// place links in DOM tree
 		for (var i=0, count=self.links.length; i<count; i++) {
 			var link = self.links[i];
-			var position = i * self.show_interval - i;
+			var position = i * self.show_interval;
 
+			if (position >= visible_items.length) {
+				// remove excess links
+				link.remove();
 
+			} else {
+				// insert/reposition link
+				container.insertBefore(link, visible_items[position][0]);
+			}
 		}
-	};
-
-	/**
-	 * Handle event sent by the filter object when item visibility changes.
-	 */
-	self.handler.item_visibility_change = function(visible_items) {
-		self._position_banners(visible_items);
 	};
 
 	/**
@@ -85,6 +84,7 @@ Site.BannerSystem = function() {
 			image.setAttribute('height', 282);
 
 			// configure link
+			link.classList.add('banner');
 			link.setAttribute('href', link_data.redirect_url);
 			link.appendChild(image);
 
@@ -92,8 +92,11 @@ Site.BannerSystem = function() {
 			self.links.push(link);
 		}
 
-		// position links
-		self._position_banners();
+		// connect events
+		Site.filter.events.connect(
+				'visibility-change',
+				self.handler.item_visibility_change
+			);
 	};
 
 	/**
@@ -106,8 +109,3 @@ Site.BannerSystem = function() {
 	// finalize object
 	self._init();
 };
-
-
-$(function() {
-	Site.banner_system = new Site.BannerSystem();
-});
