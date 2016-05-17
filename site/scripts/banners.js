@@ -93,7 +93,9 @@ Site.BannerSystem = function() {
 
 			// configure link
 			link.classList.add('banner');
-			link.setAttribute('href', link_data.redirect_url);
+			if (link_data.url == '' || link_data.url == '#')
+				link.setAttribute('href', 'javascript: void(0)'); else
+				link.setAttribute('href', link_data.redirect_url);
 			link.appendChild(image);
 
 			// add link to the list
