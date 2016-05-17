@@ -76,7 +76,10 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 
 		// create default checkbox element
 		if (self.categories.length > 0)
-			self._create_checkbox(language_handler.getText(null, 'default_checkbox_title'));
+			self._create_checkbox(
+					language_handler.getText(null, 'default_checkbox_title'),
+					true
+				);
 	}
 
 	/**
@@ -85,7 +88,7 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 	 * @param string name
 	 * @param string id
 	 */
-	self._create_checkbox = function(category_name, id) {
+	self._create_checkbox = function(category_name, id, checked) {
 		// create radio button
 		var input = $('<input>');
 		input
@@ -93,6 +96,9 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 			.attr('name', 'sort')
 			.attr('data-id', id)
 			.on('change', self._handle_category_toggle);
+
+		if (checked)
+			input.attr('checked', 'checked');
 
 		// create text container
 		var span = $('<span>');
@@ -153,6 +159,32 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 		// trigger event
 		self.events.trigger('visibility-change', self.container[0], items);
 	}
+
+	/**
+	 * Get list of currently visible items.
+	 *
+	 * @return array
+	 */
+	self.get_visible_items = function() {
+		var result = new Array();
+
+		for (var uid in self.items_list) {
+			var item = self.items_list[uid];
+			if (!item.hasClass('hidden'))
+				items.push(item);
+		}
+		
+		return result;
+	};
+
+	/**
+	 * Get DOM element.
+	 *
+	 * @return object
+	 */
+	self.get_container = function() {
+		return self.container[0];
+	};
 
 	// finalize object
 	self._init();

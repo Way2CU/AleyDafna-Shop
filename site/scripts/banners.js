@@ -105,6 +105,12 @@ Site.BannerSystem = function() {
 				'visibility-change',
 				self.handler.item_visibility_change
 			);
+
+		// initially apply banners
+		self.handler.item_visibility_change(
+				Site.filter.get_container(),
+				Site.filter.get_visible_items()
+			);
 	};
 
 	/**
