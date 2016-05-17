@@ -10,7 +10,8 @@ header {
 	display: block;
 	padding:0px calc(~'(100vw - 1200px)' / 2);
 
-	background: linear-gradient(to bottom, @color_ac_medium_green 0%,@color_ac_dark_green 100%);
+	background-color: @color_ac_medium_green;
+	background-image: linear-gradient(to bottom, @color_ac_medium_green 0%,@color_ac_dark_green 100%);
 	color: @color_ac_text;
 	white-space: nowrap;
 }
@@ -40,6 +41,7 @@ header a.logo img {
 	margin-left: auto;
 	margin-right: auto;
 	width: 80%;
+	border: 0px;
 }
 
 ul.user,
