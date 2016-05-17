@@ -97,9 +97,6 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 			.attr('data-id', id)
 			.on('change', self._handle_category_toggle);
 
-		if (checked)
-			input.attr('checked', 'checked');
-
 		// create text container
 		var span = $('<span>');
 		span.text(category_name);
@@ -110,6 +107,11 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 			.append(input)
 			.append(span)
 			.appendTo(self.checkbox_container);
+
+		if (checked) {
+			input.attr('checked', 'checked');
+			label.addClass('active');
+		}
 	}
 
 	/**
