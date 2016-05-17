@@ -14,13 +14,7 @@
 			<!-- Header -->
 			<cms:desktop>
 				<cms:template file="parts/header.xml"/>
-			</cms:desktop>
 
-			<cms:mobile>
-				<cms:template file="parts/mobile_header.xml"/>
-			</cms:mobile>
-
-			<cms:desktop>
 				<section id="slider">
 					<div class="banner_container">
 						<cms:template file="parts/home_page_banners.xml"/>
@@ -37,22 +31,7 @@
 						<a href="javascript:void(0)" class="next"></a>
 					</div>
 				</section>
-			</cms:desktop>
 
-			<!-- Mobile slider -->
-			<cms:mobile>
-				<section id="slider">
-					<cms:module
-						name="links"
-						action="show_link_list"
-						group="mobile_header_links"
-						template="parts/slider_image.xml"
-						/>
-					<div class="controls">	</div>
-				</section>
-			</cms:mobile>
-
-			<cms:desktop>
 				<section id="news">
 					<div class="news_container">
 						<span>
@@ -173,6 +152,19 @@
 			</cms:desktop>
 
 			<cms:mobile>
+				<cms:template file="parts/mobile_header.xml"/>
+
+				<!-- Mobile slider -->
+				<section id="slider">
+					<cms:module
+						name="links"
+						action="show_link_list"
+						group="mobile_header_links"
+						template="parts/slider_image.xml"
+						/>
+					<div class="controls">	</div>
+				</section>
+
 				<section id="promoted_category">
 					<cms:module
 						name="shop"

@@ -1,14 +1,12 @@
 <document>
 	<section class="group" id="$params['id']" cms:eval="id">
-		<h5>
-			<cms:module
-				name="shop"
-				action="show_category"
-				id="$params['id']"
-				template="parts/category_name.xml"
-				cms:eval="id"
-				/>
-		</h5>
+		<cms:module
+			name="shop"
+			action="show_category"
+			id="$params['id']"
+			template="parts/category_name.xml"
+			cms:eval="id"
+			/>
 
 		<!-- optional category description and image -->
 		<cms:mobile>
@@ -31,5 +29,4 @@
 			cms:eval="category"
 			/>
 	</section>	
-		
 </document>

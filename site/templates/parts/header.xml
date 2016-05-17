@@ -53,11 +53,8 @@
 			<br/>
 
 			<span class="items">0 </span>
-
 			<span><cms:text constant="label_item"/></span>
-
 			<span class="price">0.00</span>
-
 			<span><cms:text constant="currency"/></span>
 
 			<cms:template file="stock/cart.xml"/>

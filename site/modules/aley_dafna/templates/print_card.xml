@@ -6,7 +6,7 @@
 		<cms:link
 			href="_BASEURL.'/site/modules/aley_dafna/include/print.css'"
 			rel="stylesheet"
-			type="type"
+			type="text/css"
 			cms:eval="href"
 			/>
 		<cms:module name="head_tag" action="print_tag"/>

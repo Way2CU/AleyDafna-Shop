@@ -41,7 +41,7 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 		// create checkbox element for all categories
 		self.categories.each(function() {
 			var category = $(this);
-			var category_name = category.find('h5').text();
+			var category_name = category.find('h2').text();
 			var category_id = category.attr('id');
 
 			if (category.find(item_selector).length > 0)
