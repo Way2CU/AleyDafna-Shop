@@ -171,7 +171,7 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 		for (var uid in self.items_list) {
 			var item = self.items_list[uid];
 			if (!item.hasClass('hidden'))
-				items.push(item);
+				result.push(item);
 		}
 		
 		return result;
