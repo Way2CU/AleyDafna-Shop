@@ -78,6 +78,7 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 		if (self.categories.length > 0)
 			self._create_checkbox(
 					language_handler.getText(null, 'default_checkbox_title'),
+					null,
 					true
 				);
 	}
