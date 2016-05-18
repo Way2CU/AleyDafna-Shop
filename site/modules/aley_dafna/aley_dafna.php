@@ -398,6 +398,7 @@ class aley_dafna extends Module {
 
 			// preare data
 			$item = $existing_items[$uid];
+			$data = array();
 			$data['name']= $item->name;
 			$data['description']= $item->description;
 			$data['name']['en'] = trim($row[self::COL_NAME_EN]);
