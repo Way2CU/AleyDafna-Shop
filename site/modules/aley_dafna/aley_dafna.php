@@ -298,7 +298,7 @@ class aley_dafna extends Module {
 		}
 
 		$params = array(
-			'form_action'	=> backend_UrlMake($this->name, $action),
+			'form_action'	=> backend_UrlMake($this->name, $form_action),
 			'cancel_action'	=> window_Close('shop_import_items')
 		);
 
@@ -397,8 +397,9 @@ class aley_dafna extends Module {
 				break;
 
 			// preare data
-			$data = $existing_items[$uid];
-			unset($data['uid']);
+			$item = $existing_items[$uid];
+			$data['name']= $item->name;
+			$data['description']= $item->description;
 			$data['name']['en'] = trim($row[self::COL_NAME_EN]);
 			$data['description']['en'] = trim($row[self::COL_DESCRIPTION_EN]);
 
