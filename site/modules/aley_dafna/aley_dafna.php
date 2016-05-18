@@ -387,8 +387,8 @@ class aley_dafna extends Module {
 			// preare data
 			$data = $existing_items[$uid];
 			unset($data['uid']);
-			$data['name']['en'] = $row[self::COL_NAME_EN];
-			$data['description']['en'] = $row[self::COL_DESCRIPTION_EN];
+			$data['name']['en'] = trim($row[self::COL_NAME_EN]);
+			$data['description']['en'] = trim($row[self::COL_DESCRIPTION_EN]);
 
 			// update data
 			$item_manager->updateData($data, array('uid' => $uid));
