@@ -285,6 +285,18 @@ class aley_dafna extends Module {
 		$template = new TemplateHandler('import.xml', $this->path.'templates/');
 		$template->setMappedModule($this->name);
 
+		// prepare form action
+		switch ($action) {
+			case 'import_english':
+				$form_action = 'import_english_from_file';
+				break;
+
+			case 'import':
+			default:
+				$form_action = 'import_from_file';
+				break;
+		}
+
 		$params = array(
 			'form_action'	=> backend_UrlMake($this->name, $action),
 			'cancel_action'	=> window_Close('shop_import_items')
