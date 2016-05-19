@@ -119,7 +119,7 @@ Site.BannerSystem = function() {
 		} else {
 			// no subcategories were found by the filter use available items
 			var container = document.querySelector('section#category');
-			var items = container.querySelectorAll('a.link');
+			var items = container.querySelectorAll('a.item');
 
 			// initially apply banners
 			self.handler.item_visibility_change(container, items);
