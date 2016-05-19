@@ -135,7 +135,7 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 			for (var uid in self.items_list) {
 				var item = self.items_list[uid];
 				item.removeClass('hidden');
-				items.push(item);
+				items.push(item[0]);
 			}
 
 			// trigger event
@@ -152,7 +152,7 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 			// check item membership
 			if (item_categories.indexOf(category.toString()) >= 0) {
 				item.removeClass('hidden');
-				items.push(item);
+				items.push(item[0]);
 
 			} else {
 				item.addClass('hidden');
@@ -174,9 +174,9 @@ Site.QuickFilter = function(parent_container_selector, categories_selector, item
 		for (var uid in self.items_list) {
 			var item = self.items_list[uid];
 			if (!item.hasClass('hidden'))
-				result.push(item);
+				result.push(item[0]);
 		}
-		
+
 		return result;
 	};
 
