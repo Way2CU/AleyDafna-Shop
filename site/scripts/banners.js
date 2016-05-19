@@ -103,16 +103,27 @@ Site.BannerSystem = function() {
 		}
 
 		// connect events
-		Site.filter.events.connect(
-				'visibility-change',
-				self.handler.item_visibility_change
-			);
+		if (Object.keys(Site.filter.item_list).length > 0) {
+			// items exist in filter, use filter to show banners
+			Site.filter.events.connect(
+					'visibility-change',
+					self.handler.item_visibility_change
+				);
 
-		// initially apply banners
-		self.handler.item_visibility_change(
-				Site.filter.get_container(),
-				Site.filter.get_visible_items()
-			);
+			// initially apply banners
+			self.handler.item_visibility_change(
+					Site.filter.get_container(),
+					Site.filter.get_visible_items()
+				);
+
+		} else {
+			// no subcategories were found by the filter use available items
+			var container = document.querySelector('section#category');
+			var items = container.querySelectorAll('a.link');
+
+			// initially apply banners
+			self.handler.item_visibility_change(container, items);
+		}
 	};
 
 	/**
