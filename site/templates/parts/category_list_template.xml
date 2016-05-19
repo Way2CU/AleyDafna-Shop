@@ -28,5 +28,5 @@
 			template="parts/category_items_template.xml"
 			cms:eval="category"
 			/>
-	</section>	
+	</section>
 </document>
