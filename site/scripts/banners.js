@@ -103,7 +103,7 @@ Site.BannerSystem = function() {
 		}
 
 		// connect events
-		if (Object.keys(Site.filter.item_list).length > 0) {
+		if (Object.keys(Site.filter.items_list).length > 0) {
 			// items exist in filter, use filter to show banners
 			Site.filter.events.connect(
 					'visibility-change',
