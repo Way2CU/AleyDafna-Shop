@@ -29,7 +29,7 @@ Site.BannerSystem = function() {
 	 */
 	self._load_links = function() {
 		var data = {
-				'group': 'banners'
+				'group': 'banners_' + language_handler.current_language
 			};
 
 		// attach extra category to select from
