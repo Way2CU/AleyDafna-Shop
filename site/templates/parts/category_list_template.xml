@@ -4,7 +4,7 @@
 			name="shop"
 			action="show_category"
 			id="$params['id']"
-			template="parts/category_name.xml"
+			template="parts/category_title.xml"
 			cms:eval="id"
 			/>
 

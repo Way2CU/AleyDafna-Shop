@@ -49,7 +49,7 @@
 						name="shop"
 						action="show_category"
 						id="fix_id($_REQUEST['subcategory'])"
-						template="parts/category_name.xml"
+						template="parts/category_title.xml"
 						cms:eval="id"
 						/>
 
@@ -78,7 +78,7 @@
 						name="shop"
 						action="show_category"
 						id="fix_id($_REQUEST['id'])"
-						template="parts/category_name.xml"
+						template="parts/category_title.xml"
 						cms:eval="id"
 						/>
 
