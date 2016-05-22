@@ -391,6 +391,7 @@ a.item img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	max-height: 120px;
 }
 
 div.item p,
@@ -422,6 +423,11 @@ a.item.price:not([data-discount-price]):after {
 	content: attr(data-currency);
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+a.banner img {
+	width: 100%;
+	height: auto;
 }
 
 section#news div.news_container {
@@ -572,15 +578,9 @@ section#category h2 {
 section#category p {
 	text-align: center;
 	width: 95%;
-	font-size: 1em;
+	font-size: 0.8em;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-section#category  img {
-	display: block;
-	width: 100%;
-	height: auto;
 }
 
 section#category p a {
