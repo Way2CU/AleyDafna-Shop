@@ -888,7 +888,6 @@ Site.ItemView = function(item) {
 	self._init = function() {
 		// get list containers
 		var item_list = self.cart.get_list_container();
-		console.log(self.cart);
 		self.currency = self.cart.default_currency;
 
 		// create container
