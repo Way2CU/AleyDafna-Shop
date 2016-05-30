@@ -27,4 +27,7 @@
 			<action name="business-clients" file="business.xml"/>
 		</language>
 	</section>
+	<section name="user">
+		<language name="all" file="user.xml" />
+	</section>
 </document>

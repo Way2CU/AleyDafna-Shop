@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../units/schema/language.dtd">
+<document>
+	<div
+		class="transaction"
+		data-uid="$params['uid']"
+		cms:eval="data-uid"
+		>
+		<table>
+			<!-- Labels -->
+			<tr>
+				<th><cms:text constant="column_date"/></th>
+				<th><cms:text constant="column_total"/></th>
+				<th><cms:text constant="column_delivery"/></th>
+				<th><cms:text constant="column_id"/></th>
+				<th><cms:text constant="column_status"/></th>
+			</tr>
+
+			<!-- Values -->
+			<tr>
+				<td><cms:var param="timestamp"/></td>
+				<td class="popup">
+					<span><cms:var param="summary"/></span>
+					<ul>
+						<li>
+							<span><cms:text constant="label_total" module="shop"/></span>
+							<cms:var param="total"/>
+						</li>
+						<li>
+							<span><cms:text constant="label_handling" module="shop"/></span>
+							<cms:var param="handling"/>
+						</li>
+						<li>
+							<span><cms:text constant="label_shipping" module="shop"/></span>
+							<cms:var param="shipping"/>
+						</li>
+					</ul>
+				</td>
+				<td class="popup">
+					<cms:address
+						id="$params['address']"
+						template="parts/transaction_address.xml"
+						cms:eval="id"
+						/>
+				</td>
+				<td><cms:var param="uid"/></td>
+				<td><cms:var param="status_value"/></td>
+			</tr>
+		</table>
+
+		<div class="controls">
+			<a
+				href="javascript: void(0);"
+				class="show_items"
+				data-show="show_items"
+				data-hide="hide_items"
+				cms:constant="data-show,data-hide"
+				/>
+			<a
+				href="javascript: void(0);"
+				class="add_items"
+				>
+				<cms:text constant="add_selected"/>
+			</a>
+		</div>
+
+		<div class="items">
+			<cms:item_list
+				transaction="$params['id']"
+				template="parts/shop_item.xml"
+				cms:eval="transaction"
+				/>
+		</div>
+	</div>
+</document>

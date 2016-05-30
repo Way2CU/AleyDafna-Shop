@@ -17,6 +17,7 @@ section#promoted_category {
 	background-size: 149px 139px;
 }
 
+section.user,
 section#special_categories,
 section#news,
 section#slider
@@ -26,6 +27,10 @@ section#special_categories {
 	background-image: none;
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+section.user h1 {
+	text-align: center;
 }
 
 section#faq,
@@ -1101,10 +1106,17 @@ div#form_customers p {
 	font-weight: 700;
 }
 
+form.recovery,
 div#form_customers form,
 div#form_business form,
 div#form_wrap form {
 	display: block;
+}
+
+form.recovery {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
 }
 
 div#form_customers form,
@@ -1116,6 +1128,7 @@ div#form_wrap form {
 	padding-bottom: 20px;
 }
 
+form.recovery label,
 div#form_customers form label,
 div#form_business form label,
 div#form_wrap form label {
@@ -1124,6 +1137,11 @@ div#form_wrap form label {
 	margin-right: auto;
 	width: 95%;
 	position: relative;
+}
+
+form.recovery label {
+	margin-bottom: 1em;
+	width: 100%;
 }
 
 div#form_customers form label:before,
@@ -1188,6 +1206,10 @@ div#form_wrap form label span {
 	font-weight: 700;
 }
 
+form.recovery label span {
+	display: block;
+}
+
 body.rtl div#form_business form label span,
 body.rtl div#form_customers form label span ,
 body.rtl div#form_wrap form label span {
@@ -1196,6 +1218,7 @@ body.rtl div#form_wrap form label span {
 	text-align: right;
 }
 
+form.recovery label input,
 div#form_business form label input,
 div#form_customers form label input,
 div#form_wrap form label textarea,
@@ -1206,10 +1229,11 @@ div#form_wrap form label input {
 	padding-bottom: 10px;
 	padding-left: 5px;
 	border: 1px solid @color_ac_medium_green;
-	width: calc(~'(100% - 5px)');
+	width: calc(~'(100% - 7px)');
 	transition: all 0.3s;
 }
 
+form.recovery label input:hover,
 div#form_business form label input:hover,
 div#form_customers form label input:hover,
 div#form_wrap form label textarea:hover,
@@ -1230,6 +1254,7 @@ body.rtl div#form_wrap form label input {
 	padding-right: 5px;
 }
 
+form.recovery div.controls,
 div#form_customers form div.controls,
 div#form_business form div.controls,
 div#form_wrap form div.controls {
@@ -1243,6 +1268,7 @@ div#form_business form div.controls {
 	margin-bottom: 15px;
 }
 
+form.recovery div.controls button,
 div#form_customers form div.controls button,
 div#form_business form div.controls button,
 div#form_wrap form div.controls button {
