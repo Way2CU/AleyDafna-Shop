@@ -2,7 +2,7 @@
 site:
   domain: aleydafna.co.il
   subdomain: test
-  make_alias: false
+  # alias: domain.com
   root: test
   username: aleyd
   caracal_branch: develop
