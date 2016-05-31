@@ -69,22 +69,6 @@
 							<div class="overlay"/>
 						</form>
 					</cms:user>
-
-				<!-- Show list of previous purchases -->
-				<div id="transactions">
-					<cms:user>
-						<cms:module
-							name="shop"
-							action="show_transaction_list"
-							order_by="id"
-							order_asc="0"
-							system_user="$_SESSION['uid']"
-							cms:eval="system_user"
-							template="parts/transaction.xml"
-							/>
-					</cms:user>
-				</div>
-
 			</section>
 			<cms:template file="parts/footer.xml"/>
 		</body>
