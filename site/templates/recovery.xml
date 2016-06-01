@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../units/schema/language.dtd">
+<document>
+	<cms:var name="_DOCTYPE"/>
+	<html lang="$language" cms:eval="lang">
+		<head>
+			<title><cms:text constant="site_title"/></title>
+			<cms:module
+				name="shop"
+				action="include_cart_scripts"
+				/>
+			<cms:collection include="page_control,animation_chain"/>
+			<cms:script src="_BASEURL.'/site/scripts/recovery.js'" cms:eval="src"/>
+			<cms:module name="head_tag" action="print_tag"/>
+		</head>
+
+		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
+			<!-- Header -->
+			<cms:desktop>
+				<cms:template file="parts/header.xml"/>
+			</cms:desktop>
+
+			<cms:mobile>
+				<cms:template file="parts/mobile_header.xml"/>
+			</cms:mobile>
+
+			<section class="user">
+				<cms:user>
+						<h1><cms:text constant="title_recover_password"/></h1>
+						<form class="recovery" action="url_Make()" method="POST" cms:eval="action">
+							<label>
+								<span><cms:text constant="label_username"/></span>
+								<input
+									type="hidden"
+									name="code"
+									value="fix_chars($_REQUEST['code'])"
+									cms:eval="value"
+									/>
+								<input
+									type="text"
+									name="username"
+									value="fix_chars($_REQUEST['username'])"
+									cms:eval="value"
+									readonly="readonly"
+									/>
+							</label>
+							<label>
+								<span><cms:text constant="label_new_password"/></span>
+								<input
+									type="password"
+									name="password"
+									maxlength="50"
+									data-required="1"
+									/>
+							</label>
+							<label>
+								<span><cms:text constant="label_repeat_password"/></span>
+								<input
+									type="password"
+									name="password_repeat"
+									maxlength="50"
+									data-required="1"
+									/>
+							</label>
+
+							<div class="controls">
+								<button type="submit"><cms:text constant="save"/></button>
+							</div>
+							<div class="overlay"/>
+						</form>
+					</cms:user>
+			</section>
+			<cms:template file="parts/footer.xml"/>
+		</body>
+	</html>
+</document>

@@ -27,4 +27,10 @@
 			<action name="business-clients" file="business.xml"/>
 		</language>
 	</section>
+	<section name="user">
+		<language name="all">
+			<language name="all"/>
+				<action name="_default" file="recovery.xml"/>
+		</language>
+	</section>
 </document>

@@ -33,9 +33,14 @@ section#about {
 	position: relative;
 }
 
+section.user,
 section#contact {
 	padding: @vertical_spacing_small calc(~'(100% - 960px)' / 2);
 	z-index: 0;
+}
+
+section.user h1 {
+	text-align: center;
 }
 
 section#business {
@@ -1449,6 +1454,7 @@ div#form_business p {
 	background-color: @color_ac_medium_green
 }
 
+form.recovery,
 div#form_customers form,
 div#form_business form,
 div#form_wrap form {
@@ -1457,6 +1463,12 @@ div#form_wrap form {
 
 div#form_customers form {
 	background-color: fade(@color_ac_text, 80%);
+}
+
+form.recovery {
+	margin-left: auto;
+	margin-right: auto;
+	width: 45%;
 }
 
 div#form_customers form label,
@@ -1468,6 +1480,11 @@ div#form_wrap form label {
 	margin-right: 1%;
 	width: 30%;
 	position: relative;
+}
+
+form.recovery label {
+	display: block;
+	margin-bottom: 15px;
 }
 
 div#form_customers form label:first-of-type {
@@ -1543,6 +1560,10 @@ div#form_wrap form label span {
 	text-align: left;
 }
 
+form.recovery label span {
+	display: block;
+}
+
 body.rtl div#form_business form label span,
 body.rtl div#form_customers form label span ,
 body.rtl div#form_wrap form label span {
@@ -1551,6 +1572,7 @@ body.rtl div#form_wrap form label span {
 	text-align: right;
 }
 
+form.recovery label input,
 div#form_business form label input,
 div#form_customers form label input,
 div#form_wrap form label textarea,
@@ -1561,10 +1583,11 @@ div#form_wrap form label input {
 	padding-bottom: 10px;
 	padding-left: 5px;
 	border: 1px solid @color_ac_medium_green;
-	width: calc(~'(100% - 5px)');
+	width: calc(~'(100% - 7px)');
 	transition: all 0.3s;
 }
 
+form.recovery label input:hover,
 div#form_business form label input:hover,
 div#form_customers form label input:hover,
 div#form_wrap form label textarea:hover,
@@ -1585,6 +1608,7 @@ body.rtl div#form_wrap form label input {
 	padding-right: 5px;
 }
 
+form.recovery div.controls,
 div#form_customers form div.controls,
 div#form_business form div.controls,
 div#form_wrap form div.controls {
@@ -1598,6 +1622,7 @@ div#form_business form div.controls {
 	margin-bottom: 15px;
 }
 
+form.recovery div.controls button,
 div#form_customers form div.controls button,
 div#form_business form div.controls button,
 div#form_wrap form div.controls button {
@@ -1619,6 +1644,7 @@ div#form_customers form div.controls button {
 	margin-bottom: 20px;
 }
 
+form.recovery div.controls button:hover,
 div#form_customers form div.controls button:hover,
 div#form_business form div.controls button:hover,
 div#form_wrap form div.controls button:hover {
