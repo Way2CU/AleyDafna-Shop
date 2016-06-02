@@ -6,31 +6,30 @@
  * Authors:Tal Reznic
  */
 
- footer {
- 	display: block;
- 	text-align: center;
- 	border-top: 2px solid @color_ac_dark_green;
- }
+footer {
+	display: block;
+	text-align: center;
+	border-top: 2px solid @color_ac_dark_green;
+}
 
- section#payments,
- section#information,
- nav#footer_nav,
- section#features {
- 	background-color: fade(@color_ac_light_green,10%);
- }
+section#payments,
+section#information,
+nav#footer_nav,
+section#features {
+	background-color: fade(@color_ac_light_green,10%);
+}
 
- section#information {
- 	background:linear-gradient(to bottom, #004d26 -17%, #008340 100%), radial-gradient(circle closest-side at 10px 10px, #00572B 0%, #00552A 84%, rgba(234, 198, 198, 0) 100%);
- 	background-size: 100% auto,20px 20px; 
- 	background-repeat: no-repeat, repeat-x;
- 	background-position: center 10px, center 0px;
- }
+section#information {
+	background:linear-gradient(to bottom, #004d26 -17%, #008340 100%), radial-gradient(circle closest-side at 10px 10px, #00572B 0%, #00552A 84%, rgba(234, 198, 198, 0) 100%);
+	background-size: 100% auto,20px 20px;
+	background-repeat: no-repeat, repeat-x;
+	background-position: center 10px, center 0px;
+}
 
- section#payments {
+section#payments {
 	background-color: @color_ac_text;
 	position: relative;
 }
-
 
 section#features ul {
 	margin: 0px;
@@ -111,9 +110,7 @@ section#information div p,
 section#information div a {
 	color: @color_ac_text;
 	text-decoration: none;
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 1em;
 }
 
 section#information div a {
@@ -128,8 +125,8 @@ section#information div a:hover {
 
 section#payments a,
 section#payments form,
-section#payments  p,
-section#payments  img {
+section#payments p,
+section#payments img {
 	display: block;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -243,15 +240,15 @@ section#payments form div.controls button:hover {
 	background-color: @color_ac_orange;
 }
 
- footer > div.copyright {
- 	text-align: center;
- }
+footer > div.copyright {
+	text-align: center;
+}
 
- footer div.copyright {
- 	display: inline-block;
+footer div.copyright {
+	display: inline-block;
 	color: @color_text;
- }
+}
 
- footer div.copyright a {
- 	color: @color_text;
- }
+footer div.copyright a {
+	color: @color_text;
+}
