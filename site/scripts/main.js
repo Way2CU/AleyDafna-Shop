@@ -329,10 +329,10 @@ Site.DialogSystem = function() {
 
 		self.recovery.image_captcha
 				.click(self._handleCaptchaClick)
-				.attr('src', base + '?section=captcha&action=print_image');
+				.attr('data-src', base + '?section=captcha&action=print_image');
 		self.login.image_captcha
 				.click(self._handleCaptchaClick)
-				.attr('src', base + '?section=captcha&action=print_image');
+				.attr('data-src', base + '?section=captcha&action=print_image');
 
 		// pack elements
 		self.recovery.content.append(self.recovery.message);
@@ -541,6 +541,7 @@ Site.DialogSystem = function() {
 
 		// focus username
 		setTimeout(function() {
+			self.login.image_captcha.attr('src', self.login.image_captcha.attr('data-src'));
 			self.recovery.input_email[0].focus();
 		}, 100);
 	};
@@ -762,9 +763,13 @@ Site.DialogSystem = function() {
 			self.message.dialog.show();
 
 			// show captcha if required
-			if (data.show_captcha)
-				self.login.captcha_container.slideDown(); else
+			if (data.show_captcha) {
+				self.login.image_captcha.attr('src', self.login.image_captcha.attr('data-src'));
+				self.login.captcha_container.slideDown();
+
+			} else {
 				self.login.captcha_container.slideUp();
+			}
 		}
 	};
 
