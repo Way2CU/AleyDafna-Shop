@@ -58,7 +58,7 @@ div.languages {
 	padding-left: 60px;
 }
 
-body.rtl div.languages {
+html[dir=rtl] div.languages {
 	padding-right: 60px;
 	padding-left: 30px;
 }
@@ -68,7 +68,7 @@ ul.user {
 	padding-left: 90px;
 }
 
-body.rtl ul.user  {
+html[dir=rtl] ul.user  {
 	padding-left: 0px;
 	padding-right: 90px;
 }
@@ -133,7 +133,7 @@ div#popup:before {
 	height: 45px;
 }
 
-body.rtl div#popup:before {
+html[dir=rtl] div#popup:before {
 	right: calc(~'(100% + 10px)');
 }
 
@@ -168,13 +168,13 @@ body.ltr nav#language a:last-of-type {
 	border-right: none;
 }
 
-body.rtl div.languages a.phone,
-body.rtl nav#language a {
+html[dir=rtl] div.languages a.phone,
+html[dir=rtl] nav#language a {
 	border-left: 1px solid @color_ac_text;
 }
 
-body.rtl div.languages a.phone:first-of-type,
-body.rtl nav#language a:last-of-type {
+html[dir=rtl] div.languages a.phone:first-of-type,
+html[dir=rtl] nav#language a:last-of-type {
 	border-left: none;
 }
 
@@ -242,7 +242,7 @@ nav#main > ul > li > a {
 	transition: all 0.3s;
 }
 
-body.rtl nav#main > ul > li > a {
+html[dir=rtl] nav#main > ul > li > a {
 	padding-left: 20px;
 	padding-right: 20px;
 }
@@ -264,12 +264,12 @@ nav#main > ul > li:first-of-type > a {
 	border-left: none;
 }
 
-body.rtl nav#main > ul > li:first-of-type > a {
+html[dir=rtl] nav#main > ul > li:first-of-type > a {
 	border-right: none;
 	border-left: 1px solid @color_ac_medium_green;
 }
 
-body.rtl nav#main > ul > li:last-of-type > a {
+html[dir=rtl] nav#main > ul > li:last-of-type > a {
 	border-left: none;
 }
 
@@ -277,7 +277,7 @@ nav#main > ul > li.sub-menu > a {
 	padding-right: 30px;
 }
 
-body.rtl nav#main > ul > li.sub-menu > a {
+html[dir=rtl] nav#main > ul > li.sub-menu > a {
 	padding-right: 35px;
 }
 
@@ -301,7 +301,7 @@ nav#main > ul > li.sub-menu> a:before {
 	transition: all 0.3s;
 }
 
-body.rtl nav#main > ul > li.sub-menu> a:before {
+html[dir=rtl] nav#main > ul > li.sub-menu> a:before {
 	left: 15px;
 }
 
@@ -335,7 +335,7 @@ nav#main ul li > ul.drop {
 	text-align: left;
 }
 
-body.rtl nav#main ul li > ul.drop {
+html[dir=rtl] nav#main ul li > ul.drop {
 	left: auto;
 	right: 0px;
 	text-align: right;
@@ -419,7 +419,7 @@ div.cart div.scrollbar_thumb {
 	background-color: @color_ac_orange;
 }
 
-body.rtl div.cart {
+html[dir=rtl] div.cart {
 	right: auto;
 	left: 0%;
 }
@@ -487,7 +487,7 @@ div.cart ul li.item div.name_container span {
 	text-align: left;
 }
 
-body.rtl div.cart ul li.item div.name_container span {
+html[dir=rtl] div.cart ul li.item div.name_container span {
 	text-align: right;
 }
 
@@ -547,7 +547,7 @@ div.cart div.total a.checkout {
 	transition: all 0.3s;
 }
 
-body.rtl div.cart div.total a.checkout {
+html[dir=rtl] div.cart div.total a.checkout {
 	left: 10px;
 	right: auto;
 }

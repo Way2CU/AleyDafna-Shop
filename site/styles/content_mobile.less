@@ -97,9 +97,9 @@ section#about article {
 	background-color: @color_ac_text;
 }
 
-body.rtl section#warranty article,
-body.rtl section#faq article,
-body.rtl section#about article {
+html[dir=rtl] section#warranty article,
+html[dir=rtl] section#faq article,
+html[dir=rtl] section#about article {
 	text-align: right;
 }
 
@@ -129,7 +129,7 @@ section#warranty article ol ul {
 	padding-left: 10px;
 }
 
-body.rtl  section#warranty article ol ul {
+html[dir=rtl]  section#warranty article ol ul {
 	padding-left: 0px;
 	padding-right: 10px;
 }
@@ -517,12 +517,12 @@ section#news span svg use {
 	fill: @color_ac_text;
 }
 
-body.rtl section#news span svg {
+html[dir=rtl] section#news span svg {
 	padding-right: 0px;
 	padding-left: 5px;
 }
 
-body.rtl section#news span svg use {
+html[dir=rtl] section#news span svg use {
 	-webkit-transform-origin: center;
 	transform-origin: center;
 	-webkit-transform: rotateY(0deg);
@@ -982,9 +982,9 @@ div#information_details div {
 	margin-bottom: 15px;
 }
 
-body.rtl div#information_details  a.facebook,
-body.rtl div#information_details address,
-body.rtl div#information_details div {
+html[dir=rtl] div#information_details  a.facebook,
+html[dir=rtl] div#information_details address,
+html[dir=rtl] div#information_details div {
 	text-align: right;
 }
 
@@ -1009,7 +1009,7 @@ div#information_details div a:hover {
 	color: @color_ac_orange;
 }
 
-body.rtl div#information_details div a {
+html[dir=rtl] div#information_details div a {
 	margin-right: 0px;
 	margin-left: 10px;
 }
@@ -1044,9 +1044,9 @@ div#information_details a.facebook svg {
 	fill: #34495e;
 }
 
-body.rtl div#information_details a.facebook svg,
-body.rtl div#information_details address svg,
-body.rtl div#information_details div svg {
+html[dir=rtl] div#information_details a.facebook svg,
+html[dir=rtl] div#information_details address svg,
+html[dir=rtl] div#information_details div svg {
 	padding-left: 10px;
 	padding-right: 0px;
 }
@@ -1181,9 +1181,9 @@ div#form_wrap form label:nth-of-type(4):before {
 	background-position: -362px 0px;
 }
 
-body.rtl div#form_business form label:before,
-body.rtl div#form_customers form label:before,
-body.rtl div#form_wrap form label:before {
+html[dir=rtl] div#form_business form label:before,
+html[dir=rtl] div#form_customers form label:before,
+html[dir=rtl] div#form_wrap form label:before {
 	right: 0px;
 }
 
@@ -1210,9 +1210,9 @@ form.recovery label span {
 	display: block;
 }
 
-body.rtl div#form_business form label span,
-body.rtl div#form_customers form label span ,
-body.rtl div#form_wrap form label span {
+html[dir=rtl] div#form_business form label span,
+html[dir=rtl] div#form_customers form label span ,
+html[dir=rtl] div#form_wrap form label span {
 	padding-left: 0px;
 	padding-right: 35px;
 	text-align: right;
@@ -1246,10 +1246,10 @@ div#form_wrap form label textarea {
 	width: calc(~'(94% - 5px)');
 }
 
-body.rtl div#form_business form label input,
-body.rtl div#form_customers form label input,
-body.rtl div#form_wrap form label textarea,
-body.rtl div#form_wrap form label input {
+html[dir=rtl] div#form_business form label input,
+html[dir=rtl] div#form_customers form label input,
+html[dir=rtl] div#form_wrap form label textarea,
+html[dir=rtl] div#form_wrap form label input {
 	padding-left: 0px;
 	padding-right: 5px;
 }
@@ -1342,7 +1342,7 @@ div.dialog.login div.content form label span {
 	width: 200px;
 }
 
-body.rtl div.dialog.login div.content form label span {
+html[dir=rtl] div.dialog.login div.content form label span {
 	padding-left: 0px;
 	padding-right: 35px;
 	text-align: right;
@@ -1361,7 +1361,7 @@ div.dialog.login div.content form label span:before {
 	border: 1px solid @color_ac_medium_green;
 }
 
-body.rtl div.dialog.login div.content form label span:before {
+html[dir=rtl] div.dialog.login div.content form label span:before {
 	right: auto;
 	left: 90%;
 }
@@ -1388,7 +1388,7 @@ div.dialog.login div.content form label span:after {
 	opacity: 1;
 }
 
-body.rtl div.dialog.login div.content form label span:after {
+html[dir=rtl] div.dialog.login div.content form label span:after {
 	right: auto;
 	left: 90.5%;
 }
@@ -1413,7 +1413,7 @@ div.dialog div.content form input:not([type=checkbox]) {
 	transition: all 0.3s;
 }
 
-body.rtl div.dialog div.content form input:not([type=checkbox]) {
+html[dir=rtl] div.dialog div.content form input:not([type=checkbox]) {
 	text-align: right;
 }
 
@@ -1480,7 +1480,7 @@ div.dialog div.content div.inner_content div > label > input {
 	color: @color_text;
 }
 
-body.rtl div.dialog div.content div.inner_content div > label > input {
+html[dir=rtl] div.dialog div.content div.inner_content div > label > input {
 	text-align: right;
 }
 
@@ -1503,7 +1503,7 @@ div.dialog div.content div.inner_content div div.captcha label img {
 	padding-left: 25px;
 }
 
-body.rtl div.dialog div.content div.inner_content div div.captcha label img {
+html[dir=rtl] div.dialog div.content div.inner_content div div.captcha label img {
 	padding-left: 0px;
 	padding-right: 25px;
 }
@@ -1560,13 +1560,13 @@ div#checkout_container div.page input {
 	transition: all 0.3s;
 }
 
-body.rtl div#input_details label input,
-body.rtl div#payment_method input,
-body.rtl div#billing_information input,
-body.rtl div#input_details div.existing_account.visible input,
-body.rtl div#input_details div.new_account.visible input,
-body.rtl div#input_details div.guest_checkout.visible input,
-body.rtl div#checkout_container div.page input {
+html[dir=rtl] div#input_details label input,
+html[dir=rtl] div#payment_method input,
+html[dir=rtl] div#billing_information input,
+html[dir=rtl] div#input_details div.existing_account.visible input,
+html[dir=rtl] div#input_details div.new_account.visible input,
+html[dir=rtl] div#input_details div.guest_checkout.visible input,
+html[dir=rtl] div#checkout_container div.page input {
 	text-align: right;
 }
 
@@ -1635,7 +1635,7 @@ div#input_details label span {
 	width: 300px;
 }
 
-body.rtl div#input_details label span {
+html[dir=rtl] div#input_details label span {
 	text-align: right;
 }
 
@@ -1720,13 +1720,13 @@ div#input_details div#card_selection.page a.arrow.next_image {
 	transform: scaleX(1);
 }
 
-body.rtl div#input_details div#card_selection.page a.arrow.previous_image {
+html[dir=rtl] div#input_details div#card_selection.page a.arrow.previous_image {
 	right: auto;
 	left: 95%;
 	transform: scaleX(1);
 }
 
-body.rtl div#input_details div#card_selection.page a.arrow.next_image {
+html[dir=rtl] div#input_details div#card_selection.page a.arrow.next_image {
 	left: auto;
 	right: 95%;
 	transform: scaleX(-1);

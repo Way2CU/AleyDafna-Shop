@@ -17,7 +17,7 @@ div#shipping_information div.container.interface div.summary span:after {
 	padding-left: 5px;
 }
 
-body.rtl div#shipping_information div.container.interface div.summary span:after {
+html[dir=rtl] div#shipping_information div.container.interface div.summary span:after {
 	padding-left: auto;
 	padding-right: 5px;
 }

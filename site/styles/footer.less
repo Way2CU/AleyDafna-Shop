@@ -76,21 +76,21 @@ nav#footer_nav > ul > li:first-of-type {
 	border-left: none;
 }
 
-body.rtl section#information div:first-of-type {
+html[dir=rtl] section#information div:first-of-type {
 	border-left: 2px solid lighten(@color_ac_medium_green,5%);
 }
 
-body.rtl section#information div:last-of-type {
+html[dir=rtl] section#information div:last-of-type {
 	border-left: none;
 } 
 
-body.rtl nav#footer_nav > ul > li {
+html[dir=rtl] nav#footer_nav > ul > li {
 	text-align: right;
 	border-left: none;
 	border-right: 1px solid @color_ac_medium_green;
 }
 
-body.rtl nav#footer_nav > ul > li:first-of-type {
+html[dir=rtl] nav#footer_nav > ul > li:first-of-type {
 	border-right: none;
 }
 
@@ -160,8 +160,8 @@ section#information div svg {
 	fill: @color_ac_text;
 }
 
-body.rtl section#information address svg,
-body.rtl section#information div svg {
+html[dir=rtl] section#information address svg,
+html[dir=rtl] section#information div svg {
 	padding-left: 5px;
 }
 
@@ -178,8 +178,8 @@ section#information div p span {
 	display: block;	
 }
 
-body.rtl section#information address p,
-body.rtl section#information div p {
+html[dir=rtl] section#information address p,
+html[dir=rtl] section#information div p {
 	text-align: right;
 }
 
@@ -216,7 +216,7 @@ section#payments  p {
 	width: 180px;
 }
 
-body.rtl section#payments  p {
+html[dir=rtl] section#payments  p {
 	margin-right: auto;
 	margin-left: 45px;
 }
@@ -258,7 +258,7 @@ section#payments a svg {
 	border-right: 2px solid  lighten(@color_text,10%);
 }
 
-body.rtl section#payments a svg {
+html[dir=rtl] section#payments a svg {
 	margin-right: auto;
 	padding-right: 0px;
 	margin-left: 10px;
