@@ -35,13 +35,7 @@
 				<section id="news">
 					<div class="news_container">
 						<span>
-							<svg>
-								<use
-									href="#speaker"
-									xlink:href="_BASEURL.'/site/images/site-sprite.svg#speaker'"
-									cms:eval="xlink:href"
-									/>
-							</svg>
+							<cms:svg file="site-sprite.svg" symbol="speaker"/>
 							<cms:text constant="title_button_updates"/>
 						</span>
 
@@ -177,13 +171,7 @@
 				<section id="news">
 					<div class="news_container">
 						<span>
-							<svg>
-								<use
-									href="#speaker"
-									xlink:href="_BASEURL.'/site/images/site-sprite.svg#speaker'"
-									cms:eval="xlink:href"
-									/>
-							</svg>
+							<cms:svg file="site-sprite.svg" symbol="speaker"/>
 							<cms:text constant="title_button_updates"/>
 						</span>
 

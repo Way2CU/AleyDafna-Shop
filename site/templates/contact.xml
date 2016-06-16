@@ -25,41 +25,22 @@
 				<cms:template file="parts/mobile_header.xml"/>
 			</cms:mobile>
 
-			<section id="contact">				
+			<section id="contact">
 				<h2><cms:text constant="menu_contact"/></h2>
 
 				<div id="information_details">
 					<address>
-						<svg>
-							<use
-								href="#location"
-								xlink:href="_BASEURL.'/site/images/site-sprite.svg#location'"
-								cms:eval="xlink:href"
-								/>
-						</svg>
+						<cms:svg file="site-sprite.svg" symbol="location"/>
 						<p><cms:text constant="address"/></p>
 					</address>
 
 					<div>
-						<svg>
-							<use
-								href="#clock"
-								xlink:href="_BASEURL.'/site/images/site-sprite.svg#clock'"
-								cms:eval="xlink:href"
-								/>
-						</svg>
+						<cms:svg file="site-sprite.svg" symbol="clock"/>
 						<p><cms:text constant="working_hours"/></p>
 					</div>
 
 					<div>
-						<svg>
-							<use
-								href="#phone"
-								xlink:href="_BASEURL.'/site/images/site-sprite.svg#phone'"
-								cms:eval="xlink:href"
-								/>
-						</svg>
-
+						<cms:svg file="site-sprite.svg" symbol="phone"/>
 						<a
 							href="'tel:'.urlencode(Language::getText('phone'))"
 							cms:eval="href"
@@ -78,13 +59,7 @@
 					</div>
 
 					<a href="#" class="facebook">
-						<svg>
-							<use
-								href="#facebook"
-								xlink:href="_BASEURL.'/site/images/site-sprite.svg#facebook'"
-								cms:eval="xlink:href"
-								/>
-						</svg>
+						<cms:svg file="site-sprite.svg" symbol="facebook"/>
 						<cms:text constant="title_aley_facebook"/>
 					</a>
 					<article>
@@ -94,13 +69,13 @@
 							text_id="delivery_areas"
 							template="parts/article_delivery_areas.xml"
 							/>
-					</article>	
+					</article>
 				</div>
 
 				<a  href="https://www.google.co.il/maps/place/%D7%A2%D7%9C%D7%99+%D7%93%D7%A4%D7%A0%D7%94%E2%80%AD/@32.0817867,34.8070791,17z/data=!3m1!4b1!4m2!3m1!1s0x151d4bb844b1a821:0x586f5cf739269744"
 					class="map">
-					<img 
-						src="_BASEURL.'/site/images/map.png'" 
+					<img
+						src="_BASEURL.'/site/images/map.png'"
 						alt="map"
 						cms:eval="src"
 						/>
@@ -114,10 +89,10 @@
 						text_id="contact"
 						/>
 				</div>
-			</section>	
+			</section>
 
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
 		</body>
 	</html>
 </document>

@@ -61,29 +61,17 @@
 		<br/>
 		<a href="javascript:void(0)" class="add">
 			<cms:text constant="title_button_add"/>
-			<svg>
-				<use
-					href="#cart-plus"
-					xlink:href="_BASEURL.'/site/images/site-sprite.svg#cart-plus'"
-					cms:eval="xlink:href"
-					/>
-			</svg>
+			<cms:svg file="site-sprite.svg" symbol="cart-plug"/>
 		</a>
 
 		<a href="javascript:void(0)" class="checkout">
 			<cms:text constant="title_button_order"/>
-			<svg>
-				<use
-					href="#cart-check"
-					xlink:href="_BASEURL.'/site/images/site-sprite.svg#cart-check'"
-					cms:eval="xlink:href"
-					/>
-			</svg>
+			<cms:svg file="site-sprite.svg" symbol="cart-check"/>
 		</a>
 	</div>
 
 	<cms:desktop>
-		<figure 
+		<figure
 			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
 			cms:optional="data-discount"
 			>

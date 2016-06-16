@@ -41,13 +41,7 @@
 		</div>
 
 		<div id="popup">
-			<svg>
-				<use
-					href="#basket"
-					xlink:href="_BASEURL.'/site/images/site-sprite.svg#basket'"
-					cms:eval="xlink:href"
-					/>
-			</svg>
+			<cms:svg file="site-sprite.svg" symbol="basket"/>
 
 			<p><cms:text constant="title_cart"/></p>
 			<br/>

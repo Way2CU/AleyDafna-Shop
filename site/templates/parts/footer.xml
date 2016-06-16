@@ -8,11 +8,11 @@
 					group="features"
 					template="stock/features_generic.xml"
 					>
-					<param name="sprite" value="site/images/site-sprite.svg"/>
+					<param name="sprite" value="site-sprite.svg"/>
 				</cms:module>
 			</ul>
 		</section>
-		
+
 		<cms:desktop>
 			<nav id="footer_nav">
 				<ul>
@@ -60,7 +60,7 @@
 							>
 							<cms:text constant="menu_about"/>
 						</a>
-						<ul class="drop">					
+						<ul class="drop">
 							<cms:template file="parts/about_sub_list_menu.xml"/>
 						</ul>
 					</li>
@@ -73,8 +73,8 @@
 							cms:optional="class"
 							>
 							<cms:text constant="menu_contact"/>
-						</a>	
-						<ul class="drop">					
+						</a>
+						<ul class="drop">
 							<cms:template file="parts/contact_sub_list_menu.xml"/>
 						</ul>
 					</li>
@@ -84,13 +84,7 @@
 
 		<section id="information">
 			<div>
-				<svg>
-					<use
-						href="#globe"
-						xlink:href="_BASEURL.'/site/images/site-sprite.svg#globe'"
-						cms:eval="xlink:href"
-						/>
-				</svg>
+				<cms:svg file="site-sprite.svg" symbol="globe"/>
 				<cms:module
 					name="language_menu"
 					action="print"
@@ -98,35 +92,17 @@
 			</div>
 
 			<address>
-				<svg>
-					<use
-						href="#location"
-						xlink:href="_BASEURL.'/site/images/site-sprite.svg#location'"
-						cms:eval="xlink:href"
-						/>
-				</svg>
+				<cms:svg file="site-sprite.svg" symbol="location"/>
 				<p><cms:text constant="address"/></p>
 			</address>
 
 			<div>
-				<svg>
-					<use
-						href="#clock"
-						xlink:href="_BASEURL.'/site/images/site-sprite.svg#clock'"
-						cms:eval="xlink:href"
-						/>
-				</svg>
+				<cms:svg file="site-sprite.svg" symbol="clock"/>
 				<p><cms:text constant="working_hours"/></p>
 			</div>
 
 			<div>
-				<svg>
-					<use
-						href="#phone"
-						xlink:href="_BASEURL.'/site/images/site-sprite.svg#phone'"
-						cms:eval="xlink:href"
-						/>
-				</svg>
+				<cms:svg file="site-sprite.svg" symbol="phone"/>
 				<a
 					href="'tel:'.urlencode(Language::getText('phone'))"
 					cms:eval="href"
@@ -147,23 +123,17 @@
 		</section>
 
 		<section id="payments">
-			<a 
-				href="'https://www.facebook.com/sharer/sharer.php?u='.urlencode(url_Make('','home'))" 
+			<a
+				href="'https://www.facebook.com/sharer/sharer.php?u='.urlencode(url_Make('','home'))"
 				class="share"
 				cms:eval="href"
 				>
-				<svg>
-					<use
-						href="#facebook"
-						xlink:href="_BASEURL.'/site/images/site-sprite.svg#facebook'"
-						cms:eval="xlink:href"
-						/>
-				</svg>
+				<cms:svg file="site-sprite.svg" symbol="facebook"/>
 				<cms:text constant="title_facebook"/>
 			</a>
 
-			<img 
-				src="_BASEURL.'/site/images/payment-icons.svg'"  
+			<img
+				src="_BASEURL.'/site/images/payment-icons.svg'"
 				alt="payments-icons"
 				cms:eval="src"
 				/>
