@@ -1,13 +1,18 @@
 <document>
 	<cms:raw file="gtm.txt"/>
 	<header>
-		<a
-			href="'tel:'.urlencode(Language::getText('phone'))"
-			cms:eval="href"
-			class="fixed_phone"
-			>
-		</a>
 		<cms:svg file="site-sprite.svg"/>
+
+		<!-- Show phone number on all pages but checkout -->
+		<cms:if condition="!($section == 'shop' and $action == 'checkout')">
+			<a
+				href="'tel:'.urlencode(Language::getText('phone'))"
+				cms:eval="href"
+				class="fixed_phone"
+				>
+			</a>
+		</cms:if>
+
 		<div class="mobile_title">
 			<a href="javascript:void(0)" class="menu">
 				<span/>
@@ -65,7 +70,7 @@
 						<cms:text constant="phone"/>
 					</a>
 					<!-- Hide 1700 number -->
-				<!-- <a
+					<!-- <a
 						href="'tel:'.urlencode(Language::getText('phone2'))"
 						cms:eval="href"
 						class="phone"
