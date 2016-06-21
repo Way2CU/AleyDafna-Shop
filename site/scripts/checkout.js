@@ -150,15 +150,16 @@ Site.save_delivery_date = function() {
 	var delivery_interface = $('div#shipping_information div.container.interface');
 	var summary = delivery_interface.find('div.summary span');
 	var field = delivery_interface.find('input[name=date]');
+	var calendar = delivery_interface.find('div.pika-single.aley_dafna');
 	var method_name = Site.buyer_information_form.get_selected_delivery_method();
 	var selected_city = Site.buyer_information_form.shipping.address_container.find('[name=city]').val();
 
 	if (!field.data('value')) {
-		field.addClass('bad');
+		calendar.addClass('bad');
 		return;
 
 	} else {
-		field.removeClass('bad');
+		calendar.removeClass('bad');
 	}
 
 	// function to be called upon sucessfully saving remark
@@ -191,11 +192,14 @@ Site.save_delivery_date = function() {
  */
 Site.handle_date_select = function(date) {
 	var field = $('div#shipping_information div.container.interface input[name=date]');
+	var calendar = field.next();
 	var display_value = date.toLocaleDateString('he-IL');
 
 	field
 		.data('value', display_value)
 		.val(display_value);
+
+	calendar.removeClass('bad');
 };
 
 /**

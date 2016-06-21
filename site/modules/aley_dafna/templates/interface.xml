@@ -14,10 +14,10 @@
 
 	<div class="details">
 		<form>
-			<label>
+			<label id="checkout_date_select">
 				<span><cms:text constant="label_delivery_date" module="aley_dafna"/></span>
 				<input
-					type="text"
+					type="hidden"
 					name="date"
 					autocomplete="off"
 					/>
@@ -28,6 +28,9 @@
 	<script type="text/javascript">
 		var params = {
 			field: $('div#shipping_information div.interface input[name=date]')[0],
+			container: document.getElementById('checkout_date_select'),
+			bound: false,
+			theme: 'aley_dafna',
 			minDate: new Date(),
 			onSelect: Site.handle_date_select
 			};
