@@ -1133,6 +1133,21 @@ Site.handle_form_submit_success = function(data) {
 };
 
 /**
+ * Handle user leaving page.
+ *
+ * @param object event
+ */
+Site.handle_page_leave = function(event) {
+	if (localStorage.getItem('leave-dialog'))
+		return;
+
+	if (event.clientY > 0)
+		return;
+
+	Site.exit_dialog.show();
+};
+
+/**
  * Function called when document and images have been completely loaded.
  */
 Site.on_load = function() {
@@ -1244,6 +1259,16 @@ Site.on_load = function() {
 	// push transaction data to Google's data layer
 	if (dataLayer && $('div#checkout div.checkout_message').length > 0)
 		Site.push_transaction_data();
+
+	// connect page leave events
+	document.querySelector('body').addEventListener('mouseleave', Site.handle_page_leave);
+
+	// create dialog to be shown before user leaves
+	Site.exit_dialog = new Dialog();
+	Site.exit_dialog
+			.setSize(300, 150)
+			.setScroll(false)
+			.setClearOnClose(false);
 };
 
 // connect document `load` event with handler function
