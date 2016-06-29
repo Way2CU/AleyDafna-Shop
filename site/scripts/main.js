@@ -1155,7 +1155,7 @@ Site.handle_page_leave = function(event) {
  */
 Site.handle_exit_dialog_submit = function(event) {
 	var form = Site.exit_dialog._container.find('form');
-	form[0].submit();
+	form.trigger('submit');
 	event.preventDefault();
 };
 

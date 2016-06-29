@@ -5,7 +5,8 @@
 		<cms:module
 			name="articles"
 			action="show"
-			text_id="exit_message"
+			text_id="exit_form"
+			template="stock/article_generic.xml"
 			/>
 		<cms:module
 			name="contact_form"
