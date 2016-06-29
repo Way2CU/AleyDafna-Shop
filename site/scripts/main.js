@@ -1149,6 +1149,17 @@ Site.handle_page_leave = function(event) {
 };
 
 /**
+ * Handle clicking on submit button in exit dialog.
+ *
+ * @param object event
+ */
+Site.handle_exit_dialog_submit = function(event) {
+	var form = Site.exit_dialog._container.find('form');
+	form[0].submit();
+	event.preventDefault();
+};
+
+/**
  * Function called when document and images have been completely loaded.
  */
 Site.on_load = function() {
@@ -1265,9 +1276,13 @@ Site.on_load = function() {
 	document.querySelector('body').addEventListener('mouseleave', Site.handle_page_leave);
 
 	// create dialog to be shown before user leaves
+	var submit_button = $('#exit_message').find('button[type=submit]').detach();
+	submit_button.on('click', Site.handle_exit_dialog_submit);
+
 	Site.exit_dialog = new Dialog();
 	Site.exit_dialog
 			.addClass('exit')
+			.addControl(submit_button)
 			.setSize(Site.is_mobile() ? 300 : 400, 'auto')
 			.setScroll(false)
 			.setClearOnClose(false)
