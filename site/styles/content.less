@@ -1718,11 +1718,7 @@ div.dialog.login div.content form label span:after {
 	background: url(../images/check_mark_white.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
-	-ms-transition: all .2s ease;
-	-webkit-transition: all .2s ease;
 	transition: all .3s ease;
-	-ms-transform: scale(0);
-	-webkit-transform: scale(0);
 	transform: scale(0);
 	opacity: 1;
 }
@@ -1777,7 +1773,7 @@ div.dialog div.content div.inner_content form a:hover {
 	color: @color_ac_orange;
 }
 
-div.dialog div.content div.inner_content div > label {
+div.dialog:not(.exit) div.content div.inner_content div > label {
 	display: block;
 	text-align: center;
 	margin-bottom: 10px;

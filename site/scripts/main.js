@@ -1267,6 +1267,7 @@ Site.on_load = function() {
 	// create dialog to be shown before user leaves
 	Site.exit_dialog = new Dialog();
 	Site.exit_dialog
+			.addClass('exit')
 			.setSize(300, 150)
 			.setScroll(false)
 			.setClearOnClose(false)
