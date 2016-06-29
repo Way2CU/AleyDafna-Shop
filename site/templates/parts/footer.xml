@@ -111,7 +111,7 @@
 					<cms:text constant="phone"/>
 				</a>
 				<!-- Hide 1700 number -->
-			  <!--   <a
+				<!--   <a
 					href="'tel:'.urlencode(Language::getText('phone2'))"
 					cms:eval="href"
 					class="phone"
@@ -153,5 +153,7 @@
 		</cms:template>
 	</footer>
 
-	<cms:template file="parts/exit_form.xml"/>
+	<cms:desktop>
+		<cms:template file="parts/exit_form.xml"/>
+	</cms:desktop>
 </document>

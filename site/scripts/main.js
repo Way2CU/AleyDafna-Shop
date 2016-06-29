@@ -1144,7 +1144,7 @@ Site.handle_page_leave = function(event) {
 	if (localStorage.getItem('leave-dialog'))
 		return;
 
-	Site.exit_dialog.show();
+	$('#exit_message').addClass('visible');
 	localStorage.setItem('leave-dialog', true);
 };
 
@@ -1274,20 +1274,6 @@ Site.on_load = function() {
 
 	// connect page leave events
 	document.querySelector('body').addEventListener('mouseleave', Site.handle_page_leave);
-
-	// create dialog to be shown before user leaves
-	var submit_button = $('#exit_message').find('button[type=submit]').detach();
-	submit_button.on('click', Site.handle_exit_dialog_submit);
-
-	Site.exit_dialog = new Dialog();
-	Site.exit_dialog
-			.addClass('exit')
-			.addControl(submit_button)
-			.setSize(Site.is_mobile() ? 300 : 400, 'auto')
-			.setScroll(false)
-			.setClearOnClose(false)
-			.setTitle(language_handler.getText(null, 'title_exit_form'))
-			.setContentFromDOM('#exit_message');
 };
 
 // connect document `load` event with handler function

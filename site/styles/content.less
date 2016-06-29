@@ -1838,9 +1838,6 @@ html[dir=rtl] div.dialog div.content div.inner_content div div.captcha label img
 	padding-right: 25px;
 }
 
-div.dialog.exit {
-}
-
 /**
  * Checkout
  */
@@ -2152,4 +2149,24 @@ label#checkout_date_select .pika-prev,
 label#checkout_date_select .pika-next {
 	height: 1.5em;
 	width: 1.5em;
+}
+
+/**
+ * Exit message
+ */
+div#exit_message {
+	display: none;
+	position: fixed;
+	width: 400px;
+	top: 0;
+	left: 50%;
+	margin-left: -200px;
+	padding: 2em;
+	box-sizing: border-box;
+
+	background-color: white;
+}
+
+div#exit_message.visible {
+	display: block;
 }
