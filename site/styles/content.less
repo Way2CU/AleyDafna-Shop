@@ -2193,12 +2193,18 @@ div#exit_message label span {
 }
 
 div#exit_message input {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 5px;
-	border: 1px solid @color_ac_medium_green;
-	width: calc(~'(100% - 7px)');
+	text-align: left;
+	padding: 10px;
+
+	border: 1px solid @color_ac_light_green;
+	background-color: @color_ac_grey;
+
+	color: @color_ac_black;
 	transition: all 0.3s;
+}
+
+div#exit_message input:focus {
+	border: 1px solid @color_ac_light_orange;
 }
 
 div#exit_message button {
