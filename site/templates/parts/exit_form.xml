@@ -6,6 +6,7 @@
 			name="articles"
 			action="show"
 			text_id="exit_form"
+			template="parts/article.xml"
 			/>
 		<cms:module
 			name="contact_form"

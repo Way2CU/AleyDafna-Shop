@@ -2174,7 +2174,7 @@ div#exit_message.visible {
 
 div#exit_message h2 {
 	margin: 0;
-	padding-bottom: 1em;
+	padding-bottom: 0.5em;
 }
 
 div#exit_message p {
@@ -2189,6 +2189,15 @@ div#exit_message label {
 
 div#exit_message label span {
 	display: block;
+}
+
+div#exit_message input {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	border: 1px solid @color_ac_medium_green;
+	width: calc(~'(100% - 7px)');
+	transition: all 0.3s;
 }
 
 div#exit_message button {
