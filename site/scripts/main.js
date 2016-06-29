@@ -1145,6 +1145,7 @@ Site.handle_page_leave = function(event) {
 		return;
 
 	Site.exit_dialog.show();
+	localStorage.setItem('leave-dialog', true);
 };
 
 /**
@@ -1268,7 +1269,8 @@ Site.on_load = function() {
 	Site.exit_dialog
 			.setSize(300, 150)
 			.setScroll(false)
-			.setClearOnClose(false);
+			.setClearOnClose(false)
+			.setContentFromDOM('#exit_message');
 };
 
 // connect document `load` event with handler function

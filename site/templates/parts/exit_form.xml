@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
+<document>
+	<div id="exit_message">
+		<cms:module
+			name="articles"
+			action="show"
+			text_id="exit_message"
+			/>
+		<cms:module
+			name="contact_form"
+			action="show"
+			text_id="exit_form"
+			/>
+	</div>
+</document>

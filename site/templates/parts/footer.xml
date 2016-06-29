@@ -152,4 +152,6 @@
 			<param name="light" value=""/>
 		</cms:template>
 	</footer>
+
+	<cms:template file="parts/exit_form.xml"/>
 </document>
