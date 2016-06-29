@@ -1270,6 +1270,7 @@ Site.on_load = function() {
 			.setSize(300, 150)
 			.setScroll(false)
 			.setClearOnClose(false)
+			.setTitle(language_handler.getText(null, 'title_exit_form'))
 			.setContentFromDOM('#exit_message');
 };
 
