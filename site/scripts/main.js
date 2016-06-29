@@ -1138,10 +1138,10 @@ Site.handle_form_submit_success = function(data) {
  * @param object event
  */
 Site.handle_page_leave = function(event) {
-	if (localStorage.getItem('leave-dialog'))
+	if (event.clientY > 0)
 		return;
 
-	if (event.clientY > 0)
+	if (localStorage.getItem('leave-dialog'))
 		return;
 
 	Site.exit_dialog.show();
@@ -1268,7 +1268,7 @@ Site.on_load = function() {
 	Site.exit_dialog = new Dialog();
 	Site.exit_dialog
 			.addClass('exit')
-			.setSize(300, 150)
+			.setSize(Site.is_mobile() ? 300 : 400, 'auto')
 			.setScroll(false)
 			.setClearOnClose(false)
 			.setTitle(language_handler.getText(null, 'title_exit_form'))
