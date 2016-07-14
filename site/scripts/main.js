@@ -1160,6 +1160,15 @@ Site.handle_exit_dialog_submit = function(event) {
 };
 
 /**
+ * Handle clicking on close button on exit dialog.
+ *
+ * @param object event
+ */
+Site.handle_exit_dialog_close_click = function(event) {
+	$('#exit_message').removeClass('visible');
+};
+
+/**
  * Function called when document and images have been completely loaded.
  */
 Site.on_load = function() {
@@ -1274,6 +1283,7 @@ Site.on_load = function() {
 
 	// connect page leave events
 	document.querySelector('body').addEventListener('mouseleave', Site.handle_page_leave);
+	document.getElementById('exit_message').querySelector('form button[name=close]').addEventListener('click', Site.handle_exit_dialog_close_click);
 };
 
 // connect document `load` event with handler function
