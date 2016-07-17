@@ -1283,7 +1283,7 @@ Site.on_load = function() {
 
 	// connect page leave events
 	document.querySelector('body').addEventListener('mouseleave', Site.handle_page_leave);
-	document.getElementById('exit_message').querySelector('form button[name=close]').addEventListener('click', Site.handle_exit_dialog_close_click);
+	document.getElementById('exit_message').querySelector('form button.cancel').addEventListener('click', Site.handle_exit_dialog_close_click);
 };
 
 // connect document `load` event with handler function
