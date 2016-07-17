@@ -2209,6 +2209,7 @@ div#exit_message input:focus {
 
 div#exit_message button {
 	position: relative;
+	margin-right: 1em;
 	padding: 15px 20px;
 
 	border: none;
@@ -2223,4 +2224,9 @@ div#exit_message button {
 
 div#exit_message button:hover {
 	background-color: @color_ac_orange;
+}
+
+html[dir=rtl] div#exit_message button {
+	margin-right: 0;
+	margin-left: 1em;
 }
