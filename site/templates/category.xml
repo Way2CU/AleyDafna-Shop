@@ -52,6 +52,8 @@
 						template="parts/category_title.xml"
 						cms:eval="id"
 						/>
+						<!-- Show social links -->
+						<cms:template file="parts/social_links.xml"/>
 
 					<cms:module
 						name="shop"
@@ -81,6 +83,9 @@
 						template="parts/category_title.xml"
 						cms:eval="id"
 						/>
+
+					<!-- Show social links -->
+					<cms:template file="parts/social_links.xml"/>
 
 					<cms:module
 						name="shop"

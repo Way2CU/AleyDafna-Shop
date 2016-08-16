@@ -68,6 +68,8 @@
 			<cms:text constant="title_button_order"/>
 			<cms:svg file="site-sprite.svg" symbol="cart-check"/>
 		</a>
+		<!-- Show social links -->
+		<cms:template file="parts/social_links.xml"/>
 	</div>
 
 	<cms:desktop>

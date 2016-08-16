@@ -1,0 +1,32 @@
+<document>
+  <div class="social_links">
+    <span><cms:text constant="title_share"/></span>
+    <a 
+      href="'https://www.facebook.com/sharer/sharer.php?u='.urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])"
+      cms:eval="href"
+      >
+      <cms:svg file="site-sprite.svg" symbol="facebook"/>
+    </a>
+
+    <a 
+      href="'https://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;title=&amp;summary=&amp;source='.urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])"
+      cms:eval="href"
+      >
+      <cms:svg file="site-sprite.svg" symbol="linkedin"/>
+    </a>
+
+    <a 
+      href="'https://twitter.com/home?status='.urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])"
+      cms:eval="href"
+      >
+      <cms:svg file="site-sprite.svg" symbol="twitter"/>
+    </a>
+
+    <a 
+      href="'https://plus.google.com/share?url='.urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])"
+      cms:eval="href"
+      >
+      <cms:svg file="site-sprite.svg" symbol="googleplus"/>
+    </a>
+  </div>
+</document>
