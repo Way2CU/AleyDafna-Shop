@@ -132,7 +132,26 @@ section#payments img {
 	margin-bottom: 10px;
 }
 
-section#payments  p {
+section#payments div.social_links span {
+	display: block;
+	font-weight: 700;
+}
+
+section#payments div.social_links a {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.2em 1em;
+}
+
+section#payments div.social_links a svg {
+	display: block;
+	width: 2.5em;
+	height: 2.5em;
+	fill: @color_ac_medium_green;
+	transition: fill 0.3s;
+}
+
+section#payments p {
 	text-align: left;
 	font-weight: 700;
 	margin: 0px;
@@ -141,7 +160,7 @@ section#payments  p {
 	width: 95%;
 }
 
-html[dir=rtl] section#payments  p {
+html[dir=rtl] section#payments p {
 	text-align: right;
 }
 
@@ -149,49 +168,12 @@ section#payments strong {
 	color: @color_ac_orange;
 }
 
-section#payments  img  {
+section#payments img {
 	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-section#payments a {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 12px;
-	padding-right: 12px;
-	margin-left: 80px;
-	margin-right: 80px;
-	background-color: @color_text;
-	font-weight: 700;
-	text-decoration: none;
-	color: @color_ac_text;
-	transition: all 0.3s;
-}
-
-section#payments a:hover {
-	background-color: lighten(@color_text,5%);
-}
-
-section#payments a svg {
-	display: inline-block;
-	vertical-align: middle;
-	margin-right: 10px;
-	padding-right: 12px;
-	width: 25px;
-	height: 25px;
-	fill: @color_ac_text;
-	border-right: 2px solid  lighten(@color_text,10%);
-}
-
-html[dir=rtl] section#payments a svg {
-	margin-right: auto;
-	padding-right: 0px;
-	margin-left: 10px;
-	padding-left: 12px;
-	border-right: none;
-	border-left: 2px solid  lighten(@color_text,10%);
-}
 
 section#payments form label {
 	display: inline-block;

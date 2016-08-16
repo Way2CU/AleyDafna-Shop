@@ -125,6 +125,7 @@
 		<section id="payments">
 			<!-- social media links -->
 			<div class="social_links">
+				<span><cms:text constant="title_share"/></span>
 				<a 
 					href="'https://www.facebook.com/sharer/sharer.php?u='.urlencode('http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI])"
 					cms:eval="href"
