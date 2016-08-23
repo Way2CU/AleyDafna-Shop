@@ -3,12 +3,14 @@
 <document>
 	<cms:desktop>
 		<div id="exit_message">
-			<cms:module
-				name="articles"
-				action="show"
-				text_id="exit_form"
-				template="parts/article.xml"
-				/>
+			<div>
+				<cms:module
+					name="articles"
+					action="show"
+					text_id="exit_form"
+					template="parts/article.xml"
+					/>
+			</div>
 			<cms:module
 				name="contact_form"
 				action="show"
