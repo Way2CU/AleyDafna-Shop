@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
+<document>
+	<meta
+		property="$template['name']"
+		content="$params[$template['param']]"
+		cms:eval="property,content"
+		/>
+</document>

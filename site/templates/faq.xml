@@ -9,8 +9,8 @@
 				<cms:raw text=" - "/>
 				<cms:text constant="menu_faq"/>
 			</title>
-			<!-- Page description -->
-			
+
+			<cms:template file="parts/opengraph_generic.xml"/>
 			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
 			<cms:module name="head_tag" action="print_tag"/>
@@ -39,7 +39,7 @@
 
 			<!-- Footer -->
 			<cms:template file="parts/footer.xml"/>
-			
+
 		</body>
 	</html>
 </document>

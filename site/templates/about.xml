@@ -9,12 +9,14 @@
 				<cms:raw text=" - "/>
 				<cms:text constant="menu_about"/>
 			</title>
+
 			<!-- Page description -->
-			<cms:module 
-				name="page_info" 
+			<cms:module
+				name="page_info"
 				action="set_description"
 				article="about"
 				/>
+			<cms:template file="parts/opengraph_generic.xml"/>
 
 			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
@@ -39,15 +41,15 @@
 						text_id="about"
 						template="parts/article.xml"
 						/>
-					<img 
-						src="_BASEURL.'/site/images/logo-vertical.svg'"  
+					<img
+						src="_BASEURL.'/site/images/logo-vertical.svg'"
 						alt="logo"
 						class="logo"
 						cms:eval="src"
 						/>
 
 					<span><cms:text constant="title_logo"/></span>
-					
+
 					<!-- Aley dafna about image -->
 					<cms:module
 						name="gallery"
@@ -56,9 +58,9 @@
 						template="parts/image.xml"
 						/>
 				</article>
-			</section>	
+			</section>
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
 		</body>
 	</html>
 </document>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
+<document>
+	<meta
+		property="og:title"
+		content="site_title"
+		cms:constant="content"
+		/>
+	<meta
+		property="og:type"
+		content="website"
+		/>
+	<meta
+		property="og:image"
+		content="_BASEURL.'/site/images/logo.png'"
+		cms:eval="content"
+		/>
+	<cms:module
+		name="articles"
+		action="show"
+		text_id="social_description"
+		template="parts/opengraph_property.xml"
+		>
+		<param name="name" value="og:description"/>
+		<param name="param" value="content"/>
+	</cms:module>
+</document>

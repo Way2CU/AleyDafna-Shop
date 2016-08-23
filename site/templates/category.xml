@@ -24,6 +24,7 @@
 				template="parts/page_description.xml"
 				cms:eval="id"
 				/>
+			<cms:template file="parts/opengraph_generic.xml"/>
 
 			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
 			<cms:script src="_BASEURL.'/site/scripts/filter.js'" cms:eval="src"/>

@@ -9,7 +9,8 @@
 				<cms:raw text=" - "/>
 				<cms:text constant="menu_customer"/>
 			</title>
-			<!-- Page description -->
+
+			<cms:template file="parts/opengraph_generic.xml"/>
 			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
 			<cms:module name="head_tag" action="print_tag"/>
@@ -24,7 +25,7 @@
 			<cms:mobile>
 				<cms:template file="parts/mobile_header.xml"/>
 			</cms:mobile>
-			
+
 			<section id="customer">
 				<div id="form_customers">
 					<h2><cms:text constant="title_customers"/></h2>
@@ -37,7 +38,7 @@
 				</div>
 			</section>
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
 		</body>
 	</html>
 </document>

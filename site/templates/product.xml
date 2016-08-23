@@ -15,6 +15,7 @@
 					cms:eval="id"
 					/>
 			</title>
+
 			<!-- Page description -->
 			<cms:module
 				name="shop"
@@ -38,7 +39,7 @@
 				<cms:template file="parts/mobile_header.xml"/>
 			</cms:mobile>
 
-			<section id="product">	
+			<section id="product">
 				<div class="product_wrapper">
 					<cms:module
 						name="shop"
@@ -47,7 +48,7 @@
 						template="parts/product_details_template.xml"
 						cms:eval="id"
 						/>
-				</div>	
+				</div>
 
 				<div id="related_items">
 					<h3><cms:text constant="title_related_items"/></h3>
@@ -67,7 +68,7 @@
 			</section>
 
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
 		</body>
 	</html>
 </document>

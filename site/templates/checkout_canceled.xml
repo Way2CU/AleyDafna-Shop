@@ -10,7 +10,7 @@
 				<cms:text constant="title_checkout"/>
 			</title>
 
-			<cms:collection include="dialog"/>
+			<cms:template file="parts/opengraph_generic.xml"/>
 			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:module name="shop" action="include_scripts"/>
 			<cms:collection include="communicator,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
