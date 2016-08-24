@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
 <document>
-	<meta
-		property="$template['name']"
-		content="$params[$template['param']]"
-		cms:eval="property,content"
-		/>
+	<cms:if condition="!isset($template['simple'])">
+		<meta
+			property="$template['name']"
+			content="$params[$template['param']][$language]"
+			cms:eval="property,content"
+			/>
+	</cms:if>
+	<cms:if condition="isset($template['simple'])">
+		<meta
+			property="$template['name']"
+			content="$params[$template['param']]"
+			cms:eval="property,content"
+			/>
+	</cms:if>
 </document>

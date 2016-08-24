@@ -13,11 +13,16 @@
 		property="og:type"
 		content="website"
 		/>
-	<meta
-		property="og:image"
-		content="_BASEURL.'/site/images/logo.png'"
-		cms:eval="content"
-		/>
+	<cms:module
+		name="gallery"
+		action="show_image"
+		group="$params['gallery']"
+		template="parts/opengraph_property.xml"
+		>
+		<param name="name" value="og:image"/>
+		<param name="param" value="url"/>
+		<param name="simple" value=""/>
+	</cms:module>
 	<meta
 		property="og:description"
 		content="$params['description'][$language]"

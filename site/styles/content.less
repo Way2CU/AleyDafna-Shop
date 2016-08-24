@@ -2157,15 +2157,14 @@ label#checkout_date_select .pika-next {
 div#exit_message {
 	display: none;
 	position: fixed;
-	width: 400px;
 	top: 0;
 	left: 50%;
-	margin-left: -200px;
 	padding: 2em;
 	box-sizing: border-box;
 
 	border: 1px solid @color_ac_medium_green;
 	background-color: white;
+	transform: translateX(-50%);
 	z-index: 10000;
 }
 
@@ -2181,6 +2180,10 @@ div#exit_message > form {
 
 div#exit_message > div {
 	margin-right: 20px;
+}
+
+div#exit_message > div img {
+	display: block;
 }
 
 div#exit_message h2 {
