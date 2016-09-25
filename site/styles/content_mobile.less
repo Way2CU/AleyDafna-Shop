@@ -71,12 +71,19 @@ section#business {
 
 section#business div.title {
 	padding-bottom: 10px;
-	text-align: center;
 	background-color: @color_ac_medium_green;
 	color: @color_ac_text;
 }
 
-section#business div.title h2,
+section#business div.title article {
+	padding: 0.5em 0.5em;
+}
+
+section#business div.title article h2 {
+	margin: 0;
+	text-align: center;
+}
+
 section#business div.title > p {
 	margin: 0px;
 	font-weight: 700;
@@ -1096,6 +1103,11 @@ div#form_business p {
 	padding-bottom: 0.5em;
 	font-weight: 700;
 	font-size: 1.2em;
+	color: @color_ac_black;
+}
+
+div#form_business p a {
+	display: inline-block;
 	color: @color_ac_black;
 }
 
