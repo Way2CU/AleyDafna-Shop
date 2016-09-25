@@ -27,8 +27,14 @@
 
 			<section id="business">
 				<div class="title">
-					<h2><cms:text constant="title_business"/></h2>
-					<p><cms:text constant="description_business"/></p>
+					<cms:module
+						name="articles"
+						action="show"
+						text_id="business"
+						template="stock/article_generic.xml"
+						>
+						<param name="title" value=""/>
+					</cms:module>
 				</div>
 
 				<div id="form_business">
@@ -44,7 +50,7 @@
 			</section>
 
 			<!-- Footer -->
-			<cms:template file="parts/footer.xml"/>	
+			<cms:template file="parts/footer.xml"/>
 		</body>
 	</html>
 </document>

@@ -64,7 +64,7 @@ section#customer {
 }
 
 section#business {
-	padding: 130px calc(~'(100% - 1200px)' / 2);
+	padding: 120px calc(~'(100% - 1200px)' / 2);
 }
 
 section#customer {
@@ -105,19 +105,25 @@ html[dir=rtl] section#business div.title {
 	margin-right: auto;
 }
 
-section#business div h2 {
+section#business div.title article {
+	box-sizing: border-box;
+	padding: 0.5em 1em;
+}
+
+section#business div article h2 {
 	margin: 0px;
 	padding-top: 10px;
 	padding-left: 5px;
 	padding-right: 5px;
-	font-size: 3em;
+	font-size: 2.5em;
 }
 
-section#business div p {
-	margin-top: 0px;
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 1.5em;
+section#business div.title article ul {
+	margin: 0;
+}
+
+section#business div.title article ul li {
+	font-size: 1.2em;
 }
 
 section#warranty article,
@@ -1452,6 +1458,17 @@ div#form_business p {
 	font-weight: 400;
 	color: @color_ac_text;
 	background-color: @color_ac_medium_green
+}
+
+div#form_business p a {
+	display: inline-block;
+	text-decoration: none;
+	color: @color_ac_text;
+	transition: all 0.3s;
+}
+
+div#form_business p a:hover {
+	text-decoration: underline;
 }
 
 form.recovery,
