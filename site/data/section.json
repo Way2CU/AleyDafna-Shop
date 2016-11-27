@@ -1,7 +1,8 @@
 {
 	"/": "home.xml",
-	"/shop/{category}": "category.xml",
-	"/shop/{category}/{product}": "product.xml",
+	"/shop/category/{category}": "category.xml",
+	"/shop/category/{category}/product/{product}": "category.xml",
+	"/shop/category/{category}/subcategory/{subcategory}/product/{product}": "product.xml",
 	"/shop/checkout": "checkout.xml",
 	"/shop/checkout/completed": "checkout_completed.xml",
 	"/shop/checkout/canceled": "checkout_canceled.xml",
