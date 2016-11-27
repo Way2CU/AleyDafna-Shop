@@ -2,8 +2,9 @@
 	<cms:desktop>
 		<li class="$params['has_children'] ? 'sub-menu' : false" cms:optional="class">
 
-			<a href="url_Make('category', 'shop', array('id', $params['id']))" cms:eval="href">
-				<cms:var param="title" multilanguage="yes"/>	
+			<a href="URL::make(array('category' => $params['id']), 'category.xml')" cms:eval="href">
+
+				<cms:var param="title" multilanguage="yes"/>
 			</a>
 			<cms:if condition="$params['has_children'] ">
 				<ul class="drop">
@@ -14,15 +15,15 @@
 						order_asc="0"
 						cms:eval="parent_id"
 						/>
-				</ul>	
+				</ul>
 			</cms:if>
 		</li>
 	</cms:desktop>
 
 	<cms:mobile>
 		<li >
-			<a href="url_Make('category','shop',array('id',$params['id']))" cms:eval="href">
-				<cms:var param="title" multilanguage="yes"/>	
+			<a href="URL::make(array('category' => $params['id']), 'category.xml')" cms:eval="href">
+				<cms:var param="title" multilanguage="yes"/>
 			</a>
 		</li>
 	</cms:mobile>

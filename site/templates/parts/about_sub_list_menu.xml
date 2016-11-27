@@ -1,8 +1,8 @@
 <document>
 	<li>
 		<a
-			class="$section == 'terms-and-conditions' ? 'active' : false"
-			href="url_Make('terms-and-conditions', 'about-us')"
+			class="URL::is_active('warranty.xml')"
+			href="URL::make(array(), 'warranty.xml')"
 			cms:eval="href"
 			cms:optional="class"
 			>
@@ -12,8 +12,8 @@
 
 	<li>
 		<a
-			class="$section == 'faq' ? 'active' : false"
-			href="url_Make('faq', 'about-us')"
+			cclass="URL::is_active('faq.xml')"
+			href="URL::make(array(), 'faq.xml')"
 			cms:eval="href"
 			cms:optional="class"
 			>
