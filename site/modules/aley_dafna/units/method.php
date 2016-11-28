@@ -51,7 +51,7 @@ class Paid_DeliveryMethod extends DeliveryMethod {
 	/**
 	 * Public function that creates a single instance
 	 */
-	public static function getInstance($parent) {
+	public static function get_instance($parent) {
 		if (!isset(self::$_instance))
 			self::$_instance = new self($parent);
 
