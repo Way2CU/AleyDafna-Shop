@@ -43,7 +43,7 @@
 					<div>
 						<cms:svg file="site-sprite.svg" symbol="phone"/>
 						<a
-							href="'tel:'.urlencode(Language::getText('phone'))"
+							href="'tel:'.urlencode(Language::get_Text('phone'))"
 							cms:eval="href"
 							class="phone"
 							>
@@ -51,7 +51,7 @@
 						</a>
 
 						<a
-							href="'tel:'.urlencode(Language::getText('phone2'))"
+							href="'tel:'.urlencode(Language::get_Text('phone2'))"
 							cms:eval="href"
 							class="phone"
 							>

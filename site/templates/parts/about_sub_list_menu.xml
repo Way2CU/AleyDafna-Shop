@@ -12,7 +12,7 @@
 
 	<li>
 		<a
-			cclass="URL::is_active('faq.xml')"
+			class="URL::is_active('faq.xml')"
 			href="URL::make(array(), 'faq.xml')"
 			cms:eval="href"
 			cms:optional="class"

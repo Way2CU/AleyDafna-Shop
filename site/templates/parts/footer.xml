@@ -53,7 +53,7 @@
 
 					<li class="sub-menu">
 						<a
-							class="$section == 'about' ? 'active' : false"
+							class="URL::is_active('about.xml')"
 							href="URL::make(array(), 'about.xml')"
 							cms:eval="href"
 							cms:optional="class"
@@ -67,7 +67,7 @@
 
 					<li class="sub-menu">
 						<a
-							class="$section == 'contact-us' ? 'active' : false"
+							class="URL::is_active('contact.xml')"
 							href="URL::make(array(), 'contact.xml')"
 							cms:eval="href"
 							cms:optional="class"

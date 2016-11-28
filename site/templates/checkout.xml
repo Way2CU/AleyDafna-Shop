@@ -30,7 +30,7 @@
 			<cms:module
 				name="shop"
 				action="set_terms"
-				link="url_Make('terms-and-conditions', 'about-us')"
+				link="URL::make(array(), 'warreny.xml')"
 				cms:eval="link"
 				/>
 
