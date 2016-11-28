@@ -10,7 +10,7 @@
 				<cms:module
 					name="shop"
 					action="show_item"
-					id="fix_id($_REQUEST['id'])"
+					id="fix_id($_REQUEST['product'])"
 					template="parts/product_name.xml"
 					cms:eval="id"
 					/>
@@ -20,7 +20,7 @@
 			<cms:module
 				name="shop"
 				action="show_item"
-				id="fix_id($_REQUEST['id'])"
+				id="fix_id($_REQUEST['product'])"
 				template="parts/page_description.xml"
 				cms:eval="id"
 				/>
@@ -44,7 +44,7 @@
 					<cms:module
 						name="shop"
 						action="show_item"
-						id="fix_id($_REQUEST['id'])"
+						id="fix_id($_REQUEST['product'])"
 						template="parts/product_details_template.xml"
 						cms:eval="id"
 						/>
@@ -56,7 +56,7 @@
 						name="shop"
 						action="show_item_list"
 						category="$_REQUEST['category']"
-						related="fix_id($_REQUEST['id'])"
+						related="fix_id($_REQUEST['product'])"
 						template="parts/related_items.xml"
 						cms:eval="related,category"
 						/>

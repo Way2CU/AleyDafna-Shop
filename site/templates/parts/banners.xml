@@ -4,7 +4,7 @@
 			<p><cms:text constant="title_bottom_banner"/></p>
 
 			<a
-				href="url_Make('business-clients', 'contact-us')"
+				href="URL::make(array(), 'business.xml')"
 				cms:eval="href"
 				>
 				<cms:text constant="title_button_special_deals"/>
@@ -17,7 +17,7 @@
 			<p><cms:text constant="title_top_banner"/></p>
 
 			<a
-				href="url_Make('customer-clients', 'contact-us')"
+				href="URL::make(array(), 'customer.xml')"
 				cms:eval="href"
 				>
 				<cms:text constant="title_button_sign"/>

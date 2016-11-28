@@ -6,7 +6,7 @@
 		<!-- Show phone number on all pages but checkout -->
 		<cms:if condition="!($section == 'shop' and $action == 'checkout')">
 			<a
-				href="'tel:'.urlencode(Language::getText('phone'))"
+				href="'tel:'.urlencode(Language::get_Text('phone'))"
 				cms:eval="href"
 				class="fixed_phone"
 				>
@@ -18,7 +18,7 @@
 				<span/>
 			</a>
 
-			<a href="url_Make('', 'home')" class="logo" cms:eval="href">
+			<a href="URL::make()" class="logo" cms:eval="href">
 				<img src="_BASEURL.'/site/images/logo.svg'"  alt="logo" cms:eval="src"/>
 			</a>
 
@@ -42,7 +42,7 @@
 					<li>
 						<a
 							class="control_panel"
-							href="url_Make('', 'user')"
+							href="URL::make(array(), recovery.xml)"
 							cms:eval="href"
 							>
 							<cms:text constant="menu_account"/>
@@ -63,7 +63,7 @@
 					<p><cms:text constant="label_phone"/></p>
 
 					<a
-						href="'tel:'.urlencode(Language::getText('phone'))"
+						href="'tel:'.urlencode(Language::get_Text('phone'))"
 						cms:eval="href"
 						class="phone"
 						>
@@ -116,8 +116,8 @@
 
 				<li>
 					<a
-						class="$section == 'about-us' ? 'active' : false"
-						href="url_Make('', 'about-us')"
+						class="URL::is_active('about.xml')"
+						href="URL::make(array(), 'about.xml')"
 						cms:eval="href"
 						cms:optional="class"
 						>
@@ -129,8 +129,8 @@
 
 				<li>
 					<a
-						class="$section == 'contact-us' ? 'active' : false"
-						href="url_Make('', 'contact-us')"
+						class="URL::is_active('contact.xml')"
+						href="URL::make(array(), 'contact.xml')"
 						cms:eval="href"
 						cms:optional="class"
 						>

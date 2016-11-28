@@ -54,7 +54,7 @@
 					<li class="sub-menu">
 						<a
 							class="$section == 'about' ? 'active' : false"
-							href="url_Make('', 'about')"
+							href="URL::make(array(), 'about.xml')"
 							cms:eval="href"
 							cms:optional="class"
 							>
@@ -68,7 +68,7 @@
 					<li class="sub-menu">
 						<a
 							class="$section == 'contact-us' ? 'active' : false"
-							href="url_Make('', 'contact-us')"
+							href="URL::make(array(), 'contact.xml')"
 							cms:eval="href"
 							cms:optional="class"
 							>
@@ -104,7 +104,7 @@
 			<div>
 				<cms:svg file="site-sprite.svg" symbol="phone"/>
 				<a
-					href="'tel:'.urlencode(Language::getText('phone'))"
+					href="'tel:'.urlencode(Language::get_Text('phone'))"
 					cms:eval="href"
 					class="phone"
 					>

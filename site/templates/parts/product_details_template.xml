@@ -39,7 +39,7 @@
 				type="radio"
 				name="size"
 				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
-				id="Language::getText('label_regular')"
+				id="Language::get_Text('label_regular')"
 				checked="checked"
 				cms:optional="data-discount-price"
 				value="$params['price']"

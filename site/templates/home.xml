@@ -58,7 +58,9 @@
 						action="show_item_list"
 						category="promoted"
 						template="parts/category_items_template.xml"
-						/>
+						>
+						<cms:transfer target="category" name="id"/>
+					</cms:module>
 				</section>
 
 				<section id="special_categories">

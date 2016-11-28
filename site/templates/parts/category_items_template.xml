@@ -1,7 +1,7 @@
 <document>
 	<cms:desktop>
 		<a
-			href="url_Make('product', 'shop', array('category', fix_id($_REQUEST['id'])), array('id',$params['id']))"
+			href="URL::make(array('category' => fix_id($_REQUEST['category']), 'product' => $params['id']), 'product.xml')"
 			class="item"
 			data-uid="$params['uid']"
 			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
@@ -29,7 +29,7 @@
 
 	<cms:mobile>
 		<a
-			href="url_Make('product', 'shop', array('category', fix_id($_REQUEST['id'])), array('id',$params['id']))"
+			href="URL::make(array('category' => fix_id($_REQUEST['id']), 'product' => $params['id']), 'product.xml')"
 			class="item"
 			data-uid="$params['uid']"
 			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
