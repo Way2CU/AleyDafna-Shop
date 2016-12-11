@@ -13,5 +13,6 @@
 	"/contact-us": "contact.xml",
 	"/contact-us/customer-clients": "customer.xml",
 	"/contact-us/business-clients": "business.xml",
-	"/user": "recovery.xml"
+	"/user": "recovery.xml",
+	"/404": "404_missing_page.xml"
 }
