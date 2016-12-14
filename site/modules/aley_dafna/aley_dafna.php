@@ -61,17 +61,17 @@ class aley_dafna extends Module {
 
 		// register backend
 		if (class_exists('backend')) {
-			$backend = backend::getInstance();
+			$backend = backend::get_instance();
 			$import_menu = $backend->getMenu('shop_import');
 
 			if (!is_null($import_menu)) {
 				$import_menu->addChild(null, new backend_MenuItem(
-					$this->getLanguageConstant('menu_import_items'),
-					url_GetFromFilePath($this->path.'images/import.svg'),
+					$this->get_language_constant('menu_import_items'),
+					URL::from_file_path($this->path.'images/import.svg'),
 					window_Open( // on click open window
 						'shop_import_items',
 						350,
-						$this->getLanguageConstant('title_import_items'),
+						$this->get_language_constant('title_import_items'),
 						true, true,
 						backend_UrlMake($this->name, 'import')
 					),
@@ -79,12 +79,12 @@ class aley_dafna extends Module {
 				));
 
 				$import_menu->addChild(null, new backend_MenuItem(
-					$this->getLanguageConstant('menu_import_english'),
-					url_GetFromFilePath($this->path.'images/import.svg'),
+					$this->get_language_constant('menu_import_english'),
+					URL::from_file_path($this->path.'images/import.svg'),
 					window_Open( // on click open window
 						'shop_import_items',
 						350,
-						$this->getLanguageConstant('title_import_items'),
+						$this->get_language_constant('title_import_items'),
 						true, true,
 						backend_UrlMake($this->name, 'import_english')
 					),
@@ -97,20 +97,20 @@ class aley_dafna extends Module {
 		if (ModuleHandler::is_loaded('backend') && ModuleHandler::is_loaded('shop')) {
 			require_once('units/method.php');
 			require_once('units/pickup_method.php');
-			Paid_DeliveryMethod::getInstance($this);
-			Pickup_DeliveryMethod::getInstance($this);
+			Paid_DeliveryMethod::get_instance($this);
+			Pickup_DeliveryMethod::get_instance($this);
 		}
 
-		if (ModuleHandler::is_loaded('head_tag') && $section == 'shop' && $action == 'checkout') {
-			$head_tag = head_tag::getInstance();
-			$head_tag->addTag('script', array( 'src' => url_GetFromFilePath($this->path.'include/pikaday.js'), 'type' => 'text/javascript'));
-			$head_tag->addTag('link', array('href' => url_GetFromFilePath($this->path.'include/pikaday.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
-			$head_tag->addTag('link', array('href' => url_GetFromFilePath($this->path.'include/checkout.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
+		if ($section == 'shop' && $action == 'checkout') {
+			$head_tag = head_tag::get_instance();
+			$head_tag->addTag('script', array( 'src' => URL::from_file_path($this->path.'include/pikaday.js'), 'type' => 'text/javascript'));
+			$head_tag->addTag('link', array('href' => URL::from_file_path($this->path.'include/pikaday.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
+			$head_tag->addTag('link', array('href' => URL::from_file_path($this->path.'include/checkout.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
 		}
 
-		if (ModuleHandler::is_loaded('backend') && ModuleHandler::is_loaded('head_tag') && $section == 'backend') {
-			$head_tag = head_tag::getInstance();
-			$head_tag->addTag('script', array( 'src' => url_GetFromFilePath($this->path.'include/backend.js'), 'type' => 'text/javascript'));
+		if (ModuleHandler::is_loaded('backend') && $section == 'backend') {
+			$head_tag = head_tag::get_instance();
+			$head_tag->addTag('script', array( 'src' => URL::from_file_path($this->path.'include/backend.js'), 'type' => 'text/javascript'));
 		}
 
 		// connect transaction handling event
@@ -120,7 +120,7 @@ class aley_dafna extends Module {
 	/**
 	 * Public function that creates a single instance
 	 */
-	public static function getInstance() {
+	public static function get_instance() {
 		if (!isset(self::$_instance))
 			self::$_instance = new self();
 
@@ -133,7 +133,7 @@ class aley_dafna extends Module {
 	 * @param array $params
 	 * @param array $children
 	 */
-	public function transferControl($params = array(), $children = array()) {
+	public function transfer_control($params = array(), $children = array()) {
 		// global control actions
 		if (isset($params['action']))
 			switch ($params['action']) {
@@ -169,13 +169,13 @@ class aley_dafna extends Module {
 	/**
 	 * Event triggered upon module initialization
 	 */
-	public function onInit() {
+	public function initialize() {
 	}
 
 	/**
 	 * Event triggered upon module deinitialization
 	 */
-	public function onDisable() {
+	public function cleanup() {
 	}
 
 	/**
@@ -187,16 +187,16 @@ class aley_dafna extends Module {
 		global $language;
 
 		// get managers
-		$buyer_manager = ShopBuyersManager::getInstance();
-		$address_manager = ShopDeliveryAddressManager::getInstance();
-		$transaction_items_manager = ShopTransactionItemsManager::getInstance();
-		$item_manager = ShopItemManager::getInstance();
+		$buyer_manager = ShopBuyersManager::get_instance();
+		$address_manager = ShopDeliveryAddressManager::get_instance();
+		$transaction_items_manager = ShopTransactionItemsManager::get_instance();
+		$item_manager = ShopItemManager::get_instance();
 
 		// get transaction data
 		$buyer = Transaction::get_buyer($transaction);
 		$address = Transaction::get_address($transaction);
-		$transaction_items = $transaction_items_manager->getItems(
-			$transaction_items_manager->getFieldNames(),
+		$transaction_items = $transaction_items_manager->get_items(
+			$transaction_items_manager->get_field_names(),
 			array('transaction' => $transaction->id)
 		);
 
@@ -222,7 +222,7 @@ class aley_dafna extends Module {
 			foreach ($transaction_items as $item)
 				$id_list[] = $item->item;
 
-			$items = $item_manager->getItems(array('id', 'name'), array('id' => $id_list));
+			$items = $item_manager->get_items(array('id', 'name'), array('id' => $id_list));
 			foreach ($items as $item)
 				$name_by_id[$item->id] = $item->name;
 
@@ -283,7 +283,7 @@ class aley_dafna extends Module {
 	 */
 	private function show_import($action) {
 		$template = new TemplateHandler('import.xml', $this->path.'templates/');
-		$template->setMappedModule($this->name);
+		$template->set_mapped_module($this->name);
 
 		// prepare form action
 		switch ($action) {
@@ -302,8 +302,8 @@ class aley_dafna extends Module {
 			'cancel_action'	=> window_Close('shop_import_items')
 		);
 
-		$template->restoreXML();
-		$template->setLocalParams($params);
+		$template->restore_xml();
+		$template->set_local_params($params);
 		$template->parse();
 	}
 
@@ -368,12 +368,12 @@ class aley_dafna extends Module {
 		global $db;
 
 		// get managers
-		$item_manager = ShopItemManager::getInstance();
-		$gallery_manager = GalleryManager::getInstance();
+		$item_manager = ShopItemManager::get_instance();
+		$gallery_manager = GalleryManager::get_instance();
 
 		// load existing items
 		$existing_items = array();
-		$items = $item_manager->getItems(array('name', 'description', 'uid'), array());
+		$items = $item_manager->get_items(array('name', 'description', 'uid'), array());
 
 		foreach ($items as $item)
 			$existing_items[$item->uid] = $item;
@@ -405,21 +405,21 @@ class aley_dafna extends Module {
 			$data['description']['en'] = trim($row[self::COL_DESCRIPTION_EN]);
 
 			// update data
-			$item_manager->updateData($data, array('uid' => $uid));
+			$item_manager->update_items($data, array('uid' => $uid));
 		}
 
 		// show result message
 		$template = new TemplateHandler('message.xml', $this->path.'templates/');
-		$template->setMappedModule($this->name);
+		$template->set_mapped_module($this->name);
 
 		$params = array(
-			'message'	=> $this->getLanguageConstant('message_import_complete'),
-			'button'	=> $this->getLanguageConstant('close'),
+			'message'	=> $this->get_language_constant('message_import_complete'),
+			'button'	=> $this->get_language_constant('close'),
 			'action'	=> window_Close('shop_import_items')
 		);
 
-		$template->restoreXML();
-		$template->setLocalParams($params);
+		$template->restore_xml();
+		$template->set_local_params($params);
 		$template->parse();
 	}
 
@@ -429,17 +429,17 @@ class aley_dafna extends Module {
 	private function import_from_file() {
 		global $db, $site_path;
 
-		$gallery = gallery::getInstance();
-		$gallery_manager = GalleryManager::getInstance();
+		$gallery = gallery::get_instance();
+		$gallery_manager = GalleryManager::get_instance();
 		$languages = Language::getLanguages(false);
-		$item_manager = ShopItemManager::getInstance();
-		$category_manager = ShopCategoryManager::getInstance();
-		$property_manager = \Modules\Shop\Property\Manager::getInstance();
-		$membership_manager = \ShopItemMembershipManager::getInstance();
+		$item_manager = ShopItemManager::get_instance();
+		$category_manager = ShopCategoryManager::get_instance();
+		$property_manager = \Modules\Shop\Property\Manager::get_instance();
+		$membership_manager = \ShopItemMembershipManager::get_instance();
 
 		// load categories
 		$categories = array();
-		$raw_categories = $category_manager->getItems($category_manager->getFieldNames(), array());
+		$raw_categories = $category_manager->get_items($category_manager->get_field_names(), array());
 
 		if (count($raw_categories) > 0)
 			foreach ($raw_categories as $category)
@@ -447,14 +447,14 @@ class aley_dafna extends Module {
 
 		// load existing items
 		$existing_items = array();
-		$items = $item_manager->getItems(array('id', 'uid'), array());
+		$items = $item_manager->get_items(array('id', 'uid'), array());
 
 		foreach ($items as $item)
 			$existing_items[$item->uid] = $item->id;
 
 		// load existing images
 		$existing_images = array();
-		$images = $gallery_manager->getItems(array('group', 'text_id', 'id'), array());
+		$images = $gallery_manager->get_items(array('group', 'text_id', 'id'), array());
 
 		if (count($images) > 0)
 			foreach ($images as $image) {
@@ -502,8 +502,8 @@ class aley_dafna extends Module {
 					'price'           => count($prices) > 0 ? floatval($prices[0]) : 0
 				);
 				$item_id = $existing_items[$uid];
-				$item_manager->updateData($data, array('id' => $item_id));
-				$gallery_id = $item_manager->getItemValue('gallery', array('id' => $item_id));
+				$item_manager->update_items($data, array('id' => $item_id));
+				$gallery_id = $item_manager->get_item_value('gallery', array('id' => $item_id));
 
 			} else {
 				// prepare data
@@ -526,13 +526,13 @@ class aley_dafna extends Module {
 				$data['gallery'] = $gallery_id;
 
 				// add item to the database
-				$item_manager->insertData($data);
+				$item_manager->insert_item($data);
 				$item_id = $item_manager->getInsertedID();
 
 			}
 
 			// remove existing prices
-			$property_manager->deleteData(array(
+			$property_manager->delete_items(array(
 				'item'          => $item_id,
 				'text_id'       => array(
 					'operator' => 'LIKE',
@@ -561,12 +561,12 @@ class aley_dafna extends Module {
 					);
 
 					// insert new price property
-					$property_manager->insertData($price_data);
+					$property_manager->insert_item($price_data);
 				}
 			}
 
 			// remove existing category membership
-			$membership_manager->deleteData(array('item' => $item_id));
+			$membership_manager->delete_items(array('item' => $item_id));
 
 			// assign category membership
 			for ($i = self::COL_FIRST_CATEGORY; $i < count($row); $i++) {
@@ -574,7 +574,7 @@ class aley_dafna extends Module {
 				$category_id = $this->get_category_for_name($categories, $category_name, self::DEFAULT_THRESHOLD);
 
 				if (!is_null($category_id))
-					$membership_manager->insertData(array(
+					$membership_manager->insert_item(array(
 						'category' => $category_id,
 						'item'     => $item_id
 					));
@@ -595,7 +595,7 @@ class aley_dafna extends Module {
 
 				// only upload image if it wasn't uploaded already
 				if (!$image_already_uploaded && copy($source_path, $destination_path)) {
-					$gallery_manager->insertData(array(
+					$gallery_manager->insert_item(array(
 						'group'     => $gallery_id,
 						'title'		=> $item_name,
 						'text_id'   => $matched_hash,
@@ -611,16 +611,16 @@ class aley_dafna extends Module {
 
 		// show result message
 		$template = new TemplateHandler('message.xml', $this->path.'templates/');
-		$template->setMappedModule($this->name);
+		$template->set_mapped_module($this->name);
 
 		$params = array(
-			'message'	=> $this->getLanguageConstant('message_import_complete'),
-			'button'	=> $this->getLanguageConstant('close'),
+			'message'	=> $this->get_language_constant('message_import_complete'),
+			'button'	=> $this->get_language_constant('close'),
 			'action'	=> window_Close('shop_import_items')
 		);
 
-		$template->restoreXML();
-		$template->setLocalParams($params);
+		$template->restore_xml();
+		$template->set_local_params($params);
 		$template->parse();
 	}
 
@@ -629,9 +629,9 @@ class aley_dafna extends Module {
 	 */
 	private function print_card() {
 		$id = fix_id($_REQUEST['transaction']);
-		$manager = ShopTransactionsManager::getInstance();
-		$item_manager = ShopItemManager::getInstance();
-		$transaction_item_manager = ShopTransactionItemsManager::getInstance();
+		$manager = ShopTransactionsManager::get_instance();
+		$item_manager = ShopItemManager::get_instance();
+		$transaction_item_manager = ShopTransactionItemsManager::get_instance();
 
 		// get transaction with specified id
 		$transaction = $manager->getSingleItem(
@@ -644,7 +644,7 @@ class aley_dafna extends Module {
 			return;
 
 		// get items associated with transaction
-		$transaction_items = $transaction_item_manager->getItems(
+		$transaction_items = $transaction_item_manager->get_items(
 				array('item', 'description'),
 				array('transaction' => $transaction->id)
 			);
@@ -660,7 +660,7 @@ class aley_dafna extends Module {
 		}
 
 		// get unique id and gallery
-		$shop_items = $item_manager->getItems(
+		$shop_items = $item_manager->get_items(
 				array('id', 'uid', 'gallery'),
 				array('id' => $id_list)
 			);
@@ -694,8 +694,8 @@ class aley_dafna extends Module {
 
 		if (count($items) > 0)
 			foreach ($items as $item) {
-				$template->setLocalParams($item);
-				$template->restoreXML();
+				$template->set_local_params($item);
+				$template->restore_xml();
 				$template->parse();
 			}
 	}
