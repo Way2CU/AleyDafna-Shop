@@ -13,6 +13,14 @@
 		</head>
 
 		<body>
+			<!-- Verify account -->
+			<cms:if condition="isset($_REQUEST['code']) and isset($_REQUEST['email'])">
+				<cms:module
+					name="backend"
+					action="verify_account"
+					/>
+			</cms:if>
+
 			<!-- Header -->
 			<cms:desktop>
 				<cms:template file="parts/header.xml"/>
