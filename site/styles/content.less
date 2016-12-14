@@ -2307,3 +2307,25 @@ div.social_links a svg {
 div.social_links a:hover svg {
 	fill: @color_ac_orange;
 }
+
+#missing {
+	background-image: url(../images/404_background.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1920px 918px;
+	min-height: 918px;
+	padding: 0em calc(~'(100% - 1200px)' / 2 );
+	position: relative;
+}
+
+#missing h2 {
+	color: @color_ac_black;
+	text-align: center;
+	margin: 0;
+	padding: 2em;
+	background-color: fade(white, 50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
