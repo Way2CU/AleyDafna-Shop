@@ -1,4 +1,5 @@
 <document>
+	<cms:desktop>
 	<li class="sub-menu">
 		<a href="javascript:void(0)">
 			<cms:var param="title" multilanguage="yes"/>
@@ -14,4 +15,12 @@
 
 		</ul>
 	</li>
+	</cms:desktop>
+	<cms:mobile>
+		<li>
+			<a href="javascript:void(0)">
+				<cms:var param="title" multilanguage="yes"/>
+			</a>
+		</li>
+	</cms:mobile>
 </document>
