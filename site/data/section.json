@@ -13,7 +13,9 @@
 	"/contact-us": "contact.xml",
 	"/contact-us/customer-clients": "customer.xml",
 	"/contact-us/business-clients": "business.xml",
+	"/user": "recovery.xml",
 	"/user/recover-password": "recovery.xml",
 	"/user/verify-account/{s:code}/{a:email}": "home.xml",
-	"404": "404_missing_page.xml"
+	"404": "404_missing_page.xml",
+	"/areas/{text_id}": "delivery_article.xml"
 }

@@ -44,11 +44,18 @@
 						template="parts/category_list_menu.xml"
 						/>
 
-					<cms:module
+<!-- 					<cms:module
 						name="shop"
 						action="show_category"
 						text_id="sales"
 						template="parts/category_list_menu.xml"
+						/> -->
+
+					<cms:module
+						name="articles"
+						action="show_group"
+						text_id="delivery_areas"
+						template="parts/delivery_areas_group.xml"
 						/>
 
 					<li class="sub-menu">

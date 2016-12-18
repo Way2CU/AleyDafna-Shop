@@ -1097,9 +1097,19 @@ Site.insert_to_cart = function(event, skip_alter) {
  * @param object event
  */
 Site.insert_and_checkout = function(event, skip_alter) {
-	Site.cart.events.connect('item-added', function() {
+	// get item data
+	var uid = $(this).parent().attr('data-id');
+	var item_list = Site.cart.get_item_list_by_uid(uid);
+
+	// test if item in cart
+	if (item_list.length == 0) {
+		Site.cart.events.connect('item-added', function() {
+			Site.cart.checkout();
+		});
+	} else {
 		Site.cart.checkout();
-	});
+	}
+
 	Site.insert_to_cart(event, true);
 };
 
