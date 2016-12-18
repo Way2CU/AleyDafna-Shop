@@ -1098,16 +1098,15 @@ Site.insert_to_cart = function(event, skip_alter) {
  */
 Site.insert_and_checkout = function(event, skip_alter) {
 	// get item data
-	var item = $(this);
-	var uid = item.parent().attr('data-id');
+	var uid = $(this).parent().attr('data-id');
 	var item_list = Site.cart.get_item_list_by_uid(uid);
 
-	if(item_list.length > 0) {
-		Site.cart.checkout();
-	} else {
+	if (item_list.length < 1) {
 		Site.cart.events.connect('item-added', function() {
 			Site.cart.checkout();
 		});
+	} else {
+		Site.cart.checkout();
 	}
 
 	Site.insert_to_cart(event, true);
