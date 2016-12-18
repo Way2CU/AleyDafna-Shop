@@ -1101,7 +1101,8 @@ Site.insert_and_checkout = function(event, skip_alter) {
 	var uid = $(this).parent().attr('data-id');
 	var item_list = Site.cart.get_item_list_by_uid(uid);
 
-	if (item_list.length < 1) {
+	// test if item in cart
+	if (item_list.length == 0) {
 		Site.cart.events.connect('item-added', function() {
 			Site.cart.checkout();
 		});
