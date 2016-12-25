@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../../../units/schema/language.dtd">
+<document>
+	<cms:desktop>
+		<a
+			href="URL::make(array('category' => fix_id($_REQUEST['category']), 'product' => $params['id']), 'product.xml')"
+			class="item"
+			data-uid="$params['uid']"
+			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
+			cms:eval="href,data-uid"
+			cms:optional="data-discount"
+			>
+
+			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 200,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['name'][$language]"  cms:eval="src,alt"/>
+			<p><cms:var param="name" multilanguage="yes"/></p>
+			<p
+				class="price"
+				data-currency="currency"
+				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
+				cms:optional="data-discount-price"
+				cms:constant="data-currency"
+				>
+				<cms:var param="price"/>
+			</p>
+
+			<div>
+				<cms:markdown param="description" multilanguage="yes"/>
+			</div>
+		</a>
+	</cms:desktop>
+
+	<cms:mobile>
+		<a
+			href="URL::make(array('category' => fix_id($_REQUEST['id']), 'product' => $params['id']), 'product.xml')"
+			class="item"
+			data-uid="$params['uid']"
+			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
+			cms:eval="href,data-uid"
+			cms:optional="data-discount"
+			>
+
+			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['name'][$language]"  cms:eval="src,alt"/>
+			<p><cms:var param="name" multilanguage="yes"/></p>
+			<p
+				class="price"
+				data-currency="currency"
+				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
+				cms:optional="data-discount-price"
+				cms:constant="data-currency"
+				>
+				<cms:var param="price"/>
+			</p>
+		</a>
+	</cms:mobile>
+
+</document>
