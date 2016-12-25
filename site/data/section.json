@@ -17,5 +17,7 @@
 	"/user/recover-password": "recovery.xml",
 	"/user/verify-account/{s:code}/{a:email}": "home.xml",
 	"404": "404_missing_page.xml",
-	"/areas/{text_id}": "delivery_article.xml"
+	"/areas/{text_id}": "delivery_article.xml",
+	"/search": "search.xml",
+	"/search/result/{n:id}": "search_result.xml"
 }
