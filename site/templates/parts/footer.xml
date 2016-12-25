@@ -144,7 +144,6 @@
 				action="show"
 				text_id="contact_mail"
 				/>
-
 		</section>
 
 		<cms:template file="stock/copyright.xml">
