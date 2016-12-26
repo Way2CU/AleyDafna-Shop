@@ -138,6 +138,25 @@
 						<cms:template file="parts/contact_sub_list_menu.xml"/>
 					</ul>
 				</li>
+
+				<li class="sub-menu">
+					<a href="javascript: void(0);">
+					</a>
+					<div class="drop">
+						<form method="get" action="URL::make(array(), 'search.xml')" cms:eval="action">
+							<label>
+								<span><cms:text constant="label_search"/></span>
+								<input
+									type="search"
+									name="q"
+									value="isset($_GET['q']) ? fix_chars($_GET['q']) : false"
+									cms:optional="value"
+									/>
+								<button type="submit"><cms:text constant="search"/></button>
+							</label>
+						</form>
+					</div>
+				</li>
 			</ul>
 		</nav>
 	</header>
