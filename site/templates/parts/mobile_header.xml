@@ -32,6 +32,20 @@
 		</div>
 
 		<nav class="mobile_menu">
+			<!-- search form -->
+			<form method="get" action="URL::make(array(), 'search.xml')" cms:eval="action">
+				<label>
+					<span><cms:text constant="label_search"/></span>
+					<input
+						type="search"
+						name="query"
+						value="isset($_GET['query']) ? fix_chars($_GET['query']) : false"
+						cms:optional="value"
+						/>
+					<button type="submit"><cms:text constant="search"/></button>
+				</label>
+			</form>
+
 			<ul>
 				<cms:guest>
 					<li><a class="sign-up" href="#"><cms:text constant="menu_signup"/></a></li>

@@ -117,7 +117,7 @@ div#popup {
 	position: absolute;
 	top: 50%;
 	margin-top: -15px;
-	right: 10px;	
+	right: 10px;
 }
 
 div#popup a.cart {
@@ -156,7 +156,33 @@ header nav.mobile_menu {
 html[dir=rtl] header nav.mobile_menu.visible,
 header nav.mobile_menu.visible {
 	width: 100%;
+}
 
+header nav.mobile_menu form {
+	display: block;
+	padding: 1em 0.5em;
+}
+
+header nav.mobile_menu form label {
+	display: block;
+	box-sizing: border-box;
+	width: 100%
+}
+
+header nav.mobile_menu form label input {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.5em;
+	border: 1px solid @color_ac_grey;
+}
+
+header nav.mobile_menu form label button {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.5em 1.5em;
+	border: 1px solid @color_ac_medium_green;
+	background-color: @color_ac_orange;
+	color: @color_ac_text;
 }
 
 header nav.mobile_menu ul {
