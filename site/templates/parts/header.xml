@@ -140,8 +140,8 @@
 								<span><cms:text constant="label_search"/></span>
 								<input
 									type="search"
-									name="q"
-									value="isset($_GET['q']) ? fix_chars($_GET['q']) : false"
+									name="query"
+									value="isset($_GET['query']) ? fix_chars($_GET['query']) : false"
 									cms:optional="value"
 									/>
 								<button type="submit"><cms:text constant="search"/></button>
