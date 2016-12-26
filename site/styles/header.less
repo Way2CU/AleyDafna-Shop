@@ -116,7 +116,7 @@ div#popup.show:after {
     70% {opacity:  0.5;}
     80% {opacity:  1;}
     90% {opacity:  0.5;}
-    100% {opacity:  1;} 
+    100% {opacity:  1;}
 }
 
 div#popup:before {
@@ -231,14 +231,16 @@ nav#main > ul > li {
 ul.user li a,
 nav#main > ul > li > a {
 	display: block;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 1em;
+	padding-bottom: 1em;
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 	border-left: 1px solid fade(@color_ac_text,50%);
 	color: @color_ac_text;
 	font-weight: 400;
+	line-height: 1.2em;
+	letter-spacing: -1.1px;
 	position: relative;
 	transition: all 0.3s;
 }
@@ -315,6 +317,20 @@ nav#main > ul > li.sub-menu:hover > a:before {
 	transform: rotate(180deg);
 }
 
+nav#main li a.search {
+	padding-top: 0.75em;
+	padding-bottom: 0.75em;
+}
+
+nav#main li a.search svg {
+	display: inline-block;
+	width: 1.5em;
+	height: calc(~'1.5em *' (32 / 32));
+	fill: @color_ac_text;
+	transition: all 0.3s;
+}
+
+nav#main ul li > div.drop,
 nav#main ul li > ul.drop {
 	position: absolute;
 	top: 100%;
@@ -324,7 +340,7 @@ nav#main ul li > ul.drop {
 	visibility: hidden;
 	opacity: 0;
 	z-index: 100;
-	
+
 	border: 1px solid @color_ac_dark_green;
 	background-color: @color_ac_text;
 	transform: rotateX(-90deg);
@@ -336,18 +352,56 @@ nav#main ul li > ul.drop {
 	text-align: left;
 }
 
+html[dir=rtl] nav#main ul li > div.drop,
 html[dir=rtl] nav#main ul li > ul.drop {
 	left: auto;
 	right: 0px;
 	text-align: right;
 }
 
+nav#main ul li:hover div.drop,
 nav#main ul li:hover ul.drop {
 	visibility: visible;
 	opacity: 1;
 	max-height: 500px;
 	transform: rotateX(0deg);
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+nav#main ul li:hover div.drop {
+	padding: 0.5em 1em;
+	color: @color_ac_dark_green;
+}
+
+nav#main ul li:hover div.drop span {
+	display: inline-block;
+}
+
+nav#main ul li:hover div.drop input {
+	padding: 0.5em 0.2em;
+	border: 1px solid @color_ac_grey;
+	transition: all 0.3s;
+}
+
+nav#main ul li:hover div.drop input:hover,
+nav#main ul li:hover div.drop input:focus {
+	border-color: @color_ac_dark_green;
+}
+
+nav#main ul li:hover div.drop button {
+	display: block;
+	margin-top: 0.5em;
+	padding: 0.5em 0em;
+	background-color: @color_ac_orange;
+	color: @color_ac_text;
+	border: 1px solid transparent;
+	width: 100%;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+nav#main ul li:hover div.drop button:hover {
+	background-color: lighten(@color_ac_orange, 10%);
 }
 
 nav#main ul ul.drop li {
