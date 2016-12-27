@@ -26,6 +26,12 @@
 			</cms:mobile>
 
 			<section id="results" cms:skip_cache="1">
+				<h1>
+					<cms:text constant="label_search"/>
+					<cms:raw text=" "/>
+					<cms:var name="fix_chars($_REQUEST['query'])"/>
+				</h1>
+
 				<cms:module
 					name="shop"
 					action="configure_search"
