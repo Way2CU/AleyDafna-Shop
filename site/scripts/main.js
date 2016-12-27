@@ -1314,7 +1314,7 @@ Site.on_load = function() {
 		Site.handle_mouseout = function(event) {
 			if(document.activeElement != input_search)
 				search_dialog.classList.remove('open');
-		}
+		};
 
 		search_dialog_trigger.addEventListener('mouseover', function() {
 			search_dialog.classList.add('open');
