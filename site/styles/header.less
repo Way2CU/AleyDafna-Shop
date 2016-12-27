@@ -317,12 +317,12 @@ nav#main > ul > li.sub-menu:hover > a:before {
 	transform: rotate(180deg);
 }
 
-nav#main li a.search {
+nav#main li.search a {
 	padding-top: 0.75em;
 	padding-bottom: 0.75em;
 }
 
-nav#main li a.search svg {
+nav#main li.search a svg {
 	display: inline-block;
 	width: 1.5em;
 	height: calc(~'1.5em *' (32 / 32));
@@ -352,6 +352,10 @@ nav#main ul li > ul.drop {
 	text-align: left;
 }
 
+nav#main ul li.search > div.drop {
+	padding: 0.5em 1em;
+}
+
 html[dir=rtl] nav#main ul li > div.drop,
 html[dir=rtl] nav#main ul li > ul.drop {
 	left: auto;
@@ -359,7 +363,7 @@ html[dir=rtl] nav#main ul li > ul.drop {
 	text-align: right;
 }
 
-nav#main ul li:hover div.drop,
+nav#main ul li.search div.drop.open,
 nav#main ul li:hover ul.drop {
 	visibility: visible;
 	opacity: 1;
@@ -368,27 +372,26 @@ nav#main ul li:hover ul.drop {
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-nav#main ul li:hover div.drop {
-	padding: 0.5em 1em;
+nav#main ul li.search div.drop {
 	color: @color_ac_dark_green;
 }
 
-nav#main ul li:hover div.drop span {
+nav#main ul li.search div.drop span {
 	display: inline-block;
 }
 
-nav#main ul li:hover div.drop input {
+nav#main ul li.search div.drop input {
 	padding: 0.5em 0.2em;
 	border: 1px solid @color_ac_grey;
 	transition: all 0.3s;
 }
 
-nav#main ul li:hover div.drop input:hover,
-nav#main ul li:hover div.drop input:focus {
+nav#main ul li.search:hover div.drop input:hover,
+nav#main ul li.search:hover div.drop input:focus {
 	border-color: @color_ac_dark_green;
 }
 
-nav#main ul li:hover div.drop button {
+nav#main ul li.search div.drop button {
 	display: block;
 	margin-top: 0.5em;
 	padding: 0.5em 0em;
@@ -400,7 +403,7 @@ nav#main ul li:hover div.drop button {
 	cursor: pointer;
 }
 
-nav#main ul li:hover div.drop button:hover {
+nav#main ul li.search div.drop button:hover {
 	background-color: lighten(@color_ac_orange, 10%);
 }
 
