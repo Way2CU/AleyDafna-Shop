@@ -98,6 +98,97 @@ Caracal.PrintSupport = function() {
 }
 
 
+Caracal.add_property_row = function(property_id, data, container) {
+	// add two phone numbers by default
+	var row = $('<div>');
+	row
+		.addClass('list_item')
+		.appendTo(container);
+
+	// create data field
+	var data_field = $('<input>');
+	data_field
+		.attr('type', 'hidden')
+		.attr('name', 'property_data_' + property_id)
+		.val(JSON.stringify(data))
+		.appendTo(row);
+
+	// create columns
+	var column_name = $('<span class="column">');
+	var column_type = $('<span class="column">');
+	var column_options = $('<span class="column">');
+
+	column_name
+		.html(data.name[language_handler.current_language])
+		.attr('style', 'width: 250px')
+		.appendTo(row);
+
+	column_type
+		.html(data.type)
+		.attr('style', 'width: 60px')
+		.appendTo(row);
+
+	column_options.appendTo(row);
+
+	// create options
+	var option_remove = $('<a>');
+	var option_change = $('<a>');
+	var space = document.createTextNode(' ');
+
+	option_change
+		.on('click', Caracal.Shop.edit_property)
+		.appendTo(column_options);
+
+	column_options.append(space);
+
+	option_remove
+		.on('click', Caracal.Shop.delete_property)
+		.appendTo(column_options);
+
+	// load language constants for options
+	language_handler.getTextArrayAsync(null, ['delete', 'change'], function(data) {
+			option_remove.html(data['delete']);
+			option_change.html(data['change']);
+		});
+};
+
+
+Caracal.handle_shop_window_open = function(shop_window) {
+	// make sure we are working with the right window
+	if (shop_window.id != 'shop_item_add')
+		return true;
+
+	// data to add
+	var data_medium = {
+			text_id: 'price_medium',
+			name: {
+				'he': 'מרשים',
+				'en': 'Medium'
+				},
+			type: 'decimal',
+			value: '0.0'
+		};
+	var data_big = {
+			text_id: 'price_big',
+			name: {
+				'he': 'מדהים',
+				'en': 'Big'
+				},
+			type: 'decimal',
+			value: '0.0'
+		};
+
+	// get container
+	var container = shop_window.container.find('div#item_properties.list_content');
+
+	// add two phone numbers
+	data2 = data;
+	Caracal.add_property_row(1, data_medium, container);
+	Caracal.add_property_row(2, data_big, container);
+};
+
+
 $(function() {
 	var print_support = new Caracal.PrintSupport();
+	Caracal.window_system.events.connect('window-content-load', Caracal.handle_shop_window_open);
 });
