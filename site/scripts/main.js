@@ -1178,6 +1178,7 @@ Site.handle_exit_dialog_close_click = function(event) {
 	$('#exit_message').removeClass('visible');
 };
 
+
 /**
  * Function called when document and images have been completely loaded.
  */
@@ -1298,6 +1299,31 @@ Site.on_load = function() {
 		button.addEventListener('click', Site.handle_exit_dialog_close_click);
 		button.innerText = language_handler.getText(null, 'close');
 	}
+
+	// search dialog variables
+	var search_dialog_trigger = document.querySelector('li.search');
+	var input_search = document.querySelector('input[type="search"]');
+	var search_dialog = document.querySelector('div.drop');
+
+	if(!Site.is_mobile()) {
+		/**
+		 * Handle mouseout on search list item & on search container
+		 *
+		 * @param object event
+		 */
+		Site.handle_mouseout = function(event) {
+			if(document.activeElement != input_search)
+				search_dialog.classList.remove('open');
+		};
+
+		search_dialog_trigger.addEventListener('mouseover', function() {
+			search_dialog.classList.add('open');
+		});
+
+		search_dialog_trigger.addEventListener('mouseout', Site.handle_mouseout);
+		search_dialog.addEventListener('mouseout', Site.handle_mouseout);
+	}
+
 };
 
 // connect document `load` event with handler function

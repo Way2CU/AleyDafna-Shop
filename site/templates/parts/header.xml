@@ -131,8 +131,8 @@
 					</ul>
 				</li>
 
-				<li class="sub-menu">
-					<a href="javascript: void(0);" class="search">
+				<li class="sub-menu search">
+					<a href="javascript: void(0);">
 						<cms:svg file="site-sprite.svg" symbol="search"/>
 					</a>
 					<div class="drop">
