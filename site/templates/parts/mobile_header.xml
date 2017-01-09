@@ -4,7 +4,7 @@
 		<cms:svg file="site-sprite.svg"/>
 
 		<!-- Show phone number on all pages but checkout -->
-		<cms:if condition="!($section == 'shop' and $action == 'checkout')">
+		<cms:if condition="SectionHandler::get_matched_file() != 'checkout.xml'">
 			<a
 				href="'tel:'.urlencode(Language::get_Text('phone'))"
 				cms:eval="href"

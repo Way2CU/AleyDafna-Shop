@@ -194,8 +194,8 @@ class Paid_DeliveryMethod extends DeliveryMethod {
 		$params = array();
 
 		// parse template
-		$template->restoreXML();
-		$template->setLocalParams($params);
+		$template->restore_xml();
+		$template->set_local_params($params);
 		$template->parse();
 	}
 

@@ -55,7 +55,7 @@ class aley_dafna extends Module {
 	 * Constructor
 	 */
 	protected function __construct() {
-		global $section, $action;
+		global $section;
 
 		parent::__construct(__FILE__);
 
@@ -101,7 +101,7 @@ class aley_dafna extends Module {
 			Pickup_DeliveryMethod::get_instance($this);
 		}
 
-		if ($section == 'shop' && $action == 'checkout') {
+		if (SectionHandler::get_matched_file() == 'checkout.xml') {
 			$head_tag = head_tag::get_instance();
 			$head_tag->addTag('script', array( 'src' => URL::from_file_path($this->path.'include/pikaday.js'), 'type' => 'text/javascript'));
 			$head_tag->addTag('link', array('href' => URL::from_file_path($this->path.'include/pikaday.css'), 'rel' => 'stylesheet', 'type' => 'text/css'));
@@ -431,7 +431,7 @@ class aley_dafna extends Module {
 
 		$gallery = gallery::get_instance();
 		$gallery_manager = GalleryManager::get_instance();
-		$languages = Language::getLanguages(false);
+		$languages = Language::get_languages(false);
 		$item_manager = ShopItemManager::get_instance();
 		$category_manager = ShopCategoryManager::get_instance();
 		$property_manager = \Modules\Shop\Property\Manager::get_instance();

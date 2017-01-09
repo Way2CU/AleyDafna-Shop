@@ -29,7 +29,7 @@ class Pickup_DeliveryMethod extends DeliveryMethod {
 	 * @return string
 	 */
 	public function getTitle() {
-		return $this->parent->getLanguageConstant('pickup_method_title');
+		return $this->parent->get_language_constant('pickup_method_title');
 	}
 
 	/**
@@ -39,7 +39,7 @@ class Pickup_DeliveryMethod extends DeliveryMethod {
 	 * @return string
 	 */
 	public function getImage() {
-		return url_GetFromFilePath($this->parent->path.'images/pick_up.png');
+		return URL::from_file_path($this->parent->path.'images/pick_up.png');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class Pickup_DeliveryMethod extends DeliveryMethod {
 	 * @return string
 	 */
 	public function getSmallImage() {
-		return url_GetFromFilePath($this->parent->path.'images/pick_up_small.png');
+		return URL::from_file_path($this->parent->path.'images/pick_up_small.png');
 	}
 
 	/**
@@ -184,8 +184,8 @@ class Pickup_DeliveryMethod extends DeliveryMethod {
 		$params = array();
 
 		// parse template
-		$template->restoreXML();
-		$template->setLocalParams($params);
+		$template->restore_xml();
+		$template->set_local_params($params);
 		$template->parse();
 	}
 
