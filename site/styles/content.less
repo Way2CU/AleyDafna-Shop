@@ -1269,16 +1269,16 @@ div#related_items div.item p.price[data-discount-price] {
 
 div#related_items div.item p.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price);
+	content: attr(data-discount-price) ' ' attr(data-currency);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 }
 
-div#related_items div.item p.price:after {
-	content: attr(data-currency);
-	padding-left: 10px;
-}
+// div#related_items div.item p.price:after {
+// 	content: attr(data-currency);
+// 	padding-left: 10px;
+// }
 
 div#related_items div.item p.name {
 	color: @color_text;
