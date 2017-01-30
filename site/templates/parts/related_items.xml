@@ -34,7 +34,7 @@
 			cms:optional="data-discount-price"
 			cms:constant="data-currency"
 			>
-			<cms:text constant="currency"/>
+<!-- 			<cms:text constant="currency"/> -->
 			<cms:raw text=" "/>
 			<cms:var param="price"/>
 		</p>
