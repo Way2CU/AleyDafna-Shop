@@ -1,6 +1,7 @@
 <document>
 	<li>
-		<a href="URL::make(array($params['text_id']), 'delivery_article.xml')" cms:eval="href">
+		<a href="URL::make(array($params['text_id
+			git ']), 'delivery_article.xml')" cms:eval="href">
 			<cms:var param="title" multilanguage="yes" />
 		</a>
 	</li>
