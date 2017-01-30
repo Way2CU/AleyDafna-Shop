@@ -776,18 +776,19 @@ a.item p.price {
 a.item p.price[data-discount-price] {
 	text-decoration: line-through;
 	color: fade(@color_ac_medium_green, 50%);
+	direction: ltr;
 }
 
 a.item p.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price) ' ' attr(data-currency);
+	content: attr(data-currency) ' ' attr(data-discount-price);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 	color: @color_ac_medium_green;
 }
 
-a.item.price:not([data-discount-price]):after {
+a.item p.price:not([data-discount-price]):after {
 	display: inline-block;
 	content: attr(data-currency);
 	padding-left: 5px;
@@ -1054,11 +1055,12 @@ section#product div.product_information label span.price {
 section#product div.product_information label span.price[data-discount-price] {
 	text-decoration: line-through;
 	color: fade(@color_ac_orange, 50%);
+	direction: ltr;
 }
 
 section#product div.product_information label span.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price) ' ' attr(data-currency);
+	content: attr(data-currency) ' ' attr(data-discount-price);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
@@ -1183,11 +1185,12 @@ section#product figure p.selected_price {
 section#product figure p.selected_price[data-discount-price] {
 	text-decoration: line-through;
 	color: fade(@color_ac_orange, 50%);
+	direction: ltr;
 }
 
 section#product figure p.selected_price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price) ' ' attr(data-currency);
+	content: attr(data-currency) ' ' attr(data-discount-price);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
@@ -1260,25 +1263,26 @@ div#related_items div.item label input[type="checkbox"]:checked ~ span:before {
 div#related_items div.item p.price {
 	color: @color_ac_orange;
 	font-weight: 700;
-	position: relative;
+	direction: ltr;
 }
 
 div#related_items div.item p.price[data-discount-price] {
 	text-decoration: line-through;
+	direction: ltr;
 }
 
 div#related_items div.item p.price[data-discount-price]:before {
 	display: inline-block;
-	content: attr(data-discount-price) ' ' attr(data-currency);
+	content: attr(data-currency) ' ' attr(data-discount-price);
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
 }
 
-// div#related_items div.item p.price:after {
-// 	content: attr(data-currency);
-// 	padding-left: 10px;
-// }
+div#related_items div.item p.price:not([data-discount-price]):before {
+	content: attr(data-currency);
+	padding-left: 10px;
+}
 
 div#related_items div.item p.name {
 	color: @color_text;
