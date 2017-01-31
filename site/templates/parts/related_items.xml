@@ -33,7 +33,9 @@
 			cms:optional="data-discount-price"
 			cms:constant="data-currency"
 			>
-<!-- 			<cms:text constant="currency"/> -->
+			<!-- Disabled because currency is displayed through CSS.
+				<cms:text constant="currency"/>
+			-->
 			<cms:raw text=" "/>
 			<cms:var param="price"/>
 		</p>
