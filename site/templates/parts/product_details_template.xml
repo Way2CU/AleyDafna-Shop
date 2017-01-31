@@ -61,7 +61,7 @@
 		<br/>
 		<a href="javascript:void(0)" class="add">
 			<cms:text constant="title_button_add"/>
-			<cms:svg file="site-sprite.svg" symbol="cart-plug"/>
+			<cms:svg file="site-sprite.svg" symbol="cart-plus"/>
 		</a>
 
 		<a href="javascript:void(0)" class="checkout">
