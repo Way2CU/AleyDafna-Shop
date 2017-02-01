@@ -132,6 +132,7 @@
 									<input
 										type="text"
 										name="new_phone_number1"
+										class="ltr"
 										data-required="1"
 										maxlength="100"
 										autocomplete="on"
@@ -142,6 +143,7 @@
 									<input
 										type="text"
 										name="new_phone_number2"
+										class="ltr"
 										maxlength="100"
 										autocomplete="on"
 										/>
@@ -244,6 +246,7 @@
 									<input
 										type="email"
 										name="guest_phone1"
+										class="ltr"
 										maxlength="200"
 										autocomplete="on"
 										data-required="1"
@@ -254,6 +257,7 @@
 									<input
 										type="email"
 										name="guest_phone2"
+										class="ltr"
 										maxlength="200"
 										autocomplete="on"
 										/>
@@ -548,6 +552,7 @@
 										<input
 											type="text"
 											name="phone_number"
+											class="ltr"
 											maxlength="127"
 											data-required="1"
 											autocomplete="on"
@@ -559,6 +564,7 @@
 										<input
 											type="text"
 											name="cellphone_number"
+											class="ltr"
 											maxlength="127"
 											data-required="1"
 											autocomplete="on"
