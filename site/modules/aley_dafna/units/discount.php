@@ -14,7 +14,7 @@ use Modules\Shop\Promotion\Promotion;
 class BalloonPromotion extends Promotion {
 	private $parent;
 
-	private function __construct($parent) {
+	public function __construct($parent) {
 		$this->name = 'free-balloon';
 		$this->parent = $parent;
 	}
@@ -33,11 +33,13 @@ class BalloonPromotion extends Promotion {
 	/**
  	 * Check if specified transaction qualified for this promotion.
 	 *
-	 * @param object $transaction
 	 * @return boolean
 	 */
-	public function qualifies($transaction) {
-		return $transaction->total >= 250 && $transaction->total < 350;
+	public function qualifies() {
+		$shop = shop::get_instance();
+		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
+
+		return $summary['total'] >= 250 && $transaction['total'] < 350;
 	}
 
 	/**
@@ -56,7 +58,7 @@ class BalloonPromotion extends Promotion {
 class WinePromotion extends Promotion {
 	private $parent;
 
-	private function __construct($parent) {
+	public function __construct($parent) {
 		$this->name = 'free-wine';
 		$this->parent = $parent;
 	}
@@ -75,11 +77,13 @@ class WinePromotion extends Promotion {
 	/**
  	 * Check if specified transaction qualified for this promotion.
 	 *
-	 * @param object $transaction
 	 * @return boolean
 	 */
-	public function qualifies($transaction) {
-		return $transaction->total >= 350 && $transaction->total < 400;
+	public function qualifies() {
+		$shop = shop::get_instance();
+		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
+
+		return $summary['total'] >= 350 && $transaction['total'] < 400;
 	}
 
 	/**
@@ -98,7 +102,7 @@ class WinePromotion extends Promotion {
 class VasePromotion extends Promotion {
 	private $parent;
 
-	private function __construct($parent) {
+	public function __construct($parent) {
 		$this->name = 'free-vase';
 		$this->parent = $parent;
 	}
@@ -117,11 +121,13 @@ class VasePromotion extends Promotion {
 	/**
  	 * Check if specified transaction qualified for this promotion.
 	 *
-	 * @param object $transaction
 	 * @return boolean
 	 */
-	public function qualifies($transaction) {
-		return false;
+	public function qualifies() {
+		$shop = shop::get_instance();
+		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
+
+		return $transaction['total'] > 400;
 	}
 
 	/**

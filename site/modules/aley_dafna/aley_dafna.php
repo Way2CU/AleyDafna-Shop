@@ -14,6 +14,8 @@ use Core\Events;
 
 use \Modules\Shop\Transaction as Transaction;
 
+require_once('units/discount.php');
+
 
 class aley_dafna extends Module {
 	private static $_instance;
@@ -99,6 +101,18 @@ class aley_dafna extends Module {
 			require_once('units/pickup_method.php');
 			Paid_DeliveryMethod::get_instance($this);
 			Pickup_DeliveryMethod::get_instance($this);
+		}
+
+		// register promotions
+		if (ModuleHandler::is_loaded('shop')) {
+			$balloon_promotion = new BalloonPromotion($this);
+			$wine_promotion = new WinePromotion($this);
+			$vase_promotion = new VasePromotion($this);
+
+			$shop = shop::get_instance();
+			$shop->registerPromotion($balloon_promotion);
+			$shop->registerPromotion($wine_promotion);
+			$shop->registerPromotion($vase_promotion);
 		}
 
 		if (SectionHandler::get_matched_file() == 'checkout.xml') {
