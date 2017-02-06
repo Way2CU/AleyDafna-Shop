@@ -56,10 +56,9 @@ $(function() {
 						});
 
 					// prepare dialog
-					dialog.setTitle(language_handler.getText(null, 'recovery_dialog_title'));
-					dialog.setError(data.error);
-					dialog.setSize(300, 100);
-					dialog.setContent(content);
+					dialog.set_title(language_handler.getText(null, 'recovery_dialog_title'));
+					dialog.set_error(data.error);
+					dialog.set_content(content);
 					content.html(data.message);
 
 					// reset data if user was created
@@ -70,16 +69,15 @@ $(function() {
 
 
 					// show dialog
-					dialog.show();
+					dialog.open();
 				})
 				.on_error(function(xhr, status, error) {
-					dialog.setTitle(language_handler.getText(null, 'recovery_dialog_title'));
-					dialog.setError(true);
-					dialog.setSize(300, 100);
-					dialog.setContent(content);
+					dialog.set_title(language_handler.getText(null, 'recovery_dialog_title'));
+					dialog.set_error(true);
+					dialog.set_content(content);
 					content.html(error);
 
-					dialog.show();
+					dialog.open();
 				})
 				.send('password_recovery_save', data);
 

@@ -64,21 +64,17 @@ Site.DialogSystem = function() {
 	self._init = function() {
 		// create error reporting dialog
 		self.message.content = $('<div>');
-		self.message.dialog = new Dialog();
+		self.message.dialog = new Caracal.Dialog();
 		self.message.dialog
-				.setSize(Site.is_mobile() ? 300 : 400, 'auto')
-				.setScroll(false)
-				.setClearOnClose(false)
-				.setContent(self.message.content)
-				.addClass('login');
+				.set_size(Site.is_mobile() ? 300 : 400, 'auto')
+				.set_content(self.message.content)
+				.add_class('login');
 
 		// create sign up dialog
-		self.sign_up.dialog = new Dialog();
-		self.sign_up.dialog.setSize(Site.is_mobile() ? 300 : 400, 'auto');
-		self.sign_up.dialog.setScroll(false);
-		self.sign_up.dialog.setClearOnClose(false);
-		self.sign_up.dialog.setError(false);
-		self.sign_up.dialog.addClass('login sign-up');
+		self.sign_up.dialog = new Caracal.Dialog();
+		self.sign_up.dialog
+				.set_size(Site.is_mobile() ? 300 : 400, 'auto')
+				.add_class('login sign-up');
 
 		self.sign_up.content = $('<form>');
 		self.sign_up.message = $('<p>');
@@ -175,7 +171,7 @@ Site.DialogSystem = function() {
 				.append(self.sign_up.span_terms_agree)
 				.appendTo(self.sign_up.content);
 
-		self.sign_up.dialog.setContent(self.sign_up.content);
+		self.sign_up.dialog.set_content(self.sign_up.content);
 
 		// create sign up button
 		self.sign_up.signup_button = $('<a>');
@@ -185,12 +181,10 @@ Site.DialogSystem = function() {
 		self.sign_up.dialog.addControl(self.sign_up.signup_button);
 
 		// prepare dialog
-		self.login.dialog = new Dialog();
-		self.login.dialog.setSize(Site.is_mobile() ? 300 : 400, 'auto');
-		self.login.dialog.setScroll(false);
-		self.login.dialog.setClearOnClose(false);
-		self.login.dialog.setError(false);
-		self.login.dialog.addClass('login');
+		self.login.dialog = new Caracal.Dialog();
+		self.login.dialog
+				.set_size(Site.is_mobile() ? 300 : 400, 'auto')
+				.add_class('login');
 
 		// create login button
 		self.login.login_button = $('<a>');
@@ -276,15 +270,13 @@ Site.DialogSystem = function() {
 				.appendTo(self.login.content);
 
 		self.login.content.append(self.login.link_recovery);
-		self.login.dialog.setContent(self.login.content);
+		self.login.dialog.set_content(self.login.content);
 
 		// prepare recovery dialog
-		self.recovery.dialog = new Dialog();
-		self.recovery.dialog.setSize(Site.is_mobile() ? 300 : 400, 'auto');
-		self.recovery.dialog.setScroll(false);
-		self.recovery.dialog.setClearOnClose(false);
-		self.recovery.dialog.setError(false);
-		self.recovery.dialog.addClass('login recovery');
+		self.recovery.dialog = new Caracal.Dialog();
+		self.recovery.dialog
+				.set_size(Site.is_mobile() ? 300 : 400, 'auto')
+				.add_class('login recovery');
 
 		// create recover button
 		self.recovery.recover_button = $('<a>');
@@ -348,7 +340,7 @@ Site.DialogSystem = function() {
 		self.recovery.captcha_container
 				.addClass('captcha')
 				.appendTo(self.recovery.content);
-		self.recovery.dialog.setContent(self.recovery.content);
+		self.recovery.dialog.set_content(self.recovery.content);
 
 		// bulk load language constants
 		var constants = [
@@ -456,7 +448,7 @@ Site.DialogSystem = function() {
 	 */
 	self._handleStringsLoaded = function(data) {
 		with (self.login) {
-			dialog.setTitle(data['login_dialog_title']);
+			dialog.set_title(data['login_dialog_title']);
 			message.html(data['login_dialog_message']);
 			login_button.html(data['login']);
 
@@ -469,7 +461,7 @@ Site.DialogSystem = function() {
 		}
 
 		with (self.recovery) {
-			dialog.setTitle(data['recovery_dialog_title']);
+			dialog.set_title(data['recovery_dialog_title']);
 			message.html(data['recovery_dialog_message']);
 			recover_button.html(data['submit']);
 
@@ -479,7 +471,7 @@ Site.DialogSystem = function() {
 		}
 
 		with (self.sign_up) {
-			dialog.setTitle(data['signup_dialog_title']);
+			dialog.set_title(data['signup_dialog_title']);
 			message.html(data['signup_dialog_message']);
 			signup_button.html(data['sign_up']);
 
@@ -659,8 +651,8 @@ Site.DialogSystem = function() {
 
 			// successfully created new user account, reload
 			self.message.dialog
-					.setError(false)
-					.setTitle(language_handler.getText(null, 'signup_dialog_title'));
+					.set_error(false)
+					.set_title(language_handler.getText(null, 'signup_dialog_title'));
 			self.message.content.html(language_handler.getText(null, 'signup_completed_message'));
 			self.message.dialog.show();
 
@@ -670,8 +662,8 @@ Site.DialogSystem = function() {
 
 			// there was a problem creating new user
 			self.message.dialog
-					.setError(true)
-					.setTitle(language_handler.getText(null, 'signup_dialog_title'));
+					.set_error(true)
+					.set_title(language_handler.getText(null, 'signup_dialog_title'));
 			self.message.content.html(data.message);
 			self.message.dialog.show();
 		}
@@ -690,8 +682,8 @@ Site.DialogSystem = function() {
 
 		// show error message
 		self.message.dialog
-				.setError(true)
-				.setTitle(language_handler.getText(null, 'signup_dialog_title'));
+				.set_error(true)
+				.set_title(language_handler.getText(null, 'signup_dialog_title'));
 		self.message.content.html(description);
 		self.message.dialog.show();
 	};
@@ -738,8 +730,8 @@ Site.DialogSystem = function() {
 
 			self.message.content.html(language_handler.getText(null, 'login_successful'));
 			self.message.dialog
-					.setError(false)
-					.setTitle(language_handler.getText(null, 'signup_dialog_title'))
+					.set_error(false)
+					.set_title(language_handler.getText(null, 'signup_dialog_title'))
 					.setCloseCallback(function() {
 						window.location.reload();
 						this.clearCloseCallback();
@@ -752,8 +744,8 @@ Site.DialogSystem = function() {
 
 			// show error message
 			self.message.dialog
-					.setError(true)
-					.setTitle(language_handler.getText(null, 'login_dialog_title'));
+					.set_error(true)
+					.set_title(language_handler.getText(null, 'login_dialog_title'));
 			self.message.content.html(data.message);
 			self.message.dialog.setCloseCallback(function() {
 						setTimeout(function() {
@@ -786,8 +778,8 @@ Site.DialogSystem = function() {
 
 		// show error dialog
 		self.message.dialog
-				.setError(true)
-				.setTitle(language_handler.getText(null, 'login_dialog_title'));
+				.set_error(true)
+				.set_title(language_handler.getText(null, 'login_dialog_title'));
 		self.message.content.html(description);
 		self.message.dialog.show();
 	};
@@ -827,8 +819,8 @@ Site.DialogSystem = function() {
 
 			// successfully created new user account, reload
 			self.message.dialog
-					.setError(false)
-					.setTitle(language_handler.getText(null, 'recovery_dialog_title'));
+					.set_error(false)
+					.set_title(language_handler.getText(null, 'recovery_dialog_title'));
 			self.message.content.html(language_handler.getText(null, 'recovery_completed_message'));
 			self.message.dialog.show();
 
@@ -838,8 +830,8 @@ Site.DialogSystem = function() {
 
 			// there was a problem creating new user
 			self.message.dialog
-					.setError(true)
-					.setTitle(language_handler.getText(null, 'recovery_dialog_title'));
+					.set_error(true)
+					.set_title(language_handler.getText(null, 'recovery_dialog_title'));
 			self.message.content.html(data.message);
 			self.message.dialog.show();
 		}
@@ -858,8 +850,8 @@ Site.DialogSystem = function() {
 
 		// show error dialog
 		self.message.dialog
-				.setError(true)
-				.setTitle(language_handler.getText(null, 'recovery_dialog_title'));
+				.set_error(true)
+				.set_title(language_handler.getText(null, 'recovery_dialog_title'));
 		self.message.content.html(description);
 		self.message.dialog.show();
 	};
