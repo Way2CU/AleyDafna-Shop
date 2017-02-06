@@ -105,14 +105,13 @@ class aley_dafna extends Module {
 
 		// register promotions
 		if (ModuleHandler::is_loaded('shop')) {
-			$balloon_promotion = new BalloonPromotion($this);
-			$wine_promotion = new WinePromotion($this);
-			$vase_promotion = new VasePromotion($this);
-
 			$shop = shop::get_instance();
-			$shop->registerPromotion($balloon_promotion);
-			$shop->registerPromotion($wine_promotion);
-			$shop->registerPromotion($vase_promotion);
+			$shop->registerPromotion(new BalloonPromotion($this));
+			$shop->registerPromotion(new WinePromotion($this));
+			$shop->registerPromotion(new VasePromotion($this));
+			$shop->registerDiscount(new BalloonDiscount($this));
+			$shop->registerDiscount(new WineDiscount($this));
+			$shop->registerDiscount(new VaseDiscount($this));
 		}
 
 		if (SectionHandler::get_matched_file() == 'checkout.xml') {

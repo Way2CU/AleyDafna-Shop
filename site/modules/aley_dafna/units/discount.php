@@ -27,7 +27,7 @@ class BalloonPromotion extends Promotion {
 	 * @return string
 	 */
 	public function get_title() {
-		$this->parent->get_language_constant('promotion_balloon');
+		return $this->parent->get_language_constant('promotion_balloon');
 	}
 
 	/**
@@ -39,7 +39,7 @@ class BalloonPromotion extends Promotion {
 		$shop = shop::get_instance();
 		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
 
-		return $summary['total'] >= 250 && $transaction['total'] < 350;
+		return $summary['total'] >= 250 && $summary['total'] < 350;
 	}
 
 	/**
@@ -71,7 +71,7 @@ class WinePromotion extends Promotion {
 	 * @return string
 	 */
 	public function get_title() {
-		$this->parent->get_language_constant('promotion_wine');
+		return $this->parent->get_language_constant('promotion_wine');
 	}
 
 	/**
@@ -83,7 +83,7 @@ class WinePromotion extends Promotion {
 		$shop = shop::get_instance();
 		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
 
-		return $summary['total'] >= 350 && $transaction['total'] < 400;
+		return $summary['total'] >= 350 && $summary['total'] < 400;
 	}
 
 	/**
@@ -115,7 +115,7 @@ class VasePromotion extends Promotion {
 	 * @return string
 	 */
 	public function get_title() {
-		$this->parent->get_language_constant('promotion_vase');
+		return $this->parent->get_language_constant('promotion_vase');
 	}
 
 	/**
@@ -127,7 +127,7 @@ class VasePromotion extends Promotion {
 		$shop = shop::get_instance();
 		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
 
-		return $transaction['total'] > 400;
+		return $summary['total'] > 400;
 	}
 
 	/**
@@ -146,7 +146,7 @@ class VasePromotion extends Promotion {
 class BalloonDiscount extends Discount {
 	private $parent;
 
-	private function __construct($parent) {
+	public function __construct($parent) {
 		$this->name = 'free-balloon';
 		$this->parent = $parent;
 	}
@@ -159,7 +159,7 @@ class BalloonDiscount extends Discount {
 	 * @return string
 	 */
 	public function get_title() {
-		$this->parent->get_language_constant('discount_balloon');
+		return $this->parent->get_language_constant('discount_balloon');
 	}
 
 	/**
@@ -180,7 +180,7 @@ class BalloonDiscount extends Discount {
 class WineDiscount extends Discount {
 	private $parent;
 
-	private function __construct($parent) {
+	public function __construct($parent) {
 		$this->name = 'free-wine';
 		$this->parent = $parent;
 	}
@@ -193,7 +193,7 @@ class WineDiscount extends Discount {
 	 * @return string
 	 */
 	public function get_title() {
-		$this->parent->get_language_constant('discount_wine');
+		return $this->parent->get_language_constant('discount_wine');
 	}
 
 	/**
@@ -214,7 +214,7 @@ class WineDiscount extends Discount {
 class VaseDiscount extends Discount {
 	private $parent;
 
-	private function __construct($parent) {
+	public function __construct($parent) {
 		$this->name = 'free-vase';
 		$this->parent = $parent;
 	}
@@ -227,7 +227,7 @@ class VaseDiscount extends Discount {
 	 * @return string
 	 */
 	public function get_title() {
-		$this->parent->get_language_constant('discount_vase');
+		return $this->parent->get_language_constant('discount_vase');
 	}
 
 	/**
