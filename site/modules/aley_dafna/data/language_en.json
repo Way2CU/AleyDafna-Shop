@@ -13,5 +13,11 @@
     "label_phone_number2": "Extra phone number:",
     "label_invoice_email": "Invoice email:",
     "label_additional_information": "Additional information:",
-    "print_card": "Print card"
+    "print_card": "Print card",
+	"promotion_balloon": "Free balloon.",
+	"promotion_wine": "Free wine.",
+	"promotion_vase": "Free vase.",
+	"discount_balloon": "Free balloon.",
+	"discount_wine": "Free wine.",
+	"discount_vase": "Free vase."
 }

@@ -13,5 +13,11 @@
     "label_phone_number2": "Дополнительный номер телефона:",
     "label_invoice_email": "Эл. почта:",
     "label_additional_information": "Дополнительная информация:",
-    "print_card": "הדפס כרטיס"
+    "print_card": "הדפס כרטיס",
+	"promotion_balloon": "Free balloon.",
+	"promotion_wine": "Free wine.",
+	"promotion_vase": "Free vase.",
+	"discount_balloon": "Free balloon.",
+	"discount_wine": "Free wine.",
+	"discount_vase": "Free vase."
 }
