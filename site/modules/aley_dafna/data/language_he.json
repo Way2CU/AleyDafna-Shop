@@ -14,10 +14,10 @@
 	"label_invoice_email": "מייל למשלוח חשבונית:",
 	"label_additional_information": "פרטים נוספים:",
 	"print_card": "הדפס כרטיס",
-	"promotion_balloon": "Free balloon.",
-	"promotion_wine": "Free wine.",
-	"promotion_vase": "Free vase.",
-	"discount_balloon": "Free balloon.",
-	"discount_wine": "Free wine.",
-	"discount_vase": "Free vase."
+	"promotion_balloon": "בקנייה מעל 250 שח - בלון מוכסף מתנה",
+	"promotion_wine": "בקנייה מעל 350 שח - בקבוק יין נתזים מתנה",
+	"promotion_vase": "בקניית זר פרחים מ400 שח - אגרטל תואם מתנה",
+	"discount_balloon": "בלון מתנה",
+	"discount_wine": "יין נתזים מתנה",
+	"discount_vase": "אגרטל מתנה"
 }
