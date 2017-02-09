@@ -178,7 +178,7 @@ Site.DialogSystem = function() {
 		self.sign_up.signup_button
 				.attr('href', 'javascript:void(0);')
 				.click(self._handleSignUpClick);
-		self.sign_up.dialog.addControl(self.sign_up.signup_button);
+		self.sign_up.dialog.add_control(self.sign_up.signup_button);
 
 		// prepare dialog
 		self.login.dialog = new Caracal.Dialog();
@@ -191,7 +191,7 @@ Site.DialogSystem = function() {
 		self.login.login_button
 				.attr('href', 'javascript:void(0);')
 				.click(self._handleLoginClick);
-		self.login.dialog.addControl(self.login.login_button);
+		self.login.dialog.add_control(self.login.login_button);
 
 		// create login dialog content
 		self.login.content = $('<form>');
@@ -284,7 +284,7 @@ Site.DialogSystem = function() {
 				.attr('href', 'javascript: void(0);')
 				.click(self._handleRecoverClick);
 
-		self.recovery.dialog.addControl(self.recovery.recover_button);
+		self.recovery.dialog.add_control(self.recovery.recover_button);
 
 		// create recovery dialog content
 		self.recovery.content = $('<div>');
@@ -383,7 +383,7 @@ Site.DialogSystem = function() {
 				break;
 
 			case 27:
-				self.login.dialog.hide();
+				self.login.dialog.close();
 				event.preventDefault();
 				break;
 		}
@@ -404,7 +404,7 @@ Site.DialogSystem = function() {
 				break;
 
 			case 27:
-				self.recovery.dialog.hide();
+				self.recovery.dialog.close();
 				event.preventDefault();
 				break;
 		}
@@ -425,7 +425,7 @@ Site.DialogSystem = function() {
 				break;
 
 			case 27:
-				self.sign_up.dialog.hide();
+				self.sign_up.dialog.close();
 				event.preventDefault();
 				break;
 		}
@@ -511,7 +511,7 @@ Site.DialogSystem = function() {
 		event.preventDefault();
 
 		// show dialog
-		self.login.dialog.show();
+		self.login.dialog.open();
 
 		// focus username
 		setTimeout(function() {
@@ -528,8 +528,7 @@ Site.DialogSystem = function() {
 		// prevent default link behavior
 		event.preventDefault();
 
-		self.login.dialog.hide();
-		self.recovery.dialog.show();
+		self.recovery.dialog.open();
 
 		// focus username
 		setTimeout(function() {
@@ -548,7 +547,7 @@ Site.DialogSystem = function() {
 		event.preventDefault();
 
 		// show dialog
-		self.sign_up.dialog.show();
+		self.sign_up.dialog.open();
 
 		// focus username
 		setTimeout(function() {
@@ -646,26 +645,20 @@ Site.DialogSystem = function() {
 	 */
 	self._handleSignupSuccess = function(data) {
 		if (!data.error) {
-			// hide signup dialog
-			self.sign_up.dialog.hide();
-
 			// successfully created new user account, reload
 			self.message.dialog
 					.set_error(false)
 					.set_title(language_handler.getText(null, 'signup_dialog_title'));
 			self.message.content.html(language_handler.getText(null, 'signup_completed_message'));
-			self.message.dialog.show();
+			self.message.dialog.open();
 
 		} else {
-			// hide signup dialog
-			self.sign_up.dialog.hide();
-
 			// there was a problem creating new user
 			self.message.dialog
 					.set_error(true)
 					.set_title(language_handler.getText(null, 'signup_dialog_title'));
 			self.message.content.html(data.message);
-			self.message.dialog.show();
+			self.message.dialog.open();
 		}
 	};
 
@@ -677,15 +670,12 @@ Site.DialogSystem = function() {
 	 * @param string description
 	 */
 	self._handleSignupError = function(xhr, status_code, description) {
-		// hide signup dialog
-		self.sign_up.dialog.hide();
-
 		// show error message
 		self.message.dialog
 				.set_error(true)
 				.set_title(language_handler.getText(null, 'signup_dialog_title'));
 		self.message.content.html(description);
-		self.message.dialog.show();
+		self.message.dialog.open();
 	};
 
 	/**
@@ -718,9 +708,6 @@ Site.DialogSystem = function() {
 	 */
 	self._handleLoginSuccess = function(data) {
 		if (data.logged_in) {
-			// hide login dialog
-			self.login.dialog.hide();
-
 			// store username for next time
 			var username = self.login.input_username.val();
 			localStorage.setItem('username', username);
@@ -736,23 +723,15 @@ Site.DialogSystem = function() {
 						window.location.reload();
 						this.clearCloseCallback();
 					});
-			self.message.dialog.show();
+			self.message.dialog.open();
 
 		} else {
-			// hide login dialog
-			self.login.dialog.hide();
-
 			// show error message
 			self.message.dialog
 					.set_error(true)
 					.set_title(language_handler.getText(null, 'login_dialog_title'));
 			self.message.content.html(data.message);
-			self.message.dialog.setCloseCallback(function() {
-						setTimeout(function() {
-							self.login.dialog.show();
-						}, 100);
-					});
-			self.message.dialog.show();
+			self.message.dialog.open();
 
 			// show captcha if required
 			if (data.show_captcha) {
@@ -773,15 +752,12 @@ Site.DialogSystem = function() {
 	 * @param string description
 	 */
 	self._handleLoginError = function(xhr, transfer_status, description) {
-		// hide login dialog
-		self.login.dialog.hide();
-
 		// show error dialog
 		self.message.dialog
 				.set_error(true)
 				.set_title(language_handler.getText(null, 'login_dialog_title'));
 		self.message.content.html(description);
-		self.message.dialog.show();
+		self.message.dialog.open();
 	};
 
 	/**
@@ -814,26 +790,20 @@ Site.DialogSystem = function() {
 	 */
 	self._handleRecoverSuccess = function(data) {
 		if (!data.error) {
-			// hide recovery dialog
-			self.recovery.dialog.hide();
-
 			// successfully created new user account, reload
 			self.message.dialog
 					.set_error(false)
 					.set_title(language_handler.getText(null, 'recovery_dialog_title'));
 			self.message.content.html(language_handler.getText(null, 'recovery_completed_message'));
-			self.message.dialog.show();
+			self.message.dialog.open();
 
 		} else {
-			// hide recovery dialog
-			self.recovery.dialog.hide();
-
 			// there was a problem creating new user
 			self.message.dialog
 					.set_error(true)
 					.set_title(language_handler.getText(null, 'recovery_dialog_title'));
 			self.message.content.html(data.message);
-			self.message.dialog.show();
+			self.message.dialog.open();
 		}
 	};
 
@@ -845,15 +815,12 @@ Site.DialogSystem = function() {
 	 * @param string description
 	 */
 	self._handleRecoverError = function(xhr, transfer_status, description) {
-		// hide login dialog
-		self.recovery.dialog.hide();
-
 		// show error dialog
 		self.message.dialog
 				.set_error(true)
 				.set_title(language_handler.getText(null, 'recovery_dialog_title'));
 		self.message.content.html(description);
-		self.message.dialog.show();
+		self.message.dialog.open();
 	};
 
 	// finalize object
