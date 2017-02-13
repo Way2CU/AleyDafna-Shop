@@ -1,6 +1,10 @@
 <document>
 	<a href="URL::make(array('category' => $params['id']), 'category.xml')" cms:eval="href">
-		<img src="$params['image']" alt="$params['title'][$language]"  cms:eval="src,alt"/>
+		<img
+			src="gallery::getThumbnailById($params['image'], null, 150)"
+			alt="$params['title'][$language]"
+			cms:eval="src,alt"
+			/>
 		<cms:var param="title" multilanguage="yes"/>
 	</a>
 </document>

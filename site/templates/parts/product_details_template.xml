@@ -8,7 +8,7 @@
 				cms:optional="data-discount"
 				>
 				<img
-					src="gallery::getGroupThumbnailById($params['gallery'], null, 250,Thumbnail::CONSTRAIN_BOTH)"
+					src="gallery::getGroupThumbnailById($params['gallery'], null, 250, Thumbnail::CONSTRAIN_BOTH)"
 					alt="$params['name'][$language]"
 					cms:eval="src,alt"/>
 			</figure>
