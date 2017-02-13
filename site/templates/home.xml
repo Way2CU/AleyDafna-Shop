@@ -13,7 +13,7 @@
 
 		<body>
 			<!-- Verify account -->
-			<cms:if condition="isset($_REQUEST['code']) and isset($_REQUEST['email'])">
+			<cms:if condition="isset($_REQUEST['code']) and isset($_REQUEST['username'])">
 				<cms:module
 					name="backend"
 					action="verify_account"
