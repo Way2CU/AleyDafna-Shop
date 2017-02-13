@@ -1,53 +1,32 @@
 <document>
-	<cms:desktop>
-		<a
-			href="URL::make(array('category' => fix_id($_REQUEST['category']), 'product' => $params['id']), 'product.xml')"
-			class="item"
-			data-uid="$params['uid']"
-			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
-			cms:eval="href,data-uid"
-			cms:optional="data-discount"
+	<a
+		href="URL::make(array('category' => isset($_REQUEST['category']) ? fix_id($_REQUEST['category']) : 0, 'product' => $params['id']), 'product.xml')"
+		class="item"
+		data-uid="$params['uid']"
+		data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
+		cms:eval="href,data-uid"
+		cms:optional="data-discount"
+		>
+		<img
+			src="gallery::getGroupThumbnailById($params['gallery'], null, _DESKTOP_VERSION ? 200 : 120, Thumbnail::CONSTRAIN_WIDTH)"
+			alt="$params['name'][$language]"
+			cms:eval="src,alt"
+			/>
+		<p><cms:var param="name" multilanguage="yes"/></p>
+		<p
+			class="price"
+			data-currency="currency"
+			data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
+			cms:optional="data-discount-price"
+			cms:constant="data-currency"
 			>
+			<cms:var param="price"/>
+		</p>
 
-			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 200,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['name'][$language]"  cms:eval="src,alt"/>
-			<p><cms:var param="name" multilanguage="yes"/></p>
-			<p
-				class="price"
-				data-currency="currency"
-				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
-				cms:optional="data-discount-price"
-				cms:constant="data-currency"
-				>
-				<cms:var param="price"/>
-			</p>
-
+		<cms:desktop>
 			<div>
 				<cms:markdown param="description" multilanguage="yes"/>
 			</div>
-		</a>
-	</cms:desktop>
-
-	<cms:mobile>
-		<a
-			href="URL::make(array('category' => fix_id($_REQUEST['id']), 'product' => $params['id']), 'product.xml')"
-			class="item"
-			data-uid="$params['uid']"
-			data-discount="$params['discount'] > 0 ? round($params['discount']) : false"
-			cms:eval="href,data-uid"
-			cms:optional="data-discount"
-			>
-
-			<img src="gallery::getGroupThumbnailById($params['gallery'], null, 120,Thumbnail::CONSTRAIN_WIDTH)" alt="$params['name'][$language]"  cms:eval="src,alt"/>
-			<p><cms:var param="name" multilanguage="yes"/></p>
-			<p
-				class="price"
-				data-currency="currency"
-				data-discount-price="($params['discount'] > 0) ? $params['discount_price'] : false"
-				cms:optional="data-discount-price"
-				cms:constant="data-currency"
-				>
-				<cms:var param="price"/>
-			</p>
-		</a>
-	</cms:mobile>
+		</cms:desktop>
+	</a>
 </document>
