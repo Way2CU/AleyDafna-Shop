@@ -648,7 +648,7 @@ class aley_dafna extends Module {
 		$transaction_item_manager = ShopTransactionItemsManager::get_instance();
 
 		// get transaction with specified id
-		$transaction = $manager->getSingleItem(
+		$transaction = $manager->get_single_item(
 				array('id'),
 				array('id' => $id)
 			);
