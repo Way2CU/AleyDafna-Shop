@@ -17,6 +17,7 @@
 	<module name="links" order="8" preload="no"/>
 	<module name="aley_dafna" order="9" preload="no"/>
 	<module name="search" order="10" preload="no"/>
+	<module name="page_description" order="11" preload="no"/>
 
 	<user
 		fullname="Administrator"
