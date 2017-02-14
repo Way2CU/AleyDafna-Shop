@@ -115,5 +115,6 @@
 	"label_city_not_in_list": "למשלוח למקום אחר נא להתקשר לחנות",
 	"message_card": "בחרו כרטיס והזינו טקסט. אם לא יוזן טקסט הכרטיס לא יתווסף להזמנה",
 	"currency": "₪",
-	"label_delivery_cost": "עלות משלוח:"
+	"label_delivery_cost": "עלות משלוח:",
+    "message_account_verified": "חשבונך אושר. תודה על שנרשמתם לאתר עלי דפנה."
 }

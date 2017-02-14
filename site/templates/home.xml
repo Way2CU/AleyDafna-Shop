@@ -18,6 +18,12 @@
 					name="backend"
 					action="verify_account"
 					/>
+
+				<div style="display: none;">
+					<div class="verify_message">
+						<cms:text constant="message_account_verified"/>
+					</div>
+				</div>
 			</cms:if>
 
 			<!-- Header -->

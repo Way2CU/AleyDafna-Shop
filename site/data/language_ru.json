@@ -115,4 +115,5 @@
     "message_card": "Выберите открытку и напишите текст. Если текст отсутствует, то открытка к заказу не прилагается.",
     "currency": "₪",
     "label_delivery_cost": "стоимость доставки:"
+    "message_account_verified": "Your account has been verified. Thank you for registering with Aley Dafna."
 }

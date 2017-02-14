@@ -114,5 +114,6 @@
     "label_city_not_in_list": "Anywhere else, call the store.",
     "message_card": "Select card and enter text. If left empty no card will be added.",
     "currency": "₪",
-    "label_delivery_cost": "Delivery cost:"
+    "label_delivery_cost": "Delivery cost:",
+    "message_account_verified": "Your account has been verified. Thank you for registering with Aley Dafna."
 }

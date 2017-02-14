@@ -1283,6 +1283,13 @@ Site.on_load = function() {
 		search_dialog.addEventListener('mouseout', Site.handle_mouseout);
 	}
 
+	// show account verification message if present
+	if (document.querySelector('div.verify_message')) {
+		Site.verify_dialog = new Caracal.Dialog();
+		Site.verify_dialog
+				.set_content_from_dom('div.verify_message')
+				.open();
+	}
 };
 
 // connect document `load` event with handler function
