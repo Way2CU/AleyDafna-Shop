@@ -39,7 +39,7 @@ class BalloonPromotion extends Promotion {
 		$shop = shop::get_instance();
 		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
 
-		return $summary['total'] >= 250 && $summary['total'] < 350;
+		return $summary['total'] >= 250;
 	}
 
 	/**
@@ -83,7 +83,7 @@ class WinePromotion extends Promotion {
 		$shop = shop::get_instance();
 		$summary = $shop->getCartSummary(null, TransactionType::REGULAR);
 
-		return $summary['total'] >= 350 && $summary['total'] < 400;
+		return $summary['total'] >= 350;
 	}
 
 	/**
