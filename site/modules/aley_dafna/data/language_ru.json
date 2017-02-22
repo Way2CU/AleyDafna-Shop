@@ -14,10 +14,10 @@
     "label_invoice_email": "Эл. почта:",
     "label_additional_information": "Дополнительная информация:",
     "print_card": "הדפס כרטיס",
-	"promotion_balloon": "Free balloon.",
-	"promotion_wine": "Free wine.",
-	"promotion_vase": "Free vase.",
-	"discount_balloon": "Free balloon.",
-	"discount_wine": "Free wine.",
-	"discount_vase": "Free vase."
+	"promotion_balloon": "При покупке свыше ₪250 блестящий шар в подарок.",
+	"promotion_wine": "При покупке свыше ₪350 бутылка игристого вина в подарок.",
+	"promotion_vase": "При покупке цветов свыше ₪400 ваза в подарок.",
+	"discount_balloon": "Блестящий шар в подарок",
+	"discount_wine": "Бутылка игристого вина в подарок",
+	"discount_vase": "Ваза в подарок"
 }
