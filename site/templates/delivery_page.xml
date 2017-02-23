@@ -40,7 +40,7 @@
 					template="parts/category_title.xml"
 					cms:eval="id"
 					/>
-
+				<div class="description">
 				<cms:module
 					name="shop"
 					action="show_category"
@@ -48,6 +48,7 @@
 					template="parts/category_optional_description.xml"
 					cms:eval="id"
 					/>
+				</div>
 
 				<!-- Show social links -->
 				<cms:template file="parts/social_links.xml"/>
