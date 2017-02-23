@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "../units/schema/language.dtd">
+<document>
+	<html lang="$language" dir="$language_rtl ? 'rtl' : 'ltr'" cms:eval="lang,dir">
+		<head>
+			<title>
+				<cms:text constant="site_title"/>
+				<cms:raw text=" - "/>
+				<cms:module
+					name="shop"
+					action="show_category"
+					id="fix_id($_REQUEST['area_id'])"
+					template="parts/category_name.xml"
+					cms:eval="id"
+					/>
+			</title>
+
+			<cms:template file="parts/opengraph_generic.xml"/>
+			<cms:module name="shop" action="include_cart_scripts"/>
+			<cms:collection include="page_control,communicator,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
+			<cms:module name="head_tag" action="print_tag"/>
+		</head>
+
+		<body>
+			<!-- Header -->
+			<cms:desktop>
+				<cms:template file="parts/header.xml"/>
+			</cms:desktop>
+
+			<cms:mobile>
+				<cms:template file="parts/mobile_header.xml"/>
+			</cms:mobile>
+
+			<section id="category">
+				<!-- Show list of categories in their own containers -->
+				<cms:module
+					name="shop"
+					action="show_category"
+					id="fix_id($_REQUEST['area_id'])"
+					template="parts/category_title.xml"
+					cms:eval="id"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category"
+					id="fix_id($_REQUEST['area_id'])"
+					template="parts/category_optional_description.xml"
+					cms:eval="id"
+					/>
+
+				<!-- Show social links -->
+				<cms:template file="parts/social_links.xml"/>
+
+				<cms:module
+					name="shop"
+					action="show_item_list"
+					category="fix_id($_REQUEST['area_id'])"
+					order_by="priority"
+					order_asc="1"
+					template="parts/category_items_template.xml"
+					cms:eval="category"
+					/>
+
+				<cms:module
+					name="shop"
+					action="show_category_list"
+					parent_id="fix_id($_REQUEST['area_id'])"
+					order_by="text_id"
+					order_asc="1"
+					template="parts/category_list_template.xml"
+					cms:eval="parent_id"
+					/>
+			</section>
+
+			<section id="banner">
+				<cms:template file="parts/banners.xml"/>
+			</section>
+
+			<!-- Footer -->
+			<cms:template file="parts/footer.xml"/>
+		</body>
+	</html>
+</document>
