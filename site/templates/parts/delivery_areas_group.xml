@@ -1,26 +1,10 @@
 <document>
-	<cms:desktop>
-	<li class="sub-menu">
-		<a href="javascript:void(0)">
-			<cms:var param="title" multilanguage="yes"/>
-		</a>
-
-		<ul class="drop">
-			<cms:module
-				name="articles"
-				action="show_list"
-				group="delivery_areas"
-				template="parts/delivery_areas.xml"
-				/>
-
-		</ul>
-	</li>
-	</cms:desktop>
-	<cms:mobile>
-		<li>
-			<a href="javascript:void(0)">
-				<cms:var param="title" multilanguage="yes"/>
+	<li>
+		<a
+			href="URL::make(array('area_id' => $params['id']), 'delivery_page.xml')"
+			cms:eval="href"
+			>
+				<cms:var param="title" multilanguage="yes" />
 			</a>
-		</li>
-	</cms:mobile>
+	</li>
 </document>
