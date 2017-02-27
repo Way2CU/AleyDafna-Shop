@@ -1,6 +1,6 @@
 {
 	"/": "home.xml",
-"/shop/category/{n:category}": "category.xml",
+	"/shop/category/{n:category}": "category.xml",
 	"/shop/category/{n:category}/subcategory/{n:subcategory}": "category.xml",
 	"/shop/category/{n:category}/product/{n:product}": "product.xml",
 	"/shop/category/{n:category}/subcategory/{n:subcategory}/product/{n:product}": "product.xml",
