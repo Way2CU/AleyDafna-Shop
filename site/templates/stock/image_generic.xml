@@ -5,21 +5,22 @@
 	thumbnail_size - Specifies the size of thumbnail image.
 
   The following parameters are optional:
-	title       - If present will show title of specified image;
-	description - If present will show description of image;
-	constrain   - Specifies the constrain aspects (see Thumbnail in gallery for more information).
+	title          - If present will show title of specified image;
+	description    - If present will show description of image;
+	constrain      - Specifies the constrain aspects [eg. Thumbnail::CONSTRAIN_BOTH];
+	thumbnail_size - Size of the image to generate.
  -->
 <document>
 	<a class="stock generic image" href="$params['image']" cms:eval="href">
 		<img
-			src="gallery::getThumbnailById($params['id'], null, $template['thumbnail_size'], isset($template['constrain'])) ? constant($template['constrain'])) : Thumbnail::CONSTRAIN_BOTH)"
+			src="gallery::getThumbnailById($params['id'], null, $template['thumbnail_size'], isset($template['constrain']) ? constant($template['constrain']) : Thumbnail::CONSTRAIN_BOTH)"
 			alt="$params['title'][$language]"
 			cms:eval="src,alt"
 			/>
 
 		<!-- Title -->
 		<cms:if condition="isset($template['title'])">
-			<h4><cms:var param="name" multilanguage="yes"/></h4>
+			<h4><cms:var param="title" multilanguage="yes"/></h4>
 		</cms:if>
 
 		<!-- Description -->
