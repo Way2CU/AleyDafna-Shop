@@ -5,7 +5,7 @@ site:
   # alias: domain.com
   root: test
   username: aleyd
-  caracal_branch: release
+  caracal_branch: v0.3.x
   # ip_address: 0.0.0.0
   # owner: Some Person
   # plan: Unlimited
