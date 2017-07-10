@@ -1,7 +1,11 @@
 <document>
 	<cms:desktop>
 		<a href="$params['url']" class="link" cms:eval="href">
-			<img src="$params['image']" alt="$params['text'][$language]" cms:eval="src,alt"/>
+			<img
+				src="gallery::get_raw_image($params['image'])"
+				alt="$params['text'][$language]"
+				cms:eval="src,alt"
+				/>
 			<div class="$params['text_id']" cms:eval="class">
 				<cms:markdown param="description" multilanguage="yes"/>
 			</div>
@@ -9,12 +13,12 @@
 	</cms:desktop>
 
 	<cms:mobile>
-		<a 
-			href="$params['url']" 
-			style="'background-image: url('.$params['image'].');'"
+		<a
+			href="$params['url']"
+			style="'background-image: url('.gallery::get_raw_image($params['image']).');'"
 			cms:eval="href,style"
 			>
-			<cms:markdown param="description" multilanguage="yes"/>	
+			<cms:markdown param="description" multilanguage="yes"/>
 		</a>
 	</cms:mobile>
 </document>
