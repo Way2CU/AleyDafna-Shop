@@ -1236,19 +1236,22 @@ Site.on_load = function() {
 	// connect increase and decrease controls
 	$('div.cart div.controls a.alter').on('click', Site.alter_item_count);
 
+	// make data layer for Google Analytics
+	window.dataLayer = window.dataLayer || new Object();
+
 	// connect to every form and handle submission
-	if (dataLayer && Caracal.ContactForm.list.length > 0)
+	if (Caracal.ContactForm.list.length > 0)
 		for (var index in Caracal.ContactForm.list) {
 			var form = Caracal.ContactForm.list[index];
 			form.events.connect('submit-success', Site.handle_form_submit_success);
 		}
 
 	// save transaction data and cart contents for tracking purposes later
-	if (dataLayer && $('div#checkout table.checkout_details').length > 0)
+	if ($('div#checkout table.checkout_details').length > 0)
 		Site.cart.events.connect('cart-loaded', Site.save_transaction_data);
 
 	// push transaction data to Google's data layer
-	if (dataLayer && $('div#checkout div.checkout_message').length > 0)
+	if ($('div#checkout div.checkout_message').length > 0)
 		Site.push_transaction_data();
 
 	// connect page leave events
