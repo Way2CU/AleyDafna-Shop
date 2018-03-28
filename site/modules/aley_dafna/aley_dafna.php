@@ -16,6 +16,7 @@ use Modules\Shop\Transaction as Transaction;
 use Modules\Shop\Item\Manager as ShopItemManager;
 
 require_once('units/discount.php');
+require_once('units/tcpdf/tcpdf_import.php');
 
 
 class aley_dafna extends Module {
@@ -107,12 +108,23 @@ class aley_dafna extends Module {
 		// register promotions
 		if (ModuleHandler::is_loaded('shop')) {
 			$shop = shop::get_instance();
-			$shop->registerPromotion(new BalloonPromotion($this));
-			$shop->registerPromotion(new WinePromotion($this));
-			$shop->registerPromotion(new VasePromotion($this));
-			$shop->registerDiscount(new BalloonDiscount($this));
-			$shop->registerDiscount(new WineDiscount($this));
-			$shop->registerDiscount(new VaseDiscount($this));
+			$balloon = new BalloonPromotion($this);
+			$shop->registerPromotion($balloon);
+
+			$wine = new WinePromotion($this);
+			$shop->registerPromotion($wine);
+
+			$vase = new VasePromotion($this);
+			$shop->registerPromotion($vase);
+
+			$balloon_discount = new BalloonDiscount($this);
+			$shop->registerDiscount($balloon_discount);
+
+			$wine_discount = new WineDiscount($this);
+			$shop->registerDiscount($wine_discount);
+
+			$vase_discount = new VaseDiscount($this);
+			$shop->registerDiscount($vase_discount);
 		}
 
 		if (SectionHandler::get_matched_file() == 'checkout.xml') {
@@ -693,25 +705,45 @@ class aley_dafna extends Module {
 
 			$data = array(
 					'text'   => $description['text'],
-					'top'    => $position[0].'%',
-					'left'   => $position[1].'%',
-					'bottom' => $position[2].'%',
-					'right'  => $position[3].'%',
+					'top'    => $position[0],
+					'left'   => $position[1],
+					'bottom' => $position[2],
+					'right'  => $position[3],
 					'image'  => gallery::getGroupImageById($item->gallery)
 				);
 
 			$items[] = $data;
 		}
 
-		// prepare template
-		$template = new TemplateHandler('print_card.xml', $this->path.'templates/');
+		// new pdf document
+		$pdf = new TCPDF();
+		$pdf->SetFont('dejavusans', '', 18, '', true);
 
+		// generate one page per card
 		if (count($items) > 0)
 			foreach ($items as $item) {
-				$template->set_local_params($item);
-				$template->restore_xml();
-				$template->parse();
+				$pdf->AddPage();
+				$page_width = $pdf->getPageWidth();
+				$page_height = $pdf->getPageHeight();
+				$text = unfix_chars($item['text']);
+
+				// background image
+				$margins = $pdf->getMargins();
+				$pdf->Image(URL::to_file_path($item['image']), $margins['left'], $margins['top'] - 1, $page_width + 2, $page_height);
+
+				// text position
+				$left = ($page_width * $item['left']) / 100;
+				$top = ($page_height * $item['top']) / 100;
+				$pdf->SetXY($left, $top);
+
+				// render text
+				$right = ($page_width * $item['right']) / 100;
+				$bottom = ($page_height * $item['bottom']) / 100;
+				$pdf->MultiCell($right - $left, 7, $text, 0, 'C');
 			}
+
+		// generate pdf
+		$pdf->Output();
 	}
 }
 

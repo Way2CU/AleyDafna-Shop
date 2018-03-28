@@ -69,16 +69,6 @@ Caracal.PrintSupport = function() {
 		var current_window = button.data('window');
 		var transaction_id = button.data('transaction');
 
-		var iframe = current_window.container.find('iframe.print');
-		if (iframe.length == 0)
-			iframe = $('<iframe>')
-				.addClass('print')
-				.css('display', 'none')
-				.appendTo(current_window.container)
-				.on('load', function(event) {
-					iframe[0].contentWindow.print();
-				});
-
 		// open location for print
 		var base_url = $('meta[property=base-url]').attr('content');
 		var params = {
@@ -90,7 +80,7 @@ Caracal.PrintSupport = function() {
 				timestamp: Date.now().toString()
 			};
 		var print_url = base_url + '/?' + $.param(params);
-		iframe.attr('src', print_url);
+		window.open(print_url, '_blank');
 	};
 
 	// finalize object
