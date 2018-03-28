@@ -12,8 +12,8 @@
 use Core\Module;
 use Core\Events;
 
-use \Modules\Shop\Transaction as Transaction;
-use \Modules\Shop\Item\Manager as ShopItemManager;
+use Modules\Shop\Transaction as Transaction;
+use Modules\Shop\Item\Manager as ShopItemManager;
 
 require_once('units/discount.php');
 
