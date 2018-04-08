@@ -14,7 +14,7 @@
 			<cms:module name="shop" action="include_scripts"/>
 			<cms:collection include="communicator,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
 			<cms:script src="_BASEURL.'/site/scripts/checkout.js'" cms:eval="src"/>
-			<cms:module name="head_tag" action="print_tag"/>
+			<cms:module name="head_tag" action="show"/>
 		</head>
 
 		<body>
