@@ -3,7 +3,6 @@
 <document>
 	<html lang="$language" dir="$language_rtl ? 'rtl' : 'ltr'" cms:eval="lang,dir">
 		<head>
-			<title><cms:text constant="site_title"/></title>
 			<cms:module
 				name="shop"
 				action="include_cart_scripts"

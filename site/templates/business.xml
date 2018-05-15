@@ -3,11 +3,12 @@
 <document>
 	<html lang="$language" dir="$language_rtl ? 'rtl' : 'ltr'" cms:eval="lang,dir">
 		<head>
-			<title>
-				<cms:text constant="site_title"/>
-				<cms:raw text=" - "/>
-				<cms:text constant="menu_business"/>
-			</title>
+			<cms:module
+				name="head_tag"
+				action="add_to_title"
+				value="menu_business"
+				cms:constant="value"
+				/>
 			<cms:template file="parts/opengraph_generic.xml"/>
 			<cms:module name="shop" action="include_cart_scripts"/>
 			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>

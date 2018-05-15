@@ -3,28 +3,14 @@
 <document>
 	<html lang="$language" dir="$language_rtl ? 'rtl' : 'ltr'" cms:eval="lang,dir">
 		<head>
-			<title>
-				<cms:text constant="site_title"/>
-				<cms:raw text=" - "/>
-				<cms:module
-					name="shop"
-					action="show_category"
-					id="fix_id($_REQUEST['category'])"
-					template="parts/category_name.xml"
-					cms:eval="id"
-					/>
-			</title>
-
-			<!-- Page description -->
 			<cms:module
 				name="shop"
-				action="show_category"
+				action="add_category_to_title"
 				id="fix_id($_REQUEST['category'])"
-				template="parts/page_description.xml"
 				cms:eval="id"
 				/>
-			<cms:template file="parts/opengraph_generic.xml"/>
 
+			<cms:template file="parts/opengraph_generic.xml"/>
 			<cms:collection include="page_control,dialog,jquery_event_drag,jquery_event_scroll,scrollbar"/>
 			<cms:script src="_BASEURL.'/site/scripts/filter.js'" cms:eval="src"/>
 			<cms:script src="_BASEURL.'/site/scripts/banners.js'" cms:eval="src"/>

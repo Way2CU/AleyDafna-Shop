@@ -3,17 +3,12 @@
 <document>
 	<html lang="$language" dir="$language_rtl ? 'rtl' : 'ltr'" cms:eval="lang,dir">
 		<head>
-			<title>
-				<cms:text constant="site_title"/>
-				<cms:raw text=" - "/>
-				<cms:module
-					name="shop"
-					action="show_category"
-					id="fix_id($_REQUEST['area_id'])"
-					template="parts/category_name.xml"
-					cms:eval="id"
-					/>
-			</title>
+			<cms:module
+				name="shop"
+				action="add_category_to_title"
+				id="fix_id($_REQUEST['area_id'])"
+				cms:eval="id"
+				/>
 
 			<cms:template file="parts/opengraph_generic.xml"/>
 			<cms:module name="shop" action="include_cart_scripts"/>
